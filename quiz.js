@@ -68,11 +68,15 @@
       btn_label_challenge:     '🏷️ Nommer les éléments',
       label_title:             'Glissez les étiquettes',
       label_subtitle:          'Déposez chaque terme sur la bonne zone du composant.',
+      label_step:              'Étape bonus',
+      label_drop_hint:         'Déposez les étiquettes sur l\'image',
       label_validate:          'Valider mes réponses',
       label_reveal_subtitle:   'Voici les bonnes réponses.',
       label_result_perfect:    'Parfait — tout est au bon endroit\u00a0!',
       label_result_good:       (n, t) => `${n} sur ${t} corrects — pas mal\u00a0!`,
       label_result_bad:        (n, t) => `${n} sur ${t} corrects — réessayez\u00a0!`,
+      label_see_results:       'Voir mes résultats',
+      label_try_again:         'Réessayer l\'étiquetage',
     },
     en: {
       title:            'Name That\nUI',
@@ -134,11 +138,15 @@
       btn_label_challenge:     '🏷️ Name the Elements',
       label_title:             'Drag the labels',
       label_subtitle:          'Drop each term onto the matching area of the component.',
+      label_step:              'Bonus step',
+      label_drop_hint:         'Drop the labels onto the image',
       label_validate:          'Check my answers',
       label_reveal_subtitle:   'Here are the correct answers.',
       label_result_perfect:    'Perfect — every label in the right place!',
       label_result_good:       (n, t) => `${n} of ${t} correct — not bad!`,
       label_result_bad:        (n, t) => `${n} of ${t} correct — keep practising!`,
+      label_see_results:       'See my results',
+      label_try_again:         'Retry labelling',
     },
   };
 
@@ -1071,6 +1079,7 @@
     let   correct = 0;
     Object.keys(LABEL_ANSWERS).forEach(zk => { if (labelPlacements[zk] === zk) correct++; });
 
+
     const resultText = correct === total
       ? t('label_result_perfect')
       : correct >= Math.ceil(total / 2)
@@ -1126,8 +1135,8 @@
   document.getElementById('btn-back-label')?.addEventListener('click', () => showScreen('end'));
   document.getElementById('btn-label-validate')?.addEventListener('click', validateLabels);
   document.getElementById('btn-label-validate-desktop')?.addEventListener('click', validateLabels);
-  document.getElementById('btn-label-done')?.addEventListener('click', () => { clearEffects(); showEndScreen(); });
-  document.getElementById('btn-label-done-desktop')?.addEventListener('click', () => { clearEffects(); showEndScreen(); });
+  document.getElementById('btn-label-done')?.addEventListener('click', () => showEndScreen());
+  document.getElementById('btn-label-done-desktop')?.addEventListener('click', () => showEndScreen());
   document.getElementById('btn-label-try-again')?.addEventListener('click', resetLabelChallenge);
   document.getElementById('btn-label-try-again-desktop')?.addEventListener('click', resetLabelChallenge);
 
