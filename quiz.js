@@ -23,7 +23,7 @@
       end_good:         'Bien joué. Continuez à pratiquer pour tout maîtriser.',
       end_keep_going:   'Bon effort. Relisez les définitions et réessayez.',
       hint_label:       'À retenir',
-      manifesto:        `L'IA exige de la clarté très tôt. Elle peine quand les idées sont floues, nouvelles, encore en formation — quand les contraintes doivent rester souples plutôt que figées trop vite.<br><br>Ceux qui réussissent dans cette nouvelle ère ne sont pas les plus rapides à coder ni les plus brillants en design. Ce sont ceux qui <em>savent ce qu'ils veulent</em> — et peuvent le communiquer avec précision.`,
+      manifesto:        `L'IA exige de la clarté. La lumière appartient à ceux qui <em>savent ce qu'ils veulent</em> — et peuvent le communiquer avec précision.`,
       manifesto_more:   'Pourquoi ce quiz\u00a0?',
       manifesto_less:   'Fermer',
       // XP / Level
@@ -54,7 +54,7 @@
       btn_back:                '← Retour',
       btn_tournament:          'Tournoi',
       lobby_title:             'Salle des guerriers',
-      lobby_subtitle:          'Ouvrez cette page dans plusieurs onglets. Choisissez votre nom de guerre et que le meilleur gagne — sans serveur, sans pitié.',
+      lobby_subtitle:          'Chaque membre de l\'équipe ouvre cette page sur son propre écran. Choisissez votre nom de guerre — que le meilleur gagne.',
       lobby_name_label:        'Votre nom de guerre',
       lobby_name_placeholder:  'Ex\u00a0: Athos, Ragnar…',
       btn_start_contest:       'Que le tournoi commence\u00a0!',
@@ -64,6 +64,15 @@
       leaderboard_subtitle_solo: 'Mode solo — gloire personnelle.',
       btn_play_again:          'Nouveau tournoi',
       contest_no_support:      'Votre navigateur ne supporte pas le mode tournoi.',
+      // Label challenge
+      btn_label_challenge:     '🏷️ Nommer les éléments',
+      label_title:             'Glissez les étiquettes',
+      label_subtitle:          'Déposez chaque terme sur la bonne zone du composant.',
+      label_validate:          'Valider mes réponses',
+      label_reveal_subtitle:   'Voici les bonnes réponses.',
+      label_result_perfect:    'Parfait — tout est au bon endroit\u00a0!',
+      label_result_good:       (n, t) => `${n} sur ${t} corrects — pas mal\u00a0!`,
+      label_result_bad:        (n, t) => `${n} sur ${t} corrects — réessayez\u00a0!`,
     },
     en: {
       title:            'Name That\nUI',
@@ -80,7 +89,7 @@
       end_good:         'Well done. Keep practising to get them all.',
       end_keep_going:   'Good effort. Review the definitions and try again.',
       hint_label:       'Remember',
-      manifesto:        `AI demands certainty much earlier. It struggles when the input is fuzzy, novel or still forming — when constraints need to bend and evolve instead of locking everything down too soon.<br><br>The people who succeed in this new era aren't the ones who code fastest or design cleanest. They're the ones who <em>know what they want</em> — and can communicate it clearly.`,
+      manifesto:        `AI demands clarity. The light belongs to those who <em>know what they want</em> — and can communicate it precisely.`,
       manifesto_more:   'Why this quiz?',
       manifesto_less:   'Close',
       // XP / Level
@@ -111,7 +120,7 @@
       btn_back:                '← Back',
       btn_tournament:          'Tournament',
       lobby_title:             'Warriors\' Hall',
-      lobby_subtitle:          'Open this page in multiple tabs. Pick your war name and may the best warrior win — no server, no mercy.',
+      lobby_subtitle:          'Each team member opens this page on their own screen. Pick your war name — may the best warrior win.',
       lobby_name_label:        'Your war name',
       lobby_name_placeholder:  'e.g. Aramis, Björn…',
       btn_start_contest:       'Let the tournament begin!',
@@ -121,6 +130,15 @@
       leaderboard_subtitle_solo: 'Solo mode — personal glory.',
       btn_play_again:          'New tournament',
       contest_no_support:      'Your browser doesn\'t support tournament mode.',
+      // Label challenge
+      btn_label_challenge:     '🏷️ Name the Elements',
+      label_title:             'Drag the labels',
+      label_subtitle:          'Drop each term onto the matching area of the component.',
+      label_validate:          'Check my answers',
+      label_reveal_subtitle:   'Here are the correct answers.',
+      label_result_perfect:    'Perfect — every label in the right place!',
+      label_result_good:       (n, t) => `${n} of ${t} correct — not bad!`,
+      label_result_bad:        (n, t) => `${n} of ${t} correct — keep practising!`,
     },
   };
 
@@ -138,7 +156,9 @@
       if (!I18N[lang][key]) return;
       if (key === 'title') {
         el.innerHTML = t('title').replace('\n', '<br>');
-      } else if (el.tagName === 'BUTTON' && el.id === 'btn-next') {
+      } else if (key === 'manifesto') {
+        el.innerHTML = t('manifesto');
+      } else if (el.tagName === 'BUTTON' && (el.id === 'btn-next' || el.id === 'btn-next-desktop')) {
         el.innerHTML = `${t('btn_next')} <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="ml-1"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
       } else if (el.tagName === 'BUTTON' && el.id === 'btn-tournament') {
         // Preserve the inline SVG icon, only update the text node
@@ -170,7 +190,7 @@
     const shareBtn = document.getElementById('btn-share');
     if (shareBtn && !shareBtn.dataset.copied) shareBtn.textContent = t('btn_share');
     // Update live score label if quiz is running
-    if (questions.length) {
+    if (scoreLabel && questions.length) {
       scoreLabel.textContent = t('score_label', currentIndex + 1, questions.length);
     }
     // Update lobby input placeholder
@@ -458,27 +478,41 @@
     end:         document.getElementById('screen-end'),
     lobby:       document.getElementById('screen-lobby'),
     leaderboard: document.getElementById('screen-leaderboard'),
+    label:       document.getElementById('screen-label'),
   };
 
   const progressBar     = document.getElementById('progress-bar');
   const timerBar        = document.getElementById('timer-bar');
   const scoreLabel      = document.getElementById('score-label');
   const streakBadge     = document.getElementById('streak-badge');
-  const componentRender = document.getElementById('component-render');
-  const optionsGrid     = document.getElementById('options-grid');
-  const feedbackPanel   = document.getElementById('feedback-panel');
-  const feedbackIcon    = document.getElementById('feedback-icon');
-  const feedbackTitle   = document.getElementById('feedback-title');
-  const feedbackDef     = document.getElementById('feedback-definition');
-  const questionStage   = document.getElementById('question-stage');
+  const componentRender        = document.getElementById('component-render');
+  const componentRenderDesktop = document.getElementById('component-render-desktop');
+  const optionsGrid            = document.getElementById('options-grid');
+  const optionsGridDesktop     = document.getElementById('options-grid-desktop');
+  const feedbackPanel          = document.getElementById('feedback-panel');
+  const feedbackPanelDesktop   = document.getElementById('feedback-panel-desktop');
+  const feedbackIcon           = document.getElementById('feedback-icon');
+  const feedbackIconDesktop    = document.getElementById('feedback-icon-desktop');
+  const feedbackTitle          = document.getElementById('feedback-title');
+  const feedbackTitleDesktop   = document.getElementById('feedback-title-desktop');
+  const feedbackDef            = document.getElementById('feedback-definition');
+  const feedbackDefDesktop     = document.getElementById('feedback-definition-desktop');
+  const questionStage          = document.getElementById('question-stage');
+
+  // Helper: is desktop layout active?
+  function isDesktop() { return window.innerWidth >= 900; }
   const endScore        = document.getElementById('end-score');
   const endMessage      = document.getElementById('end-message');
   const endIcon         = document.getElementById('end-icon');
   const scoreHistory    = document.getElementById('score-history');
   const btnShare        = document.getElementById('btn-share');
 
+  // Initial language render — must run after all const declarations above
+  applyLang();
+
   document.getElementById('btn-start').addEventListener('click', startQuiz);
   document.getElementById('btn-next').addEventListener('click', nextQuestion);
+  document.getElementById('btn-next-desktop')?.addEventListener('click', nextQuestion);
   document.getElementById('btn-retry').addEventListener('click', restartQuiz);
 
   // ── Category filter chips ────────────────────
@@ -854,6 +888,248 @@
     showScreen('lobby');
     renderLobbyPlayers();
   });
+
+  // ── Label Challenge ───────────────────────────
+  const LABEL_ANSWERS = {
+    'Overlay Badge': 'Overlay Badge / Floating Label',
+    'Kicker':        'Kicker / Overline',
+    'Headline':      'Headline / H2 Heading',
+    'Body Copy':     'Body Copy / Supporting Text',
+    'Bullet List':   'Bullet List / Feature List',
+    'Chip Group':    'Chip Group / Pill Buttons',
+    'CTA Button':    'Floating Call To Action Button',
+  };
+
+  // { zoneKey: placedTokenKey }  — shared state for both panels
+  let labelPlacements = {};
+  let labelDragKey    = null;  // key being dragged via mouse
+  let touchToken      = null;
+  let touchGhost      = null;
+
+  function isLabelDesktop() { return window.innerWidth >= 900; }
+
+  function openLabelChallenge() {
+    labelPlacements = {};
+    labelDragKey    = null;
+    showScreen('label');
+
+    // Show/hide correct panels
+    const mobile  = document.getElementById('label-phase-drag');
+    const mReveal = document.getElementById('label-phase-reveal');
+    const deskBody  = document.getElementById('label-desktop-body');
+    const dDrag     = document.getElementById('label-desktop-phase-drag');
+    const dReveal   = document.getElementById('label-desktop-phase-reveal');
+
+    if (isLabelDesktop()) {
+      mobile.style.display  = 'none';
+      mReveal.style.display = 'none';
+      deskBody.style.display = '';
+      dDrag.style.display    = '';
+      dReveal.style.display  = 'none';
+      document.getElementById('label-answer-overlay-desktop').style.display = 'none';
+    } else {
+      mobile.style.display  = '';
+      mReveal.style.display = 'none';
+      deskBody.style.display = 'none';
+    }
+
+    document.getElementById('label-score-display').textContent = '';
+
+    // Clear all zones
+    document.querySelectorAll('.label-zone').forEach(z => {
+      z.classList.remove('placed', 'drag-over');
+      z.innerHTML = '';
+    });
+
+    // Build tokens for both pools
+    buildTokenPool('label-tokens',         'mobile');
+    buildTokenPool('label-tokens-desktop', 'desktop');
+
+    // Wire all drop zones
+    document.querySelectorAll('.label-zone').forEach(wireZone);
+  }
+
+  function buildTokenPool(containerId, panel) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    container.innerHTML = '';
+    Object.keys(LABEL_ANSWERS).forEach(key => {
+      const tok = document.createElement('span');
+      tok.className = 'label-token';
+      tok.textContent = key;
+      tok.dataset.key = key;
+      tok.dataset.panel = panel;
+      tok.setAttribute('draggable', 'true');
+
+      tok.addEventListener('dragstart', (e) => {
+        labelDragKey = key;
+        e.dataTransfer.effectAllowed = 'move';
+        e.dataTransfer.setData('text/plain', key);
+      });
+      tok.addEventListener('dragend', () => { labelDragKey = null; });
+      tok.addEventListener('touchstart', handleTokenTouchStart, { passive: false });
+
+      container.appendChild(tok);
+    });
+  }
+
+  function wireZone(zone) {
+    zone.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      e.dataTransfer.dropEffect = 'move';
+      zone.classList.add('drag-over');
+    });
+    zone.addEventListener('dragleave', (e) => {
+      // Only remove if leaving the zone itself, not a child
+      if (!zone.contains(e.relatedTarget)) zone.classList.remove('drag-over');
+    });
+    zone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      zone.classList.remove('drag-over');
+      const key = e.dataTransfer.getData('text/plain') || labelDragKey;
+      if (key) placeTokenInZone(zone, key);
+    });
+  }
+
+  function placeTokenInZone(zone, key) {
+    const zoneKey = zone.dataset.label;
+
+    // Return previous occupant to pool
+    const prev = labelPlacements[zoneKey];
+    if (prev && prev !== key) {
+      document.querySelectorAll(`.label-token[data-key="${prev}"]`).forEach(t => t.classList.remove('used'));
+    }
+
+    // If token was placed elsewhere, clear that zone
+    Object.entries(labelPlacements).forEach(([k, v]) => {
+      if (v === key && k !== zoneKey) {
+        delete labelPlacements[k];
+        document.querySelectorAll(`.label-zone[data-label="${k}"]`).forEach(z => {
+          z.innerHTML = '';
+          z.classList.remove('placed');
+        });
+      }
+    });
+
+    labelPlacements[zoneKey] = key;
+
+    // Update ALL zones with this data-label (mobile + desktop in sync)
+    document.querySelectorAll(`.label-zone[data-label="${zoneKey}"]`).forEach(z => {
+      z.innerHTML = `<span style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:#211C12;color:#FBF7F0;font-size:0.6rem;font-weight:700;font-family:'Inter',sans-serif;padding:0.15rem 0.45rem;border-radius:999px;white-space:nowrap;pointer-events:none;">${key}</span>`;
+      z.classList.add('placed');
+    });
+
+    // Mark all copies of this token as used
+    document.querySelectorAll(`.label-token[data-key="${key}"]`).forEach(t => t.classList.add('used'));
+  }
+
+  // ── Touch drag ────────────────────────────────
+  function handleTokenTouchStart(e) {
+    e.preventDefault();
+    touchToken = e.currentTarget.dataset.key;
+    const touch = e.touches[0];
+
+    touchGhost = e.currentTarget.cloneNode(true);
+    touchGhost.style.cssText = `position:fixed;pointer-events:none;z-index:9999;opacity:0.9;left:${touch.clientX - 40}px;top:${touch.clientY - 16}px;transition:none;`;
+    document.body.appendChild(touchGhost);
+
+    document.addEventListener('touchmove', handleTokenTouchMove, { passive: false });
+    document.addEventListener('touchend', handleTokenTouchEnd, { once: true });
+  }
+
+  function handleTokenTouchMove(e) {
+    e.preventDefault();
+    if (!touchGhost) return;
+    const touch = e.touches[0];
+    touchGhost.style.left = `${touch.clientX - 40}px`;
+    touchGhost.style.top  = `${touch.clientY - 16}px`;
+
+    document.querySelectorAll('.label-zone').forEach(z => z.classList.remove('drag-over'));
+    // Use elementFromPoint on the point beneath the ghost
+    touchGhost.style.visibility = 'hidden';
+    const el = document.elementFromPoint(touch.clientX, touch.clientY);
+    touchGhost.style.visibility = '';
+    el?.closest('.label-zone')?.classList.add('drag-over');
+  }
+
+  function handleTokenTouchEnd(e) {
+    document.removeEventListener('touchmove', handleTokenTouchMove);
+    if (touchGhost) { touchGhost.remove(); touchGhost = null; }
+    document.querySelectorAll('.label-zone').forEach(z => z.classList.remove('drag-over'));
+    if (!touchToken) return;
+
+    const touch = e.changedTouches[0];
+    const el = document.elementFromPoint(touch.clientX, touch.clientY);
+    const zone = el?.closest('.label-zone');
+    if (zone) placeTokenInZone(zone, touchToken);
+    touchToken = null;
+  }
+
+  // ── Validate ──────────────────────────────────
+  function validateLabels() {
+    const total   = Object.keys(LABEL_ANSWERS).length;
+    let   correct = 0;
+    Object.keys(LABEL_ANSWERS).forEach(zk => { if (labelPlacements[zk] === zk) correct++; });
+
+    const resultText = correct === total
+      ? t('label_result_perfect')
+      : correct >= Math.ceil(total / 2)
+        ? t('label_result_good',  correct, total)
+        : t('label_result_bad',   correct, total);
+
+    if (correct === total) SOUNDS.win();
+    else if (correct >= Math.ceil(total / 2)) SOUNDS.correct();
+    else SOUNDS.wrong();
+
+    document.getElementById('label-score-display').textContent = `${correct} / ${total}`;
+
+    // Build overlays (mobile + desktop)
+    ['label-answer-overlay', 'label-answer-overlay-desktop'].forEach(id => {
+      const overlay = document.getElementById(id);
+      if (!overlay) return;
+      overlay.innerHTML = '';
+      overlay.style.display = '';
+      Object.keys(LABEL_ANSWERS).forEach(zoneKey => {
+        const zoneEl = document.querySelector(`.label-zone[data-label="${zoneKey}"]`);
+        if (!zoneEl) return;
+        const isCorrect = labelPlacements[zoneKey] === zoneKey;
+        const lbl = document.createElement('span');
+        lbl.className = `answer-label ${isCorrect ? 'correct' : 'wrong'}`;
+        // Position matches the zone's CSS
+        const s = zoneEl.style;
+        lbl.style.left = s.left;
+        lbl.style.top  = s.top;
+        lbl.textContent = LABEL_ANSWERS[zoneKey];
+        overlay.appendChild(lbl);
+      });
+    });
+
+    // Set result titles
+    ['label-result-title', 'label-result-title-desktop'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = resultText;
+    });
+
+    // Switch phases
+    if (isLabelDesktop()) {
+      document.getElementById('label-desktop-phase-drag').style.display   = 'none';
+      document.getElementById('label-desktop-phase-reveal').style.display = '';
+    } else {
+      document.getElementById('label-phase-drag').style.display   = 'none';
+      document.getElementById('label-phase-reveal').style.display = '';
+    }
+  }
+
+  function resetLabelChallenge() { openLabelChallenge(); }
+
+  document.getElementById('btn-label-challenge')?.addEventListener('click', openLabelChallenge);
+  document.getElementById('btn-back-label')?.addEventListener('click', () => showScreen('end'));
+  document.getElementById('btn-label-validate')?.addEventListener('click', validateLabels);
+  document.getElementById('btn-label-validate-desktop')?.addEventListener('click', validateLabels);
+  document.getElementById('btn-label-done')?.addEventListener('click', () => { clearEffects(); showEndScreen(); });
+  document.getElementById('btn-label-done-desktop')?.addEventListener('click', () => { clearEffects(); showEndScreen(); });
+  document.getElementById('btn-label-try-again')?.addEventListener('click', resetLabelChallenge);
+  document.getElementById('btn-label-try-again-desktop')?.addEventListener('click', resetLabelChallenge);
 
   // ── Question bank (inlined — no fetch needed) ──
   const QUESTIONS = [
@@ -1294,6 +1570,16 @@
     renderQuestion();
   }
 
+  function makeOptionBtn(opt, i, q) {
+    const btn = document.createElement('button');
+    btn.className = 'option-btn btn btn-sm h-auto py-3 px-3 text-sm font-semibold leading-tight text-center rounded-lg';
+    btn.textContent = opt;
+    btn.dataset.value = opt;
+    btn.setAttribute('aria-label', `Option ${i + 1} : ${opt}`);
+    btn.addEventListener('click', () => selectAnswer(btn, q));
+    return btn;
+  }
+
   function renderQuestion() {
     const q = questions[currentIndex];
     answered = false;
@@ -1304,26 +1590,27 @@
     progressBar.setAttribute('aria-valuenow', Math.round(pct));
     scoreLabel.textContent = t('score_label', currentIndex + 1, questions.length);
 
-    // Render coded component
-    componentRender.innerHTML = q.component || '';
+    // Render component into both panels
+    const html = q.component || '';
+    componentRender.innerHTML = html;
+    if (componentRenderDesktop) componentRenderDesktop.innerHTML = html;
 
-    // Options
-    optionsGrid.innerHTML = '';
+    // Build options (same shuffled order for both grids)
     const opts = shuffle([...q.options]);
+
+    optionsGrid.innerHTML = '';
+    if (optionsGridDesktop) optionsGridDesktop.innerHTML = '';
+
     opts.forEach((opt, i) => {
-      const btn = document.createElement('button');
-      btn.className = 'option-btn btn btn-sm h-auto py-3 px-3 text-sm font-semibold leading-tight text-center rounded-lg';
-      btn.textContent = opt;
-      btn.dataset.value = opt;
-      btn.setAttribute('aria-label', `Option ${i + 1} : ${opt}`);
-      btn.addEventListener('click', () => selectAnswer(btn, q));
-      optionsGrid.appendChild(btn);
+      optionsGrid.appendChild(makeOptionBtn(opt, i, q));
+      if (optionsGridDesktop) optionsGridDesktop.appendChild(makeOptionBtn(opt, i, q));
     });
 
-    // Hide feedback
+    // Hide feedback panels
     feedbackPanel.classList.add('hidden');
+    if (feedbackPanelDesktop) feedbackPanelDesktop.classList.add('hidden');
 
-    // Slide-in animation
+    // Slide-in animation (mobile stage only)
     questionStage.classList.remove('slide-out', 'slide-in');
     void questionStage.offsetWidth;
     questionStage.classList.add('slide-in');
@@ -1333,86 +1620,82 @@
       });
     });
 
-    // Focus first option
+    // Focus first option in active grid
     setTimeout(() => {
-      const firstBtn = optionsGrid.querySelector('.option-btn');
+      const activeGrid = isDesktop() ? optionsGridDesktop : optionsGrid;
+      const firstBtn = activeGrid?.querySelector('.option-btn');
       if (firstBtn) firstBtn.focus();
     }, 50);
 
-    // Start timer if mode is enabled
-    if (timerModeEnabled) {
-      startTimer(q);
-    }
+    if (timerModeEnabled) startTimer(q);
   }
 
   function selectAnswer(selectedBtn, question, timedOut) {
     if (answered) return;
     answered = true;
 
-    // Stop timer
     stopTimer();
 
-    const isCorrect = !timedOut && selectedBtn.dataset.value === question.correct;
-    if (isCorrect) {
-      score++;
-      streak++;
-    } else {
-      streak = 0;
-    }
+    const chosen = timedOut ? null : selectedBtn.dataset.value;
+    const isCorrect = !timedOut && chosen === question.correct;
+    if (isCorrect) { score++; streak++; } else { streak = 0; }
     updateStreakDisplay();
 
-    // Play sound
-    if (timedOut) {
-      SOUNDS.timeout();
-    } else if (isCorrect) {
-      if (streak >= 3) SOUNDS.streak();
-      else SOUNDS.correct();
-    } else {
-      SOUNDS.wrong();
-    }
+    // Sound
+    if (timedOut)        SOUNDS.timeout();
+    else if (isCorrect)  streak >= 3 ? SOUNDS.streak() : SOUNDS.correct();
+    else                 SOUNDS.wrong();
 
-    // Broadcast live score in contest mode
+    // Broadcast
     if (contestMode && broadcastChannel) {
       broadcastMsg('score', { score, total: questions.length, done: false });
     }
 
-    // Mark buttons
-    optionsGrid.querySelectorAll('.option-btn').forEach(btn => {
-      btn.disabled = true;
-      if (btn.dataset.value === question.correct) {
-        btn.classList.add('correct');
-      } else if (!timedOut && btn === selectedBtn && !isCorrect) {
-        btn.classList.add('wrong');
-      }
+    // Mark buttons in BOTH grids
+    [optionsGrid, optionsGridDesktop].forEach(grid => {
+      if (!grid) return;
+      grid.querySelectorAll('.option-btn').forEach(btn => {
+        btn.disabled = true;
+        if (btn.dataset.value === question.correct) {
+          btn.classList.add('correct');
+        } else if (!timedOut && btn.dataset.value === chosen && !isCorrect) {
+          btn.classList.add('wrong');
+        }
+      });
     });
 
-    // Feedback icon
-    if (isCorrect) {
-      feedbackIcon.className = 'feedback-icon-wrap correct';
-      feedbackIcon.innerHTML = ICONS.correct;
-      feedbackTitle.textContent = t('feedback_correct');
-      feedbackTitle.className = 'font-serif text-xl font-bold text-success';
-    } else {
-      feedbackIcon.className = 'feedback-icon-wrap wrong';
-      feedbackIcon.innerHTML = ICONS.wrong;
-      feedbackTitle.textContent = t('feedback_wrong', question.correct);
-      feedbackTitle.className = 'font-serif text-xl font-bold text-error';
-    }
+    // Build feedback content
+    const iconClass   = isCorrect ? 'feedback-icon-wrap correct' : 'feedback-icon-wrap wrong';
+    const iconHTML    = isCorrect ? ICONS.correct : ICONS.wrong;
+    const titleText   = isCorrect ? t('feedback_correct') : t('feedback_wrong', question.correct);
+    const titleClass  = `font-serif text-xl font-bold ${isCorrect ? 'text-success' : 'text-error'}`;
+    const hint = !isCorrect && chosen && question.distractors?.[chosen] ? question.distractors[chosen] : '';
+    const defHTML = isCorrect
+      ? question.definition
+      : `<p class="mb-2">${question.definition}</p>`
+        + (hint ? `<p class="text-xs text-base-content/50 border-t border-base-300 pt-2 mt-2 flex gap-1.5 items-start"><span class="shrink-0 mt-0.5 text-base-content/40">${ICONS.hint}</span><span>${hint}</span></p>` : '');
 
-    if (!isCorrect) {
-      const chosen = timedOut ? null : selectedBtn.dataset.value;
-      const hint = chosen && question.distractors && question.distractors[chosen]
-        ? question.distractors[chosen]
-        : (question.wrong_explanation || '');
-      feedbackDef.innerHTML = `<p class="mb-2">${question.definition}</p>`
-        + (hint ? `<p class="text-xs text-base-content/50 border-t border-base-300 pt-2 mt-2 flex gap-1.5 items-start text-left"><span class="shrink-0 mt-0.5 text-base-content/40">${ICONS.hint}</span><span>${hint}</span></p>` : '');
-    } else {
-      feedbackDef.textContent = question.definition;
-    }
+    // Apply to mobile panel
+    feedbackIcon.className   = iconClass;
+    feedbackIcon.innerHTML   = iconHTML;
+    feedbackTitle.textContent = titleText;
+    feedbackTitle.className  = titleClass;
+    if (isCorrect) feedbackDef.textContent = question.definition;
+    else           feedbackDef.innerHTML   = defHTML;
     feedbackPanel.classList.remove('hidden');
 
+    // Apply to desktop panel
+    if (feedbackIconDesktop)  { feedbackIconDesktop.className  = iconClass; feedbackIconDesktop.innerHTML = iconHTML; }
+    if (feedbackTitleDesktop) { feedbackTitleDesktop.textContent = titleText; feedbackTitleDesktop.className = titleClass; }
+    if (feedbackDefDesktop)   { if (isCorrect) feedbackDefDesktop.textContent = question.definition; else feedbackDefDesktop.innerHTML = defHTML; }
+    if (feedbackPanelDesktop) feedbackPanelDesktop.classList.remove('hidden');
+
+    // Focus next button in active panel
     setTimeout(() => {
-      document.getElementById('btn-next').focus();
+      const nextBtn = isDesktop()
+        ? document.getElementById('btn-next-desktop')
+        : document.getElementById('btn-next');
+      if (nextBtn) nextBtn.focus();
     }, 60);
   }
 
@@ -1421,6 +1704,9 @@
     if (currentIndex < questions.length) {
       questionStage.classList.add('slide-out');
       setTimeout(renderQuestion, 180);
+    } else if (!contestMode) {
+      // Label challenge is the last step (solo only)
+      openLabelChallenge();
     } else {
       showEndScreen();
     }
@@ -1680,7 +1966,8 @@
   document.addEventListener('keydown', (e) => {
     if (!screens.quiz.classList.contains('active')) return;
 
-    const btns = [...optionsGrid.querySelectorAll('.option-btn:not(:disabled)')];
+    const activeGrid = isDesktop() ? optionsGridDesktop : optionsGrid;
+    const btns = [...(activeGrid || optionsGrid).querySelectorAll('.option-btn:not(:disabled)')];
     if (!btns.length) return;
 
     const idx = btns.indexOf(document.activeElement);

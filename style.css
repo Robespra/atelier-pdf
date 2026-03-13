@@ -278,7 +278,7 @@
   text-align: center;
 }
 
-/* ---------- Responsive: desktop card ---------- */
+/* ---------- Responsive: tablet card (520px+) ---------- */
 @media (min-width: 520px) {
   body {
     padding: 2rem 0;
@@ -295,6 +295,292 @@
   #screen-quiz {
     min-height: 640px;
   }
+}
+
+/* ══════════════════════════════════════════════
+   DESKTOP LAYOUT (900px+)
+   Two-column for start/end/lobby/leaderboard,
+   wide single-column with side feedback for quiz
+   ══════════════════════════════════════════════ */
+@media (min-width: 900px) {
+
+  /* Body becomes a centered page shell */
+  body {
+    padding: 3rem 2rem;
+    align-items: flex-start;
+    justify-content: center;
+    min-height: 100dvh;
+  }
+
+  /* ── All screens get more width ── */
+  .screen {
+    border-radius: 1.5rem;
+    box-shadow: 0 16px 64px rgba(33, 28, 18, 0.12);
+  }
+
+  /* ── Start / End / Lobby / Leaderboard: two-column ── */
+  #screen-start,
+  #screen-end,
+  #screen-lobby,
+  #screen-leaderboard {
+    max-width: 900px;
+    width: 100%;
+    flex-direction: row;
+    align-items: stretch;
+    padding: 0;
+    gap: 0;
+  }
+
+  /* Left column: manifesto / context panel */
+  .desktop-left {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3.5rem 3rem;
+    flex: 1 1 0;
+    background: #211C12;
+    border-radius: 1.5rem 0 0 1.5rem;
+    min-width: 0;
+  }
+
+  .desktop-left .desktop-logo {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: #CB1617;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    flex-shrink: 0;
+  }
+
+  .desktop-left h1,
+  .desktop-left .desktop-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2.4rem;
+    font-weight: 900;
+    color: #FBF7F0;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin: 0 0 1rem 0;
+  }
+
+  .desktop-left .desktop-subtitle {
+    font-size: 0.875rem;
+    color: #C6A669;
+    line-height: 1.7;
+    max-width: 280px;
+    margin-bottom: 2rem;
+  }
+
+  .desktop-manifesto {
+    border-left: 2px solid #C6A66955;
+    padding-left: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .desktop-manifesto p {
+    font-size: 0.8rem;
+    font-style: italic;
+    color: #C6A66988;
+    line-height: 1.75;
+  }
+
+  .desktop-manifesto em {
+    font-style: normal;
+    font-weight: 700;
+    color: #C6A669;
+  }
+
+  .desktop-level-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #C6A66922;
+    border: 1px solid #C6A66944;
+    border-radius: 999px;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #C6A669;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Right column: card content */
+  .desktop-right {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    padding: 3rem 3rem;
+    min-width: 0;
+    background: #FBF7F0;
+    border-radius: 0 1.5rem 1.5rem 0;
+    position: relative;
+  }
+
+  /* On desktop, card inside right col loses its own border/shadow */
+  .desktop-right .card.pduf-border {
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .desktop-right .card.pduf-border::before {
+    display: none;
+  }
+
+  .desktop-right .card-body {
+    padding: 0 !important;
+    flex: 0 0 auto;
+  }
+
+  /* Lang toggle: pinned to top-right of the right col */
+  .desktop-right .desktop-topbar {
+    display: flex !important;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+  }
+
+  /* Hide the mobile lang toggle in start screen on desktop */
+  #screen-start .mobile-topbar {
+    display: none !important;
+  }
+
+  /* Manifesto collapser hidden on desktop (shown in left col) */
+  #screen-start .manifesto {
+    display: none !important;
+  }
+
+  /* Buttons stretch nicely */
+  .desktop-right .btn-wide {
+    width: 100%;
+  }
+
+  /* ── Quiz screen: wide two-panel layout ── */
+  #screen-quiz {
+    max-width: 960px;
+    width: 100%;
+    min-height: 580px;
+    flex-direction: column;
+  }
+
+  #screen-quiz header {
+    border-radius: 1.5rem 1.5rem 0 0;
+    padding: 1.25rem 2rem 0.75rem;
+  }
+
+  /* Quiz inner: component left, options+feedback right */
+  #quiz-desktop-body {
+    display: flex !important;
+    flex: 1;
+    min-height: 0;
+  }
+
+  /* Component panel */
+  #quiz-left-panel {
+    flex: 1.1 1 0;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 1.5rem 1.5rem 2rem;
+    border-right: 1px solid #E6D7BA;
+  }
+
+  #quiz-left-panel .component-wrap {
+    flex: 1;
+  }
+
+  #quiz-left-panel .question-text {
+    margin-top: 1rem;
+    font-size: 1rem;
+  }
+
+  /* Options + feedback panel */
+  #quiz-right-panel {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1.5rem 2rem 1.5rem 1.5rem;
+    min-width: 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #quiz-right-panel #options-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  #quiz-right-panel .option-btn {
+    height: auto;
+    padding: 1rem 0.75rem;
+    font-size: 0.875rem;
+    border-radius: 0.75rem;
+  }
+
+  /* Hide mobile feedback panel on desktop — use desktop panel only */
+  #screen-quiz #feedback-panel {
+    display: none !important;
+  }
+
+  /* Desktop feedback panel: inline in right col, not absolute */
+  #screen-quiz #feedback-panel-desktop {
+    position: relative !important;
+    bottom: auto !important;
+    left: auto !important;
+    right: auto !important;
+    border-top: none !important;
+    border-radius: 0.75rem !important;
+    border: 1.5px solid #C6A669 !important;
+    max-height: none !important;
+    margin-top: 1rem;
+    padding: 1.25rem !important;
+    box-shadow: none !important;
+  }
+
+  #screen-quiz #feedback-panel-desktop .feedback-icon-wrap {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+  }
+
+  /* On desktop quiz, hide the mobile question-stage wrapper, use panels directly */
+  #question-stage {
+    display: none !important;
+  }
+}
+
+/* ── Desktop quiz: hide mobile stage, show desktop panels ── */
+@media (max-width: 899px) {
+  #quiz-desktop-body {
+    display: none !important;
+  }
+}
+
+/* ── Hide/show helpers ── */
+@media (min-width: 900px) {
+  .desktop-hide {
+    display: none !important;
+  }
+}
+
+@media (max-width: 899px) {
+  .desktop-left  { display: none !important; }
+  .desktop-right { /* normal flow on mobile */ }
+  .desktop-topbar { display: none !important; }
 }
 
 /* ---------- Mute button ---------- */
@@ -391,6 +677,131 @@
 /* ---------- Lobby players ---------- */
 #lobby-players {
   min-height: 60px;
+}
+
+/* ---------- Label Challenge ---------- */
+#screen-label {
+  background: var(--color-base-100, #FBF7F0);
+  min-height: 100dvh;
+}
+
+@media (min-width: 900px) {
+  #screen-label {
+    max-width: 960px;
+    width: 100%;
+    min-height: 580px;
+    flex-direction: column;
+  }
+
+  #screen-label header {
+    border-radius: 1.5rem 1.5rem 0 0;
+    padding: 1rem 2rem;
+  }
+
+  #label-desktop-body {
+    display: flex !important;
+    flex: 1;
+    min-height: 0;
+  }
+
+  #label-left-panel {
+    flex: 1.5 1 0;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 1.5rem 1.5rem 2rem;
+    border-right: 1px solid #E6D7BA;
+  }
+
+  #label-right-panel {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1.5rem 2rem 1.5rem 1.5rem;
+    min-width: 0;
+  }
+
+  /* Hide mobile phases on desktop */
+  #screen-label #label-phase-drag,
+  #screen-label #label-phase-reveal {
+    display: none !important;
+  }
+}
+
+@media (max-width: 899px) {
+  #label-desktop-body {
+    display: none !important;
+  }
+}
+
+/* Drop zones on the image */
+.label-zone {
+  position: absolute;
+  border: 2px dashed transparent;
+  border-radius: 0.4rem;
+  transition: background 150ms ease, border-color 150ms ease;
+  cursor: default;
+}
+
+.label-zone.drag-over {
+  background: rgba(198, 166, 105, 0.18);
+  border-color: #C6A669;
+}
+
+.label-zone.placed {
+  border-color: transparent;
+  background: transparent;
+}
+
+/* Draggable token pills */
+.label-token {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  background: #211C12;
+  color: #FBF7F0;
+  font-size: 0.78rem;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  cursor: grab;
+  user-select: none;
+  transition: opacity 150ms ease, transform 150ms ease;
+  white-space: nowrap;
+  touch-action: none;
+}
+
+.label-token:active {
+  cursor: grabbing;
+  transform: scale(1.05);
+}
+
+.label-token.used {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* Answer overlay labels (phase 2) */
+.answer-label {
+  position: absolute;
+  background: #CB1617;
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.3rem;
+  white-space: nowrap;
+  pointer-events: none;
+  line-height: 1.4;
+}
+
+.answer-label.correct {
+  background: #2a7d4f;
+}
+
+.answer-label.wrong {
+  background: #CB1617;
 }
 
 /* ---------- Reduced motion ---------- */
