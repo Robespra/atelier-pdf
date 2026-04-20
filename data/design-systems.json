@@ -1,0 +1,37 @@
+{
+  "systems": [
+    {
+      "id": "fondamentaux",
+      "name": "Design System Fondamentaux",
+      "name_fr": "Design System Fondamentaux",
+      "url": "https://www.figma.com/design/Ey7ObIDiHfM8za2KC5goRg/Design-System-Fondamentaux?node-id=6018-389&t=yf2v4lxqeFrCi1vo-1",
+      "description_fr": "Fondation partagée par toutes les équipes produit — tokens, typographie, couleurs, grilles, ombres et composants de base.",
+      "description_en": "Shared foundation across all product teams — tokens, typography, colours, grids, shadows and base components.",
+      "badge_fr": "Fondation",
+      "badge_en": "Foundation",
+      "accent": "#CB1617"
+    },
+    {
+      "id": "app",
+      "name": "Design System App",
+      "name_fr": "Design System App",
+      "url": "https://www.figma.com/design/LnstLU9VxLSk1vBd3koWzw/Design-System-App?node-id=4904-21085&t=5Zr4StR0ttIBD3ig-1",
+      "description_fr": "Composants et patterns pour l'application mobile (iOS & Android) — construits sur la fondation.",
+      "description_en": "Components and patterns for the mobile app (iOS & Android) — built on the foundation.",
+      "badge_fr": "App mobile",
+      "badge_en": "Mobile app",
+      "accent": "#09406D"
+    },
+    {
+      "id": "vel",
+      "name": "VEL / E-commerce Design System",
+      "name_fr": "VEL / E-commerce Design System",
+      "url": "https://www.figma.com/design/mtBoy1Ap5sgUt6lbB3duGx/Puy-du-Fou---Reviews-Parcours-de-commande?node-id=622-13283&t=5Esz2dOmEfPIJihy-1",
+      "description_fr": "Système de design pour le parcours e-commerce VEL — tunnel d'achat, réservations et billetterie en ligne.",
+      "description_en": "Design system for the VEL e-commerce journey — purchase funnel, reservations and online ticketing.",
+      "badge_fr": "E-commerce",
+      "badge_en": "E-commerce",
+      "accent": "#A18756"
+    }
+  ]
+}

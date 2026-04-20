@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="pduf">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Atelier Design — Ressources, outils et références pour les équipes produit." />
+  <title>Atelier Design</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%23CB1617'/><text x='16' y='21' font-family='Georgia,serif' font-size='13' font-weight='900' fill='%23FBF7F0' text-anchor='middle'>UI</text></svg>" />
+
+
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5/daisyui.css" rel="stylesheet" />
+  <link rel="stylesheet" href="hub.css" />
+
+  <style>
+    #hub-gate {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: #211C12;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    #hub-gate .gate-logo {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #CB1617;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Georgia, serif;
+      font-size: 0.9rem;
+      font-weight: 900;
+      color: #FBF7F0;
+    }
+    #hub-gate h1 {
+      font-family: Georgia, serif;
+      font-size: 1.1rem;
+      font-weight: 900;
+      color: #FBF7F0;
+      letter-spacing: -0.01em;
+      margin: 0;
+    }
+    #hub-gate form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      width: 280px;
+    }
+    #hub-gate input {
+      width: 100%;
+      padding: 0.7rem 1rem;
+      border-radius: 0.5rem;
+      border: 1.5px solid #3a3326;
+      background: #2e2720;
+      color: #FBF7F0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 0.875rem;
+      outline: none;
+      transition: border-color 150ms ease;
+      box-sizing: border-box;
+    }
+    #hub-gate input:focus { border-color: #C6A669; }
+    #hub-gate input.error { border-color: #CB1617; animation: gate-shake 200ms ease; }
+    #hub-gate button {
+      padding: 0.7rem 1rem;
+      border-radius: 0.5rem;
+      border: none;
+      background: #CB1617;
+      color: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 150ms ease;
+    }
+    #hub-gate button:hover { background: #a81213; }
+    #gate-error {
+      font-size: 0.78rem;
+      color: #CB1617;
+      text-align: center;
+      min-height: 1em;
+    }
+    @keyframes gate-shake {
+      0%,100% { transform: translateX(0); }
+      25%      { transform: translateX(-6px); }
+      75%      { transform: translateX(6px); }
+    }
+    [data-theme="pduf"] {
+      --color-base-100: #FBF7F0;
+      --color-base-200: #F1E8D7;
+      --color-base-300: #E6D7BA;
+      --color-base-content: #211C12;
+      --color-primary: #CB1617;
+      --color-primary-content: #FFFFFF;
+      --color-secondary: #C6A669;
+      --color-secondary-content: #211C12;
+      --color-accent: #E8C328;
+      --color-accent-content: #211C12;
+      --color-neutral: #464747;
+      --color-neutral-content: #FBF7F0;
+      --color-success: #009A58;
+      --color-success-content: #F0F9F6;
+      --color-error: #CB1617;
+      --color-error-content: #FFFFFF;
+      --color-warning: #E8C328;
+      --color-warning-content: #211C12;
+      --color-info: #75633F;
+      --color-info-content: #FBF7F0;
+      --radius-selector: 0.5rem;
+      --radius-field: 0.5rem;
+      --radius-box: 0.75rem;
+      --border: 1.5px;
+    }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #F7F2E8; }
+    .font-serif { font-family: Georgia, serif; }
+  </style>
+</head>
+
+<body>
+
+  <!-- ══════════════════════════════════════════
+       PASSWORD GATE
+       ══════════════════════════════════════════ -->
+  <div id="hub-gate" role="dialog" aria-modal="true" aria-label="Accès protégé">
+    <div class="gate-logo">UI</div>
+    <h1>Atelier Design</h1>
+    <form id="gate-form" autocomplete="off">
+      <input type="password" id="gate-input" placeholder="Mot de passe / Password" autofocus />
+      <button type="submit">Accéder</button>
+      <div id="gate-error"></div>
+    </form>
+  </div>
+
+  <script>
+    (function () {
+      var KEY = 'hub_unlocked';
+      var PWD = 'pdfUX';
+      var gate = document.getElementById('hub-gate');
+      if (sessionStorage.getItem(KEY) === '1') { gate.remove(); return; }
+      document.getElementById('gate-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        var input = document.getElementById('gate-input');
+        if (input.value === PWD) {
+          sessionStorage.setItem(KEY, '1');
+          gate.remove();
+        } else {
+          input.classList.add('error');
+          document.getElementById('gate-error').textContent = 'Mot de passe incorrect.';
+          setTimeout(function () { input.classList.remove('error'); input.value = ''; input.focus(); }, 400);
+        }
+      });
+    })();
+  </script>
+
+  <!-- ══════════════════════════════════════════
+       DESKTOP SIDEBAR
+       ══════════════════════════════════════════ -->
+  <aside id="hub-sidebar" aria-label="Navigation principale">
+    <div class="hub-sidebar-logo">
+      <div class="hub-sidebar-logo-mark">UI</div>
+      <div class="hub-sidebar-logo-text">Atelier<br>Design</div>
+    </div>
+
+    <nav class="hub-sidebar-nav" role="navigation">
+      <button class="hub-nav-btn" data-section="design-systems">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        <span data-i18n="nav_design_systems">Design Systems</span>
+      </button>
+      <button class="hub-nav-btn" data-section="components">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+        <span data-i18n="nav_components">Kitchen Sink</span>
+      </button>
+      <button class="hub-nav-btn" data-section="craft">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+        <span data-i18n="nav_craft">Craft</span>
+      </button>
+      <button class="hub-nav-btn" data-section="knowledge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        <span data-i18n="nav_knowledge">Connaissances</span>
+      </button>
+      <button class="hub-nav-btn" data-section="quiz">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <span data-i18n="nav_quiz">Quiz</span>
+      </button>
+      <button class="hub-nav-btn" data-section="prompting">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <span data-i18n="nav_prompting">Prompting</span>
+      </button>
+      <button class="hub-nav-btn" data-section="careers">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        <span data-i18n="nav_careers">Carrières</span>
+      </button>
+      <button class="hub-nav-btn" data-section="designops">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M4.93 4.93a10 10 0 0 0 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M8.46 8.46a5 5 0 0 0 0 7.07"/></svg>
+        <span data-i18n="nav_designops">DesignOps</span>
+      </button>
+    </nav>
+
+    <!-- Lang toggle in sidebar -->
+    <div style="padding: 1.5rem 1.5rem 0; margin-top: auto; display: flex; gap: 0.4rem;">
+      <button class="hub-lang-btn" data-lang="fr">FR</button>
+      <button class="hub-lang-btn" data-lang="en">EN</button>
+    </div>
+  </aside>
+
+  <!-- ══════════════════════════════════════════
+       MOBILE TOP NAV
+       ══════════════════════════════════════════ -->
+  <div id="hub-nav-mobile" role="navigation" aria-label="Navigation principale">
+    <nav>
+      <button class="hub-nav-btn" data-section="design-systems" data-i18n="nav_design_systems">Design Systems</button>
+      <button class="hub-nav-btn" data-section="components" data-i18n="nav_components">Kitchen Sink</button>
+      <button class="hub-nav-btn" data-section="craft" data-i18n="nav_craft">Craft</button>
+      <button class="hub-nav-btn" data-section="knowledge" data-i18n="nav_knowledge">Connaissances</button>
+      <button class="hub-nav-btn" data-section="quiz" data-i18n="nav_quiz">Quiz</button>
+      <button class="hub-nav-btn" data-section="prompting" data-i18n="nav_prompting">Prompting</button>
+      <button class="hub-nav-btn" data-section="careers" data-i18n="nav_careers">Carrières</button>
+      <button class="hub-nav-btn" data-section="designops" data-i18n="nav_designops">DesignOps</button>
+      <!-- Lang toggle in mobile nav -->
+      <button class="hub-lang-btn" data-lang="fr" style="margin-left:0.5rem;">FR</button>
+      <button class="hub-lang-btn" data-lang="en">EN</button>
+    </nav>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       MAIN CONTENT
+       ══════════════════════════════════════════ -->
+  <main id="hub-main">
+
+    <!-- ── Design Systems ── -->
+    <section id="hub-section-design-systems" class="hub-section" aria-labelledby="ds-title">
+      <h1 id="ds-title" class="hub-section-title" data-i18n="ds_title">Design Systems</h1>
+      <p class="hub-section-subtitle" data-i18n="ds_subtitle">Accédez aux librairies Figma — fondation partagée et systèmes produit.</p>
+      <div id="ds-root">
+        <p style="color:#75633F;font-size:0.85rem;margin-top:1rem;" data-i18n="ds_loading">Chargement…</p>
+      </div>
+    </section>
+
+    <!-- ── Components Kitchen Sink ── -->
+    <section id="hub-section-components" class="hub-section" aria-labelledby="comp-title">
+      <h1 id="comp-title" class="hub-section-title" data-i18n="comp_title">Kitchen Sink</h1>
+      <p class="hub-section-subtitle" data-i18n="comp_subtitle">Tous les composants du système de design — consultez-les ici sans ouvrir Figma.</p>
+      <div id="components-grid">
+        <p style="color:#75633F;font-size:0.85rem;" data-i18n="comp_loading">Chargement des composants…</p>
+      </div>
+    </section>
+
+    <!-- ── Craft ── -->
+    <section id="hub-section-craft" class="hub-section" aria-labelledby="craft-title">
+      <h1 id="craft-title" class="hub-section-title" data-i18n="craft_title">Craft</h1>
+      <p class="hub-section-subtitle" data-i18n="craft_subtitle">Patterns, wireframing et gabarits pour concevoir des écrans.</p>
+      <div id="craft-root"></div>
+    </section>
+
+    <!-- ── Knowledge ── -->
+    <section id="hub-section-knowledge" class="hub-section" aria-labelledby="know-title">
+      <h1 id="know-title" class="hub-section-title" data-i18n="know_title">Connaissances</h1>
+      <p class="hub-section-subtitle" data-i18n="know_subtitle">Ressources sélectionnées en psychologie, communication et accessibilité.</p>
+      <div id="knowledge-root">
+        <p style="color:#75633F;font-size:0.85rem;" data-i18n="know_loading">Chargement…</p>
+      </div>
+    </section>
+
+    <!-- ── Quiz ── -->
+    <section id="hub-section-quiz" class="hub-section" aria-labelledby="quiz-hub-title">
+      <h1 id="quiz-hub-title" class="hub-section-title" data-i18n="quiz_title">Name That UI</h1>
+      <p class="hub-section-subtitle" data-i18n="quiz_subtitle">Testez votre culture design en identifiant des composants UI réels.</p>
+
+      <div style="display:grid;grid-template-columns:1fr;gap:1.25rem;">
+        <!-- Main CTA card -->
+        <div style="background:#211C12;border-radius:1rem;padding:2rem 2rem 2rem;display:flex;flex-direction:column;gap:1rem;">
+          <div style="display:flex;align-items:center;gap:1rem;">
+            <div style="width:48px;height:48px;border-radius:50%;background:#CB1617;display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-size:0.85rem;font-weight:900;color:#FBF7F0;flex-shrink:0;">UI</div>
+            <div>
+              <div style="font-family:Georgia,serif;font-size:1.3rem;font-weight:900;color:#FBF7F0;line-height:1.2;">Name That UI</div>
+              <div style="font-size:0.75rem;color:#C6A669;margin-top:0.15rem;" data-i18n="quiz_cta_desc">10 questions, des composants tirés de vrais produits.</div>
+            </div>
+          </div>
+          <a href="index.html" style="display:inline-flex;align-items:center;gap:0.5rem;background:#CB1617;color:#fff;font-weight:700;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;padding:0.75rem 1.5rem;border-radius:0.6rem;text-decoration:none;font-size:0.875rem;transition:background 150ms ease;align-self:flex-start;" onmouseover="this.style.background='#a81213'" onmouseout="this.style.background='#CB1617'">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            <span data-i18n="quiz_cta_btn">Commencer le quiz</span>
+          </a>
+        </div>
+
+        <!-- Info cards row -->
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.75rem;">
+          <div style="background:#FBF7F0;border:1.5px solid #E6D7BA;border-radius:0.75rem;padding:1rem;text-align:center;">
+            <div style="font-family:Georgia,serif;font-size:1.5rem;font-weight:900;color:#CB1617;">10</div>
+            <div style="font-size:0.72rem;color:#75633F;font-weight:600;margin-top:0.2rem;" data-i18n="quiz_stat_questions">questions</div>
+          </div>
+          <div style="background:#FBF7F0;border:1.5px solid #E6D7BA;border-radius:0.75rem;padding:1rem;text-align:center;">
+            <div style="font-family:Georgia,serif;font-size:1.5rem;font-weight:900;color:#CB1617;">4</div>
+            <div style="font-size:0.72rem;color:#75633F;font-weight:600;margin-top:0.2rem;" data-i18n="quiz_stat_categories">catégories</div>
+          </div>
+          <div style="background:#FBF7F0;border:1.5px solid #E6D7BA;border-radius:0.75rem;padding:1rem;text-align:center;">
+            <div style="font-family:Georgia,serif;font-size:1.5rem;font-weight:900;color:#CB1617;">🏷</div>
+            <div style="font-size:0.72rem;color:#75633F;font-weight:600;margin-top:0.2rem;" data-i18n="quiz_stat_bonus">bonus labels</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Prompting Tips ── -->
+    <section id="hub-section-prompting" class="hub-section" aria-labelledby="prompt-title">
+      <h1 id="prompt-title" class="hub-section-title" data-i18n="prompt_title">Prompting Design</h1>
+      <p class="hub-section-subtitle" data-i18n="prompt_subtitle">Comment communiquer avec précision pour obtenir de meilleures sorties IA.</p>
+      <div id="prompting-root" style="display:flex;flex-direction:column;gap:1rem;"></div>
+    </section>
+
+    <!-- ── Careers ── -->
+    <section id="hub-section-careers" class="hub-section" aria-labelledby="careers-title">
+      <h1 id="careers-title" class="hub-section-title" data-i18n="careers_title">Carrières UI/UX</h1>
+      <p class="hub-section-subtitle" data-i18n="careers_subtitle">Tout ce qu'il faut savoir le rôle d'UX/UI Designer.</p>
+      <div id="careers-root" class="careers-grid"></div>
+    </section>
+
+    <!-- ── DesignOps ── -->
+    <section id="hub-section-designops" class="hub-section" aria-labelledby="designops-title">
+      <h1 id="designops-title" class="hub-section-title" data-i18n="designops_title">DesignOps</h1>
+      <p class="hub-section-subtitle" data-i18n="designops_subtitle">Roadmap IA, infrastructure Figma MCP et stratégie design system.</p>
+      <div id="designops-root"></div>
+    </section>
+
+  </main>
+
+  <script src="hub.js"></script>
+</body>
+</html>

@@ -1,0 +1,250 @@
+{
+  "categories": [
+    {
+      "id": "psychology",
+      "label": "Psychologie & Sciences comportementales",
+      "icon": "🧠",
+      "resources": [
+        {
+          "title": "Les lois de l'UX",
+          "url": "https://lawsofux.com",
+          "type": "site",
+          "description": "Collection des principales lois de conception issues de la psychologie — Hick, Fitts, Jakob, etc."
+        },
+        {
+          "title": "Thinking, Fast and Slow — Daniel Kahneman",
+          "url": "#",
+          "type": "book",
+          "description": "La référence sur les deux systèmes de pensée. Essentiel pour comprendre comment les utilisateurs prennent leurs décisions."
+        },
+        {
+          "title": "Hooked — Nir Eyal",
+          "url": "#",
+          "type": "book",
+          "description": "Comment concevoir des produits qui créent des habitudes. Utile pour la rétention et l'engagement."
+        },
+        {
+          "title": "Biais cognitifs en design",
+          "url": "https://www.nngroup.com/articles/categorization-of-cognitive-biases/",
+          "type": "article",
+          "description": "Nielsen Norman Group — panorama des biais cognitifs les plus pertinents pour l'UX."
+        },
+        {
+          "title": "The Psychology of Design",
+          "url": "https://www.smashingmagazine.com/2016/01/combining-ux-and-behavioral-economics/",
+          "type": "article",
+          "description": "Smashing Magazine — comment l'économie comportementale se traduit en décisions de design."
+        }
+      ]
+    },
+    {
+      "id": "communication",
+      "label": "Communication & Facilitation",
+      "icon": "💬",
+      "resources": [
+        {
+          "title": "Facilitation graphique — The Sketchnote Handbook",
+          "url": "#",
+          "type": "book",
+          "description": "Mike Rohde — prendre des notes visuelles pour faciliter les ateliers et retenir l'information."
+        },
+        {
+          "title": "Running Design Critiques",
+          "url": "https://www.nngroup.com/articles/design-critiques/",
+          "type": "article",
+          "description": "Nielsen Norman Group — comment structurer une critique design constructive et bienveillante."
+        },
+        {
+          "title": "How to run a Design Sprint",
+          "url": "https://designsprintkit.withgoogle.com/",
+          "type": "site",
+          "description": "Google Design Sprint Kit — méthodologie de sprint sur 5 jours pour résoudre des problèmes complexes."
+        },
+        {
+          "title": "Presenting Design Work",
+          "url": "https://www.nngroup.com/articles/presenting-design/",
+          "type": "article",
+          "description": "Techniques pour présenter son travail de design à des parties prenantes non-designers."
+        },
+        {
+          "title": "Storytelling for Designers",
+          "url": "https://www.smashingmagazine.com/2022/04/storytelling-ux-design/",
+          "type": "article",
+          "description": "Comment construire un récit autour de son travail pour convaincre et aligner les équipes."
+        }
+      ]
+    },
+    {
+      "id": "accessibility",
+      "label": "Accessibilité",
+      "icon": "♿",
+      "resources": [
+        {
+          "title": "WCAG 2.2 — Référence officielle",
+          "url": "https://www.w3.org/TR/WCAG22/",
+          "type": "site",
+          "description": "Le standard international d'accessibilité web. Niveaux A, AA, AAA expliqués."
+        },
+        {
+          "title": "Inclusive Design Principles",
+          "url": "https://inclusivedesignprinciples.info/",
+          "type": "site",
+          "description": "7 principes du design inclusif par Paciello Group — un excellent point de départ."
+        },
+        {
+          "title": "Accessibility for Teams — Google",
+          "url": "https://accessibility.google/",
+          "type": "site",
+          "description": "Guide Google pour intégrer l'accessibilité dans chaque rôle d'une équipe produit."
+        },
+        {
+          "title": "Contrast Checker — WebAIM",
+          "url": "https://webaim.org/resources/contrastchecker/",
+          "type": "tool",
+          "description": "Vérifiez le contraste de couleur de vos textes et composants selon WCAG."
+        },
+        {
+          "title": "A11y Project Checklist",
+          "url": "https://www.a11yproject.com/checklist/",
+          "type": "tool",
+          "description": "Checklist pratique pour auditer l'accessibilité d'une interface — prêt à utiliser."
+        },
+        {
+          "title": "Deque University",
+          "url": "https://dequeuniversity.com/",
+          "type": "site",
+          "description": "Formation en ligne sur l'accessibilité numérique, reconnue dans l'industrie."
+        }
+      ]
+    },
+    {
+      "id": "mobile-desktop",
+      "label": "Mobile vs Desktop",
+      "icon": "📱",
+      "resources": [
+        {
+          "title": "Responsive Design — MDN",
+          "url": "https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design",
+          "type": "article",
+          "description": "Référence sur les breakpoints standard et la philosophie mobile-first vs desktop-first."
+        },
+        {
+          "title": "Touch Targets — Google Material",
+          "url": "https://m3.material.io/foundations/accessible-design/accessibility-basics#28032e45-c598-450c-b355-f9fe737b1cd8",
+          "type": "site",
+          "description": "Taille minimale des cibles tactiles : 48×48 dp recommandés par Material Design."
+        },
+        {
+          "title": "Bottom Sheet vs Modal — NNG",
+          "url": "https://www.nngroup.com/articles/mobile-ux/",
+          "type": "article",
+          "description": "Quand utiliser une bottom sheet mobile plutôt qu'une modale — et les différences de patterns entre plateformes."
+        },
+        {
+          "title": "iOS Human Interface Guidelines",
+          "url": "https://developer.apple.com/design/human-interface-guidelines/",
+          "type": "site",
+          "description": "Directives d'Apple pour concevoir des expériences natives iOS — navigation, gestes, composants."
+        },
+        {
+          "title": "Material Design Guidelines",
+          "url": "https://m3.material.io/",
+          "type": "site",
+          "description": "Système de design de Google pour Android et le web — composants adaptatifs et breakpoints."
+        },
+        {
+          "title": "Designing for Mobile — Smashing Magazine",
+          "url": "https://www.smashingmagazine.com/2018/02/comprehensive-guide-to-mobile-app-design/",
+          "type": "article",
+          "description": "Guide complet des patterns mobiles : navigation, formulaires, listes, états vides."
+        }
+      ]
+    },
+    {
+      "id": "microcopy",
+      "label": "Microcopy",
+      "icon": "✍️",
+      "resources": [
+        {
+          "title": "Microcopy: The Complete Guide — Kinneret Yifrah",
+          "url": "#",
+          "type": "book",
+          "description": "La référence pratique sur l'écriture UX — labels de boutons, messages d'erreur, onboarding et tone of voice."
+        },
+        {
+          "title": "Writing for UX — NNG",
+          "url": "https://www.nngroup.com/topic/writing-ux/",
+          "type": "site",
+          "description": "Collection d'articles Nielsen Norman Group sur l'écriture UX, la clarté des labels et la communication d'erreurs."
+        },
+        {
+          "title": "Error Message Guidelines",
+          "url": "https://www.nngroup.com/articles/error-message-guidelines/",
+          "type": "article",
+          "description": "NNG — comment rédiger des messages d'erreur utiles : expliquer le problème, proposer une solution, éviter le jargon."
+        },
+        {
+          "title": "Empty States Best Practices",
+          "url": "https://www.nngroup.com/articles/empty-state-mobile-app-design/",
+          "type": "article",
+          "description": "Comment transformer un état vide en opportunité — illustration, texte d'invitation, CTA."
+        },
+        {
+          "title": "Mailchimp Voice & Tone Guide",
+          "url": "https://styleguide.mailchimp.com/voice-and-tone/",
+          "type": "site",
+          "description": "L'un des meilleurs exemples de guide de tone of voice publics — utile comme modèle pour vos propres produits."
+        },
+        {
+          "title": "UX Writing Hub",
+          "url": "https://uxwritinghub.com/",
+          "type": "site",
+          "description": "Ressources, formations et exemples de microcopy — boutons, confirmations, tooltips et au-delà."
+        }
+      ]
+    },
+    {
+      "id": "user-flows",
+      "label": "User Flows",
+      "icon": "🗺️",
+      "resources": [
+        {
+          "title": "User Flow Basics — NNG",
+          "url": "https://www.nngroup.com/articles/user-flows/",
+          "type": "article",
+          "description": "Nielsen Norman Group — notation des user flows, différence entre task flow, user flow et wireflow."
+        },
+        {
+          "title": "FigJam — Diagrammes et ateliers",
+          "url": "https://www.figma.com/figjam/",
+          "type": "tool",
+          "description": "Outil de Figma pour créer des user flows collaboratifs, mind maps et diagrammes de flux."
+        },
+        {
+          "title": "How to Map User Flows — Miro Blog",
+          "url": "https://miro.com/blog/user-flow-map/",
+          "type": "article",
+          "description": "Guide pratique pour cartographier un user flow de zéro — conventions visuelles, formes et connecteurs."
+        },
+        {
+          "title": "Task Analysis — NNG",
+          "url": "https://www.nngroup.com/articles/task-analysis/",
+          "type": "article",
+          "description": "Comment décomposer les tâches utilisateurs en étapes avant de wireframer — la base du raisonnement séquentiel."
+        },
+        {
+          "title": "Wireflow — Combining Wireframes & Flows",
+          "url": "https://www.nngroup.com/articles/wireflows/",
+          "type": "article",
+          "description": "NNG — le wireflow combine wireframe et diagramme de flux pour montrer les décisions ET l'interface."
+        },
+        {
+          "title": "Flow Chart Symbols Reference",
+          "url": "https://www.lucidchart.com/pages/flowchart-symbols-meaning-explained",
+          "type": "article",
+          "description": "Signification des formes standard (losange = décision, rectangle = action, ovale = début/fin)."
+        }
+      ]
+    }
+  ]
+}
