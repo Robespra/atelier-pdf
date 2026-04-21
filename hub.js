@@ -16,7 +16,7 @@
       nav_components:     'Kitchen Sink',
       nav_craft:          'Savoir-faire',
       nav_knowledge:      'Connaissances',
-      nav_quiz:           'Quiz',
+      nav_quiz:           'UI Quiz',
       nav_prompting:      'Prompting',
       nav_careers:        'Carrières',
       /* Design Systems section */
@@ -65,7 +65,7 @@
       nav_components:     'Kitchen Sink',
       nav_craft:          'Savoir-faire',
       nav_knowledge:      'Knowledge',
-      nav_quiz:           'Quiz',
+      nav_quiz:           'UI Quiz',
       nav_prompting:      'Prompting',
       nav_careers:        'Careers',
       /* Design Systems section */
@@ -243,8 +243,8 @@
         ],
       },
       closing: {
-        fr: 'Il n\'existe pas de raccourci pour résoudre des problèmes de design complexes. Ces stratégies améliorent la spécificité de vos prompts et la qualité des outputs, mais elles ne remplacent pas le travail de fond : analyser les besoins, peser les compromis, prendre des décisions de design éclairées. <strong>Les bonnes décisions de design ne s\'automatisent pas.</strong>',
-        en: 'There is no shortcut to solving complex design problems. These strategies improve prompt specificity and output quality, but they can\'t replace the hard work of thinking through design requirements, weighing tradeoffs, and making informed decisions. <strong>Good design decisions can\'t be automated.</strong>',
+        fr: 'Il n\'existe pas de raccourci pour résoudre des problèmes de design complexes. Ces stratégies améliorent la spécificité de vos prompts et la qualité des outputs, mais elles ne remplacent pas le travail de fond : analyser les besoins, peser les compromis, prendre des décisions de design éclairées. <strong>Les bonnes décisions de design ne s\'automatisent pas.</strong> L\'IA produit un premier jet — la profondeur, la cohérence et la pertinence du résultat restent entre les mains du designer.',
+        en: 'There is no shortcut to solving complex design problems. These strategies improve prompt specificity and output quality, but they can\'t replace the hard work of thinking through design requirements, weighing tradeoffs, and making informed decisions. <strong>Good design decisions can\'t be automated.</strong> AI gives you a first output — depth, coherence, and relevance are still the designer\'s responsibility.',
       },
       tips: {
         fr: [
@@ -268,6 +268,114 @@
           { title: 'Iterate and critique your prompt with AI', example: 'Ask AI to identify what\'s missing in your prompt, restructure it, or brainstorm design variations.', why: 'AI as a thinking partner, not just a generation tool.' },
         ],
       },
+      aiTools: [
+        {
+          title: { fr: 'Workflow de génération d\'illustrations app', en: 'App Illustration Generation Workflow' },
+          body: {
+            fr: `<p>Pipeline en trois outils pour générer et finaliser des illustrations pour l'app mobile (FR/ES).</p>
+<h4>Étape 1 — Midjourney (génération principale)</h4>
+<p>Générer l'illustration de base. Utiliser <code>--sref</code> pour la référence de style + composition, <code>--cref</code> pour l'extraction de palette couleur uniquement, <code>--cw</code> pour contrôler l'intensité couleur (0–100). Upscaler avant d'exporter (U1–U4).</p>
+<p><strong>Idéal pour :</strong></p>
+<ul>
+  <li>Les concepts simples sans interactions multi-objets complexes</li>
+  <li>Ambiance, atmosphère et direction créative</li>
+  <li>Besoins d'illustration rapides sans attendre des renders 3D</li>
+</ul>
+<h4>Étape 2 — Gemini (édition ciblée & itération)</h4>
+<p>Importer l'output Midjourney upscalé dans Gemini pour des éditions par instruction : suppression d'objet, changements de couleur, ajustements de style, ajout d'éléments. Évite la régénération complète pour des modifications mineures.</p>
+<p><strong>Limites :</strong> fonctionne mieux sur des instructions claires et délimitées. Éviter les changements de composition importants — l'image peut dériver de l'esthétique Midjourney originale.</p>
+<h4>Étape 3 — removal.ai (suppression de fond)</h4>
+<p>Utiliser removal.ai pour détourage. URL : <a href="https://removal.ai" target="_blank" rel="noopener">removal.ai</a></p>
+<h4>Chaîne complète</h4>
+<p><strong>Midjourney</strong> (générer + upscaler) → <strong>Gemini</strong> (éditions ciblées) → <strong>removal.ai</strong> (suppression fond) → <strong>Photoshop / Figma</strong> (intégration finale)</p>`,
+            en: `<p>Three-tool pipeline for generating and finalising illustrations for the mobile app (FR/ES).</p>
+<h4>Step 1 — Midjourney (primary generation)</h4>
+<p>Generate the base illustration. Use <code>--sref</code> for style + composition reference, <code>--cref</code> for colour palette extraction only, <code>--cw</code> to control colour influence (0–100). Upscale before exporting (U1–U4).</p>
+<p><strong>Best for:</strong></p>
+<ul>
+  <li>Simple concepts without complex multi-object interactions</li>
+  <li>Mood, atmosphere and creative direction</li>
+  <li>Quick illustration needs without waiting for 3D renders</li>
+</ul>
+<h4>Step 2 — Gemini (targeted editing & iteration)</h4>
+<p>Import the upscaled Midjourney output into Gemini for instruction-based edits: object removal, colour changes, style adjustments, element additions. Avoids full regeneration for minor changes.</p>
+<p><strong>Limits:</strong> works best on clear, contained instructions. Avoid heavy compositional changes — the image may drift from the original Midjourney aesthetic.</p>
+<h4>Step 3 — removal.ai (background removal)</h4>
+<p>Use removal.ai to strip backgrounds. URL: <a href="https://removal.ai" target="_blank" rel="noopener">removal.ai</a></p>
+<h4>Full chain</h4>
+<p><strong>Midjourney</strong> (generate + upscale) → <strong>Gemini</strong> (targeted edits) → <strong>removal.ai</strong> (bg removal) → <strong>Photoshop / Figma</strong> (final integration)</p>`,
+          },
+        },
+        {
+          title: { fr: 'Figma MCP Console — installation & usages', en: 'Figma MCP Console — setup & use cases' },
+          body: {
+            fr: `<p>Connecte Claude Desktop directement à Figma via WebSocket pour des opérations automatisées.</p>
+<h4>Prérequis</h4>
+<ul>
+  <li>Node.js 20+ sur <code>/usr/local/bin/node</code></li>
+  <li>Figma Desktop installé</li>
+  <li>Personal Access Token Figma (<code>figd_...</code>)</li>
+</ul>
+<h4>Étape 1 — Installation globale</h4>
+<pre><code>/usr/local/bin/npm install -g figma-console-mcp@latest</code></pre>
+<h4>Étape 2 — Config Claude Desktop</h4>
+<p>Fichier : <code>~/Library/Application Support/Claude/claude_desktop_config.json</code></p>
+<pre><code>"mcpServers": {
+  "figma-console": {
+    "command": "/usr/local/bin/node",
+    "args": ["/usr/local/lib/node_modules/figma-console-mcp/dist/local.js"],
+    "env": { "FIGMA_ACCESS_TOKEN": "figd_VOTRE_TOKEN", "ENABLE_MCP_APPS": "true" }
+  }
+}</code></pre>
+<p>⚠️ Utiliser <code>node</code> directement — <strong>pas npx</strong>.</p>
+<h4>Étape 3 — Plugin Desktop Bridge dans Figma</h4>
+<p>Dans Figma : <strong>Plugins → Development → Import plugin from manifest</strong></p>
+<h4>Étape 4 — Redémarrer Claude Desktop</h4>
+<p><code>Cmd+Q</code> puis rouvrir.</p>
+<h4>Étape 5 — Lancer le plugin</h4>
+<p>Ouvrir fichier Figma → lancer Desktop Bridge → connexion WebSocket auto.</p>
+<h4>Usages typiques</h4>
+<ul>
+  <li>Extraction de tokens</li>
+  <li>Tâches répétitives (renommer en masse)</li>
+  <li>Audit DS</li>
+  <li>Génération structurelle</li>
+</ul>`,
+            en: `<p>Connects Claude Desktop directly to Figma via WebSocket for automated operations.</p>
+<h4>Prerequisites</h4>
+<ul>
+  <li>Node.js 20+ at <code>/usr/local/bin/node</code></li>
+  <li>Figma Desktop installed</li>
+  <li>Figma Personal Access Token (<code>figd_...</code>)</li>
+</ul>
+<h4>Step 1 — Install globally</h4>
+<pre><code>/usr/local/bin/npm install -g figma-console-mcp@latest</code></pre>
+<h4>Step 2 — Claude Desktop config</h4>
+<p>File: <code>~/Library/Application Support/Claude/claude_desktop_config.json</code></p>
+<pre><code>"mcpServers": {
+  "figma-console": {
+    "command": "/usr/local/bin/node",
+    "args": ["/usr/local/lib/node_modules/figma-console-mcp/dist/local.js"],
+    "env": { "FIGMA_ACCESS_TOKEN": "figd_YOUR_TOKEN", "ENABLE_MCP_APPS": "true" }
+  }
+}</code></pre>
+<p>⚠️ Use <code>node</code> directly — <strong>not npx</strong>.</p>
+<h4>Step 3 — Desktop Bridge plugin in Figma</h4>
+<p>In Figma: <strong>Plugins → Development → Import plugin from manifest</strong></p>
+<h4>Step 4 — Restart Claude Desktop</h4>
+<p><code>Cmd+Q</code> then reopen.</p>
+<h4>Step 5 — Run the plugin</h4>
+<p>Open your Figma file → run Desktop Bridge → auto-connects via WebSocket.</p>
+<h4>Typical use cases</h4>
+<ul>
+  <li>Token extraction</li>
+  <li>Bulk renaming tasks</li>
+  <li>DS audit</li>
+  <li>Structural generation</li>
+</ul>`,
+          },
+        },
+      ],
     },
 
     /* ── Careers accordions ── */
@@ -368,7 +476,7 @@
           summary: 'Les outils essentiels',
           body: `
             <h3>Design : Figma (impératif)</h3>
-            <p>Figma est l'outil central du poste. Il couvre toutes les étapes : wireframes, maquettes, prototypes, design system, handoff. La maîtrise de Figma — y compris variables, auto layout et composants — est non négociable.</p>
+            <p>En 2026 Figma est toujours l'outil central du poste. Il couvre toutes les étapes : wireframes, maquettes, prototypes, design system et handoff. C'est aussi son usage collaboratif qui en fait un outil essentiel.</p>
 
             <h3>Analytique & comportement utilisateur</h3>
             <p>Comprendre les données est aussi important que produire des maquettes :</p>
@@ -381,7 +489,7 @@
 
             <h3>Accessibilité RGAA</h3>
             <ul>
-              <li><strong>Assistant RGAA / Ara</strong> — outil de la DINUM pour auditer la conformité RGAA des pages web.</li>
+              <li><strong>Assistant RGAA / Ara</strong> — outils pour auditer la conformité RGAA des pages web.</li>
               <li><strong>Contrast checker (WebAIM)</strong> — vérification des ratios de contraste selon WCAG/RGAA.</li>
               <li><strong>NVDA / VoiceOver</strong> — lecteurs d'écran pour tester la navigation au clavier et à l'aide d'assistance.</li>
             </ul>
@@ -408,7 +516,7 @@
               <li><strong>GitLab / Jira</strong> — suivi des tickets et sprints</li>
             </ul>
 
-            <div class="callout">Figma est impératif selon la fiche de poste. Adobe XD et Sketch sont mentionnés comme connaissances supplémentaires — mais Figma prime sur tout.</div>`,
+            <div class="callout">Figma est impératif selon la fiche de poste. Adobe XD et Sketch sont mentionnés comme connaissances supplémentaires.</div>`,
         },
         {
           icon: 'checklist',
@@ -499,9 +607,7 @@
           icon: 'ai',
           summary: 'Travailler avec l\'IA',
           body: `
-            <p>L'IA accélère clairement certaines parties du travail. Mais elle ne remplace pas ce qui rend un designer précieux : comprendre les besoins des parties prenantes, maîtriser le contexte de marque, et présenter des décisions de design de façon convaincante.</p>
-
-            <div class="callout">L'IA produit des options. Elle ne peut pas fournir la responsabilité.</div>
+            <p>L'IA accélère clairement certaines parties du travail. Mais elle ne remplace pas le travail AUTOUR du design : comprendre les besoins des parties prenantes, maîtriser le contexte de marque, et présenter des décisions de design de façon convaincante.</p>
 
             <h3>Ce que l'IA fait bien — et ce que vous devez toujours faire</h3>
             <div class="ai-layer-table">
@@ -1008,8 +1114,8 @@
     /* ── DesignOps    /* ── DesignOps roadmap ── */
     designops: {
       breakthrough: {
-        fr: 'Le Figma DS est la librairie de composants ET l\'API de l\'IA. Connecté via MCP, un agent IA peut lire, référencer et écrire des contenus natifs Figma — frames, composants, instances, variables — en utilisant votre design system existant comme source de vérité. Pas de librairie de code requise. Pas de dépendance DSI. Le design system EST l\'API.',
-        en: 'The Figma DS is both the component library AND the AI API. Connected via MCP, an AI agent can read, reference and write native Figma content — frames, components, instances, variables — using your existing design system as the source of truth. No code library needed. No DSI dependency. The design system IS the API.',
+        fr: 'Le Figma DS est la librairie de composants — et si vous choisissez d\'utiliser des outils IA, il devient aussi leur source de vérité. Connecté via MCP, un agent peut lire et écrire du contenu Figma natif — frames, composants, variables — directement depuis votre DS existant. Aucune librairie de code requise. C\'est une option parmi d\'autres dans votre workflow, pas une obligation.',
+        en: 'The Figma DS is the component library — and if you choose to use AI tools, it also becomes their source of truth. Connected via MCP, an agent can read and write native Figma content — frames, components, variables — directly from your existing DS. No code library needed. It\'s one option in your workflow, not a requirement.',
       },
       flywheel: {
         fr: 'La qualité des outputs IA est directement proportionnelle à la qualité du design system. Des noms de composants propres, des tokens cohérents, des variants bien documentés → des outputs proches du niveau production. Chaque amélioration du DS améliore ce que l\'IA génère. Le volant d\'inertie : meilleur DS → meilleur output IA → moins de rework → plus de temps pour améliorer le DS.',
@@ -1022,7 +1128,7 @@
             status: 'now',
             statusLabel: 'Maintenant',
             title: 'DS structuré pour l\'IA',
-            summary: 'Rendre le design system lisible par les agents IA — c\'est de l\'infrastructure, pas du ménage.',
+            summary: 'Rendre le design system lisible par les agents IA.',
             actions: [
               'Créer la librairie Figma Foundations (tokens, variables, modes FR/ES)',
               'Auditer les noms de composants dans App DS et Web DS pour la cohérence',
@@ -1037,16 +1143,16 @@
             number: '1',
             status: 'soon',
             statusLabel: 'Court terme',
-            title: 'Flux PO → génération design',
-            summary: 'Une fois le DS AI-ready, établir le workflow de génération avec votre Full seat comme moteur.',
+            title: 'Flux PO → design',
+            summary: 'Le PO peut contribuer au design — pas seulement comme commanditaire. Il peut générer un premier jet pour illustrer une idée, le designer prend le relais pour le polir et l\'aligner sur le DS.',
             actions: [
-              'Le PO soumet un besoin (brief structuré ou description informelle)',
-              'Le designer lance l\'agent IA avec Figma MCP (Modèle 1)',
-              'L\'agent génère des frames Figma natives avec de vrais composants DS',
+              'Le PO décrit le besoin (brief structuré ou description informelle)',
+              'Voie A — Le PO génère un premier jet (Claude, v0, Figma Make) pour illustrer l\'idée, puis passe la main au designer',
+              'Voie B — Le designer produit directement dans Figma, avec ou sans outil de génération selon le scope',
+              'Dans les deux cas : le designer affine, aligne sur le DS, valide les états et l\'accessibilité',
               'Le PO révise en Figma (accès viewer gratuit + commentaires)',
-              'Le designer affine → la spec finale part en ticket',
-              'Former les POs à la génération IA externe (Modèle 2 : Claude / v0 / Bolt avec contexte DS)',
-              'Mesurer : délai besoin PO → spec design avant vs après MCP',
+              'La spec finale part en ticket dev',
+              'Mesurer : délai besoin PO → spec design, qualité des briefs, taux de retours',
             ],
           },
           {
@@ -1098,16 +1204,16 @@
             number: '1',
             status: 'soon',
             statusLabel: 'Short term',
-            title: 'PO → design generation workflow',
-            summary: 'Once the DS is AI-ready, establish the generation workflow using your Full seat as the engine.',
+            title: 'PO → design workflow',
+            summary: 'The PO can contribute to design — not just as a requester. They can generate a first draft to illustrate an idea, then hand off to the designer who polishes it and aligns it to the DS.',
             actions: [
-              'PO submits design need (structured brief or informal description)',
-              'Designer runs AI agent with Figma MCP (Model 1)',
-              'Agent generates native Figma frames with real DS components',
+              'PO describes the need (structured brief or informal description)',
+              'Path A — PO generates a first draft (Claude, v0, Figma Make) to illustrate the idea, then hands off to the designer',
+              'Path B — Designer works directly in Figma, with or without a generation tool depending on scope',
+              'Either way: designer refines, aligns to DS, validates states and accessibility',
               'PO reviews in Figma (free viewer access + comments)',
-              'Designer refines → final spec goes to ticket',
-              'Train POs on external AI generation (Model 2: Claude / v0 / Bolt with DS context)',
-              'Measure: time from PO need → design spec, before vs after MCP',
+              'Final spec goes to dev ticket',
+              'Measure: time from PO need → design spec, brief quality, revision rate',
             ],
           },
           {
@@ -1623,325 +1729,41 @@
     if (knowledgeLoaded && knowledgeData) renderKnowledge(knowledgeData);
     if (craftLoaded) renderCraft();
 
-    /* Re-inject skill buttons (removes old ones first to update lang) */
-    document.querySelectorAll('.skill-dl-btn').forEach(b => b.remove());
-    injectSkillButtons();
-
     restoreChecklists();
   }
 
-  /* ══════════════════════════════════════════
-     SKILL.MD EXPORT
-     ══════════════════════════════════════════ */
-
-  const SKILL_SECTIONS = ['prompting', 'designops', 'careers', 'craft', 'knowledge'];
-
-  function buildSkillMd(sectionId) {
-    const isFr = lang === 'fr';
-    const d = CONTENT;
-    const lines = [];
-
-    const h1 = t => lines.push(`# ${t}`, '');
-    const h2 = t => lines.push(`## ${t}`, '');
-    const h3 = t => lines.push(`### ${t}`, '');
-    const p  = t => lines.push(t, '');
-    const li = t => lines.push(`- ${t}`);
-    const br = () => lines.push('');
-    const hr = () => lines.push('---', '');
-
-    if (sectionId === 'prompting') {
-      h1(isFr ? 'Skill — Prompting Design IA' : 'Skill — AI Design Prompting');
-      p(isFr
-        ? 'Ce skill enseigne les bonnes pratiques de prompting pour les outils de prototypage IA, basées sur les recherches NNG.'
-        : 'This skill teaches best practices for prompting AI-prototyping tools, based on NNG research.');
-
-      h2(isFr ? 'Problèmes fréquents des prompts vagues' : 'Common problems with vague prompts');
-      d.prompting.problems[lang].forEach(pb => {
-        h3(pb.title);
-        p(pb.body);
-      });
-
-      hr();
-      h2(isFr ? '5 stratégies pour de meilleurs outputs' : '5 strategies for better outputs');
-      d.prompting.strategies[lang].forEach(s => {
-        h3(`${s.num}. ${s.title}`);
-        p(s.body);
-        s.examples.forEach(ex => {
-          const icon = ex.type === 'bad' ? '❌' : ex.type === 'ok' ? '△' : ex.type === 'good' ? '✅' : '→';
-          li(`${icon} ${ex.text}`);
-        });
-        if (s.note) { br(); p(`> ${s.note}`); }
-        br();
-      });
-
-      hr();
-      h2(isFr ? 'Référence rapide' : 'Quick reference');
-      d.prompting.tips[lang].forEach(t => {
-        h3(t.title);
-        lines.push('```');
-        lines.push(t.example);
-        lines.push('```');
-        p(`→ ${t.why}`);
-      });
-
-      hr();
-      p(`> ${d.prompting.closing[lang].replace(/<[^>]+>/g, '')}`);
-    }
-
-    else if (sectionId === 'designops') {
-      h1(isFr ? 'Skill — DesignOps & Roadmap IA' : 'Skill — DesignOps & AI Roadmap');
-      p(isFr
-        ? 'Ce skill décrit la roadmap DesignOps, l\'infrastructure Figma MCP, les modèles de collaboration PO/Designer et la stratégie design system.'
-        : 'This skill describes the DesignOps roadmap, Figma MCP infrastructure, PO/Designer collaboration models and design system strategy.');
-
-      h2(isFr ? 'Infrastructure IA — Figma MCP' : 'AI Infrastructure — Figma MCP');
-      p(d.designops.breakthrough[lang]);
-
-      hr();
-      h2(isFr ? 'Processus design — 3 types de projets' : 'Design process — 3 project types');
-      d.designops.projectTypes[lang].forEach(pt => {
-        h3(`${pt.icon} ${pt.label}`);
-        li(isFr ? `Déclencheur : ${pt.trigger}` : `Trigger: ${pt.trigger}`);
-        li(isFr ? `Qui : ${pt.who}` : `Who: ${pt.who}`);
-        li(isFr ? `IA : ${pt.aiLabel}` : `AI use: ${pt.aiLabel}`);
-        li(isFr ? `Étapes : ${pt.steps.join(' → ')}` : `Steps: ${pt.steps.join(' → ')}`);
-        if (pt.fork) {
-          li(`↳ ${pt.fork.yes.label}: ${pt.fork.yes.path.join(' → ')}`);
-          li(`↳ ${pt.fork.no.label}: ${pt.fork.no.path.join(' → ')}`);
-        }
-        if (pt.note) p(`> ${pt.note}`);
-        br();
-      });
-
-      hr();
-      h2(isFr ? 'Phases de la roadmap' : 'Roadmap phases');
-      d.designops.phases[lang].forEach(ph => {
-        h3(`Phase ${ph.number} — ${ph.title} [${ph.statusLabel}]`);
-        p(ph.summary);
-        ph.actions.forEach(a => li(a));
-        br();
-      });
-
-      hr();
-      h2(isFr ? 'Modèles de collaboration' : 'Collaboration models');
-      d.designops.models[lang].forEach(m => {
-        h3(`${m.title} [${m.statusLabel}]`);
-        p(m.body);
-        if (m.example) { lines.push('```'); lines.push(m.example); lines.push('```'); br(); }
-      });
-
-      hr();
-      h2(isFr ? 'Principes clés' : 'Key principles');
-      d.designops.principles[lang].forEach(pr => li(pr.text));
-      br();
-
-      hr();
-      h2(isFr ? 'Compatibilité Trantor' : 'Trantor compatibility');
-      d.designops.trantor.scenarios[lang].forEach(s => {
-        h3(`${s.title} — ${s.verdict}`);
-        p(s.body.replace(/\n/g, ' '));
-      });
-      br();
-      h3(isFr ? 'Questions à clarifier avec la DSI' : 'Questions to clarify with DSI');
-      d.designops.trantor.questions[lang].forEach((q, i) => li(`${i + 1}. ${q}`));
-      br();
-      p(`> ${d.designops.trantor.recommendation[lang].replace(/\n/g, ' ')}`);
-
-      hr();
-      h2(isFr ? 'Matrice outillage' : 'Tooling matrix');
-      lines.push(`| ${isFr ? 'Outil' : 'Tool'} | Phase | ${isFr ? 'Qui' : 'Who'} | ${isFr ? 'Ce que ça fait' : 'What it does'} |`);
-      lines.push('|---|---|---|---|');
-      d.designops.tooling.rows.forEach(r => {
-        lines.push(`| ${r.tool} | Ph.${r.phase} | ${isFr ? r.who_fr : r.who_en} | ${isFr ? r.what_fr : r.what_en} |`);
-      });
-      br();
-
-      hr();
-      h2(isFr ? 'Gouvernance — rituels' : 'Governance — rituals');
-      d.designops.governance.rituals[lang].forEach(r => { h3(r.title); p(r.desc); });
-      h3(isFr ? 'Artefacts' : 'Artefacts');
-      d.designops.governance.artefacts[lang].forEach(a => li(a));
-      br();
-
-      hr();
-      h2(isFr ? 'Métriques DS' : 'DS metrics');
-      d.designops.metrics.categories[lang].forEach(cat => {
-        h3(cat.label);
-        cat.items.forEach(item => li(`**${item.name}** — ${item.desc} *(${item.tool})*`));
-        br();
-      });
-
-      hr();
-      h2(isFr ? 'Volant d\'inertie qualité' : 'Quality flywheel');
-      p(d.designops.flywheel[lang]);
-    }
-
-    else if (sectionId === 'careers') {
-      h1(isFr ? 'Skill — Carrières UI/UX Designer' : 'Skill — UI/UX Designer Careers');
-      p(isFr
-        ? 'Ce skill couvre tout ce qu\'un candidat interne doit savoir sur le rôle de product designer.'
-        : 'This skill covers everything an internal candidate needs to know about the product designer role.');
-      const items = d.careers[lang];
-      items.forEach(item => {
-        h2(item.summary);
-        // Strip HTML tags for clean markdown
-        const clean = item.body
-          .replace(/<h3>/gi, '\n### ').replace(/<\/h3>/gi, '\n')
-          .replace(/<strong>/gi, '**').replace(/<\/strong>/gi, '**')
-          .replace(/<em>/gi, '_').replace(/<\/em>/gi, '_')
-          .replace(/<li>/gi, '\n- ').replace(/<\/li>/gi, '')
-          .replace(/<ul>/gi, '').replace(/<\/ul>/gi, '\n')
-          .replace(/<p>/gi, '\n').replace(/<\/p>/gi, '\n')
-          .replace(/<div[^>]*>/gi, '\n').replace(/<\/div>/gi, '')
-          .replace(/<[^>]+>/g, '')
-          .replace(/\n{3,}/g, '\n\n')
-          .trim();
-        lines.push(clean, '');
-        hr();
-      });
-    }
-
-    else if (sectionId === 'craft') {
-      h1(isFr ? 'Skill — Craft Design & Wireframing' : 'Skill — Design Craft & Wireframing');
-      p(isFr
-        ? 'Ce skill couvre les patterns UI courants, les étapes de wireframing et les règles do/don\'t de base.'
-        : 'This skill covers common UI patterns, wireframing steps and core do/don\'t rules.');
-      const craftData = d.craft[lang];
-
-      if (craftData.patterns) {
-        h2(isFr ? 'Patterns UI courants' : 'Common UI patterns');
-        craftData.patterns.forEach(pat => {
-          h3(pat.name);
-          li(isFr ? `Quand : ${pat.when}` : `When: ${pat.when}`);
-          li(isFr ? `Composants : ${pat.components}` : `Components: ${pat.components}`);
-          if (pat.desc) p(pat.desc);
-          br();
-        });
-      }
-
-      if (craftData.wireframing) {
-        hr();
-        h2(isFr ? 'Étapes du wireframing' : 'Wireframing steps');
-        craftData.wireframing.forEach((step, i) => {
-          h3(`${i + 1}. ${step.level}`);
-          if (step.desc) p(step.desc);
-          if (step.tip) p(`💡 ${step.tip}`);
-        });
-      }
-
-      if (craftData.dodonts) {
-        hr();
-        h2(isFr ? 'Do / Don\'t' : 'Do / Don\'t');
-        craftData.dodonts.forEach(dd => {
-          h3(dd.topic);
-          li(`✅ ${dd.doText}`);
-          li(`❌ ${dd.dontText}`);
-          br();
-        });
-      }
-    }
-
-    else if (sectionId === 'knowledge') {
-      h1(isFr ? 'Skill — Ressources de connaissances UX' : 'Skill — UX Knowledge Resources');
-      p(isFr
-        ? 'Ce skill liste les ressources clés en psychologie, communication, accessibilité, mobile/desktop, microcopy et user flows.'
-        : 'This skill lists key resources on psychology, communication, accessibility, mobile/desktop, microcopy and user flows.');
-      // knowledgeData is async-loaded — use the cached global if available
-      if (typeof knowledgeData !== 'undefined' && knowledgeData) {
-        knowledgeData.categories.forEach(cat => {
-          h2(`${cat.icon} ${cat.label}`);
-          cat.resources.forEach(r => {
-            li(`**${r.title}** (${r.type})${r.url !== '#' ? ` — ${r.url}` : ''}`);
-            if (r.description) lines.push(`  ${r.description}`);
-          });
-          br();
-        });
-      } else {
-        p(isFr ? '*(Ouvrez la section Connaissances une fois avant d\'exporter.)*' : '*(Open the Knowledge section once before exporting.)*');
-      }
-    }
-
-    // File header
-    const date = new Date().toISOString().split('T')[0];
-    const header = [
-      `---`,
-      `skill: ${sectionId}`,
-      `lang: ${lang}`,
-      `generated: ${date}`,
-      `source: Atelier Design`,
-      `---`,
-      '',
-    ];
-
-    return header.join('\n') + lines.join('\n');
-  }
-
-  const SKILL_FILENAMES = {
-    prompting:  { fr: 'design-prompting-ia',       en: 'ai-design-prompting' },
-    designops:  { fr: 'designops-roadmap-ia',       en: 'designops-ai-roadmap' },
-    careers:    { fr: 'carriere-product-designer',  en: 'product-designer-career' },
-    craft:      { fr: 'craft-wireframing-patterns', en: 'craft-wireframing-patterns' },
-    knowledge:  { fr: 'ressources-ux-design',       en: 'ux-design-resources' },
-  };
-
-  function injectSkillButtons() {
-    SKILL_SECTIONS.forEach(id => {
-      const section = document.getElementById('hub-section-' + id);
-      if (!section) return;
-      const subtitle = section.querySelector('.hub-section-subtitle');
-      if (!subtitle || section.querySelector('.skill-dl-btn')) return;
-
-      const label = lang === 'fr' ? '↓ Exporter en .md' : '↓ Export as .md';
-      const title = lang === 'fr' ? 'Télécharger pour Claude / cursorrules / context' : 'Download for Claude / cursorrules / context';
-      const filename = (SKILL_FILENAMES[id][lang]) + '.md';
-
-      const a = document.createElement('a');
-      a.className = 'skill-dl-btn';
-      a.setAttribute('title', title);
-      a.setAttribute('download', filename);
-      a.innerHTML = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg><span>${label}</span>`;
-
-      a.addEventListener('click', function (e) {
-        e.preventDefault();
-        const md = buildSkillMd(id);
-        const encoded = 'data:text/markdown;charset=utf-8,' + encodeURIComponent(md);
-        const dl = document.createElement('a');
-        dl.href = encoded;
-        dl.download = filename;
-        dl.style.display = 'none';
-        document.body.appendChild(dl);
-        dl.click();
-        document.body.removeChild(dl);
-      });
-
-      subtitle.insertAdjacentElement('afterend', a);
-
-      /* Inject context file links for the Prompting section */
-      if (id === 'prompting' && !section.querySelector('.context-files-row')) {
-        const isFr = lang === 'fr';
-        const contextLabel = isFr ? 'Contexte design system :' : 'Design system context:';
-        const files = [
-          { href: 'data/design-tokens-ai-context.md',   label: isFr ? 'Tokens IA' : 'AI Tokens' },
-          { href: 'data/design-tokens-dev-handoff.md',   label: isFr ? 'Tokens Handoff' : 'Handoff Tokens' },
-          { href: 'data/ios-design-guidelines.md',       label: isFr ? 'iOS Guidelines' : 'iOS Guidelines' },
-        ];
-        const dlSvg = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>`;
-        const row = document.createElement('div');
-        row.className = 'context-files-row';
-        row.innerHTML = `<span class="context-files-label">${contextLabel}</span>${files.map(f => `<a href="${f.href}" download class="skill-dl-btn context-file-link">${dlSvg}<span>${f.label}</span></a>`).join('')}`;
-        a.insertAdjacentElement('afterend', row);
-      }
-    });
-  }
 
   /* ══════════════════════════════════════════
      INIT
      ══════════════════════════════════════════ */
   function init() {
+    /* Initialise Mermaid with a theme matching the hub palette */
+    if (window.mermaid) {
+      window.mermaid.initialize({
+        startOnLoad: false,
+        theme: 'base',
+        themeVariables: {
+          primaryColor: '#eef3fd',
+          primaryTextColor: '#211C12',
+          primaryBorderColor: '#2859a8',
+          lineColor: '#C6A669',
+          secondaryColor: '#e8f8ee',
+          tertiaryColor: '#f0ebfa',
+          background: '#FBF7F0',
+          mainBkg: '#FBF7F0',
+          nodeBorder: '#E6D7BA',
+          clusterBkg: '#FBF7F0',
+          clusterBorder: '#E6D7BA',
+          titleColor: '#211C12',
+          edgeLabelBackground: '#FBF7F0',
+          fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+          fontSize: '13px',
+        },
+      });
+    }
     bindNav();
     bindLangToggle();
     applyLang();
-    injectSkillButtons();
     const hash = location.hash.replace('#', '');
     const target = document.getElementById('hub-section-' + hash) ? hash : DEFAULT_SECTION;
     showSection(target, false);
@@ -1988,18 +1810,59 @@
   /* ══════════════════════════════════════════
      DESIGN SYSTEMS
      ══════════════════════════════════════════ */
+  const DS_INLINE = {
+    systems: [
+      {
+        id: 'fondamentaux',
+        name: 'Design System Fondamentaux',
+        name_fr: 'Design System Fondamentaux',
+        url: 'https://www.figma.com/design/Ey7ObIDiHfM8za2KC5goRg/Design-System-Fondamentaux?node-id=6018-389&t=yf2v4lxqeFrCi1vo-1',
+        description_fr: 'Fondation partagée par toutes les équipes produit — tokens, typographie, couleurs, grilles, ombres et composants de base.',
+        description_en: 'Shared foundation across all product teams — tokens, typography, colours, grids, shadows and base components.',
+        badge_fr: 'Fondation',
+        badge_en: 'Foundation',
+        accent: '#CB1617',
+      },
+      {
+        id: 'app',
+        name: 'Design System App',
+        name_fr: 'Design System App',
+        url: 'https://www.figma.com/design/LnstLU9VxLSk1vBd3koWzw/Design-System-App?node-id=4904-21085&t=5Zr4StR0ttIBD3ig-1',
+        description_fr: 'Composants et patterns pour l\'application mobile (iOS & Android) — construits sur la fondation.',
+        description_en: 'Components and patterns for the mobile app (iOS & Android) — built on the foundation.',
+        badge_fr: 'App mobile',
+        badge_en: 'Mobile app',
+        accent: '#09406D',
+      },
+      {
+        id: 'vel',
+        name: 'VEL / E-commerce Design System',
+        name_fr: 'VEL / E-commerce Design System',
+        url: 'https://www.figma.com/design/mtBoy1Ap5sgUt6lbB3duGx/Puy-du-Fou---Reviews-Parcours-de-commande?node-id=622-13283&t=5Esz2dOmEfPIJihy-1',
+        description_fr: 'Système de design pour le parcours e-commerce VEL — tunnel d\'achat, réservations et billetterie en ligne.',
+        description_en: 'Design system for the VEL e-commerce journey — purchase funnel, reservations and online ticketing.',
+        badge_fr: 'E-commerce',
+        badge_en: 'E-commerce',
+        accent: '#A18756',
+      },
+    ],
+  };
+
   let dsData = null;
 
   async function loadDesignSystems() {
     designSystemsLoaded = true;
+    // Use inline data immediately so it works on file:// and when offline
+    dsData = DS_INLINE;
+    rerenderDesignSystems();
+    // Also try to load from file in case it has been updated
     try {
       const res = await fetch('data/design-systems.json');
-      dsData = await res.json();
-      rerenderDesignSystems();
-    } catch {
-      document.getElementById('ds-root').innerHTML =
-        `<p style="color:#75633F;font-size:0.85rem;margin-top:1rem;">${t('ds_error')}</p>`;
-    }
+      if (res.ok) {
+        dsData = await res.json();
+        rerenderDesignSystems();
+      }
+    } catch { /* offline or file://, inline data already rendered */ }
   }
 
   function rerenderDesignSystems() {
@@ -2018,7 +1881,54 @@
         <div class="ds-desc">${isFr ? sys.description_fr : sys.description_en}</div>
         <div class="ds-link">${linkSvg(large ? 14 : 12)} ${t('ds_open_figma')}</div>
       </a>`;
-    root.innerHTML = card(first, true) + (rest.length ? `<div class="ds-grid">${rest.map(s => card(s, false)).join('')}</div>` : '');
+    const aiChecklist = `
+      <div style="margin-top:2rem;">
+        <div class="dops-section-label">${isFr ? 'Checklist — prêt pour l\'IA ?' : 'Checklist — AI readiness?'}</div>
+        <p style="font-size:0.75rem;color:#75633F;line-height:1.7;margin-bottom:1rem;">${isFr ? 'Vérifiez que votre DS est structuré pour tirer parti des outils IA (Figma MCP, variables, génération automatisée).' : 'Verify your DS is structured to leverage AI tools (Figma MCP, variables, automated generation).'}</p>
+        <div style="display:flex;flex-direction:column;gap:0.5rem;">
+          ${[
+            {
+              id: 'ai-check-variables',
+              label: isFr ? 'Variables & tokens' : 'Variables & tokens',
+              items: isFr
+                ? ['Variables Figma nommées avec convention cohérente', 'Tokens liés aux composants (pas de valeurs codées en dur)', 'Modes (light/dark, brand) configurés', 'Variables publiées dans la bibliothèque']
+                : ['Figma variables named with consistent convention', 'Tokens linked to components (no hardcoded values)', 'Modes (light/dark, brand) configured', 'Variables published in the library'],
+            },
+            {
+              id: 'ai-check-components',
+              label: isFr ? 'Composants' : 'Components',
+              items: isFr
+                ? ['Variants nommés avec des valeurs prévisibles (Size=S/M/L, State=Default/Hover)', 'Props booléens préfixés avec "is" ou "has"', 'Auto-layout activé sur tous les composants', 'Pas de layers nommés "Frame 123"']
+                : ['Variants named with predictable values (Size=S/M/L, State=Default/Hover)', 'Boolean props prefixed with "is" or "has"', 'Auto-layout enabled on all components', 'No layers named "Frame 123"'],
+            },
+            {
+              id: 'ai-check-layout',
+              label: isFr ? 'Layout & grilles' : 'Layout & grids',
+              items: isFr
+                ? ['Grilles documentées dans les frames de référence', 'Espacement basé sur une échelle fixe (4/8px)', 'Breakpoints définis pour mobile & desktop', 'Contraintes de redimensionnement configurées']
+                : ['Grids documented in reference frames', 'Spacing based on fixed scale (4/8px)', 'Breakpoints defined for mobile & desktop', 'Resize constraints configured'],
+            },
+            {
+              id: 'ai-check-styles',
+              label: isFr ? 'Styles & documentation' : 'Styles & documentation',
+              items: isFr
+                ? ['Styles de texte publiés et nommés', 'Styles de couleur alignés sur les variables', 'Effets (ombres) documentés', 'Description des composants remplie dans Figma']
+                : ['Text styles published and named', 'Colour styles aligned with variables', 'Effects (shadows) documented', 'Component descriptions filled in Figma'],
+            },
+          ].map(group => `
+            <details class="ai-tool-details">
+              <summary class="ai-tool-summary">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#CB1617" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                ${group.label}
+              </summary>
+              <div class="ai-tool-body">
+                <ul>${group.items.map(item => `<li>${item}</li>`).join('')}</ul>
+              </div>
+            </details>`).join('')}
+        </div>
+      </div>`;
+
+    root.innerHTML = card(first, true) + (rest.length ? `<div class="ds-grid">${rest.map(s => card(s, false)).join('')}</div>` : '') + aiChecklist;
   }
 
   /* ══════════════════════════════════════════
@@ -2341,13 +2251,153 @@
 
       <!-- Quick reference tips -->
       <div class="dops-section-label">${isFr ? 'Référence rapide — tips de prompting' : 'Quick reference — prompting tips'}</div>
-      <div style="display:flex;flex-direction:column;gap:0;border-top:2px solid #211C12;">
+      <div style="display:flex;flex-direction:column;gap:0;border-top:2px solid #211C12;margin-bottom:2rem;">
         ${tips.map(t => `
           <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border-bottom:1px solid #E6D7BA;padding:0.7rem 0;">
             <div style="font-size:0.74rem;font-weight:600;color:#211C12;padding-right:1rem;">${t.title}</div>
             <div style="font-family:monospace;font-size:0.67rem;color:#75633F;line-height:1.6;padding-right:1rem;white-space:pre-wrap;">${t.example}</div>
             <div style="font-size:0.7rem;color:#007a40;line-height:1.55;">${t.why}</div>
           </div>`).join('')}
+      </div>
+
+      <!-- DS context files for Claude / cursor -->
+      <div class="dops-section-label">${isFr ? 'Contexte design system pour l\'IA' : 'Design system context for AI'}</div>
+      <p style="font-size:0.75rem;color:#75633F;line-height:1.7;margin-bottom:1.25rem;">${isFr
+        ? 'Fichiers .md à glisser dans Claude, Cursor ou votre fichier <code style="font-family:monospace;font-size:0.72rem;background:#F1E8D7;color:#75633F;padding:0.1em 0.3em;border-radius:0.2rem;">.cursorrules</code> pour fournir du contexte design system lors de la génération d\'interfaces.'
+        : 'Drop these .md files into Claude, Cursor or your <code style="font-family:monospace;font-size:0.72rem;background:#F1E8D7;color:#75633F;padding:0.1em 0.3em;border-radius:0.2rem;">.cursorrules</code> to provide design system context when generating UI.'
+      }</p>
+
+      ${(() => {
+        const dlSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>`;
+
+        const priority = [
+          {
+            href: 'data/design-tokens-ai-context.md',
+            label: isFr ? 'Tokens IA' : 'AI Tokens',
+            title: isFr ? 'Design tokens — contexte IA' : 'Design tokens — AI context',
+            desc: isFr
+              ? '154 variables Figma (couleurs, typographie, espacements, ombres) — light & dark. À inclure dans tout prompt de génération d\'interface pour notre DS.'
+              : '154 Figma variables (colours, typography, spacing, shadows) — light & dark. Include in any UI generation prompt targeting our DS.',
+            tag: isFr ? 'Priorité 1' : 'Priority 1',
+          },
+          {
+            href: 'data/design-tokens-dev-handoff.md',
+            label: isFr ? 'Tokens Handoff' : 'Handoff Tokens',
+            title: isFr ? 'Tokens — handoff développeur' : 'Tokens — developer handoff',
+            desc: isFr
+              ? 'Référence complète des tokens pour l\'intégration frontend. Noms exacts des variables, valeurs et correspondances CSS/Swift à utiliser dans le code.'
+              : 'Complete token reference for frontend integration. Exact variable names, values and CSS/Swift mappings to use in code.',
+            tag: isFr ? 'Priorité 2' : 'Priority 2',
+          },
+        ];
+
+        const others = [
+          {
+            href: 'data/ios-design-guidelines.md',
+            label: 'iOS Guidelines',
+            desc: isFr ? 'Règles HIG complètes — touch targets, nav, typo, accessibilité, composants SwiftUI.' : 'Full HIG rules — touch targets, nav, type, accessibility, SwiftUI components.',
+          },
+          {
+            href: 'data/design-system-patterns.md',
+            label: isFr ? 'DS Patterns' : 'DS Patterns',
+            desc: isFr ? 'Architecture tokens, hiérarchie primitive → sémantique → composant, pipeline Figma → code.' : 'Token architecture, primitive → semantic → component hierarchy, Figma → code pipeline.',
+          },
+          {
+            href: 'data/mobile-ios-design.md',
+            label: isFr ? 'iOS Design' : 'iOS Design',
+            desc: isFr ? 'SwiftUI layouts, SF Symbols, Dynamic Type, navigation, Dark Mode.' : 'SwiftUI layouts, SF Symbols, Dynamic Type, navigation, Dark Mode.',
+          },
+          {
+            href: 'data/mobile-android-design.md',
+            label: isFr ? 'Android Design' : 'Android Design',
+            desc: isFr ? 'Material Design 3, Jetpack Compose, navigation, thèmes dynamiques.' : 'Material Design 3, Jetpack Compose, navigation, dynamic theming.',
+          },
+          {
+            href: 'data/figma-mcp-implement-design.md',
+            label: 'Figma MCP',
+            desc: isFr ? 'Workflow d\'implémentation Figma → code via MCP. Setup Console inclus.' : 'Figma → code implementation workflow via MCP. Console setup included.',
+          },
+          {
+            href: 'data/web-design-guidelines.md',
+            label: isFr ? 'Web Guidelines' : 'Web Guidelines',
+            desc: isFr ? 'Accessibilité, formulaires, focus, animations, typographie, anti-patterns web.' : 'Accessibility, forms, focus, animations, typography, web anti-patterns.',
+          },
+          {
+            href: 'data/ux-principles.md',
+            label: isFr ? 'Principes UX' : 'UX Principles',
+            desc: isFr ? '10 heuristiques Nielsen, Gestalt, charge cognitive, lois UX, métriques.' : '10 Nielsen heuristics, Gestalt, cognitive load, UX laws, metrics.',
+          },
+          {
+            href: 'data/responsive-design.md',
+            label: isFr ? 'Responsive' : 'Responsive',
+            desc: isFr ? 'Mobile-first, breakpoints, Flexbox/Grid, images responsives, Container Queries.' : 'Mobile-first, breakpoints, Flexbox/Grid, responsive images, Container Queries.',
+          },
+          {
+            href: 'data/ui-ux-pro-max.md',
+            label: 'UI/UX Pro Max',
+            desc: isFr ? '10 catégories de règles UI/UX priorisées — accessibilité, touch, perf, animation.' : '10 prioritised UI/UX rule categories — accessibility, touch, perf, animation.',
+          },
+          {
+            href: 'data/i18n-localization.md',
+            label: 'i18n / L10n',
+            desc: isFr ? 'Internationalisation, pluralisation, RTL, formats date/nombre, Intl API.' : 'Internationalisation, pluralisation, RTL, date/number formats, Intl API.',
+          },
+          {
+            href: 'data/copywriting.md',
+            label: isFr ? 'Copywriting' : 'Copywriting',
+            desc: isFr ? 'Principes de conversion : bénéfices vs features, CTA, structure de page, voix.' : 'Conversion principles: benefits vs features, CTAs, page structure, voice.',
+          },
+          {
+            href: 'data/marketing-psychology.md',
+            label: isFr ? 'Psychologie Marketing' : 'Marketing Psychology',
+            desc: isFr ? 'Biais cognitifs, persuasion, pricing psychology, modèles de croissance.' : 'Cognitive biases, persuasion, pricing psychology, growth models.',
+          },
+          {
+            href: 'data/freins-leviers-segments.md',
+            label: isFr ? 'Freins & Leviers' : 'Barriers & Levers',
+            desc: isFr ? 'Segments visiteurs, freins & leviers par profil (familles, couples, ados…).' : 'Visitor segments, barriers & levers by profile (families, couples, teens…).',
+          },
+        ];
+
+        return `
+        <div style="display:flex;flex-direction:column;gap:0.75rem;margin-bottom:1.5rem;">
+          ${priority.map(f => `
+            <div class="ctx-priority-card">
+              <div class="ctx-priority-left">
+                <span class="ctx-priority-tag">${f.tag}</span>
+                <div class="ctx-priority-title">${f.title}</div>
+                <div class="ctx-priority-desc">${f.desc}</div>
+              </div>
+              <a href="${f.href}" download class="ctx-dl-btn ctx-dl-btn--primary">
+                ${dlSvg}<span>${f.label}</span>
+              </a>
+            </div>`).join('')}
+        </div>
+
+        <div class="ctx-grid">
+          ${others.map(f => `
+            <div class="ctx-grid-card">
+              <div class="ctx-grid-desc">${f.desc}</div>
+              <a href="${f.href}" download class="ctx-dl-btn">
+                ${dlSvg}<span>${f.label}</span>
+              </a>
+            </div>`).join('')}
+        </div>`;
+      })()}
+
+      <!-- AI Tools & Workflows -->
+      <div class="dops-section-label">${isFr ? 'Outils IA & workflows' : 'AI Tools & Workflows'}</div>
+      <div style="display:flex;flex-direction:column;gap:1rem;">
+        ${p.aiTools.map(tool => `
+          <details class="ai-tool-details">
+            <summary class="ai-tool-summary">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#CB1617" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 8 16 12 12 16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+              ${tool.title[lang]}
+            </summary>
+            <div class="ai-tool-body">
+              ${tool.body[lang]}
+            </div>
+          </details>`).join('')}
       </div>`;
   }
 
@@ -2489,25 +2539,22 @@
     const d = CONTENT.designops;
     const isFr = lang === 'fr';
     const phases = d.phases[lang];
-    const models = d.models[lang];
-    const principles = d.principles[lang];
-    const tooling = d.tooling;
 
     const statusClass = s => `dops-status-${s}`;
 
     const workflow = isFr ? [
-      { step: '1', title: 'Alimenter l\'IA en contexte', who: 'both', whoLabel: 'PO & Designer', desc: 'Injecter dans l\'IA les notes produit, retours stakeholders, transcripts, briefs et toute donnée pertinente. Plus le contexte est riche, meilleure sera la génération.' },
-      { step: '2', title: 'Rédiger les prompts', who: 'both', whoLabel: 'PO & Designer', desc: 'Formuler des prompts ciblés pour des composants, écrans ou flux spécifiques. Nommer les composants DS, décrire les états, préciser le contexte métier.' },
-      { step: '3', title: 'Générer avec l\'outil IA', who: 'both', whoLabel: 'PO & Designer', desc: 'Alimenter ces prompts dans Figma Make, v0, Google Stitch ou Claude. Lancer plusieurs générations, comparer les outputs.' },
-      { step: '4', title: 'Sélectionner & nettoyer', who: 'both', whoLabel: 'PO & Designer', desc: 'Extraire ce qui est bon, supprimer tout le reste. C\'est une curation, pas une approbation aveugle — l\'œil critique reste humain.' },
-      { step: '5', title: 'Importer dans Figma & affiner', who: 'designer', whoLabel: 'Designer uniquement', desc: 'Retravailler les outputs dans Figma : alignement DS, tokens, accessibilité, cohérence des états. Le jugement de design s\'applique ici.' },
+      { step: '1', title: 'Cadrer le besoin', who: 'both', whoLabel: 'PO & Designer', desc: 'Rassembler notes produit, retours stakeholders, briefs et toute donnée pertinente. Définir clairement le périmètre : composant, écran, flux. Décider si un outil de génération est utile ici — ce n\'est pas systématique.' },
+      { step: '2', title: 'Choisir l\'approche', who: 'both', whoLabel: 'PO & Designer', desc: 'Figma directement pour les itérations simples et les décisions de design complexes. Un outil de génération (Figma Make, v0, Claude) pour explorer rapidement des pistes ou gérer un volume d\'états élevé.' },
+      { step: '3', title: 'Produire les livrables', who: 'both', whoLabel: 'PO & Designer', desc: 'Création dans Figma, ou génération + curation si un outil est utilisé. Dans tous les cas : composants DS, tokens corrects, états couverts. L\'outil accélère, le designer valide.' },
+      { step: '4', title: 'Sélectionner & nettoyer', who: 'both', whoLabel: 'PO & Designer', desc: 'Extraire ce qui est bon, supprimer tout le reste. C\'est une curation, pas une approbation aveugle — l\'œil critique reste humain quelle que soit la méthode.' },
+      { step: '5', title: 'Affiner dans Figma', who: 'designer', whoLabel: 'Designer uniquement', desc: 'Alignement DS, tokens, accessibilité, cohérence des états. C\'est ici que le jugement de design s\'applique — cette étape ne peut pas être déléguée.' },
       { step: '6', title: 'Livrer & itérer', who: 'shared', whoLabel: 'Designer livre · PO & Designer itèrent', desc: 'Le designer finalise et livre la spec. L\'itération suivante repart du cycle — PO et designer ensemble.' },
     ] : [
-      { step: '1', title: 'Feed context into the AI', who: 'both', whoLabel: 'PO & Designer', desc: 'Feed product notes, stakeholder feedback, AI transcripts, briefs and any relevant data into the AI. Richer context = better generation.' },
-      { step: '2', title: 'Write the prompts', who: 'both', whoLabel: 'PO & Designer', desc: 'Create targeted prompts for specific components, screens or flows. Name DS components, describe states, specify business context.' },
-      { step: '3', title: 'Generate with an AI tool', who: 'both', whoLabel: 'PO & Designer', desc: 'Feed those prompts into Figma Make, v0, Google Stitch or Claude. Run multiple generations, compare outputs.' },
-      { step: '4', title: 'Pick what\'s good, delete the rest', who: 'both', whoLabel: 'PO & Designer', desc: 'Extract what works, delete everything else. This is curation, not blind approval — the critical eye stays human.' },
-      { step: '5', title: 'Pull into Figma & refine', who: 'designer', whoLabel: 'Designer only', desc: 'Rework the output in Figma: DS alignment, tokens, accessibility, state coherence. Design judgement applies here.' },
+      { step: '1', title: 'Frame the need', who: 'both', whoLabel: 'PO & Designer', desc: 'Gather product notes, stakeholder feedback, briefs and relevant data. Define the scope clearly: component, screen, flow. Decide whether a generation tool is actually useful here — it\'s not always the right call.' },
+      { step: '2', title: 'Choose the approach', who: 'both', whoLabel: 'PO & Designer', desc: 'Figma directly for simple iterations and complex design decisions. A generation tool (Figma Make, v0, Claude) to explore directions quickly or handle a large number of states.' },
+      { step: '3', title: 'Produce the work', who: 'both', whoLabel: 'PO & Designer', desc: 'Design in Figma, or generate + curate if a tool is used. Either way: DS components, correct tokens, states covered. The tool accelerates, the designer validates.' },
+      { step: '4', title: 'Pick what\'s good, delete the rest', who: 'both', whoLabel: 'PO & Designer', desc: 'Extract what works, delete everything else. This is curation, not blind approval — the critical eye stays human regardless of the method used.' },
+      { step: '5', title: 'Refine in Figma', who: 'designer', whoLabel: 'Designer only', desc: 'DS alignment, tokens, accessibility, state coherence. This is where design judgement applies — this step cannot be delegated.' },
       { step: '6', title: 'Ship & iterate', who: 'shared', whoLabel: 'Designer ships · PO & Designer iterate', desc: 'The designer finalises and ships the spec. The next iteration restarts the cycle — PO and designer together.' },
     ];
 
@@ -2577,53 +2624,6 @@
       ? 'Le vrai goulot d\'étranglement reste le <strong>jugement design</strong> — et ce sera longtemps le designer. "Est-ce que ça rend bien ?", "Faut-il une modale ?", "Ce layout ne convainc pas." L\'IA ne peut pas toujours vous donner une bonne réponse sur ces questions.'
       : 'The real bottleneck remains <strong>design judgement</strong> — and that will be the designer for a long time. "Does this look good?", "Should we use a modal?", "This layout feels off." These are questions your AI can\'t always give you a good answer on.';
 
-    /* Flywheel SVG — circular arrow diagram */
-    const fwSvg = `<svg viewBox="0 0 320 120" width="100%" style="max-width:320px;display:block;margin:0.5rem auto 0;" role="img" aria-label="${isFr ? 'Volant d\'inertie qualité' : 'Quality flywheel'}">
-      <defs>
-        <marker id="fw-arr" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto">
-          <path d="M0,0 L5,2.5 L0,5 Z" fill="#C6A669"/>
-        </marker>
-      </defs>
-      <!-- 4 nodes in a horizontal chain with a loopback arrow -->
-      ${[
-        {x:20,  label: isFr ? 'Meilleur DS'   : 'Better DS'},
-        {x:100, label: isFr ? 'Meilleur output IA' : 'Better AI output'},
-        {x:200, label: isFr ? 'Moins de rework' : 'Less rework'},
-        {x:275, label: isFr ? 'Plus de temps DS' : 'More DS time'},
-      ].map((n,i,arr) => `
-        <rect x="${n.x}" y="44" width="68" height="32" rx="6" fill="#F1E8D7" stroke="#E6D7BA" stroke-width="1"/>
-        <text x="${n.x+34}" y="${n.x===100 ? 57 : 61}" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="8" font-weight="600" fill="#75633F">${n.label.split(' ').slice(0,2).join(' ')}</text>
-        ${n.label.split(' ').length > 2 ? `<text x="${n.x+34}" y="71" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="8" font-weight="600" fill="#75633F">${n.label.split(' ').slice(2).join(' ')}</text>` : ''}
-        ${i < arr.length-1 ? `<line x1="${n.x+68}" y1="60" x2="${arr[i+1].x-5}" y2="60" stroke="#C6A669" stroke-width="1.5" marker-end="url(#fw-arr)"/>` : ''}
-      `).join('')}
-      <!-- loopback arrow on top -->
-      <path d="M309,60 Q320,20 160,10 Q0,0 20,60" fill="none" stroke="#C6A669" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#fw-arr)"/>
-    </svg>`;
-
-    /* ── Timeline SVG (Slide 1) ── */
-    const tlData = d.timeline[lang];
-    const tlW = 720, tlH = 110, tlPad = 24;
-    const segW = (tlW - tlPad * 2) / tlData.length;
-    const tlSvg = `<svg viewBox="0 0 ${tlW} ${tlH}" width="100%" style="max-width:${tlW}px;display:block;margin:0 auto;" role="img" aria-label="${isFr ? 'Frise temporelle roadmap' : 'Roadmap timeline'}">
-      <!-- rail -->
-      <line x1="${tlPad + segW*0.5}" y1="42" x2="${tlPad + segW*4.5}" y2="42" stroke="#E6D7BA" stroke-width="2"/>
-      ${tlData.map((t, i) => {
-        const cx = tlPad + segW * (i + 0.5);
-        return `<g>
-          <circle cx="${cx}" cy="42" r="16" fill="${t.bg}" stroke="${t.color}" stroke-width="2"/>
-          <text x="${cx}" y="47" text-anchor="middle" font-family="Georgia,serif" font-size="13" font-weight="700" fill="${t.color}">${t.phase}</text>
-          <text x="${cx}" y="72" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="9" font-weight="700" fill="${t.color}">${t.label}</text>
-          <text x="${cx}" y="84" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="8.5" font-weight="500" fill="#75633F">${t.title}</text>
-          <text x="${cx}" y="97" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="7.5" fill="#aaa">${t.period}</text>
-        </g>`;
-      }).join('')}
-      <!-- connector dots -->
-      ${tlData.slice(0,-1).map((_,i) => {
-        const x = tlPad + segW*(i+1);
-        return `<circle cx="${x}" cy="42" r="3" fill="#E6D7BA"/>`;
-      }).join('')}
-    </svg>`;
-
     /* ── Project types ── */
     const ptypes = d.projectTypes[lang];
 
@@ -2682,29 +2682,228 @@
           </div>`).join('')}
       </div>`;
 
+    /* ── Pipeline landscape — two vertical swim lanes, 4-stage flow ── */
+
+    /* Reusable helpers */
+    const hArrow = () =>
+      `<div style="display:flex;align-items:center;gap:0;flex-shrink:0;width:32px;">
+        <div style="flex:1;height:1.5px;background:#C6A669;"></div>
+        <div style="width:0;height:0;border-top:4px solid transparent;border-bottom:4px solid transparent;border-left:5px solid #C6A669;"></div>
+      </div>`;
+
+    const tag = (txt, color, bg) =>
+      `<span style="display:inline-block;font-size:0.52rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:${color};background:${bg};border-radius:999px;padding:0.1rem 0.5rem;margin-bottom:0.35rem;">${txt}</span>`;
+
+    const stageCard = (title, titleColor, bdColor, bgColor, body, footer = '') =>
+      `<div style="border:1.5px solid ${bdColor};border-radius:0.65rem;background:${bgColor};padding:0.75rem 0.85rem;flex:1;min-width:0;display:flex;flex-direction:column;gap:0.4rem;">
+        <div style="font-size:0.7rem;font-weight:700;color:${titleColor};line-height:1.3;">${title}</div>
+        <div style="flex:1;">${body}</div>
+        ${footer ? `<div style="border-top:1px solid ${bdColor};padding-top:0.4rem;margin-top:0.2rem;">${footer}</div>` : ''}
+      </div>`;
+
+    const pill2 = (label, bg, color, sub = '') =>
+      `<div style="background:${bg};border-radius:0.35rem;padding:0.3rem 0.5rem;margin-bottom:0.25rem;">
+        <div style="font-size:0.65rem;font-weight:700;color:${color};line-height:1.25;">${label}</div>
+        ${sub ? `<div style="font-size:0.57rem;color:${color};opacity:0.72;line-height:1.3;">${sub}</div>` : ''}
+      </div>`;
+
+    const step = (n, txt, color = '#464747') =>
+      `<div style="display:flex;gap:0.4rem;align-items:baseline;margin-bottom:0.25rem;">
+        <span style="font-size:0.58rem;font-weight:700;color:#C6A669;flex-shrink:0;min-width:0.8rem;">${n}.</span>
+        <span style="font-size:0.63rem;color:${color};line-height:1.45;">${txt}</span>
+      </div>`;
+
+    /* ── Lane builder — 4 stages in a horizontal flex row ── */
+    const lane = (laneAccent, laneBg, laneTitle, laneSubtitle, stages) =>
+      `<div style="border-radius:0.65rem;border:1.5px solid ${laneAccent};background:${laneBg};overflow:hidden;margin-bottom:0.85rem;">
+        <!-- Lane header -->
+        <div style="background:${laneAccent};padding:0.45rem 0.85rem;display:flex;align-items:baseline;gap:0.75rem;">
+          <span style="font-size:0.72rem;font-weight:700;color:#fff;letter-spacing:-0.01em;">${laneTitle}</span>
+          <span style="font-size:0.6rem;color:rgba(255,255,255,0.75);">${laneSubtitle}</span>
+        </div>
+        <!-- Stages row -->
+        <div style="display:flex;align-items:stretch;padding:0.75rem;gap:0;min-height:0;">
+          ${stages.map((s, i) => `
+            ${stageCard(s.title, s.titleColor, s.bd, s.bg, s.body, s.footer || '')}
+            ${i < stages.length - 1 ? hArrow(s.arrowLabel || '') : ''}
+          `).join('')}
+        </div>
+      </div>`;
+
+    /* ── Lane 1: Collaboration / New creation ── */
+    const l1s1body = isFr
+      ? `${tag('Product Owner', '#6b4ba8', '#f0ebfa')}
+         ${step(1, 'Rassemble briefs, notes, transcriptions et données produit')}
+         ${step(2, 'Décrit le besoin — brief structuré ou description informelle')}
+         <div style="font-size:0.58rem;font-weight:700;color:#75633F;letter-spacing:0.05em;text-transform:uppercase;margin:0.35rem 0 0.2rem;">Voie A — PO illustre l\'idée</div>
+         ${step('→', 'Génère un premier jet (Claude, v0, Figma Make) · passe la main au designer', '#6b4ba8')}
+         <div style="font-size:0.58rem;font-weight:700;color:#75633F;letter-spacing:0.05em;text-transform:uppercase;margin:0.35rem 0 0.2rem;">Voie B — Designer produit directement</div>
+         ${step('→', 'Travaille dans Figma avec ou sans outil selon le scope', '#2859a8')}
+         ${tag('UX/UI Designer', '#2859a8', '#eef3fd')}
+         <div style="font-size:0.63rem;color:#464747;line-height:1.45;">${'Affine · aligne DS · valide états & accessibilité · livre la spec'}</div>`
+      : `${tag('Product Owner', '#6b4ba8', '#f0ebfa')}
+         ${step(1, 'Gathers briefs, notes, transcripts and product data')}
+         ${step(2, 'Describes the need — structured brief or informal description')}
+         <div style="font-size:0.58rem;font-weight:700;color:#75633F;letter-spacing:0.05em;text-transform:uppercase;margin:0.35rem 0 0.2rem;">Path A — PO illustrates the idea</div>
+         ${step('→', 'Generates a first draft (Claude, v0, Figma Make) · hands off to designer', '#6b4ba8')}
+         <div style="font-size:0.58rem;font-weight:700;color:#75633F;letter-spacing:0.05em;text-transform:uppercase;margin:0.35rem 0 0.2rem;">Path B — Designer works directly</div>
+         ${step('→', 'Works in Figma with or without a tool depending on scope', '#2859a8')}
+         ${tag('UX/UI Designer', '#2859a8', '#eef3fd')}
+         <div style="font-size:0.63rem;color:#464747;line-height:1.45;">${'Refines · aligns DS · validates states & accessibility · ships spec'}</div>`;
+
+    const l1s2body =
+      `${pill2('Brand & Aesthetic', '#fdecea', '#CB1617', isFr ? 'Palette · type · règles visuelles' : 'Palette · type · visual rules')}
+       ${pill2('Design Tokens', '#e8f8ee', '#007a40', isFr ? 'Variables Figma ↔ AppColors Dart · FR/ES' : 'Figma variables ↔ AppColors Dart · FR/ES')}
+       ${pill2('Components & Patterns', '#eef3fd', '#2859a8', isFr ? 'Inventaire DS · variantes · règles d\'usage' : 'DS inventory · variants · usage rules')}
+       ${pill2('Platform Rules', '#fdf8ed', '#a07020', isFr ? 'Flutter · safe area · localisation' : 'Flutter · safe area · localisation')}
+       ${pill2('Copy & Tone', '#fdf0f8', '#b03080', isFr ? 'Formulations positives · tonalité · FR/ES' : 'Positive phrasing · tone · FR/ES')}`;
+
+    const l1s3body =
+      `<div style="font-size:0.58rem;color:#75633F;font-style:italic;margin-bottom:0.4rem;line-height:1.4;">${isFr ? 'Selon le scope — Figma direct ou outil de génération' : 'Depending on scope — Figma direct or generation tool'}</div>
+       ${pill2('Figma', '#eef3fd', '#2859a8', isFr ? 'Conception directe — toujours disponible' : 'Direct design — always available')}
+       ${pill2('Figma MCP', '#f0ebfa', '#6b4ba8', isFr ? 'Option : API write access via WebSocket' : 'Option: API write access via WebSocket')}
+       ${pill2('Claude / v0 / Figma Make', '#f0ebfa', '#6b4ba8', isFr ? 'Option : génération UI depuis prompt' : 'Option: UI generation from prompt')}`;
+
+    const l1s4body =
+      `${pill2(isFr ? 'Frames Figma' : 'Figma frames', '#eef3fd', '#2859a8', isFr ? 'Générées · à affiner par le designer' : 'Generated · to be refined by designer')}
+       ${pill2('Story UI', '#eef3fd', '#2859a8', isFr ? 'Branch 7 · Sent UI ?' : 'Branch 7 · Sent UI?')}
+       ${pill2('UX/UI Designer', '#e8f8ee', '#007a40', isFr ? 'Affine · valide avec PO · livre' : 'Refines · validates with PO · ships')}`;
+
+    const lane1 = lane(
+      '#2859a8', '#f5f8ff',
+      isFr ? '🤝 Collaboration — Nouvelle création' : '🤝 Collaboration — New creation',
+      isFr ? 'PO cadre le besoin · Designer produit & affine · livrable Figma' : 'PO frames the need · Designer produces & refines · Figma deliverable',
+      [
+        { title: isFr ? 'Acteurs' : 'Actors', titleColor: '#211C12', bd: '#dde6f8', bg: '#fff', body: l1s1body, arrowLabel: '→' },
+        { title: isFr ? 'Couche connaissance (.md)' : 'Knowledge layer (.md)', titleColor: '#007a40', bd: '#a0d8b8', bg: '#f0faf5', body: l1s2body, arrowLabel: '→' },
+        { title: isFr ? 'Outils & infrastructure' : 'Tools & infrastructure', titleColor: '#6b4ba8', bd: '#cebfe8', bg: '#f8f4ff', body: l1s3body, arrowLabel: '→' },
+        { title: 'Outputs', titleColor: '#c0533a', bd: '#e8b8a8', bg: '#fdf5f2', body: l1s4body },
+      ]
+    );
+
+    /* ── Lane 2: Code-focused / Small iterations ── */
+    const l2s1body = isFr
+      ? `${tag('Product Owner', '#6b4ba8', '#f0ebfa')}
+         ${step(1, 'Décrit la modification souhaitée (variante, bug, ajustement)')}
+         ${step(2, 'Partage le contexte : composant existant, état, comportement attendu')}
+         ${tag('UX/UI Designer', '#2859a8', '#eef3fd')}
+         <div style="font-size:0.63rem;color:#464747;line-height:1.45;">${'Modifie dans Figma · utilise un outil si ça fait gagner du temps · valide · livre'}</div>`
+      : `${tag('Product Owner', '#6b4ba8', '#f0ebfa')}
+         ${step(1, 'Describes the desired change (variant, bug, adjustment)')}
+         ${step(2, 'Shares context: existing component, state, expected behaviour')}
+         ${tag('UX/UI Designer', '#2859a8', '#eef3fd')}
+         <div style="font-size:0.63rem;color:#464747;line-height:1.45;">${'Edits in Figma · uses a tool if it saves time · validates · ships'}</div>`;
+
+    const l2s2body =
+      `${pill2(isFr ? 'Bibliothèque composants (code)' : 'Component library (code)', '#f0ebfa', '#6b4ba8', 'Storybook · StoryUI')}
+       ${pill2('Skills PdF Markdown', '#e8f8ee', '#007a40', isFr ? 'Conventions · règles DS · patterns' : 'Conventions · DS rules · patterns')}
+       ${pill2('Code Connect', '#eef3fd', '#2859a8', isFr ? 'Mapping Figma ↔ implémentations' : 'Figma ↔ code implementation mapping')}`;
+
+    const l2s3body =
+      `<div style="font-size:0.58rem;color:#75633F;font-style:italic;margin-bottom:0.4rem;line-height:1.4;">${isFr ? 'Figma suffit souvent — outils optionnels si gain de temps' : 'Figma is often enough — tools optional if they save time'}</div>
+       ${pill2('Figma', '#eef3fd', '#2859a8', isFr ? 'Modification directe — cas le plus fréquent' : 'Direct edit — most common case')}
+       ${pill2('Figma MCP', '#f0ebfa', '#6b4ba8', isFr ? 'Option : plugin bridge · API write access' : 'Option: plugin bridge · API write access')}
+       ${pill2('Trantor / Claude', '#f0ebfa', '#6b4ba8', isFr ? 'Option : infrastructure locale' : 'Option: local infrastructure')}`;
+
+    const l2s4body =
+      `${pill2(isFr ? 'Livrable handoff' : 'Handoff deliverable', '#fdf0ec', '#c0533a', isFr ? 'Figma · specs · annotations · update Storybook ?' : 'Figma · specs · annotations · update Storybook?')}
+       ${pill2(isFr ? 'Code production' : 'Production code', '#eef3fd', '#2859a8', 'Flutter · Drupal · DSI')}`;
+
+    const lane2 = lane(
+      '#007a40', '#f2faf5',
+      isFr ? '💻 Code-focused — Itération UI existante' : '💻 Code-focused — Existing UI iteration',
+      isFr ? 'Modification ciblée · outils au choix · livrable code' : 'Targeted change · tools of choice · code deliverable',
+      [
+        { title: isFr ? 'Acteurs' : 'Actors', titleColor: '#211C12', bd: '#b8ddc8', bg: '#fff', body: l2s1body, arrowLabel: '→' },
+        { title: isFr ? 'Couche connaissance (.md)' : 'Knowledge layer (.md)', titleColor: '#007a40', bd: '#a0d8b8', bg: '#eaf8f0', body: l2s2body, arrowLabel: '→' },
+        { title: isFr ? 'Outils & infrastructure' : 'Tools & infrastructure', titleColor: '#6b4ba8', bd: '#cebfe8', bg: '#f8f4ff', body: l2s3body, arrowLabel: '→' },
+        { title: 'Outputs', titleColor: '#c0533a', bd: '#e8b8a8', bg: '#fdf5f2', body: l2s4body },
+      ]
+    );
+
+    const landscape = `
+      <div style="margin-bottom:1.75rem;">
+        ${lane1}
+        ${lane2}
+        <!-- DSI/Dev shared footer -->
+        <div style="background:#F1E8D7;border:1px solid #E6D7BA;border-radius:0.5rem;padding:0.5rem 0.85rem;display:flex;align-items:center;gap:0.75rem;">
+          <span style="font-size:0.65rem;font-weight:700;color:#211C12;white-space:nowrap;">DSI / Dev</span>
+          <svg width="16" height="10" viewBox="0 0 16 10" style="flex-shrink:0;"><line x1="0" y1="5" x2="10" y2="5" stroke="#C6A669" stroke-width="1.5"/><path d="M8,2 L14,5 L8,8" stroke="#C6A669" stroke-width="1.5" fill="none"/></svg>
+          <span style="font-size:0.62rem;color:#75633F;line-height:1.5;">${isFr ? 'Accède aux Skills PdF + à la Bibliothèque de composants (code) · reçoit le livrable handoff · implémente le code output' : 'Accesses PdF Skills + Component library (code) · receives the handoff deliverable · implements the code output'}</span>
+        </div>
+      </div>`;
+
     root.innerHTML = `
-      <!-- Slide 1 — Timeline -->
-      <div class="dops-section-label">${isFr ? 'Frise — mi-2026 → fin 2027' : 'Timeline — mid-2026 → end 2027'}</div>
-      <div style="padding:1rem 0 0.75rem;margin-bottom:1.75rem;">
-        ${tlSvg}
-      </div>
+      <!-- Pipeline landscape -->
+      <div class="dops-section-label">${isFr ? 'Workflow & infrastructure — Acteurs · Outils · Livrables' : 'Workflow & infrastructure — Actors · Tools · Deliverables'}</div>
+      ${landscape}
 
       <!-- Project types -->
       <div class="dops-section-label">${isFr ? 'Processus design — 3 types de projets' : 'Design process — 3 project types'}</div>
       ${ptypesBlock}
 
-      <!-- Slide 2 — AI workflow + bottleneck -->
-      <div class="dops-section-label">${isFr ? 'Workflow IA — qui fait quoi (étapes détaillées)' : 'AI workflow — who does what (detailed steps)'}</div>
+      <!-- Slide 2 — workflow + bottleneck -->
+      <div class="dops-section-label">${isFr ? 'Workflow — qui fait quoi (étapes détaillées)' : 'Workflow — who does what (detailed steps)'}</div>
       ${wfSvg}
       ${wfDesc}
       <div class="dops-flywheel" style="margin-bottom:1.5rem;">${bottleneck}</div>
 
       <!-- Slide 2 cont. — MCP infrastructure -->
-      <div class="dops-section-label">${isFr ? 'Infrastructure IA — le levier Figma MCP' : 'AI infrastructure — the Figma MCP lever'}</div>
+      <div class="dops-section-label">${isFr ? 'Figma MCP — une option d\'infrastructure' : 'Figma MCP — one infrastructure option'}</div>
       <div class="dops-breakthrough" style="margin-bottom:1rem;">
         <div class="dops-breakthrough-icon">⚡</div>
         <p>${d.breakthrough[lang]}</p>
       </div>
+
+      <!-- Context files for AI -->
+      <div class="dops-section-label">${isFr ? 'Contexte design system pour l\'IA — fichiers .md' : 'Design system context for AI — .md files'}</div>
+      ${(() => {
+        const dlIcon = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>`;
+
+        const pFiles = [
+          { href: 'data/design-tokens-ai-context.md',   tag: isFr ? 'Priorité 1' : 'Priority 1', label: isFr ? 'Tokens IA' : 'AI Tokens',        desc: isFr ? '154 variables Figma (couleurs, typo, espacements, ombres) — light & dark. À inclure dans tout prompt de génération d\'interface.' : '154 Figma variables (colours, type, spacing, shadows) — light & dark. Include in any UI generation prompt.' },
+          { href: 'data/design-tokens-dev-handoff.md',  tag: isFr ? 'Priorité 2' : 'Priority 2', label: isFr ? 'Tokens Handoff' : 'Handoff Tokens', desc: isFr ? 'Référence complète tokens pour l\'intégration frontend — noms exacts, valeurs, correspondances CSS/Swift.' : 'Complete token reference for frontend integration — exact names, values, CSS/Swift mappings.' },
+        ];
+
+        const oFiles = [
+          { href: 'data/ios-design-guidelines.md',      label: 'iOS Guidelines' },
+          { href: 'data/design-system-patterns.md',     label: 'DS Patterns' },
+          { href: 'data/mobile-ios-design.md',          label: 'iOS Design' },
+          { href: 'data/mobile-android-design.md',      label: 'Android Design' },
+          { href: 'data/figma-mcp-implement-design.md', label: 'Figma MCP' },
+          { href: 'data/web-design-guidelines.md',      label: 'Web Guidelines' },
+          { href: 'data/ux-principles.md',              label: isFr ? 'Principes UX' : 'UX Principles' },
+          { href: 'data/responsive-design.md',          label: 'Responsive' },
+          { href: 'data/ui-ux-pro-max.md',              label: 'UI/UX Pro Max' },
+          { href: 'data/i18n-localization.md',          label: 'i18n / L10n' },
+          { href: 'data/copywriting.md',                label: 'Copywriting' },
+          { href: 'data/marketing-psychology.md',       label: isFr ? 'Psychologie Marketing' : 'Marketing Psychology' },
+          { href: 'data/freins-leviers-segments.md',     label: isFr ? 'Freins & Leviers' : 'Barriers & Levers' },
+        ];
+
+        return `
+          <p style="font-size:0.72rem;color:#75633F;line-height:1.7;margin-bottom:0.85rem;">${isFr
+            ? 'Glisser ces fichiers dans Claude, Cursor ou votre <code style="font-family:monospace;font-size:0.68rem;background:#F1E8D7;color:#75633F;padding:0.1em 0.3em;border-radius:0.2rem;">.cursorrules</code> pour fournir le contexte DS lors de la génération.'
+            : 'Drop these files into Claude, Cursor or your <code style="font-family:monospace;font-size:0.68rem;background:#F1E8D7;color:#75633F;padding:0.1em 0.3em;border-radius:0.2rem;">.cursorrules</code> to provide DS context when generating UI.'
+          }</p>
+
+          <div style="display:flex;flex-direction:column;gap:0.5rem;margin-bottom:0.75rem;">
+            ${pFiles.map(f => `
+              <div style="display:flex;align-items:center;gap:0.75rem;background:#FBF7F0;border:1.5px solid #C6A669;border-radius:0.5rem;padding:0.6rem 0.85rem;">
+                <span style="font-size:0.55rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#C6A669;background:#FBF7F0;border:1px solid #C6A669;border-radius:999px;padding:0.1rem 0.45rem;white-space:nowrap;">${f.tag}</span>
+                <div style="flex:1;min-width:0;">
+                  <div style="font-size:0.7rem;font-weight:700;color:#211C12;margin-bottom:0.1rem;">${f.label}</div>
+                  <div style="font-size:0.62rem;color:#75633F;line-height:1.4;">${f.desc}</div>
+                </div>
+                <a href="${f.href}" download style="display:flex;align-items:center;gap:0.3rem;font-size:0.62rem;font-weight:700;color:#C6A669;text-decoration:none;white-space:nowrap;flex-shrink:0;">${dlIcon} ${f.label}</a>
+              </div>`).join('')}
+          </div>
+
+          <div style="display:flex;flex-wrap:wrap;gap:0.35rem;margin-bottom:1.5rem;">
+            ${oFiles.map(f => `
+              <a href="${f.href}" download style="display:inline-flex;align-items:center;gap:0.25rem;font-size:0.63rem;font-weight:600;color:#75633F;background:#F1E8D7;border:1px solid #E6D7BA;border-radius:999px;padding:0.2rem 0.65rem;text-decoration:none;">${dlIcon} ${f.label}</a>`).join('')}
+          </div>`;
+      })()}
 
       <!-- Slide 2 cont. — Phases 0 & 1 -->
       <div class="dops-section-label">${isFr ? 'Phases 0 & 1 — DS AI-ready + génération PO' : 'Phases 0 & 1 — AI-ready DS + PO generation'}</div>
@@ -2720,36 +2919,6 @@
               <div class="dops-phase-summary">${p.summary}</div>
               <div class="dops-phase-actions">${p.actions.map(a => `<div class="dops-phase-action">${a}</div>`).join('')}</div>
             </div>
-          </div>`).join('')}
-      </div>
-
-      <!-- Trantor compatibility -->
-      <div class="dops-section-label">${isFr ? 'Trantor — compatibilité avec le pipeline' : 'Trantor — pipeline compatibility'}</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.6rem;margin-bottom:0.75rem;">
-        ${d.trantor.scenarios[lang].map(s => `
-          <div style="background:${s.bg};border:1.5px solid ${s.bd};border-radius:0.75rem;padding:1rem;display:flex;flex-direction:column;gap:0.6rem;">
-            <div style="font-size:0.8rem;font-weight:700;color:${s.color};line-height:1.3;">${s.title}</div>
-            <div style="font-size:0.75rem;color:#464747;line-height:1.65;flex:1;white-space:pre-line;">${s.body}</div>
-            <div style="background:${s.color};color:#fff;border-radius:999px;padding:0.3rem 0.75rem;font-size:0.7rem;font-weight:700;text-align:center;align-self:flex-start;">${s.verdict}</div>
-          </div>`).join('')}
-      </div>
-      <div style="background:#FBF7F0;border:1px solid #E6D7BA;border-radius:0.6rem;padding:0.85rem 1.1rem;margin-bottom:0.6rem;">
-        <div style="font-size:0.7rem;font-weight:700;color:#211C12;margin-bottom:0.5rem;">${isFr ? 'Questions à clarifier avec la DSI' : 'Questions to clarify with DSI'}</div>
-        ${d.trantor.questions[lang].map((q,i) => `<div style="font-size:0.76rem;color:#464747;line-height:1.65;margin-bottom:0.2rem;">${i+1}. ${q}</div>`).join('')}
-      </div>
-      <div style="background:#f0ebfa;border:1.5px solid #cebfe8;border-radius:0.6rem;padding:0.85rem 1.1rem;margin-bottom:0.75rem;">
-        <div style="font-size:0.75rem;color:#6b4ba8;line-height:1.7;white-space:pre-line;">${d.trantor.recommendation[lang]}</div>
-      </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.6rem;margin-bottom:1.5rem;">
-        ${d.trantor.hosting[lang].map(h => `
-          <div style="background:${h.bg};border:1.5px solid ${h.bd};border-radius:0.75rem;padding:1rem;position:relative;">
-            ${h.recommended ? `<span style="position:absolute;top:0.75rem;right:0.75rem;background:#6b4ba8;color:#fff;border-radius:999px;padding:0.15rem 0.5rem;font-size:0.6rem;font-weight:700;">★ ${isFr?'Recommandé':'Recommended'}</span>` : ''}
-            <div style="font-size:0.8rem;font-weight:700;color:${h.color};margin-bottom:0.5rem;">${h.title}</div>
-            <div style="font-size:0.73rem;color:#464747;line-height:1.65;white-space:pre-line;margin-bottom:0.6rem;">${h.body}</div>
-            <div style="font-size:0.65rem;font-weight:700;color:#007a40;margin-bottom:0.2rem;">${isFr?'Avantages':'Pros'}</div>
-            ${h.pros.map(p => `<div style="font-size:0.7rem;color:#464747;line-height:1.5;margin-bottom:0.1rem;">+ ${p}</div>`).join('')}
-            <div style="font-size:0.65rem;font-weight:700;color:#CB1617;margin:0.4rem 0 0.2rem;">${isFr?'Limites':'Cons'}</div>
-            ${h.cons.map(c => `<div style="font-size:0.7rem;color:#464747;line-height:1.5;margin-bottom:0.1rem;">− ${c}</div>`).join('')}
           </div>`).join('')}
       </div>
 
@@ -2800,60 +2969,8 @@
         </tbody>
       </table>
 
-      <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:#007a40;margin-bottom:0.5rem;">${isFr?'Automatisation':'Automation'}</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.5rem;margin-bottom:1rem;">
-        ${d.automation.groups[lang].map(g => `
-          <div style="background:#FBF7F0;border:1px solid #E6D7BA;border-radius:0.6rem;padding:0.8rem 0.9rem;">
-            <div style="font-size:0.68rem;font-weight:700;color:#211C12;margin-bottom:0.5rem;">${g.icon} ${g.title}</div>
-            ${g.items.map(item => `<div style="display:flex;gap:0.35rem;align-items:flex-start;margin-bottom:0.35rem;">
-              <span style="color:#CB1617;font-size:0.58rem;font-weight:700;flex-shrink:0;margin-top:2px;">▸</span>
-              <div style="font-size:0.68rem;font-weight:600;color:#211C12;line-height:1.35;">${item.name}</div>
-            </div>`).join('')}
-          </div>`).join('')}
-      </div>
+      `;
 
-      <!-- Flywheel -->
-      <div style="background:#FBF7F0;border:1px solid #E6D7BA;border-radius:0.75rem;padding:0.875rem 1.25rem;margin-bottom:1.5rem;">
-        ${fwSvg}
-        <p style="font-size:0.74rem;color:#75633F;line-height:1.65;text-align:center;margin:0.4rem 0 0;font-style:italic;">${d.flywheel[lang]}</p>
-      </div>
-
-      <!-- Slide 5 — Working models + Tooling matrix -->
-      <div class="dops-section-label">${isFr ? 'Modèles de collaboration — contrainte seats' : 'Collaboration models — seat constraint'}</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;margin-bottom:1.5rem;">
-        ${models.map(m => `
-          <div style="background:#FBF7F0;border:1px solid #E6D7BA;border-radius:0.6rem;padding:0.85rem 1rem;">
-            <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:0.5rem;margin-bottom:0.35rem;">
-              <div style="font-size:0.78rem;font-weight:600;color:#211C12;line-height:1.3;">${m.title}</div>
-              <span class="dops-status-badge ${statusClass(m.status)}" style="flex-shrink:0;">${m.statusLabel}</span>
-            </div>
-            <div style="font-size:0.73rem;color:#75633F;line-height:1.6;">${m.body}</div>
-            ${m.example ? `<div class="dops-model-example" style="margin-top:0.5rem;font-size:0.67rem;">${m.example}</div>` : ''}
-          </div>`).join('')}
-      </div>
-
-      <div class="dops-section-label">${isFr ? 'Principes clés' : 'Key principles'}</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.4rem;margin-bottom:1.5rem;">
-        ${principles.map(p => `
-          <div style="background:#FBF7F0;border:1px solid #E6D7BA;border-radius:0.5rem;padding:0.6rem 0.8rem;font-size:0.73rem;color:#464747;line-height:1.55;display:flex;gap:0.45rem;align-items:flex-start;">
-            <span style="color:#CB1617;font-weight:700;flex-shrink:0;">▸</span>
-            <span>${p.text}</span>
-          </div>`).join('')}
-      </div>
-
-      <div class="dops-section-label">${isFr ? 'Matrice outillage — 18 outils' : 'Tooling matrix — 18 tools'}</div>
-      <table class="dops-tooling-table">
-        <thead><tr>${tooling.headers[lang].map(h => `<th>${h}</th>`).join('')}</tr></thead>
-        <tbody>
-          ${tooling.rows.map(r => `
-            <tr>
-              <td><strong>${r.tool}</strong></td>
-              <td><span style="display:inline-block;background:${r.phaseColor}18;color:${r.phaseColor};border:1px solid ${r.phaseColor}44;border-radius:999px;padding:0.1rem 0.45rem;font-size:0.6rem;font-weight:700;">Ph.${r.phase}</span></td>
-              <td>${isFr ? r.who_fr : r.who_en}</td>
-              <td>${isFr ? r.what_fr : r.what_en}</td>
-            </tr>`).join('')}
-        </tbody>
-      </table>`;
   }
 
   /* ══════════════════════════════════════════

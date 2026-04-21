@@ -1,6 +1,6 @@
-# Puy du Fou — Design Token Spec (AI Context)
+# Design Token Spec (AI Context)
 > Source: Figma `Design System Fondamentaux` · 154 variables · Light + Dark modes  
-> Use this file as context for any AI-assisted UI generation targeting the PdF app or web.
+> Use this file as context for any AI-assisted UI generation.
 
 ---
 
@@ -18,7 +18,7 @@ Feed this file to Claude, Cursor, or any LLM agent at session start. It provides
 
 ## 1. Brand Identity
 
-**Puy du Fou** is a major French historical theme park. The visual identity is baroque, theatrical, and warm — not flat or minimal. The design language combines:
+The visual identity is baroque, theatrical, and warm — not flat or minimal. The design language combines:
 - Deep reds and warm beige-golds as the primary palette
 - Serif headings (Georgia) for narrative/theatrical register
 - Arial for functional UI copy

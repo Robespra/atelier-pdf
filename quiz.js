@@ -607,7 +607,7 @@
   function launchEffects(pct) {
     clearEffects();
     if (pct === 1) {
-      // Perfect — glorious Puy du Fou confetti: gold, red, cream
+      // Perfect score — confetti: gold, red, cream
       const colors = ['#C6A669', '#CB1617', '#FBF7F0', '#E8C328', '#211C12'];
       const fire = (origin, angle) => confetti({
         particleCount: 80,
@@ -1549,7 +1549,7 @@
         <div style="width:100%;max-width:320px;display:flex;flex-direction:column;gap:0.75rem;">
           <div style="background:#C6A669;border-radius:8px;padding:0.85rem 1rem;display:flex;align-items:flex-start;gap:0.75rem;">
             <span style="font-size:1rem;flex-shrink:0;">ℹ️</span>
-            <p style="font-size:0.82rem;color:#FBF7F0;font-weight:500;line-height:1.5;margin:0;">Le Puy du Fou, Les Noces de Feu et la Cinéscénie sont <strong>inclus</strong> dans votre billet d'entrée.</p>
+            <p style="font-size:0.82rem;color:#FBF7F0;font-weight:500;line-height:1.5;margin:0;">Le Parc, les spectacles du soir et le grand show nocturne sont <strong>inclus</strong> dans votre billet d'entrée.</p>
           </div>
           <div style="background:#CB1617;border-radius:8px;padding:0.85rem 1rem;display:flex;align-items:flex-start;gap:0.75rem;">
             <span style="font-size:1rem;flex-shrink:0;">⚠️</span>

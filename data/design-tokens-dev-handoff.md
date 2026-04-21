@@ -1,4 +1,4 @@
-# Puy du Fou — Design Tokens (Dev Handoff)
+# Design Tokens (Dev Handoff)
 > Source: Figma file `Design System Fondamentaux` · Collection: `Variables` · Modes: Light / Dark  
 > Generated from Figma MCP · 154 variables
 
