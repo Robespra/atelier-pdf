@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="pduf">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Nommez ce composant – Apprenez les noms des composants UI de façon ludique." />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Name That UI</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%23CB1617'/><text x='16' y='21' font-family='Georgia,serif' font-size='13' font-weight='900' fill='%23FBF7F0' text-anchor='middle'>UI</text></svg>" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5/daisyui.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+  <style>
+    /* ── Custom DaisyUI theme ── */
+    [data-theme="pduf"] {
+      --color-base-100: #FBF7F0;
+      --color-base-200: #F1E8D7;
+      --color-base-300: #E6D7BA;
+      --color-base-content: #211C12;
+      --color-primary: #CB1617;
+      --color-primary-content: #FFFFFF;
+      --color-secondary: #C6A669;
+      --color-secondary-content: #211C12;
+      --color-accent: #E8C328;
+      --color-accent-content: #211C12;
+      --color-neutral: #464747;
+      --color-neutral-content: #FBF7F0;
+      --color-success: #009A58;
+      --color-success-content: #F0F9F6;
+      --color-error: #CB1617;
+      --color-error-content: #FFFFFF;
+      --color-warning: #E8C328;
+      --color-warning-content: #211C12;
+      --color-info: #75633F;
+      --color-info-content: #FBF7F0;
+      --radius-selector: 0.5rem;
+      --radius-field: 0.5rem;
+      --radius-box: 0.75rem;
+      --border: 1.5px;
+    }
+
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .font-serif { font-family: 'Playfair Display', Georgia, serif; }
+
+    .pduf-border {
+      border: 2px solid #C6A669;
+      position: relative;
+    }
+    .pduf-border::before {
+      content: '';
+      position: absolute;
+      inset: 5px;
+      border: 1px solid #C6A66955;
+      border-radius: 0.5rem;
+      pointer-events: none;
+    }
+
+    /* Lang toggle */
+    .lang-btn {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      border: 1.5px solid transparent;
+      cursor: pointer;
+      transition: all 120ms ease;
+      background: transparent;
+      color: #75633F;
+      font-family: 'Inter', sans-serif;
+    }
+    .lang-btn.active {
+      background: #211C12;
+      color: #FBF7F0;
+      border-color: #211C12;
+    }
+    .lang-btn:not(.active):hover {
+      border-color: #C6A669;
+      color: #211C12;
+    }
+
+    /* Feedback icon container */
+    .feedback-icon-wrap {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .feedback-icon-wrap.correct { background: #E6F7EF; }
+    .feedback-icon-wrap.wrong   { background: #FDECEA; }
+
+    /* End screen icon */
+    .end-icon-wrap {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.25rem;
+    }
+  </style>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="bg-base-200 min-h-dvh flex items-stretch justify-center">
+
+  <!-- ══════════════ START SCREEN ══════════════ -->
+  <div id="screen-start" class="screen active flex-col items-center justify-center p-6 w-full max-w-sm" role="main">
+
+    <!-- Mobile topbar (hidden on desktop) -->
+    <div class="mobile-topbar flex gap-1 mb-4 self-end intro-animate" style="--delay:0ms; width:100%; justify-content:space-between; align-items:center;">
+      <a href="index.html" style="font-size:0.7rem;font-weight:700;font-family:'Inter',sans-serif;letter-spacing:0.04em;color:#75633F;text-decoration:none;display:flex;align-items:center;gap:0.3rem;padding:0.2rem 0;" data-i18n-back>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        Hub
+      </a>
+      <div style="display:flex;gap:0.25rem;">
+        <button class="lang-btn active" data-lang="fr">FR</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
+    </div>
+
+    <!-- Mobile manifesto (hidden on desktop, shown in left col instead) -->
+    <div class="manifesto intro-animate" style="--delay:80ms" aria-label="Why this quiz exists">
+      <p class="manifesto-text" data-i18n="manifesto"></p>
+      <button class="manifesto-toggle" id="btn-manifesto-toggle" data-i18n="manifesto_more">Pourquoi ?</button>
+    </div>
+
+    <!-- Desktop left column (hidden on mobile via CSS) -->
+    <div class="desktop-left" style="display:none;" aria-hidden="true">
+      <a href="index.html" id="back-to-hub" style="display:flex;font-size:0.68rem;font-weight:700;font-family:'Inter',sans-serif;letter-spacing:0.04em;color:#C6A66966;text-decoration:none;align-items:center;gap:0.3rem;margin-bottom:1.5rem;transition:color 150ms ease;" onmouseover="this.style.color='#C6A669'" onmouseout="this.style.color='#C6A66966'">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        Hub
+      </a>
+      <div class="desktop-logo" aria-hidden="true">
+        <svg width="26" height="26" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="3" y="6" width="24" height="18" rx="3" stroke="white" stroke-width="1.75" fill="none"/>
+          <line x1="3" y1="11" x2="27" y2="11" stroke="white" stroke-width="1.5"/>
+          <circle cx="7" cy="8.5" r="1" fill="white" fill-opacity="0.6"/>
+          <circle cx="10.5" cy="8.5" r="1" fill="white" fill-opacity="0.6"/>
+          <circle cx="14" cy="8.5" r="1" fill="white" fill-opacity="0.6"/>
+          <rect x="7" y="15" width="9" height="1.5" rx="0.75" fill="white" fill-opacity="0.8"/>
+          <rect x="7" y="18.5" width="6" height="1.5" rx="0.75" fill="white" fill-opacity="0.5"/>
+          <circle cx="21.5" cy="20" r="3.5" fill="white" fill-opacity="0.95"/>
+          <path d="M20 20l1.2 1.3 2.3-2.3" stroke="#CB1617" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div id="desktop-level-badge" class="desktop-level-badge" style="display:none;"></div>
+      <p class="desktop-title" data-i18n="title">Nommez ce<br>composant</p>
+      <p class="desktop-subtitle" data-i18n="subtitle">Identifiez les composants UI courants et enrichissez votre vocabulaire design.</p>
+      <div class="desktop-manifesto">
+        <p data-i18n="manifesto"></p>
+      </div>
+    </div>
+
+    <!-- Mobile card / Desktop right column -->
+    <div class="card pduf-border bg-base-100 w-full shadow-xl intro-animate desktop-right" style="--delay:160ms">
+
+      <!-- Desktop topbar inside right col -->
+      <div class="desktop-topbar" style="display:none;">
+        <button class="lang-btn active" data-lang="fr">FR</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
+
+      <div class="card-body items-center text-center gap-4 py-10 px-8">
+
+        <!-- Logo mark (mobile only — hidden on desktop) -->
+        <div class="w-16 h-16 rounded-full bg-primary flex items-center justify-center shadow-lg mb-1 desktop-hide" aria-hidden="true">
+          <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="6" width="24" height="18" rx="3" stroke="white" stroke-width="1.75" fill="none"/>
+            <line x1="3" y1="11" x2="27" y2="11" stroke="white" stroke-width="1.5"/>
+            <circle cx="7" cy="8.5" r="1" fill="white" fill-opacity="0.6"/>
+            <circle cx="10.5" cy="8.5" r="1" fill="white" fill-opacity="0.6"/>
+            <circle cx="14" cy="8.5" r="1" fill="white" fill-opacity="0.6"/>
+            <rect x="7" y="15" width="9" height="1.5" rx="0.75" fill="white" fill-opacity="0.8"/>
+            <rect x="7" y="18.5" width="6" height="1.5" rx="0.75" fill="white" fill-opacity="0.5"/>
+            <circle cx="21.5" cy="20" r="3.5" fill="white" fill-opacity="0.95"/>
+            <path d="M20 20l1.2 1.3 2.3-2.3" stroke="#CB1617" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+
+        <div class="desktop-hide">
+          <h1 class="font-serif text-3xl font-black tracking-tight text-base-content leading-tight" data-i18n="title">
+            Nommez ce<br>composant
+          </h1>
+        </div>
+
+        <p class="text-base-content/55 text-sm leading-relaxed max-w-[240px] desktop-hide" data-i18n="subtitle">
+          Identifiez les composants UI courants et enrichissez votre vocabulaire design.
+        </p>
+
+        <button id="btn-start" class="btn btn-primary btn-wide text-base font-semibold mt-1" autofocus data-i18n="btn_start">
+          Commencer le quiz
+        </button>
+        <button id="btn-tournament" class="btn btn-outline btn-wide text-base font-semibold" data-i18n="btn_tournament">
+          <svg width="18" height="18" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="mr-1"><path d="M5 5l10 10M27 27l-10-10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M27 5L5 27" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M5 5l3 1-1-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M27 5l-3 1 1-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M5 27l3-1-1 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M27 27l-3-1 1 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+          Tournoi
+        </button>
+
+        <!-- Category filter chips -->
+        <div id="category-filters" class="flex flex-wrap justify-center gap-2 mt-1" role="group" aria-label="Filtrer par catégorie">
+          <button class="category-chip active" data-category="all">Tout</button>
+          <button class="category-chip" data-category="Navigation">Navigation</button>
+          <button class="category-chip" data-category="Feedback">Feedback</button>
+          <button class="category-chip" data-category="Input">Input</button>
+          <button class="category-chip" data-category="Layout">Layout</button>
+        </div>
+
+        <!-- Timer mode toggle -->
+        <div class="flex items-center gap-2 mt-2">
+          <input type="checkbox" id="timer-toggle" class="toggle toggle-sm toggle-primary" />
+          <label for="timer-toggle" id="timer-toggle-label" class="text-sm text-base-content/60 cursor-pointer select-none">
+            Mode chrono (10s)
+          </label>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ QUIZ SCREEN ══════════════ -->
+  <div id="screen-quiz" class="screen flex-col w-full max-w-sm" role="main" aria-live="polite">
+
+    <!-- Progress header (shared mobile + desktop) -->
+    <header class="sticky top-0 z-10 bg-base-200 px-5 pt-4 pb-2">
+      <div class="flex items-center justify-between mb-2">
+        <p id="score-label" class="text-xs font-semibold text-base-content/40 uppercase tracking-widest">
+          Question 1 / 14
+        </p>
+        <!-- Streak badge -->
+        <div id="streak-badge" class="streak-badge" style="display:none;" aria-live="polite" aria-label="Série de bonnes réponses"></div>
+        <!-- Language toggle (compact, in quiz) -->
+        <div class="flex gap-1 items-center">
+          <button id="btn-mute" class="mute-btn" aria-label="Couper le son" title="Couper le son">
+            <svg id="icon-sound-on" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 5.5H1.5A.5.5 0 001 6v4a.5.5 0 00.5.5H3l3.5 3V2.5L3 5.5z" stroke="currentColor" stroke-width="1.25" stroke-linejoin="round" fill="none"/>
+              <path d="M10 5.5a3 3 0 010 5" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+              <path d="M12 3.5a5.5 5.5 0 010 9" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+            </svg>
+            <svg id="icon-sound-off" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:none">
+              <path d="M3 5.5H1.5A.5.5 0 001 6v4a.5.5 0 00.5.5H3l3.5 3V2.5L3 5.5z" stroke="currentColor" stroke-width="1.25" stroke-linejoin="round" fill="none"/>
+              <path d="M10 6l4 4M14 6l-4 4" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+            </svg>
+          </button>
+          <button class="lang-btn active" data-lang="fr">FR</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+      </div>
+      <progress
+        id="progress-bar"
+        class="progress progress-primary w-full h-1.5"
+        value="0"
+        max="100"
+        role="progressbar"
+        aria-label="Progression du quiz"
+      ></progress>
+      <!-- Timer bar (shown only in timer mode) -->
+      <div id="timer-bar" style="display:none;"></div>
+    </header>
+
+    <!-- Mobile question stage (hidden on desktop) -->
+    <div id="question-stage" class="question-stage flex flex-col gap-4 px-5 pb-5 pt-2">
+      <div class="component-wrap rounded-xl border border-base-300 overflow-hidden" style="min-height:200px;">
+        <div id="component-render" class="w-full h-full" style="min-height:200px;"></div>
+      </div>
+      <p class="question-text text-center font-semibold text-base text-base-content/65" data-i18n="question_prompt">
+        Quel est ce composant&nbsp;UI&nbsp;?
+      </p>
+      <div id="options-grid" class="grid grid-cols-2 gap-2.5" role="group" aria-label="Choix de réponse"></div>
+    </div>
+
+    <!-- Desktop two-panel body (hidden on mobile) -->
+    <div id="quiz-desktop-body" style="display:none;">
+      <!-- Left: component display -->
+      <div id="quiz-left-panel">
+        <p class="question-text text-center font-semibold text-base text-base-content/65 mb-4" data-i18n="question_prompt">
+          Quel est ce composant&nbsp;UI&nbsp;?
+        </p>
+        <div class="component-wrap rounded-xl border border-base-300 overflow-hidden">
+          <div id="component-render-desktop" class="w-full"></div>
+        </div>
+      </div>
+      <!-- Right: options + inline feedback -->
+      <div id="quiz-right-panel">
+        <div id="options-grid-desktop" class="grid grid-cols-2 gap-3" role="group" aria-label="Choix de réponse"></div>
+        <!-- Inline feedback (desktop only) -->
+        <div id="feedback-panel-desktop" class="feedback-panel hidden bg-base-100 px-5 pt-5 pb-5 mt-4" role="alert">
+          <div class="flex gap-4">
+            <!-- Left: icon -->
+            <div id="feedback-icon-desktop" class="feedback-icon-wrap flex-shrink-0 mt-0.5" aria-hidden="true"></div>
+            <!-- Right: title + text + button -->
+            <div class="flex flex-col gap-2 flex-1 min-w-0">
+              <h2 id="feedback-title-desktop" class="font-serif text-lg font-bold leading-tight"></h2>
+              <div id="feedback-definition-desktop" class="text-sm text-base-content/60 leading-relaxed"></div>
+              <button id="btn-next-desktop" class="btn btn-primary w-full font-semibold mt-1" data-i18n="btn_next">
+                Suivant
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="ml-1"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile feedback panel (hidden on desktop) -->
+    <div id="feedback-panel" class="feedback-panel hidden absolute bottom-0 left-0 right-0 bg-base-100 border-t-2 border-secondary rounded-t-3xl shadow-2xl px-5 pt-5 pb-8 overflow-y-auto max-h-[72vh]" role="alert">
+      <div class="flex flex-col items-center gap-3 text-center">
+        <div id="feedback-icon" class="feedback-icon-wrap" aria-hidden="true"></div>
+        <h2 id="feedback-title" class="font-serif text-xl font-bold leading-tight"></h2>
+        <div id="feedback-definition" class="text-sm text-base-content/60 leading-relaxed max-w-xs text-left"></div>
+        <button id="btn-next" class="btn btn-primary w-full max-w-xs mt-2 font-semibold" data-i18n="btn_next">
+          Suivant
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="ml-1"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ END SCREEN ══════════════ -->
+  <div id="screen-end" class="screen flex-col items-center justify-center p-6 w-full max-w-sm" role="main">
+
+    <!-- Desktop left col -->
+    <div class="desktop-left" style="display:none;" aria-hidden="true">
+      <div class="desktop-logo" aria-hidden="true">
+        <svg width="26" height="26" viewBox="0 0 30 30" fill="none"><rect x="3" y="6" width="24" height="18" rx="3" stroke="white" stroke-width="1.75" fill="none"/><line x1="3" y1="11" x2="27" y2="11" stroke="white" stroke-width="1.5"/><circle cx="7" cy="8.5" r="1" fill="white" fill-opacity="0.6"/><circle cx="10.5" cy="8.5" r="1" fill="white" fill-opacity="0.6"/><circle cx="14" cy="8.5" r="1" fill="white" fill-opacity="0.6"/><rect x="7" y="15" width="9" height="1.5" rx="0.75" fill="white" fill-opacity="0.8"/><rect x="7" y="18.5" width="6" height="1.5" rx="0.75" fill="white" fill-opacity="0.5"/><circle cx="21.5" cy="20" r="3.5" fill="white" fill-opacity="0.95"/><path d="M20 20l1.2 1.3 2.3-2.3" stroke="#CB1617" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <p class="desktop-title" data-i18n="end_title">Quiz terminé</p>
+      <p class="desktop-subtitle" style="margin-top:0.5rem;" id="end-score-desktop"></p>
+      <div class="desktop-manifesto" style="margin-top:2rem;">
+        <p data-i18n="manifesto"></p>
+      </div>
+    </div>
+
+    <div class="card pduf-border bg-base-100 w-full shadow-xl desktop-right">
+      <div class="desktop-topbar" style="display:none;">
+        <button class="lang-btn active" data-lang="fr">FR</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
+      <div class="card-body items-center text-center gap-3 py-10 px-8">
+        <div class="end-icon-wrap" id="end-icon" aria-hidden="true"></div>
+        <h1 class="font-serif text-2xl font-bold tracking-tight desktop-hide" data-i18n="end_title">Quiz terminé</h1>
+        <p id="end-score" class="font-serif text-5xl font-black text-primary tracking-tight"></p>
+        <p id="end-message" class="text-sm text-base-content/60 leading-relaxed max-w-[220px]"></p>
+
+        <div id="score-history" style="display:none;" class="w-full">
+          <p id="history-title" class="text-xs font-semibold text-base-content/40 uppercase tracking-widest mb-2">Historique</p>
+          <ul id="history-list" class="history-list"></ul>
+        </div>
+
+        <button id="btn-retry" class="btn btn-primary btn-wide mt-2 font-semibold" data-i18n="btn_retry">Réessayer</button>
+        <button id="btn-share" class="btn btn-outline btn-wide font-semibold">Partager</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ LOBBY SCREEN ══════════════ -->
+  <div id="screen-lobby" class="screen flex-col items-center justify-center p-6 w-full max-w-sm" role="main">
+
+    <div class="desktop-left" style="display:none;" aria-hidden="true">
+      <div class="desktop-logo" aria-hidden="true">
+        <svg width="26" height="26" viewBox="0 0 32 32" fill="none"><path d="M5 5l10 10M27 27l-10-10" stroke="white" stroke-width="2" stroke-linecap="round"/><path d="M27 5L5 27" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+      </div>
+      <p class="desktop-title" data-i18n="lobby_title">Salle des guerriers</p>
+      <p class="desktop-subtitle" data-i18n="lobby_subtitle">Chaque membre de l'équipe ouvre cette page sur son propre écran.</p>
+      <div class="desktop-manifesto" style="margin-top:2rem;">
+        <p style="color:#C6A66988;font-style:italic;font-size:0.8rem;line-height:1.7;">« Un pour tous, tous pour l'UI. »</p>
+      </div>
+    </div>
+
+    <div class="card pduf-border bg-base-100 w-full shadow-xl desktop-right">
+      <div class="desktop-topbar" style="display:none;">
+        <button class="lang-btn active" data-lang="fr">FR</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
+      <div class="card-body items-center text-center gap-4 py-8 px-8">
+        <div class="self-start">
+          <button id="btn-back-lobby" class="btn btn-ghost btn-sm gap-1" data-i18n="btn_back">← Retour</button>
+        </div>
+        <div class="lobby-swords-icon end-icon-wrap desktop-hide" aria-hidden="true" style="background:#FBF0DA;">
+          <svg width="36" height="36" viewBox="0 0 32 32" fill="none"><path d="M5 5l10 10M27 27l-10-10" stroke="#C6A669" stroke-width="2" stroke-linecap="round"/><path d="M27 5L5 27" stroke="#C6A669" stroke-width="2" stroke-linecap="round"/><path d="M5 5l3 1-1-3" stroke="#C6A669" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M27 5l-3 1 1-3" stroke="#C6A669" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M5 27l3-1-1 3" stroke="#C6A669" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M27 27l-3-1 1 3" stroke="#C6A669" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+        </div>
+        <h2 class="font-serif text-2xl font-bold desktop-hide" data-i18n="lobby_title">Salle des guerriers</h2>
+        <p class="text-sm text-base-content/60 max-w-[220px] desktop-hide" data-i18n="lobby_subtitle">Ouvrez cette page dans plusieurs onglets et affrontez-vous en temps réel — sans serveur, sans pitié.</p>
+        <div class="w-full">
+          <label class="text-xs font-semibold text-base-content/50 uppercase tracking-widest mb-1 block" data-i18n="lobby_name_label">Votre nom de guerre</label>
+          <input id="player-name-input" type="text" class="input input-bordered w-full" maxlength="20" data-i18n-placeholder="lobby_name_placeholder" placeholder="Ex: Athos, Ragnar..." />
+        </div>
+        <div id="lobby-players" class="w-full bg-base-200 rounded-xl p-3 min-h-[60px] flex flex-col gap-1.5"></div>
+        <button id="btn-start-contest" class="btn btn-primary btn-wide font-semibold" data-i18n="btn_start_contest">Que le tournoi commence !</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ LEADERBOARD SCREEN ══════════════ -->
+  <div id="screen-leaderboard" class="screen flex-col items-center justify-center p-6 w-full max-w-sm" role="main">
+
+    <div class="desktop-left" style="display:none;" aria-hidden="true">
+      <div class="desktop-logo" aria-hidden="true">
+        <svg width="26" height="26" viewBox="0 0 36 36" fill="none"><path d="M5 26h26M5 26l3-14 6 7 4-10 4 10 6-7 3 14" stroke="white" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+      </div>
+      <p class="desktop-title" data-i18n="leaderboard_title">Tableau d'honneur</p>
+      <p class="desktop-subtitle" id="leaderboard-subtitle-desktop"></p>
+      <div class="desktop-manifesto" style="margin-top:2rem;">
+        <p style="color:#C6A66988;font-style:italic;font-size:0.8rem;line-height:1.7;">« La gloire appartient à celui qui connaît ses composants. »</p>
+      </div>
+    </div>
+
+    <div class="card pduf-border bg-base-100 w-full shadow-xl desktop-right">
+      <div class="desktop-topbar" style="display:none;">
+        <button class="lang-btn active" data-lang="fr">FR</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
+      <div class="card-body items-center text-center gap-4 py-8 px-8">
+        <div id="leaderboard-icon" class="end-icon-wrap" aria-hidden="true"></div>
+        <h2 class="font-serif text-2xl font-bold desktop-hide" data-i18n="leaderboard_title">Tableau d'honneur</h2>
+        <p id="leaderboard-subtitle" class="text-sm text-base-content/60"></p>
+        <ol id="leaderboard-list" class="w-full leaderboard-list"></ol>
+        <button id="btn-play-again" class="btn btn-primary btn-wide font-semibold mt-2" data-i18n="btn_play_again">Nouveau tournoi</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ LABEL CHALLENGE SCREEN ══════════════ -->
+  <div id="screen-label" class="screen flex-col w-full max-w-sm" role="main">
+
+    <!-- Shared header (same style as quiz) -->
+    <header class="flex items-center justify-between px-5 py-3 border-b border-base-300 bg-base-100 flex-shrink-0" style="border-radius:1.25rem 1.25rem 0 0;">
+      <div class="flex items-center gap-3">
+        <button id="btn-back-label" class="btn btn-ghost btn-sm font-semibold text-base-content/50 px-2">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 4l-4 4 4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <span class="text-xs font-semibold text-base-content/40 uppercase tracking-widest" data-i18n="label_step">Étape bonus</span>
+      </div>
+      <p id="label-score-display" class="text-xs font-bold text-primary uppercase tracking-widest"></p>
+    </header>
+
+    <!-- ── MOBILE: Phase 1 (drag) ── -->
+    <div id="label-phase-drag" class="flex flex-col gap-0 flex-1">
+
+      <div class="px-5 pt-4 pb-3 flex-shrink-0">
+        <h2 class="font-serif text-xl font-black tracking-tight text-base-content" data-i18n="label_title">Glissez les étiquettes</h2>
+        <p class="text-sm text-base-content/55 mt-1" data-i18n="label_subtitle">Déposez chaque terme sur la bonne zone du composant.</p>
+      </div>
+
+      <!-- Tokens pool -->
+      <div id="label-tokens" class="flex flex-wrap gap-2 px-5 pb-3 flex-shrink-0">
+        <!-- filled by JS -->
+      </div>
+
+      <!-- Image with drop zones -->
+      <div id="label-image-wrap" class="relative mx-5 rounded-xl overflow-hidden border border-base-300 flex-shrink-0">
+        <img src="assets/components/nameElements.png" alt="UI Component to label" class="w-full block" draggable="false" id="label-img" />
+        <!-- Drop zones: positioned as % -->
+        <div class="label-zone" data-label="Overlay Badge" style="left:2%;top:72%;width:28%;height:14%;"></div>
+        <div class="label-zone" data-label="Kicker"        style="left:52%;top:2%;width:46%;height:11%;"></div>
+        <div class="label-zone" data-label="Headline"      style="left:52%;top:13%;width:46%;height:28%;"></div>
+        <div class="label-zone" data-label="Body Copy"     style="left:52%;top:41%;width:46%;height:14%;"></div>
+        <div class="label-zone" data-label="Bullet List"   style="left:52%;top:55%;width:46%;height:18%;"></div>
+        <div class="label-zone" data-label="Chip Group"    style="left:52%;top:73%;width:46%;height:10%;"></div>
+        <div class="label-zone" data-label="CTA Button"    style="left:52%;top:83%;width:46%;height:14%;"></div>
+      </div>
+
+      <div class="px-5 py-4 flex-shrink-0">
+        <button id="btn-label-validate" class="btn btn-primary w-full font-semibold" data-i18n="label_validate">Valider mes réponses</button>
+      </div>
+    </div>
+
+    <!-- ── MOBILE: Phase 2 (reveal) ── -->
+    <div id="label-phase-reveal" class="flex flex-col gap-0 flex-1" style="display:none;">
+
+      <div class="px-5 pt-4 pb-3 flex-shrink-0">
+        <h2 class="font-serif text-xl font-black tracking-tight text-base-content" id="label-result-title"></h2>
+        <p class="text-sm text-base-content/55 mt-1" data-i18n="label_reveal_subtitle">Voici les bonnes réponses.</p>
+      </div>
+
+      <div class="relative mx-5 rounded-xl overflow-hidden border border-base-300 flex-shrink-0">
+        <img src="assets/components/nameElements.png" alt="UI Component annotated" class="w-full block" draggable="false" />
+        <div id="label-answer-overlay" class="absolute inset-0"></div>
+      </div>
+
+      <div class="px-5 py-4 flex-shrink-0 flex flex-col gap-2">
+        <button id="btn-label-done" class="btn btn-primary w-full font-semibold" data-i18n="label_see_results">Voir mes résultats</button>
+        <button id="btn-label-try-again" class="btn btn-outline w-full font-semibold" data-i18n="label_try_again">Réessayer l'étiquetage</button>
+      </div>
+    </div>
+
+    <!-- ── DESKTOP layout ── -->
+    <div id="label-desktop-body" style="display:none;" class="flex flex-1 min-h-0">
+
+      <!-- Left: image + drop zones -->
+      <div id="label-left-panel" class="flex flex-col p-6 border-r border-base-300" style="flex:2 1 0; min-width:0;">
+        <p class="text-xs font-semibold text-base-content/40 uppercase tracking-widest mb-3" data-i18n="label_drop_hint">Déposez les étiquettes sur l'image</p>
+        <div id="label-image-wrap-desktop" class="relative rounded-xl overflow-hidden border border-base-300">
+          <img src="assets/components/nameElements.png" alt="UI Component to label" class="w-full block" draggable="false" id="label-img-desktop" />
+          <div class="label-zone" data-label="Overlay Badge" data-panel="desktop" style="left:2%;top:72%;width:28%;height:14%;"></div>
+          <div class="label-zone" data-label="Kicker"        data-panel="desktop" style="left:52%;top:2%;width:46%;height:11%;"></div>
+          <div class="label-zone" data-label="Headline"      data-panel="desktop" style="left:52%;top:13%;width:46%;height:28%;"></div>
+          <div class="label-zone" data-label="Body Copy"     data-panel="desktop" style="left:52%;top:41%;width:46%;height:14%;"></div>
+          <div class="label-zone" data-label="Bullet List"   data-panel="desktop" style="left:52%;top:55%;width:46%;height:18%;"></div>
+          <div class="label-zone" data-label="Chip Group"    data-panel="desktop" style="left:52%;top:73%;width:46%;height:10%;"></div>
+          <div class="label-zone" data-label="CTA Button"    data-panel="desktop" style="left:52%;top:83%;width:46%;height:14%;"></div>
+          <!-- Reveal overlay -->
+          <div id="label-answer-overlay-desktop" class="absolute inset-0" style="display:none;"></div>
+        </div>
+      </div>
+
+      <!-- Right: tokens + actions -->
+      <div id="label-right-panel" class="flex flex-col justify-center p-6 gap-5" style="flex:1 1 0; min-width:0;">
+
+        <!-- Phase 1 content -->
+        <div id="label-desktop-phase-drag">
+          <h2 class="font-serif text-2xl font-black tracking-tight text-base-content mb-2" data-i18n="label_title">Glissez les étiquettes</h2>
+          <p class="text-sm text-base-content/55 mb-5" data-i18n="label_subtitle">Déposez chaque terme sur la bonne zone du composant.</p>
+          <div id="label-tokens-desktop" class="flex flex-wrap gap-2 mb-6">
+            <!-- filled by JS -->
+          </div>
+          <button id="btn-label-validate-desktop" class="btn btn-primary w-full font-semibold" data-i18n="label_validate">Valider mes réponses</button>
+        </div>
+
+        <!-- Phase 2 content -->
+        <div id="label-desktop-phase-reveal" style="display:none;">
+          <h2 class="font-serif text-2xl font-black tracking-tight text-base-content mb-1" id="label-result-title-desktop"></h2>
+          <p class="text-sm text-base-content/55 mb-5" data-i18n="label_reveal_subtitle">Voici les bonnes réponses.</p>
+          <div class="flex flex-col gap-2">
+            <button id="btn-label-done-desktop" class="btn btn-primary w-full font-semibold" data-i18n="label_see_results">Voir mes résultats</button>
+            <button id="btn-label-try-again-desktop" class="btn btn-outline w-full font-semibold" data-i18n="label_try_again">Réessayer l'étiquetage</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script src="quiz.js"></script>
+</body>
+</html>
