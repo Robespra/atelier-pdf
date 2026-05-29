@@ -56,6 +56,15 @@
       designops_title:    'DesignOps',
       designops_subtitle: 'Roadmap IA, infrastructure Figma MCP et stratégie design system.',
       nav_designops:      'DesignOps',
+      /* Prototypes section */
+      proto_title:        'Prototypes',
+      proto_subtitle:     'Explorations interactives — améliorations de pages existantes et nouvelles pistes UX.',
+      nav_prototypes:     'Prototypes',
+      proto_tag_booking:  'Réservation',
+      proto_tag_wip:      'En cours',
+      proto_open:         'Ouvrir →',
+      proto_placeholder:  'Prochain prototype',
+      proto_placeholder_sub: 'À venir',
       /* Sidebar logo */
       sidebar_logo_text:  'Atelier\nDesign',
     },
@@ -105,6 +114,15 @@
       designops_title:    'DesignOps',
       designops_subtitle: 'AI roadmap, Figma MCP infrastructure and design system strategy.',
       nav_designops:      'DesignOps',
+      /* Prototypes section */
+      proto_title:        'Prototypes',
+      proto_subtitle:     'Interactive explorations — enhancements of existing pages and new UX directions.',
+      nav_prototypes:     'Prototypes',
+      proto_tag_booking:  'Booking',
+      proto_tag_wip:      'In progress',
+      proto_open:         'Open →',
+      proto_placeholder:  'Next prototype',
+      proto_placeholder_sub: 'Coming soon',
       /* Sidebar logo */
       sidebar_logo_text:  'Atelier\nDesign',
     },
@@ -1725,6 +1743,7 @@
     renderPrompting();
     renderCareers();
     renderDesignOps();
+    renderPrototypes();
     if (designSystemsLoaded) rerenderDesignSystems();
     if (knowledgeLoaded && knowledgeData) renderKnowledge(knowledgeData);
     if (craftLoaded) renderCraft();
@@ -1792,6 +1811,7 @@
     if (id === 'knowledge' && !knowledgeLoaded) loadKnowledge();
     if (id === 'craft' && !craftLoaded) { craftLoaded = true; renderCraft(); }
     if (id === 'designops') renderDesignOps();
+    if (id === 'prototypes') renderPrototypes();
   }
 
   /* ══════════════════════════════════════════
@@ -2971,6 +2991,109 @@
 
       `;
 
+  }
+
+  /* ══════════════════════════════════════════
+     PROTOTYPES
+     ══════════════════════════════════════════ */
+  function renderPrototypes() {
+    const root = document.getElementById('prototypes-root');
+    if (!root) return;
+
+    const isFr = lang === 'fr';
+    const t = I18N[lang];
+
+    const PROTOTYPES = [
+      {
+        id: 'restaurants',
+        href: 'prototypes/restaurants.html',
+        tag: t.proto_tag_booking,
+        tagColor: '#009A58',
+        title: isFr ? 'Réservation restaurants' : 'Restaurant booking',
+        desc: isFr
+          ? 'Refonte de la page restaurant — sélection de menu, horaire et résumé de commande en temps réel.'
+          : 'Redesign of the restaurant page — menu selection, time slot and real-time order summary.',
+        thumb: `<svg width="120" height="72" viewBox="0 0 120 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="6" y="6" width="48" height="60" rx="6" fill="#FBF7F0" stroke="#C6A669" stroke-width="1.5"/>
+          <rect x="60" y="6" width="54" height="60" rx="6" fill="#FBF7F0" stroke="#C6A669" stroke-width="1.5"/>
+          <rect x="14" y="16" width="32" height="16" rx="3" fill="#E6D7BA"/>
+          <rect x="14" y="38" width="18" height="4" rx="2" fill="#C6A669"/>
+          <rect x="14" y="46" width="26" height="3" rx="1.5" fill="#E6D7BA"/>
+          <rect x="14" y="52" width="20" height="3" rx="1.5" fill="#E6D7BA"/>
+          <rect x="68" y="16" width="38" height="16" rx="3" fill="#B40020" fill-opacity="0.12"/>
+          <rect x="68" y="38" width="18" height="4" rx="2" fill="#B40020"/>
+          <rect x="68" y="46" width="30" height="3" rx="1.5" fill="#E6D7BA"/>
+          <rect x="68" y="52" width="22" height="3" rx="1.5" fill="#E6D7BA"/>
+          <rect x="30" y="62" width="60" height="6" rx="3" fill="#1D1D1B"/>
+        </svg>`,
+      },
+    ];
+
+    const cardStyle = `
+      background:#fff;
+      border:1.5px solid #C6A669;
+      border-radius:0.75rem;
+      overflow:hidden;
+      text-decoration:none;
+      color:inherit;
+      display:flex;
+      flex-direction:column;
+      transition:box-shadow 160ms ease, transform 160ms ease;
+      cursor:pointer;
+    `;
+    const thumbStyle = `
+      background:#F1E8D7;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:1.25rem 0 1rem;
+      min-height:108px;
+    `;
+    const tagStyle = (color) => `
+      font-size:0.65rem;
+      font-weight:700;
+      letter-spacing:0.07em;
+      text-transform:uppercase;
+      padding:0.2rem 0.55rem;
+      border-radius:999px;
+      background:${color}18;
+      color:${color};
+      display:inline-block;
+      flex-shrink:0;
+    `;
+
+    let html = `<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;margin-top:0.5rem;">`;
+
+    PROTOTYPES.forEach(p => {
+      html += `
+        <a href="${p.href}" style="${cardStyle}" onmouseover="this.style.boxShadow='0 6px 24px #46474733';this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='none';this.style.transform='none'">
+          <div style="${thumbStyle}">${p.thumb}</div>
+          <div style="padding:0.9rem;display:flex;flex-direction:column;gap:0.4rem;flex:1;">
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:0.5rem;">
+              <span style="font-weight:700;font-size:0.85rem;line-height:1.3;">${p.title}</span>
+              <span style="${tagStyle(p.tagColor)}">${p.tag}</span>
+            </div>
+            <p style="font-size:0.76rem;color:#616161;line-height:1.5;margin:0;">${p.desc}</p>
+            <span style="font-size:0.75rem;font-weight:700;color:#B40020;margin-top:auto;padding-top:0.4rem;">${t.proto_open}</span>
+          </div>
+        </a>`;
+    });
+
+    /* Placeholder slot */
+    html += `
+      <div style="${cardStyle} opacity:0.4; pointer-events:none; cursor:default;">
+        <div style="${thumbStyle}">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" stroke="#C6A669" stroke-width="1.5" stroke-dasharray="4 3"/><path d="M20 12v16M12 20h16" stroke="#C6A669" stroke-width="1.75" stroke-linecap="round"/></svg>
+        </div>
+        <div style="padding:0.9rem;">
+          <p style="font-weight:700;font-size:0.85rem;color:#3B311F;">${t.proto_placeholder}</p>
+          <p style="font-size:0.76rem;color:#A18756;margin-top:0.2rem;">${t.proto_placeholder_sub}</p>
+        </div>
+      </div>
+    `;
+
+    html += `</div>`;
+    root.innerHTML = html;
   }
 
   /* ══════════════════════════════════════════

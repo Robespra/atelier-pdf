@@ -1,0 +1,2007 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Réservez votre restaurant — Puy du Fou</title>
+  <link rel="icon" type="image/x-icon" href="../assets/components/favicon.ico" />
+  <style>
+    #proto-gate {
+      position: fixed; inset: 0; z-index: 9999;
+      background: #211C12;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 1.5rem;
+    }
+    #proto-gate .gate-logo {
+      width: 48px; height: 48px; border-radius: 50%;
+      background: #CB1617;
+      display: flex; align-items: center; justify-content: center;
+      font-family: Georgia, serif; font-size: 0.9rem; font-weight: 900; color: #FBF7F0;
+    }
+    #proto-gate h1 {
+      font-family: Georgia, serif; font-size: 1rem; font-weight: 900;
+      color: #FBF7F0; letter-spacing: -0.01em; margin: 0; text-align: center;
+    }
+    #proto-gate p {
+      font-size: 0.78rem; color: #C6A669; margin: -0.75rem 0 0; text-align: center;
+    }
+    #proto-gate form {
+      display: flex; flex-direction: column; gap: 0.75rem; width: 280px;
+    }
+    #proto-gate input {
+      width: 100%; padding: 0.7rem 1rem; border-radius: 0.5rem;
+      border: 1.5px solid #3a3326; background: #2e2720;
+      color: #FBF7F0; font-family: inherit; font-size: 0.875rem;
+      outline: none; transition: border-color 150ms; box-sizing: border-box;
+    }
+    #proto-gate input:focus { border-color: #C6A669; }
+    #proto-gate input.error { border-color: #CB1617; animation: gate-shake 200ms ease; }
+    #proto-gate button {
+      padding: 0.7rem 1rem; border-radius: 0.5rem; border: none;
+      background: #CB1617; color: #fff; font-family: inherit;
+      font-size: 0.875rem; font-weight: 700; cursor: pointer;
+      transition: background 150ms;
+    }
+    #proto-gate button:hover { background: #a81213; }
+    #proto-gate-error { font-size: 0.78rem; color: #CB1617; text-align: center; min-height: 1em; }
+    @keyframes gate-shake {
+      0%,100% { transform: translateX(0); }
+      25%      { transform: translateX(-6px); }
+      75%      { transform: translateX(6px); }
+    }
+  </style>
+  <script>
+    (function () {
+      var KEY = 'proto_unlocked';
+      var PWD = 'pdfUX';
+      if (sessionStorage.getItem(KEY) === '1') return;
+      document.addEventListener('DOMContentLoaded', function () {
+        var gate = document.getElementById('proto-gate');
+        if (!gate) return;
+        document.getElementById('proto-gate-form').addEventListener('submit', function (e) {
+          e.preventDefault();
+          var input = document.getElementById('proto-gate-input');
+          if (input.value === PWD) {
+            sessionStorage.setItem(KEY, '1');
+            gate.remove();
+          } else {
+            input.classList.add('error');
+            document.getElementById('proto-gate-error').textContent = 'Mot de passe incorrect.';
+            setTimeout(function () { input.classList.remove('error'); input.value = ''; input.focus(); }, 400);
+          }
+        });
+      });
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:            #FBF7F0;
+      --bg-cards:      #FFFFFF;
+      --text:          #1D1D1B;
+      --grey:          #616161;
+      --red:           #B40020;
+      --gold:          #C6A669;
+      --gold-dark:     #A18756;
+      --green:         #009A58;
+      --border:        #CAA367;
+      --border-light:  #E8E2D8;
+      --shadow-s:      0 2px 8px rgba(70,71,71,.18);
+      --shadow-m:      0 6px 24px rgba(70,71,71,.22);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { overflow-x: hidden; }
+    body {
+      font-family: Inter, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.45;
+      padding-bottom: 72px;
+    }
+    a { color: inherit; text-decoration: underline; }
+    a:hover { text-decoration: none; }
+    button { cursor: pointer; font-family: inherit; border: none; background: none; color: inherit; }
+
+    /* ── Dev pill ── */
+    .dev-back {
+      position: fixed; top: 10px; right: 16px; z-index: 100;
+      font-size: 11px; font-weight: 700; letter-spacing: .04em;
+      background: #211C12; color: #FBF7F0;
+      border-radius: 999px; padding: 4px 12px;
+      text-decoration: none; opacity: .7; transition: opacity 150ms;
+    }
+    .dev-back:hover { opacity: 1; text-decoration: none; }
+
+    /* ── Top bar ── */
+    .top-bar {
+      position: sticky; top: 0; z-index: 40;
+      background: var(--bg-cards);
+      border-bottom: 1px solid var(--border-light);
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      padding: 0 40px;
+      height: 56px;
+      gap: 24px;
+    }
+    .top-bar-left { display: flex; align-items: center; gap: 10px; }
+    .back-btn {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 13px; font-weight: 700; text-decoration: none;
+      color: var(--text); transition: color 120ms;
+    }
+    .back-btn:hover { color: var(--red); text-decoration: none; }
+    .top-bar-logo { justify-self: center; display: flex; align-items: center; }
+    .top-bar-logo img { height: 28px; width: auto; display: block; }
+    .top-bar-right { justify-self: end; }
+
+    /* ── Stepper ── */
+    .stepper {
+      display: flex; align-items: center;
+      padding: 10px 40px 0;
+      background: var(--bg-cards);
+      border-bottom: 1px solid var(--border-light);
+      overflow-x: auto; scrollbar-width: none;
+      gap: 0;
+    }
+    .stepper::-webkit-scrollbar { display: none; }
+    .step { display: flex; flex-direction: column; align-items: center; gap: 4px; flex-shrink: 0; padding-bottom: 10px; }
+    .step-dot {
+      width: 18px; height: 18px; border-radius: 50%;
+      border: 2px solid var(--gold); background: var(--bg);
+      transition: background 200ms, border-color 200ms;
+    }
+    .step.done .step-dot { background: var(--bg); border-color: var(--gold); }
+    .step.done .step-dot::after {
+      content: ''; display: block; width: 8px; height: 8px;
+      border-radius: 50%; background: var(--gold);
+      margin: 3px auto;
+    }
+    .step.active .step-dot { background: var(--red); border-color: var(--red); }
+    .step-label {
+      font-size: 9px; font-weight: 700; letter-spacing: .06em;
+      text-transform: uppercase; color: var(--grey); white-space: nowrap;
+    }
+    .step.active .step-label { color: var(--red); }
+    .step-line { flex: 1; height: 2px; background: var(--gold); min-width: 36px; margin-bottom: 22px; }
+    .step-line.done { background: var(--red); }
+
+    /* ── Page layout ── */
+    .page-body {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 28px;
+      max-width: 1440px;
+      margin: 28px auto 0;
+      padding: 0 40px;
+      align-items: start;
+    }
+
+    /* ── Sidebar ── */
+    .sidebar {
+      position: sticky; top: 100px;
+      display: flex; flex-direction: column; gap: 14px;
+    }
+    .sidebar-card {
+      background: var(--bg-cards);
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .sidebar-card h2 {
+      font-size: 17px; font-weight: 700; line-height: 1.3;
+      margin-bottom: 14px; font-family: Georgia, serif;
+    }
+    .promo-badge {
+      display: flex; align-items: flex-start; gap: 8px;
+      background: var(--green); color: #fff;
+      border-radius: 8px; padding: 10px 12px;
+      font-size: 13px; font-weight: 700; line-height: 1.4;
+      margin-bottom: 14px;
+    }
+    .promo-badge svg { flex-shrink: 0; margin-top: 2px; }
+    .promo-badge span { font-weight: 400; font-size: 12px; opacity: .9; display: block; margin-top: 1px; }
+    .diet-row {
+      display: flex; align-items: center; gap: 10px;
+      border: 1px solid var(--border);
+      border-radius: 8px; padding: 8px 12px;
+      cursor: pointer; transition: border-color 150ms;
+    }
+    .diet-row:has(input:checked) { border-color: var(--text); }
+    .diet-row input { width: 16px; height: 16px; accent-color: var(--red); cursor: pointer; flex-shrink: 0; }
+    .diet-row label { font-size: 13px; font-weight: 500; cursor: pointer; flex: 1; }
+
+    /* Summary */
+    .summary-card { font-size: 13px; }
+    .summary-card h3 {
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .07em; color: var(--grey); margin-bottom: 10px;
+    }
+    .sum-row {
+      display: flex; justify-content: space-between; align-items: baseline;
+      gap: 8px; padding: 6px 0; border-bottom: 1px solid var(--border-light);
+    }
+    .sum-row:last-of-type { border-bottom: none; }
+    .sum-row-name { color: var(--text); font-size: 12px; }
+    .sum-row-price { font-weight: 700; white-space: nowrap; font-size: 12px; }
+    .sum-total {
+      display: flex; justify-content: space-between;
+      font-weight: 700; font-size: 15px;
+      margin-top: 10px; padding-top: 10px;
+      border-top: 2px solid var(--text);
+    }
+    .sum-empty { font-size: 12px; color: var(--grey); text-align: center; padding: 10px 0; }
+
+    /* ── Main ── */
+    .main-content { display: flex; flex-direction: column; gap: 20px; }
+
+    /* Day section */
+    .day-section {
+      background: var(--bg-cards);
+      border-radius: 12px; overflow: hidden;
+    }
+    .day-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 24px; border-bottom: 1px solid var(--border-light);
+      gap: 16px;
+    }
+    .day-kicker { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; color: var(--grey); }
+    .day-title { font-family: Georgia, serif; font-size: 24px; font-weight: 700; line-height: 1.2; margin-top: 2px; }
+    .day-meta { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--grey); white-space: nowrap; flex-shrink: 0; }
+    .day-meta button { font-size: 13px; font-weight: 700; text-decoration: underline; color: var(--text); }
+    .day-meta button:hover { color: var(--red); text-decoration: none; }
+
+    /* ── Accordion meal block ── */
+    .meal-block { border-bottom: 1px solid var(--border-light); }
+    .meal-block:last-child { border-bottom: none; }
+
+    .meal-trigger {
+      width: 100%; display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 24px; gap: 16px; background: none; text-align: left;
+      transition: background 120ms;
+    }
+    .meal-trigger:hover { background: #FAF6EF; }
+    .meal-trigger-left { display: flex; align-items: center; gap: 12px; }
+    .meal-trigger-icon { font-size: 16px; flex-shrink: 0; }
+    .meal-trigger-title { font-family: Georgia, serif; font-size: 20px; font-weight: 700; }
+    .meal-trigger-subtitle { font-size: 12px; color: var(--grey); margin-top: 1px; }
+    .meal-trigger-right { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+
+    /* Collapsed summary chip */
+    .meal-summary-chip {
+      display: none; align-items: center; gap: 6px;
+      background: #E8F5EE; color: var(--green);
+      border: 1px solid rgba(0,154,88,.25);
+      border-radius: 999px; padding: 4px 10px;
+      font-size: 12px; font-weight: 700; white-space: nowrap;
+    }
+    .meal-summary-chip svg { flex-shrink: 0; }
+    .meal-block.is-selected .meal-summary-chip { display: flex; }
+
+    .meal-chevron { transition: transform 240ms cubic-bezier(.4,0,.2,1); color: var(--grey); }
+    .meal-block.is-open .meal-chevron { transform: rotate(180deg); }
+
+    /* Accordion body */
+    .meal-body {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 600ms cubic-bezier(.4,0,.2,1);
+    }
+    .meal-block.is-open .meal-body { max-height: 2000px; }
+    .meal-body-inner { padding: 0 24px 20px; }
+
+    /* Controls row */
+    .meal-controls {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 16px;
+    }
+    .meal-count { font-size: 12px; color: var(--grey); }
+    .controls-right { display: flex; align-items: center; gap: 8px; }
+    .filter-btn {
+      display: inline-flex; align-items: center; gap: 4px;
+      font-size: 12px; font-weight: 700;
+      border: 1px solid var(--border); border-radius: 999px;
+      padding: 5px 12px; background: var(--bg);
+      transition: border-color 150ms;
+    }
+    .filter-btn:hover { border-color: var(--text); }
+    .pagination { display: flex; align-items: center; gap: 4px; font-size: 12px; color: var(--grey); }
+    .page-btn {
+      width: 30px; height: 30px; border-radius: 50%;
+      border: 1px solid var(--border); background: var(--bg-cards);
+      display: flex; align-items: center; justify-content: center;
+      transition: background 140ms, border-color 140ms, color 140ms;
+      flex-shrink: 0;
+    }
+    .page-btn:hover:not(:disabled) { background: var(--text); border-color: var(--text); color: #fff; }
+    .page-btn:disabled { opacity: .3; cursor: not-allowed; }
+    .page-btn.filled { background: var(--text); border-color: var(--text); color: #fff; }
+
+    /* Card grid */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    /* ── Restaurant card ── */
+    .resto-card {
+      border: 1.5px solid var(--border);
+      border-radius: 10px; overflow: hidden;
+      background: var(--bg-cards);
+      display: flex; flex-direction: column;
+      cursor: pointer; position: relative;
+      transition: border-color 160ms, box-shadow 160ms;
+    }
+    .resto-card.selected {
+      border: 2px solid var(--text);
+      box-shadow: var(--shadow-m);
+    }
+    .resto-card:hover { box-shadow: var(--shadow-s); }
+
+    /* Card image */
+    .card-img-wrap { position: relative; }
+    .card-img {
+      width: 100%; height: 120px; display: block;
+      object-fit: cover; object-position: center;
+      background: #DDD5C3;
+    }
+    .card-img-placeholder {
+      width: 100%; height: 120px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    /* Selected badge */
+    .selected-badge {
+      position: absolute; top: 7px; left: 7px;
+      background: var(--green); color: #fff;
+      font-size: 9px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+      padding: 3px 7px; border-radius: 4px;
+      display: flex; align-items: center; gap: 3px;
+    }
+    /* Info btn */
+    .info-btn {
+      position: absolute; top: 7px; right: 7px;
+      width: 24px; height: 24px; border-radius: 50%;
+      background: rgba(255,255,255,.88); backdrop-filter: blur(4px);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .info-btn:hover { background: #fff; }
+
+    /* Card body */
+    .card-body { padding: 12px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+    .card-name { font-size: 13px; font-weight: 700; line-height: 1.3; }
+    .card-tags { font-size: 11px; color: var(--grey); }
+
+    /* Slot selector */
+    .slot-section {}
+    .slot-label-text { font-size: 11px; font-weight: 700; color: var(--text); margin-bottom: 5px; }
+
+    /* Prompt state — card updated but no slot chosen yet */
+    .slot-section.needs-slot {
+      background: #FFF0EC;
+      border: 1.5px solid var(--red);
+      border-radius: 8px;
+      padding: 8px 10px;
+      animation: slot-pulse 600ms ease-out;
+    }
+    .slot-section.needs-slot .slot-label-text { color: var(--red); }
+    .slot-section.needs-slot .slot-chip { border-color: rgba(180,0,32,.3); }
+    @keyframes slot-pulse {
+      0%   { transform: scale(1); box-shadow: 0 0 0 0 rgba(180,0,32,.25); }
+      50%  { transform: scale(1.01); box-shadow: 0 0 0 6px rgba(180,0,32,0); }
+      100% { transform: scale(1); box-shadow: none; }
+    }
+    .slot-chips { display: flex; flex-wrap: wrap; gap: 4px; }
+    .slot-chip {
+      font-size: 11px; font-weight: 500;
+      padding: 3px 9px; border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--bg); color: var(--text);
+      cursor: pointer;
+      transition: background 120ms, border-color 120ms, color 120ms;
+    }
+    .slot-chip:hover:not(.active):not(.unavailable) { border-color: var(--text); }
+    .slot-chip.active { background: var(--text); border-color: var(--text); color: #fff; }
+    .slot-chip.unavailable { opacity: .3; pointer-events: none; }
+    /* All chips on sibling cards dim once another card in the same meal has a slot picked */
+    .resto-card.meal-locked .slot-chips { opacity: .35; pointer-events: none; }
+    .resto-card.meal-locked { cursor: default; }
+    .resto-card.meal-locked:hover { box-shadow: none; }
+
+    /* Guest pricing */
+    .guests-row { display: flex; justify-content: space-between; gap: 6px; }
+    .guest-col { display: flex; flex-direction: column; gap: 1px; }
+    .guest-label { font-size: 11px; color: var(--grey); }
+    .guest-price { font-size: 12px; font-weight: 700; color: var(--green); }
+    /* Hide pricing rows on selected cards to save space */
+    .resto-card.selected .guests-row { display: none; }
+
+    /* Price total line */
+    .price-total { font-size: 11px; color: var(--grey); }
+    .price-total strong { color: var(--text); }
+    .price-total s { color: var(--grey); margin-left: 4px; }
+    .resto-card.selected .price-total { display: none; }
+
+    /* Voir menus et carte button */
+    .modify-link {
+      display: flex; align-items: center; justify-content: center;
+      width: 100%; padding: 8px 12px; margin-top: 2px;
+      font-size: 12px; font-weight: 600; font-family: inherit;
+      background: none; border: 1.5px solid var(--border);
+      border-radius: 999px; cursor: pointer; color: var(--text);
+      transition: border-color 140ms;
+    }
+    .modify-link:hover { border-color: var(--text); }
+
+    /* Hide separate cancel link — Annuler now lives inside confirmed-banner */
+    .cancel-link { display: none !important; }
+
+    /* Confirmed banner — full width, two-column with Annuler */
+    .confirmed-banner {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 8px; width: 100%;
+      background: rgba(0,154,88,.07);
+      border: 1px solid rgba(0,154,88,.25);
+      border-radius: 6px; padding: 7px 10px;
+      font-size: 11px; font-weight: 700; color: var(--green);
+    }
+    .confirmed-banner-left { display: flex; align-items: center; gap: 4px; }
+    .confirmed-banner-cancel {
+      font-size: 11px; font-weight: 600; color: var(--grey);
+      background: none; border: none; cursor: pointer; font-family: inherit;
+      text-decoration: underline; padding: 0; flex-shrink: 0;
+    }
+    .confirmed-banner-cancel:hover { color: var(--red); text-decoration: none; }
+
+    /* ── Booking overlay (spinner state) ── */
+    .booking-overlay {
+      position: absolute; inset: 0; z-index: 10;
+      background: rgba(255,255,255,.92);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 10px; border-radius: 9px;
+      opacity: 0; pointer-events: none;
+      transition: opacity 200ms ease;
+    }
+    .booking-overlay.visible { opacity: 1; pointer-events: all; }
+    .booking-overlay .spinner {
+      width: 28px; height: 28px;
+      border: 2.5px solid #E8E2D8;
+      border-top-color: var(--red);
+      border-radius: 50%;
+      animation: spin 700ms linear infinite;
+    }
+    .booking-overlay p {
+      font-size: 12px; font-weight: 700; color: var(--text);
+      text-align: center; line-height: 1.4;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── Bottom bar ── */
+    .bottom-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 50;
+      background: var(--text); color: #fff;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 40px;
+      box-shadow: 0 -4px 24px rgba(0,0,0,.2);
+    }
+    .bottom-total { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+    .total-amount { font-family: Georgia, serif; font-size: 22px; font-weight: 700; }
+    .chevron-up { transition: transform 200ms; }
+    .chevron-up.open { transform: rotate(180deg); }
+    .bottom-actions { display: flex; gap: 10px; align-items: center; }
+    .cta-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 13px; font-weight: 700; border-radius: 999px;
+      padding: 11px 28px; cursor: pointer; transition: background 150ms;
+      font-family: inherit;
+    }
+    .cta-btn.primary { background: var(--red); color: #fff; border: 1px solid var(--red); }
+    .cta-btn.primary:hover { background: #8f001a; border-color: #8f001a; }
+    .cta-btn.ghost { background: none; color: #fff; border: 1px solid rgba(255,255,255,.5); }
+    .cta-btn.ghost:hover { background: rgba(255,255,255,.1); }
+
+    /* ── Modal ── */
+    .modal-backdrop {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(0,0,0,.45);
+      display: flex; align-items: flex-end; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 220ms ease;
+    }
+    .modal-backdrop.open { opacity: 1; pointer-events: all; }
+    .modal-sheet {
+      background: var(--bg-cards);
+      border-radius: 20px 20px 0 0;
+      width: 100%; max-width: 560px;
+      max-height: 92dvh;
+      overflow-y: auto;
+      transform: translateY(40px);
+      transition: transform 260ms cubic-bezier(.32,1,.4,1);
+      display: flex; flex-direction: column;
+    }
+    .modal-backdrop.open .modal-sheet { transform: translateY(0); }
+    .modal-close {
+      position: absolute; top: 14px; right: 14px;
+      width: 32px; height: 32px; border-radius: 50%;
+      background: rgba(0,0,0,.07);
+      display: flex; align-items: center; justify-content: center;
+      z-index: 2;
+    }
+    .modal-close:hover { background: rgba(0,0,0,.13); }
+    .modal-img-wrap { position: relative; flex-shrink: 0; }
+    .modal-img {
+      width: 100%; height: 200px;
+      object-fit: cover; object-position: center;
+      display: block; border-radius: 20px 20px 0 0;
+    }
+    /* dot indicators */
+    .modal-dots {
+      position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);
+      display: flex; gap: 5px;
+    }
+    .modal-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: rgba(255,255,255,.5);
+    }
+    .modal-dot.active { background: #fff; }
+    .modal-body { padding: 20px 20px 0; }
+    .modal-title { font-family: Georgia, serif; font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+    .modal-desc { font-size: 13px; color: var(--grey); line-height: 1.6; margin-bottom: 14px; }
+    /* Modal tabs */
+    .modal-tabs {
+      display: flex;
+      border-bottom: 2px solid var(--border-light);
+      margin: 16px 0 0;
+      gap: 0;
+    }
+    .modal-tab {
+      flex: 1; padding: 10px 16px;
+      font-size: 14px; font-weight: 700;
+      color: var(--grey); background: none;
+      border: none; border-bottom: 2px solid transparent;
+      margin-bottom: -2px; cursor: pointer;
+      transition: color 140ms, border-color 140ms;
+      font-family: inherit;
+    }
+    .modal-tab.active { color: var(--text); border-bottom-color: var(--text); }
+    .modal-tab:hover:not(.active) { color: var(--text); }
+    .modal-tab-panel { display: none; }
+    .modal-tab-panel.active { display: block; }
+    .modal-section-title {
+      font-size: 15px; font-weight: 700;
+      padding: 16px 0 12px;
+      border-bottom: 1px solid var(--border-light);
+      margin-bottom: 4px;
+    }
+    /* Carte tab */
+    .carte-section { padding: 16px 0 4px; }
+    .carte-section-title {
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .07em; color: var(--gold-dark);
+      margin-bottom: 8px;
+    }
+    .carte-items { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+    .carte-item { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+    .carte-item-name { font-size: 13px; font-weight: 500; color: var(--text); }
+    .carte-item-desc { font-size: 12px; color: var(--grey); margin-top: 2px; }
+    .carte-item-price { font-size: 13px; font-weight: 700; white-space: nowrap; flex-shrink: 0; }
+    /* Menu stepper rows */
+    .menu-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .menu-row:last-child { border-bottom: none; }
+    .menu-row-info { display: flex; flex-direction: column; gap: 3px; }
+    .menu-row-label { font-size: 14px; font-weight: 600; }
+    .menu-row-price { font-size: 13px; color: var(--grey); display: flex; align-items: center; gap: 4px; }
+    .menu-row-price svg { color: var(--gold-dark); }
+    /* Menu detail accordion */
+    .menu-detail {
+      margin-top: 8px;
+      margin-left: 12px;
+      border-left: 2px solid var(--border-light);
+      padding-left: 12px;
+    }
+    .menu-course-trigger {
+      width: 100%; display: flex; align-items: center; justify-content: space-between;
+      padding: 8px 0; background: none; font-family: inherit;
+      font-size: 12px; font-weight: 600; color: var(--grey);
+      border-bottom: 1px solid var(--border-light); cursor: pointer;
+      letter-spacing: 0.01em;
+    }
+    .menu-course-trigger:last-of-type { border-bottom: none; }
+    .course-chevron { transition: transform 200ms; color: var(--grey); flex-shrink: 0; opacity: .6; }
+    .menu-course-trigger.open { color: var(--text); }
+    .menu-course-trigger.open .course-chevron { transform: rotate(180deg); opacity: 1; }
+    .menu-course-body {
+      overflow: hidden; max-height: 0;
+      transition: max-height 320ms cubic-bezier(.4,0,.2,1);
+    }
+    .menu-course-trigger.open + .menu-course-body { max-height: 300px; }
+    .menu-course-items {
+      padding: 6px 0 8px;
+      display: flex; flex-direction: column; gap: 4px;
+    }
+    .menu-course-item {
+      font-size: 12px; color: var(--grey); line-height: 1.5;
+      display: flex; align-items: baseline; gap: 6px;
+    }
+    .menu-course-item::before {
+      content: '–'; color: var(--gold-dark); flex-shrink: 0; font-size: 11px;
+    }
+    .stepper-ctrl {
+      display: flex; align-items: center; gap: 10px; flex-shrink: 0;
+    }
+    .stepper-btn {
+      width: 32px; height: 32px; border-radius: 50%;
+      border: 1.5px solid var(--text); background: var(--text); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; line-height: 1; font-weight: 300;
+      transition: background 140ms; flex-shrink: 0;
+    }
+    .stepper-btn.minus { background: none; color: var(--text); }
+    .stepper-btn.minus:disabled { border-color: #ccc; color: #ccc; cursor: not-allowed; }
+    .stepper-btn:hover:not(:disabled) { opacity: .8; }
+    .stepper-val { font-size: 15px; font-weight: 700; min-width: 16px; text-align: center; }
+    .modal-notes {
+      font-size: 11px; color: var(--grey); line-height: 1.7;
+      padding: 16px 20px; border-top: 1px solid var(--border-light); margin-top: 8px;
+    }
+    .modal-footer {
+      position: sticky; bottom: 0;
+      background: var(--bg-cards);
+      border-top: 1px solid var(--border-light);
+      padding: 14px 20px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 12px;
+    }
+    .modal-price-total { display: flex; flex-direction: column; }
+    .modal-price-label { font-size: 11px; color: var(--grey); }
+    .modal-price-amount { font-size: 22px; font-weight: 700; font-family: Georgia, serif; color: var(--red); }
+    .modal-price-was { font-size: 11px; color: var(--grey); }
+    .modal-price-was s { text-decoration: line-through; }
+    .modal-cta {
+      flex: 1; max-width: 200px;
+      background: var(--text); color: #fff;
+      border: none; border-radius: 999px;
+      padding: 13px 20px; font-size: 14px; font-weight: 700;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 8px; cursor: pointer; font-family: inherit;
+      transition: background 140ms;
+    }
+    .modal-cta:hover { background: #333; }
+    .modal-cancel {
+      font-size: 13px; font-weight: 700; color: var(--grey);
+      background: none; border: none; cursor: pointer; font-family: inherit;
+      text-decoration: underline; padding: 0;
+    }
+    .modal-cancel:hover { color: var(--text); text-decoration: none; }
+
+    /* ── Filter modal ── */
+    .filter-sheet {
+      max-width: 420px;
+      display: flex;
+      flex-direction: column;
+      max-height: 92dvh;
+    }
+    .filter-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 20px 14px;
+      border-bottom: 1px solid var(--border-light);
+      flex-shrink: 0;
+    }
+    .filter-header-title { font-size: 16px; font-weight: 700; }
+    .filter-close {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: rgba(0,0,0,.07);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .filter-close:hover { background: rgba(0,0,0,.13); }
+    .filter-body {
+      overflow-y: auto; flex: 1;
+      padding: 0 20px;
+    }
+    .filter-section { padding: 18px 0 4px; }
+    .filter-section + .filter-section { border-top: 1px solid var(--border-light); }
+    .filter-section-title {
+      font-size: 13px; font-weight: 700;
+      color: var(--text); margin-bottom: 12px;
+    }
+    /* Sort radio options */
+    .sort-options { display: flex; flex-direction: column; gap: 2px; margin-bottom: 8px; }
+    .sort-option {
+      display: flex; align-items: center; gap: 10px;
+      padding: 9px 12px; border-radius: 8px; cursor: pointer;
+      font-size: 14px; transition: background 120ms;
+    }
+    .sort-option:hover { background: #FAF6EF; }
+    .sort-option input { accent-color: var(--text); width: 16px; height: 16px; cursor: pointer; flex-shrink: 0; }
+    .sort-option:has(input:checked) { background: #F3EDE3; font-weight: 600; }
+    /* Checkbox filters */
+    .filter-checks { display: flex; flex-direction: column; gap: 2px; margin-bottom: 8px; }
+    .filter-check {
+      display: flex; align-items: center; gap: 10px;
+      padding: 9px 12px; border-radius: 8px; cursor: pointer;
+      font-size: 14px; transition: background 120ms;
+    }
+    .filter-check:hover { background: #FAF6EF; }
+    .filter-check input { accent-color: var(--text); width: 16px; height: 16px; cursor: pointer; flex-shrink: 0; }
+    .filter-check:has(input:checked) { background: #F3EDE3; font-weight: 600; }
+    /* Footer */
+    .filter-footer {
+      display: flex; align-items: center; gap: 10px;
+      padding: 14px 20px;
+      border-top: 1px solid var(--border-light);
+      flex-shrink: 0;
+    }
+    .filter-reset {
+      font-size: 13px; font-weight: 700; color: var(--grey);
+      background: none; border: none; cursor: pointer; font-family: inherit;
+      text-decoration: underline; padding: 0; flex-shrink: 0;
+    }
+    .filter-reset:hover { color: var(--text); text-decoration: none; }
+    .filter-apply {
+      flex: 1; background: var(--text); color: #fff;
+      border: none; border-radius: 999px;
+      padding: 13px 20px; font-size: 14px; font-weight: 700;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 8px; cursor: pointer; font-family: inherit;
+      transition: background 140ms;
+    }
+    .filter-apply:hover { background: #333; }
+    /* Active filter count badge on Filtrer button */
+    .filter-badge {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 16px; height: 16px; border-radius: 50%;
+      background: var(--red); color: #fff;
+      font-size: 10px; font-weight: 700; margin-left: 2px;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 1024px) {
+      .page-body { grid-template-columns: 260px 1fr; padding: 0 24px; }
+      .card-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .day-title { font-size: 20px; }
+      .meal-trigger-title { font-size: 18px; }
+      .day-section { border-radius: 0; }
+      .sidebar-card { border-radius: 0; }
+      .summary-card { display: none; }
+      /* Full-width page, all children constrained */
+      .page-body {
+        grid-template-columns: 1fr;
+        padding: 0 16px;
+        margin: 16px 0 0;
+        width: 100%;
+      }
+      .sidebar { position: static; }
+      .main-content { min-width: 0; width: 100%; }
+      .day-section { min-width: 0; width: 100%; }
+      .top-bar { padding: 0 16px; }
+      .stepper { padding: 10px 16px 0; }
+      .meal-trigger { padding: 14px 16px; }
+      .day-header { padding: 14px 16px; }
+      .meal-body-inner { padding: 0 0 16px; }
+      .meal-controls { padding: 0 16px 12px; }
+      /* Card swipe strip */
+      .card-grid {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        gap: 12px;
+        padding: 0 16px 4px;
+      }
+      .card-grid::-webkit-scrollbar { display: none; }
+      .card-grid .resto-card {
+        flex: 0 0 78vw;
+        max-width: 300px;
+        min-width: 0;
+        scroll-snap-align: start;
+      }
+      .bottom-bar { padding: 12px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="proto-gate" role="dialog" aria-modal="true" aria-label="Accès protégé">
+  <div class="gate-logo">UI</div>
+  <h1>Réservation restaurants</h1>
+  <p>Prototype Puy du Fou · Accès restreint</p>
+  <form id="proto-gate-form" autocomplete="off">
+    <input type="password" id="proto-gate-input" placeholder="Mot de passe" autofocus />
+    <button type="submit">Accéder</button>
+    <div id="proto-gate-error"></div>
+  </form>
+</div>
+
+<a href="../index.html#prototypes" class="dev-back">← Hub</a>
+
+<!-- ── Top bar ── -->
+<div class="top-bar">
+  <div class="top-bar-left">
+    <a href="#" class="back-btn">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 4l-4 4 4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Retour
+    </a>
+  </div>
+  <div class="top-bar-logo">
+    <img src="../assets/prototypes/Logo01.svg" alt="Puy du Fou" />
+  </div>
+  <div class="top-bar-right"></div>
+</div>
+
+<!-- ── Stepper ── -->
+<div class="stepper" aria-label="Étapes de réservation">
+  <div class="step done"><div class="step-dot"></div><span class="step-label">Calendrier</span></div>
+  <div class="step-line done"></div>
+  <div class="step done"><div class="step-dot"></div><span class="step-label">Offres</span></div>
+  <div class="step-line done"></div>
+  <div class="step done"><div class="step-dot"></div><span class="step-label">Offres</span></div>
+  <div class="step-line done"></div>
+  <div class="step done"><div class="step-dot"></div><span class="step-label">Hébergement</span></div>
+  <div class="step-line done"></div>
+  <div class="step done"><div class="step-dot"></div><span class="step-label">Restaurant</span></div>
+  <div class="step-line done"></div>
+  <div class="step active"><div class="step-dot"></div><span class="step-label">Paiement</span></div>
+</div>
+
+<!-- ── Body ── -->
+<div class="page-body">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-card">
+      <h2>Le voyage jusque dans l'assiette</h2>
+      <div class="promo-badge">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 2l1.5 3 3.3.5-2.4 2.3.6 3.3L8 9.8l-3 1.6.6-3.3L3.2 5.5l3.3-.5L8 2z" stroke="white" stroke-width="1.25" stroke-linejoin="round" fill="white"/></svg>
+        <div>
+          Économisez jusqu'à <strong>15% par repas</strong>
+          <span>Et par personne en réservant vos repas en même temps que vos billets</span>
+        </div>
+      </div>
+      <div class="diet-row">
+        <input type="checkbox" id="diet-check" />
+        <label for="diet-check">J'ai un régime alimentaire spécifique</label>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;color:#A18756"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.25"/><path d="M8 6.5v4M8 5v.5" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/></svg>
+      </div>
+    </div>
+
+    <div class="sidebar-card summary-card">
+      <h3>Récapitulatif</h3>
+      <div id="summary-items">
+        <p class="sum-empty">Aucun restaurant sélectionné</p>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="main-content">
+
+    <!-- ══ DAY 1 ══ -->
+    <section class="day-section">
+      <div class="day-header">
+        <div>
+          <div class="day-kicker">JOUR 1 · Anticipez votre visite</div>
+          <h2 class="day-title">Samedi 21 octobre 2026</h2>
+        </div>
+        <div class="day-meta">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.25"/><path d="M7 6h2v5M7 11h2" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/></svg>
+          2 menus adultes + 1 menu enfant
+        </div>
+      </div>
+
+      <!-- Déjeuner J1 -->
+      <div class="meal-block is-open" data-meal="day1-lunch">
+        <button class="meal-trigger" aria-expanded="true">
+          <div class="meal-trigger-left">
+            <div>
+              <div class="meal-trigger-title">Votre déjeuner</div>
+            </div>
+          </div>
+          <div class="meal-trigger-right">
+            <div class="meal-summary-chip">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span class="chip-text"></span>
+            </div>
+            <svg class="meal-chevron" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M5 7l4 4 4-4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </button>
+        <div class="meal-body">
+          <div class="meal-body-inner">
+            <div class="meal-controls">
+              <span class="meal-count">4 restaurants recommandés (2 adultes · 1 enfant)</span>
+              <div class="controls-right">
+                <button class="filter-btn">
+                  <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M4 8h8M6 12h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                  Filtrer
+                </button>
+                <div class="pagination">
+                  <button class="page-btn" disabled><svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M10 4l-4 4 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                  <span>1 / 2</span>
+                  <button class="page-btn filled"><svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                </div>
+              </div>
+            </div>
+            <div class="card-grid">
+
+              <!-- Card 1 -->
+              <div class="resto-card" data-meal="day1-lunch" data-name="L'Orangerie" data-adults="42" data-child="14">
+                <div class="card-img-wrap">
+                  <img class="card-img" src="../assets/prototypes/restaurantimg.png" alt="L'Orangerie" />
+                  <button class="info-btn" aria-label="Informations"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#1D1D1B" stroke-width="1.25"/><path d="M6 5v4M6 3.5v.5" stroke="#1D1D1B" stroke-width="1.25" stroke-linecap="round"/></svg></button>
+                </div>
+                <div class="booking-overlay"><div class="spinner"></div><p>Confirmation<br>en cours…</p></div>
+                <div class="card-body">
+                  <div class="card-name">L'Orangerie</div>
+                  <div class="card-tags">Plat végétarien · Cuisine traditionnelle</div>
+                  <div class="slot-section">
+                    <div class="slot-label-text">Choisissez votre horaire</div>
+                    <div class="slot-chips">
+                      <button class="slot-chip" data-slot="11:45">11:45</button>
+                      <button class="slot-chip" data-slot="12:00">12:00</button>
+                      <button class="slot-chip" data-slot="12:30">12:30</button>
+                      <button class="slot-chip" data-slot="13:00">13:00</button>
+                    </div>
+                  </div>
+                  <div class="guests-row">
+                    <div class="guest-col"><span class="guest-label">2 menus adultes</span><span class="guest-price">+42,00€/pers</span></div>
+                    <div class="guest-col"><span class="guest-label">1 menu enfant</span><span class="guest-price">+14,00€/pers</span></div>
+                  </div>
+                  <button class="modify-link">Voir menus et carte</button>
+                </div>
+              </div>
+
+              <!-- Card 2 -->
+              <div class="resto-card" data-meal="day1-lunch" data-name="L'Orangerie" data-adults="42" data-child="14">
+                <div class="card-img-wrap">
+                  <img class="card-img" src="../assets/prototypes/restaurantimg.png" alt="" style="filter:hue-rotate(15deg) brightness(.95);" />
+                  <button class="info-btn" aria-label="Informations"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#1D1D1B" stroke-width="1.25"/><path d="M6 5v4M6 3.5v.5" stroke="#1D1D1B" stroke-width="1.25" stroke-linecap="round"/></svg></button>
+                </div>
+                <div class="booking-overlay"><div class="spinner"></div><p>Confirmation<br>en cours…</p></div>
+                <div class="card-body">
+                  <div class="card-name">L'Orangerie</div>
+                  <div class="card-tags">Plat végétarien · Cuisine traditionnelle</div>
+                  <div class="slot-section">
+                    <div class="slot-label-text">Choisissez votre horaire</div>
+                    <div class="slot-chips">
+                      <button class="slot-chip unavailable" data-slot="11:45">11:45</button>
+                      <button class="slot-chip" data-slot="12:00">12:00</button>
+                      <button class="slot-chip" data-slot="12:30">12:30</button>
+                      <button class="slot-chip" data-slot="13:00">13:00</button>
+                    </div>
+                  </div>
+                  <div class="guests-row">
+                    <div class="guest-col"><span class="guest-label">2 menus adultes</span><span class="guest-price">+42,00€/pers</span></div>
+                    <div class="guest-col"><span class="guest-label">1 menu enfant</span><span class="guest-price">+14,00€/pers</span></div>
+                  </div>
+                  <button class="modify-link">Voir menus et carte</button>
+                </div>
+              </div>
+
+              <!-- Card — idle (no slot selected yet) -->
+              <div class="resto-card" data-meal="day1-lunch" data-name="L'Echansonnerie" data-adults="38" data-child="12">
+                <div class="card-img-wrap">
+                  <img class="card-img" src="../assets/prototypes/restaurantimg.png" alt="" style="filter:hue-rotate(-20deg) saturate(.85) brightness(.9);" />
+                  <button class="info-btn" aria-label="Informations"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#1D1D1B" stroke-width="1.25"/><path d="M6 5v4M6 3.5v.5" stroke="#1D1D1B" stroke-width="1.25" stroke-linecap="round"/></svg></button>
+                </div>
+                <div class="booking-overlay"><div class="spinner"></div><p>Confirmation<br>en cours…</p></div>
+                <div class="card-body">
+                  <div class="card-name">L'Echansonnerie</div>
+                  <div class="card-tags">Saveurs de la Renaissance · Buffet</div>
+                  <div class="slot-section">
+                    <div class="slot-label-text">Choisissez votre horaire</div>
+                    <div class="slot-chips">
+                      <button class="slot-chip" data-slot="12:00">12:00</button>
+                      <button class="slot-chip" data-slot="12:30">12:30</button>
+                      <button class="slot-chip" data-slot="13:00">13:00</button>
+                    </div>
+                  </div>
+                  <div class="guests-row">
+                    <div class="guest-col"><span class="guest-label">2 menus adultes</span><span class="guest-price">+38,00€/pers</span></div>
+                    <div class="guest-col"><span class="guest-label">1 menu enfant</span><span class="guest-price">+12,00€/pers</span></div>
+                  </div>
+                  <button class="modify-link">Voir menus et carte</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dîner J1 -->
+      <div class="meal-block is-open" data-meal="day1-dinner">
+        <button class="meal-trigger" aria-expanded="true">
+          <div class="meal-trigger-left">
+            <div>
+              <div class="meal-trigger-title">Votre dîner</div>
+
+            </div>
+          </div>
+          <div class="meal-trigger-right">
+            <div class="meal-summary-chip">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span class="chip-text"></span>
+            </div>
+            <svg class="meal-chevron" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M5 7l4 4 4-4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </button>
+        <div class="meal-body">
+          <div class="meal-body-inner">
+            <div class="meal-controls">
+              <span class="meal-count">4 restaurants recommandés (2 adultes · 1 enfant)</span>
+              <div class="controls-right">
+                <button class="filter-btn"><svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M4 8h8M6 12h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg> Filtrer</button>
+                <div class="pagination">
+                  <button class="page-btn" disabled><svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M10 4l-4 4 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                  <span>1 / 2</span>
+                  <button class="page-btn filled"><svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                </div>
+              </div>
+            </div>
+            <div class="card-grid">
+
+              <!-- Idle -->
+              <div class="resto-card" data-meal="day1-dinner" data-name="L'Orangerie" data-adults="42" data-child="14">
+                <div class="card-img-wrap">
+                  <img class="card-img" src="../assets/prototypes/restaurantimg.png" alt="" style="filter:brightness(.72) saturate(.6) hue-rotate(200deg);" />
+                  <button class="info-btn" aria-label="Informations"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#1D1D1B" stroke-width="1.25"/><path d="M6 5v4M6 3.5v.5" stroke="#1D1D1B" stroke-width="1.25" stroke-linecap="round"/></svg></button>
+                </div>
+                <div class="booking-overlay"><div class="spinner"></div><p>Confirmation<br>en cours…</p></div>
+                <div class="card-body">
+                  <div class="card-name">L'Orangerie</div>
+                  <div class="card-tags">Plat végétarien · Cuisine traditionnelle</div>
+                  <div class="slot-section">
+                    <div class="slot-label-text">Choisissez votre horaire</div>
+                    <div class="slot-chips">
+                      <button class="slot-chip" data-slot="19:00">19:00</button>
+                      <button class="slot-chip" data-slot="19:30">19:30</button>
+                      <button class="slot-chip" data-slot="20:00">20:00</button>
+                    </div>
+                  </div>
+                  <div class="guests-row">
+                    <div class="guest-col"><span class="guest-label">2 menus adultes</span><span class="guest-price">+42,00€/pers</span></div>
+                    <div class="guest-col"><span class="guest-label">1 menu enfant</span><span class="guest-price">+14,00€/pers</span></div>
+                  </div>
+                  <button class="modify-link">Voir menus et carte</button>
+                </div>
+              </div>
+
+              <!-- Card 2 (dinner) -->
+              <div class="resto-card" data-meal="day1-dinner" data-name="L'Orangerie" data-adults="42" data-child="14">
+                <div class="card-img-wrap">
+                  <img class="card-img" src="../assets/prototypes/restaurantimg.png" alt="" style="filter:brightness(.82) saturate(.75) hue-rotate(190deg);" />
+                  <button class="info-btn" aria-label="Informations"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#1D1D1B" stroke-width="1.25"/><path d="M6 5v4M6 3.5v.5" stroke="#1D1D1B" stroke-width="1.25" stroke-linecap="round"/></svg></button>
+                </div>
+                <div class="booking-overlay"><div class="spinner"></div><p>Confirmation<br>en cours…</p></div>
+                <div class="card-body">
+                  <div class="card-name">L'Orangerie</div>
+                  <div class="card-tags">Plat végétarien · Cuisine traditionnelle</div>
+                  <div class="slot-section">
+                    <div class="slot-label-text">Choisissez votre horaire</div>
+                    <div class="slot-chips">
+                      <button class="slot-chip" data-slot="19:30">19:30</button>
+                      <button class="slot-chip" data-slot="20:00">20:00</button>
+                      <button class="slot-chip unavailable" data-slot="20:30">20:30</button>
+                    </div>
+                  </div>
+                  <div class="guests-row">
+                    <div class="guest-col"><span class="guest-label">2 menus adultes</span><span class="guest-price">+42,00€/pers</span></div>
+                    <div class="guest-col"><span class="guest-label">1 menu enfant</span><span class="guest-price">+14,00€/pers</span></div>
+                  </div>
+                  <button class="modify-link">Voir menus et carte</button>
+                </div>
+              </div>
+
+              <!-- Idle -->
+              <div class="resto-card" data-meal="day1-dinner" data-name="La Mijoterie du Roy Henry" data-adults="35" data-child="12">
+                <div class="card-img-wrap">
+                  <img class="card-img" src="../assets/prototypes/restaurantimg.png" alt="" style="filter:brightness(.6) saturate(.5) hue-rotate(210deg);" />
+                  <button class="info-btn" aria-label="Informations"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#1D1D1B" stroke-width="1.25"/><path d="M6 5v4M6 3.5v.5" stroke="#1D1D1B" stroke-width="1.25" stroke-linecap="round"/></svg></button>
+                </div>
+                <div class="booking-overlay"><div class="spinner"></div><p>Confirmation<br>en cours…</p></div>
+                <div class="card-body">
+                  <div class="card-name">La Mijoterie du Roy Henry</div>
+                  <div class="card-tags">Décor Renaissance · Toutes les faims</div>
+                  <div class="slot-section">
+                    <div class="slot-label-text">Choisissez votre horaire</div>
+                    <div class="slot-chips">
+                      <button class="slot-chip" data-slot="19:00">19:00</button>
+                      <button class="slot-chip" data-slot="20:00">20:00</button>
+                      <button class="slot-chip unavailable" data-slot="20:30">20:30</button>
+                    </div>
+                  </div>
+                  <div class="guests-row">
+                    <div class="guest-col"><span class="guest-label">2 menus adultes</span><span class="guest-price">+35,00€/pers</span></div>
+                    <div class="guest-col"><span class="guest-label">1 menu enfant</span><span class="guest-price">+12,00€/pers</span></div>
+                  </div>
+                  <button class="modify-link">Voir menus et carte</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ DAY 2 ══ -->
+    <section class="day-section">
+      <div class="day-header">
+        <div>
+          <div class="day-kicker">JOUR 2 · Anticipez votre visite</div>
+          <h2 class="day-title">Dimanche 22 octobre 2026</h2>
+        </div>
+        <div class="day-meta">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.25"/><path d="M7 6h2v5M7 11h2" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/></svg>
+          2 menus adultes + 1 menu enfant
+        </div>
+      </div>
+
+      <!-- Déjeuner J2 -->
+      <div class="meal-block is-open" data-meal="day2-lunch">
+        <button class="meal-trigger" aria-expanded="true">
+          <div class="meal-trigger-left">
+            <div>
+              <div class="meal-trigger-title">Votre déjeuner</div>
+
+            </div>
+          </div>
+          <div class="meal-trigger-right">
+            <div class="meal-summary-chip">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span class="chip-text"></span>
+            </div>
+            <svg class="meal-chevron" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M5 7l4 4 4-4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </button>
+        <div class="meal-body">
+          <div class="meal-body-inner">
+            <div class="meal-controls">
+              <span class="meal-count">4 restaurants recommandés (2 adultes · 1 enfant)</span>
+              <div class="controls-right">
+                <button class="filter-btn"><svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M4 8h8M6 12h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg> Filtrer</button>
+                <div class="pagination">
+                  <button class="page-btn" disabled><svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M10 4l-4 4 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                  <span>1 / 2</span>
+                  <button class="page-btn filled"><svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                </div>
+              </div>
+            </div>
+            <div class="card-grid">
+
+              <div class="resto-card" data-meal="day2-lunch" data-name="L'Orangerie" data-adults="42" data-child="14">
+                <div class="card-img-wrap">
+                  <img class="card-img" src="../assets/prototypes/restaurantimg.png" alt="" />
+                  <button class="info-btn" aria-label="Informations"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#1D1D1B" stroke-width="1.25"/><path d="M6 5v4M6 3.5v.5" stroke="#1D1D1B" stroke-width="1.25" stroke-linecap="round"/></svg></button>
+                </div>
+                <div class="booking-overlay"><div class="spinner"></div><p>Confirmation<br>en cours…</p></div>
+                <div class="card-body">
+                  <div class="card-name">L'Orangerie</div>
+                  <div class="card-tags">Plat végétarien · Cuisine traditionnelle</div>
+                  <div class="slot-section">
+                    <div class="slot-label-text">Choisissez votre horaire</div>
+                    <div class="slot-chips">
+                      <button class="slot-chip" data-slot="12:00">12:00</button>
+                      <button class="slot-chip" data-slot="12:30">12:30</button>
+                      <button class="slot-chip" data-slot="13:00">13:00</button>
+                    </div>
+                  </div>
+                  <div class="guests-row">
+                    <div class="guest-col"><span class="guest-label">2 menus adultes</span><span class="guest-price">+42,00€/pers</span></div>
+                    <div class="guest-col"><span class="guest-label">1 menu enfant</span><span class="guest-price">+14,00€/pers</span></div>
+                  </div>
+                  <button class="modify-link">Voir menus et carte</button>
+                </div>
+              </div>
+
+              <div class="resto-card" data-meal="day2-lunch" data-name="L'Echansonnerie" data-adults="38" data-child="12">
+                <div class="card-img-wrap">
+                  <img class="card-img" src="../assets/prototypes/restaurantimg.png" alt="" style="filter:hue-rotate(-25deg) saturate(.8) brightness(.88);" />
+                  <button class="info-btn" aria-label="Informations"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#1D1D1B" stroke-width="1.25"/><path d="M6 5v4M6 3.5v.5" stroke="#1D1D1B" stroke-width="1.25" stroke-linecap="round"/></svg></button>
+                </div>
+                <div class="booking-overlay"><div class="spinner"></div><p>Confirmation<br>en cours…</p></div>
+                <div class="card-body">
+                  <div class="card-name">L'Echansonnerie</div>
+                  <div class="card-tags">Saveurs de la Renaissance · Buffet</div>
+                  <div class="slot-section">
+                    <div class="slot-label-text">Choisissez votre horaire</div>
+                    <div class="slot-chips">
+                      <button class="slot-chip" data-slot="12:00">12:00</button>
+                      <button class="slot-chip" data-slot="12:30">12:30</button>
+                      <button class="slot-chip" data-slot="13:00">13:00</button>
+                    </div>
+                  </div>
+                  <div class="guests-row">
+                    <div class="guest-col"><span class="guest-label">2 menus adultes</span><span class="guest-price">+38,00€/pers</span></div>
+                    <div class="guest-col"><span class="guest-label">1 menu enfant</span><span class="guest-price">+12,00€/pers</span></div>
+                  </div>
+                  <button class="modify-link">Voir menus et carte</button>
+                </div>
+              </div>
+
+              <div class="resto-card" data-meal="day2-lunch" data-name="Le Grand Carrousel" data-adults="44" data-child="16">
+                <div class="card-img-wrap">
+                  <img class="card-img" src="../assets/prototypes/restaurantimg.png" alt="" style="filter:hue-rotate(35deg) saturate(.9) brightness(.92);" />
+                  <button class="info-btn" aria-label="Informations"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#1D1D1B" stroke-width="1.25"/><path d="M6 5v4M6 3.5v.5" stroke="#1D1D1B" stroke-width="1.25" stroke-linecap="round"/></svg></button>
+                </div>
+                <div class="booking-overlay"><div class="spinner"></div><p>Confirmation<br>en cours…</p></div>
+                <div class="card-body">
+                  <div class="card-name">Le Grand Carrousel</div>
+                  <div class="card-tags">Gastronomique · Carte des vins</div>
+                  <div class="slot-section">
+                    <div class="slot-label-text">Choisissez votre horaire</div>
+                    <div class="slot-chips">
+                      <button class="slot-chip" data-slot="12:00">12:00</button>
+                      <button class="slot-chip" data-slot="13:00">13:00</button>
+                    </div>
+                  </div>
+                  <div class="guests-row">
+                    <div class="guest-col"><span class="guest-label">2 menus adultes</span><span class="guest-price">+44,00€/pers</span></div>
+                    <div class="guest-col"><span class="guest-label">1 menu enfant</span><span class="guest-price">+16,00€/pers</span></div>
+                  </div>
+                  <button class="modify-link">Voir menus et carte</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- ── Bottom bar ── -->
+<div class="bottom-bar">
+  <button class="bottom-total" id="total-btn">
+    <svg class="chevron-up" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M5 11l4-4 4 4" stroke="white" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span class="total-amount" id="bottom-amount">0,00€</span>
+  </button>
+  <div class="bottom-actions">
+    <button class="cta-btn ghost">Passer</button>
+    <button class="cta-btn primary">Continuer</button>
+  </div>
+</div>
+
+<!-- ── Restaurant info modal ── -->
+<div class="modal-backdrop" id="modal" role="dialog" aria-modal="true" aria-label="Informations restaurant">
+  <div class="modal-sheet" id="modal-content"></div>
+</div>
+
+<!-- ── Filter modal ── -->
+<div class="modal-backdrop" id="filter-modal" role="dialog" aria-modal="true" aria-label="Filtrer les restaurants">
+  <div class="modal-sheet filter-sheet">
+    <div class="filter-header">
+      <span class="filter-header-title">Filtrer</span>
+      <button class="filter-close" id="filter-close-btn" aria-label="Fermer">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="filter-body">
+      <div class="filter-section">
+        <div class="filter-section-title">Trier par</div>
+        <div class="sort-options">
+          <label class="sort-option"><input type="radio" name="sort" value="recommended" checked /><span>Recommandé</span></label>
+          <label class="sort-option"><input type="radio" name="sort" value="price-asc" /><span>Prix croissant</span></label>
+          <label class="sort-option"><input type="radio" name="sort" value="price-desc" /><span>Prix décroissant</span></label>
+          <label class="sort-option"><input type="radio" name="sort" value="name" /><span>Nom (A → Z)</span></label>
+        </div>
+      </div>
+      <div class="filter-section">
+        <div class="filter-section-title">Services</div>
+        <div class="filter-checks">
+          <label class="filter-check"><input type="checkbox" value="psh" /><span>PSH</span></label>
+          <label class="filter-check"><input type="checkbox" value="reservation" /><span>Réservation possible</span></label>
+          <label class="filter-check"><input type="checkbox" value="buffet" /><span>Buffet</span></label>
+          <label class="filter-check"><input type="checkbox" value="table" /><span>Service à table</span></label>
+          <label class="filter-check"><input type="checkbox" value="click-collect" /><span>Click &amp; Collect</span></label>
+          <label class="filter-check"><input type="checkbox" value="emporter" /><span>À emporter</span></label>
+          <label class="filter-check"><input type="checkbox" value="sur-place" /><span>Sur place</span></label>
+        </div>
+      </div>
+      <div class="filter-section">
+        <div class="filter-section-title">Type de nourriture</div>
+        <div class="filter-checks">
+          <label class="filter-check"><input type="checkbox" value="vegetarien" /><span>Plat végétarien</span></label>
+          <label class="filter-check"><input type="checkbox" value="viandes" /><span>Spécialités viandes</span></label>
+          <label class="filter-check"><input type="checkbox" value="gastro" /><span>Cuisine gastronomique</span></label>
+          <label class="filter-check"><input type="checkbox" value="traditionnelle" /><span>Cuisine traditionnelle</span></label>
+          <label class="filter-check"><input type="checkbox" value="grillades" /><span>Spécialités grillades</span></label>
+          <label class="filter-check"><input type="checkbox" value="poissons" /><span>Spécialités poissons</span></label>
+          <label class="filter-check"><input type="checkbox" value="italiennes" /><span>Spécialités italiennes</span></label>
+          <label class="filter-check"><input type="checkbox" value="locales" /><span>Saveurs locales</span></label>
+          <label class="filter-check"><input type="checkbox" value="burgers" /><span>Spécialités burgers</span></label>
+        </div>
+      </div>
+    </div>
+    <div class="filter-footer">
+      <button class="filter-reset" id="filter-reset-btn">Annuler</button>
+      <button class="filter-apply" id="filter-apply-btn">
+        Appliquer les filtres
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 8h8M9 5l3 3-3 3" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ── Accordion (manual toggle) ────────────────────────
+  document.querySelectorAll('.meal-trigger').forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const block = trigger.closest('.meal-block');
+      const isOpen = block.classList.contains('is-open');
+      block.classList.toggle('is-open', !isOpen);
+      trigger.setAttribute('aria-expanded', String(!isOpen));
+    });
+  });
+
+  // ── Slot chip click → lock siblings → spinner → confirmed → collapse ─
+  document.querySelectorAll('.slot-chips').forEach(chips => {
+    chips.addEventListener('click', e => {
+      const btn = e.target.closest('.slot-chip');
+      if (!btn || btn.classList.contains('unavailable')) return;
+      e.stopPropagation();
+
+      const card = chips.closest('.resto-card');
+      if (card.dataset.confirming) return;
+
+      const meal = card.dataset.meal;
+
+      // ── Deselect: clicking the active chip on a confirmed card resets everything ──
+      if (btn.classList.contains('active') && card.classList.contains('selected')) {
+        btn.classList.remove('active');
+        card.classList.remove('selected', 'ready');
+        card.querySelector('.selected-badge')?.remove();
+        card.querySelector('.confirmed-banner')?.remove();
+        // Unlock all siblings in this meal
+        document.querySelectorAll(`.resto-card[data-meal="${meal}"]`).forEach(c => {
+          c.classList.remove('meal-locked');
+        });
+        // Reset accordion trigger chip
+        const block = card.closest('.meal-block');
+        block.classList.remove('is-selected');
+        block.querySelector('.chip-text').textContent = '';
+        updateSummary();
+        return;
+      }
+
+      // Switch active chip on this card
+      chips.querySelectorAll('.slot-chip').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      card.classList.add('ready');
+      // Clear prompt state if it was showing
+      chips.closest('.slot-section')?.classList.remove('needs-slot');
+
+      // Lock sibling cards immediately (dim their slots, remove any previous selection)
+      document.querySelectorAll(`.resto-card[data-meal="${meal}"]`).forEach(c => {
+        if (c === card) return;
+        c.classList.add('meal-locked');
+        c.classList.remove('selected', 'ready');
+        c.querySelector('.selected-badge')?.remove();
+        c.querySelector('.confirmed-banner')?.remove();
+        // Clear any active slot chip on siblings so they don't show stale state
+        c.querySelectorAll('.slot-chip').forEach(sc => sc.classList.remove('active'));
+      });
+
+      // Update totals immediately so bottom bar reflects the new selection
+      updateSummaryPreview(card, btn.dataset.slot);
+
+      // Show spinner
+      const overlay = card.querySelector('.booking-overlay');
+      card.dataset.confirming = '1';
+      overlay.classList.add('visible');
+
+      setTimeout(() => {
+        overlay.classList.remove('visible');
+        delete card.dataset.confirming;
+
+        // Mark this card selected
+        card.classList.add('selected');
+
+        const wrap = card.querySelector('.card-img-wrap');
+        if (!wrap.querySelector('.selected-badge')) {
+          const badge = document.createElement('div');
+          badge.className = 'selected-badge';
+          badge.innerHTML = `<svg width="9" height="9" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Restaurant sélectionné`;
+          wrap.appendChild(badge);
+        }
+
+        const modifyBtn = card.querySelector('.modify-link');
+        if (modifyBtn && !card.querySelector('.confirmed-banner')) {
+          const adultPrice = parseFloat(card.dataset.adults) || 0;
+          const childPrice = parseFloat(card.dataset.child)  || 0;
+          const adultQty   = card.dataset.adultQty !== undefined ? parseInt(card.dataset.adultQty) : 2;
+          const childQty   = card.dataset.childQty !== undefined ? parseInt(card.dataset.childQty) : 1;
+          const total      = adultPrice * adultQty + childPrice * childQty;
+          const totalStr   = total.toFixed(2).replace('.', ',') + '€';
+          const banner = document.createElement('div');
+          banner.className = 'confirmed-banner';
+          banner.innerHTML = `
+            <span class="confirmed-banner-left">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Restaurant réservé · <strong style="margin-left:2px;">${totalStr}</strong>
+            </span>
+            <button class="confirmed-banner-cancel">Annuler</button>`;
+          modifyBtn.parentNode.insertBefore(banner, modifyBtn);
+        }
+
+        // Update accordion trigger chip
+        const block = card.closest('.meal-block');
+        block.classList.add('is-selected');
+        const slot = btn.dataset.slot;
+        const adultQty   = card.dataset.adultQty !== undefined ? parseInt(card.dataset.adultQty) : 2;
+        const childQty   = card.dataset.childQty !== undefined ? parseInt(card.dataset.childQty) : 1;
+        const adultPrice = parseFloat(card.dataset.adults) || 0;
+        const childPrice = parseFloat(card.dataset.child)  || 0;
+        const chipTotal  = (adultPrice * adultQty + childPrice * childQty).toFixed(2).replace('.', ',') + '€';
+        const coversParts = [];
+        if (adultQty > 0) coversParts.push(`${adultQty} adulte${adultQty > 1 ? 's' : ''}`);
+        if (childQty > 0) coversParts.push(`${childQty} enfant${childQty > 1 ? 's' : ''}`);
+        block.querySelector('.chip-text').textContent = `${slot} · ${coversParts.join(', ')} · ${chipTotal}`;
+
+        // Collapse on next downward scroll after confirmation
+        // Remove any previous listener on this block
+        if (block._collapseHandler) {
+          window.removeEventListener('scroll', block._collapseHandler);
+        }
+        let lastScrollY = window.scrollY;
+        block._collapseHandler = () => {
+          if (window.scrollY > lastScrollY) {
+            block.classList.remove('is-open');
+            block.querySelector('.meal-trigger').setAttribute('aria-expanded', 'false');
+            window.removeEventListener('scroll', block._collapseHandler);
+            block._collapseHandler = null;
+          }
+          lastScrollY = window.scrollY;
+        };
+        window.addEventListener('scroll', block._collapseHandler, { passive: true });
+
+        updateSummary();
+      }, 1400);
+    });
+  });
+
+  // ── Clicking the card body (not modal triggers, not slots) ─
+  document.querySelectorAll('.resto-card').forEach(card => {
+    card.addEventListener('click', e => {
+      if (e.target.closest('.slot-chip') || e.target.closest('.info-btn')) return;
+      if (e.target.closest('.card-name') || e.target.closest('.card-img-wrap')) return;
+
+      // Voir menus et carte → open modal
+      if (e.target.closest('.modify-link')) {
+        e.stopPropagation();
+        openModal(card);
+        return;
+      }
+
+      // Cancel button inside confirmed banner — reset card to idle
+      if (e.target.closest('.confirmed-banner-cancel')) {
+        const meal = card.dataset.meal;
+        card.classList.remove('selected', 'ready');
+        card.querySelector('.selected-badge')?.remove();
+        card.querySelector('.confirmed-banner')?.remove();
+        card.querySelectorAll('.slot-chip').forEach(c => c.classList.remove('active'));
+        // Unlock siblings
+        document.querySelectorAll(`.resto-card[data-meal="${meal}"]`).forEach(c => c.classList.remove('meal-locked'));
+        // Reset accordion trigger chip + cancel pending collapse listener
+        const block = card.closest('.meal-block');
+        block.classList.remove('is-selected');
+        block.querySelector('.chip-text').textContent = '';
+        if (block._collapseHandler) {
+          window.removeEventListener('scroll', block._collapseHandler);
+          block._collapseHandler = null;
+        }
+        updateSummary();
+        return;
+      }
+      if (card.dataset.confirming) return;
+      if (card.classList.contains('ready') && !card.classList.contains('selected')) {
+        const activeChip = card.querySelector('.slot-chip.active');
+        if (activeChip) activeChip.click();
+      }
+    });
+  });
+
+  // ── Preview total immediately when slot is picked ────
+  // Treats the card being confirmed as if it were already selected
+  function updateSummaryPreview(pendingCard, pendingSlot) {
+    const el = document.getElementById('summary-items');
+    const amountEl = document.getElementById('bottom-amount');
+    const meal = pendingCard.dataset.meal;
+
+    // Build a synthetic selected set: all currently selected cards,
+    // replacing any prior selection in the same meal with pendingCard
+    const allSelected = [...document.querySelectorAll('.resto-card.selected')]
+      .filter(c => c.dataset.meal !== meal);
+    allSelected.push(pendingCard);
+
+    let total = 0; let html = '';
+    allSelected.forEach(c => {
+      const adultPrice = parseFloat(c.dataset.adults) || 0;
+      const childPrice = parseFloat(c.dataset.child)  || 0;
+      const adultQty   = c.dataset.adultQty !== undefined ? parseInt(c.dataset.adultQty) : 2;
+      const childQty   = c.dataset.childQty !== undefined ? parseInt(c.dataset.childQty) : 1;
+      const slot   = c === pendingCard ? pendingSlot : (c.querySelector('.slot-chip.active')?.dataset.slot || '—');
+      const mealLabel = c.dataset.meal.includes('lunch') ? 'Déjeuner' : 'Dîner';
+      const day   = c.dataset.meal.startsWith('day1') ? 'J1' : 'J2';
+      const sub   = adultPrice * adultQty + childPrice * childQty;
+      total += sub;
+      html += `<div class="sum-row">
+        <span class="sum-row-name">${day} · ${mealLabel} · ${slot}</span>
+        <span class="sum-row-price">${sub.toFixed(2).replace('.',',')}€</span>
+      </div>`;
+    });
+    if (html) {
+      html += `<div class="sum-total"><span>Total</span><span>${total.toFixed(2).replace('.',',')}€</span></div>`;
+      el.innerHTML = html;
+    }
+    amountEl.textContent = `${total.toFixed(2).replace('.',',')}€`;
+  }
+
+  // ── Summary ──────────────────────────────────────────
+  function updateSummary() {
+    const selected = document.querySelectorAll('.resto-card.selected');
+    const el = document.getElementById('summary-items');
+    const amountEl = document.getElementById('bottom-amount');
+    if (!selected.length) {
+      el.innerHTML = '<p class="sum-empty">Aucun restaurant sélectionné</p>';
+      amountEl.textContent = '0,00€';
+      return;
+    }
+    let total = 0; let html = '';
+    selected.forEach(c => {
+      const adultPrice = parseFloat(c.dataset.adults) || 0;
+      const childPrice = parseFloat(c.dataset.child)  || 0;
+      const adultQty   = c.dataset.adultQty !== undefined ? parseInt(c.dataset.adultQty) : 2;
+      const childQty   = c.dataset.childQty !== undefined ? parseInt(c.dataset.childQty) : 1;
+      const slot   = c.querySelector('.slot-chip.active')?.dataset.slot || '—';
+      const meal   = c.dataset.meal.includes('lunch') ? 'Déjeuner' : 'Dîner';
+      const day    = c.dataset.meal.startsWith('day1') ? 'J1' : 'J2';
+      const sub    = adultPrice * adultQty + childPrice * childQty;
+      total += sub;
+      html += `<div class="sum-row">
+        <span class="sum-row-name">${day} · ${meal} · ${slot}</span>
+        <span class="sum-row-price">${sub.toFixed(2).replace('.',',')}€</span>
+      </div>`;
+    });
+    html += `<div class="sum-total"><span>Total</span><span>${total.toFixed(2).replace('.',',')}€</span></div>`;
+    el.innerHTML = html;
+    amountEl.textContent = `${total.toFixed(2).replace('.',',')}€`;
+  }
+
+  updateSummary();
+
+  document.getElementById('total-btn').addEventListener('click', () => {
+    document.querySelector('.chevron-up').classList.toggle('open');
+  });
+  // ── Modal ────────────────────────────────────────────
+  const COURSES = {
+    adult: [
+      { label: 'Entrée', items: ['Œufs mimosa à la ciboulette', 'ou Velouté de potimarron, crème fraîche'] },
+      { label: 'Plat', items: ['Rôti de veau aux herbes de Provence, gratin dauphinois', 'ou Filet de sandre, beurre blanc et légumes de saison'] },
+      { label: 'Dessert', items: ['Tarte Tatin, glace vanille', 'ou Fondant au chocolat, coulis de framboises'] },
+      { label: 'Boissons', items: ['1 boisson au choix (eau, jus de fruit, soda)', 'Café ou infusion inclus'] },
+    ],
+    'veg-adult': [
+      { label: 'Entrée', items: ['Salade de chèvre chaud, miel et noix', 'ou Gaspacho de tomates anciennes, basilic'] },
+      { label: 'Plat', items: ['Risotto aux champignons des bois, parmesan', 'ou Tian de légumes provençaux, sauce pistou'] },
+      { label: 'Dessert', items: ['Crème brûlée à la fleur d\'oranger', 'ou Salade de fruits de saison, menthe fraîche'] },
+      { label: 'Boissons', items: ['1 boisson au choix (eau, jus de fruit, soda)', 'Café ou infusion inclus'] },
+    ],
+    child: [
+      { label: 'Plat', items: ['Escalope de poulet, frites maison', 'ou Pâtes fraîches, sauce tomate et fromage râpé'] },
+      { label: 'Dessert', items: ['Coupe de glace deux boules', 'ou Yaourt et compote de pommes'] },
+      { label: 'Boissons', items: ['1 boisson au choix (eau, jus de fruit, soda)'] },
+    ],
+    'veg-child': [
+      { label: 'Plat', items: ['Gratin de courgettes au fromage', 'ou Mini-pizzas légumes et mozzarella'] },
+      { label: 'Dessert', items: ['Coupe de glace deux boules', 'ou Yaourt et compote de pommes'] },
+      { label: 'Boissons', items: ['1 boisson au choix (eau, jus de fruit, soda)'] },
+    ],
+  };
+
+  const CARTE = {
+    "L'Orangerie": [
+      { section: 'Entrées', items: [
+        { name: 'Velouté de potimarron', desc: 'Crème fraîche, graines de courge torréfiées', price: '8,50€' },
+        { name: 'Terrine de campagne', desc: 'Cornichons maison, pain de campagne grillé', price: '9,00€' },
+        { name: 'Salade de chèvre chaud', desc: 'Miel de fleurs, noix, mesclun', price: '10,50€' },
+      ]},
+      { section: 'Plats', items: [
+        { name: 'Rôti de veau aux herbes', desc: 'Gratin dauphinois, jus de cuisson réduit', price: '24,00€' },
+        { name: 'Filet de sandre', desc: 'Beurre blanc, haricots verts, pommes vapeur', price: '22,50€' },
+        { name: 'Risotto aux cèpes', desc: 'Parmesan 24 mois, huile de truffe', price: '19,00€' },
+      ]},
+      { section: 'Desserts', items: [
+        { name: 'Tarte Tatin', desc: 'Glace vanille bourbon, caramel beurre salé', price: '8,00€' },
+        { name: 'Fondant au chocolat', desc: 'Cœur coulant, coulis de framboises', price: '8,50€' },
+      ]},
+    ],
+    "L'Echansonnerie": [
+      { section: 'Buffet chaud', items: [
+        { name: 'Rôtisserie du jour', desc: 'Poulet fermier, agneau ou porc selon arrivage', price: 'inclus' },
+        { name: 'Gratin de pommes de terre', desc: 'Crème, ail, fromage fondu', price: 'inclus' },
+        { name: 'Légumes du terroir', desc: 'Carottes, navets, poireaux braisés', price: 'inclus' },
+      ]},
+      { section: 'Buffet froid', items: [
+        { name: 'Charcuteries vendéennes', desc: 'Jambon, rillettes, saucissons', price: 'inclus' },
+        { name: 'Salade composée', desc: 'Betteraves, lentilles, vinaigrette moutarde', price: 'inclus' },
+      ]},
+    ],
+    "La Mijoterie du Roy Henry": [
+      { section: 'À la broche', items: [
+        { name: 'Cuisse de canard confite', desc: 'Pommes sarladaises, jus au thym', price: '23,00€' },
+        { name: 'Côte de porc fumée', desc: 'Purée de céleri, sauce miel-moutarde', price: '21,00€' },
+        { name: 'Saucisse de Vendée grillée', desc: 'Lentilles du Puy, lardons fumés', price: '18,50€' },
+      ]},
+      { section: 'Vins de Loire', items: [
+        { name: 'Muscadet Sèvre et Maine', desc: 'Bouteille 75cl, sur lie', price: '22,00€' },
+        { name: 'Fiefs Vendéens rouge', desc: 'Bouteille 75cl, Pinot Noir', price: '24,00€' },
+      ]},
+    ],
+    "Le Grand Carrousel": [
+      { section: 'Entrées', items: [
+        { name: 'Foie gras de canard maison', desc: 'Chutney figue-gingembre, brioche toastée', price: '18,00€' },
+        { name: 'Saint-Jacques poêlées', desc: "Émulsion de persil, caviar d'Aquitaine", price: '22,00€' },
+      ]},
+      { section: 'Plats', items: [
+        { name: 'Filet de bœuf Rossini', desc: 'Foie gras, truffe noire, sauce Périgueux', price: '38,00€' },
+        { name: 'Homard breton', desc: 'Bisque de homard, légumes glacés', price: '42,00€' },
+        { name: 'Ris de veau croustillant', desc: 'Champignons des bois, jus de veau réduit', price: '34,00€' },
+      ]},
+      { section: 'Desserts', items: [
+        { name: 'Soufflé au Grand Marnier', desc: 'Glace à la vanille de Madagascar', price: '14,00€' },
+        { name: 'Mille-feuille caramel', desc: 'Crème légère au praliné, caramel fleur de sel', price: '12,00€' },
+      ]},
+    ],
+  };
+
+  const RESTAURANTS = {
+    "L'Orangerie": {
+      desc: "À deux pas du « Grand Carrousel » et du « Bourg Bérard », profitez d'un grand buffet froid à volonté entre deux spectacles !",
+      menus: [
+        { label: 'Menu(s) Adulte',             price: 42, key: 'adult' },
+        { label: 'Menu(s) Végétarien Adulte',  price: 42, key: 'veg-adult' },
+        { label: 'Menu(s) Enfants',            price: 14, key: 'child' },
+        { label: 'Menu(s) Végétarien Enfant',  price: 14, key: 'veg-child' },
+      ],
+    },
+    "L'Echansonnerie": {
+      desc: "Installez-vous à la table de Catherine du Puy du Fou pour déguster des mets aux saveurs de la Renaissance !",
+      menus: [
+        { label: 'Menu(s) Adulte',   price: 38, key: 'adult' },
+        { label: 'Menu(s) Enfants',  price: 12, key: 'child' },
+      ],
+    },
+    "La Mijoterie du Roy Henry": {
+      desc: "Dans un magnifique décor Renaissance, choisissez votre ambiance et appréciez notre formule adaptée pour toutes les faims !",
+      menus: [
+        { label: 'Menu(s) Adulte',   price: 35, key: 'adult' },
+        { label: 'Menu(s) Enfants',  price: 12, key: 'child' },
+      ],
+    },
+    "Le Grand Carrousel": {
+      desc: "Restaurant gastronomique niché au cœur du parc. Spécialités régionales élaborées par notre chef étoilé, avec une carte des vins exceptionnelle issue des caves du Puy du Fou.",
+      menus: [
+        { label: 'Menu(s) Adulte',             price: 44, key: 'adult' },
+        { label: 'Menu(s) Végétarien Adulte',  price: 44, key: 'veg-adult' },
+        { label: 'Menu(s) Enfants',            price: 16, key: 'child' },
+        { label: 'Menu(s) Végétarien Enfant',  price: 16, key: 'veg-child' },
+      ],
+    },
+  };
+
+  let modalQuantities = {};
+  let modalOriginalQuantities = {};
+  let activeModalCard = null;
+
+  function openModal(card) {
+    const name = card.dataset.name;
+    const info = RESTAURANTS[name] || { desc: '', menus: [] };
+    activeModalCard = card;
+
+    // Seed quantities from card data (2 adults + 1 child default)
+    modalQuantities = {};
+    info.menus.forEach(m => {
+      if (m.key === 'adult') modalQuantities[m.key] = parseInt(card.dataset.adultQty ?? 2);
+      else if (m.key === 'child') modalQuantities[m.key] = parseInt(card.dataset.childQty ?? 1);
+      else modalQuantities[m.key] = 0;
+    });
+    // Snapshot original so we can detect changes
+    modalOriginalQuantities = { ...modalQuantities };
+
+    renderModal(name, info);
+    document.getElementById('modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    document.getElementById('modal').classList.remove('open');
+    document.body.style.overflow = '';
+    activeModalCard = null;
+  }
+
+  function renderModal(name, info) {
+    const imgSrc = '../assets/prototypes/restaurantimg.png';
+
+    let menuRows = info.menus.map(m => {
+      const qty = modalQuantities[m.key] ?? 0;
+      const courses = COURSES[m.key] || [];
+      const courseHTML = courses.length ? `
+        <div class="menu-detail">
+          ${courses.map((c, i) => `
+            <button class="menu-course-trigger" type="button">
+              ${c.label}
+              <svg class="course-chevron" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="menu-course-body">
+              <div class="menu-course-items">
+                ${c.items.map(item => `<span class="menu-course-item">${item}</span>`).join('')}
+              </div>
+            </div>
+          `).join('')}
+        </div>` : '';
+      return `<div class="menu-row" style="flex-direction:column; align-items:stretch;">
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:8px;">
+          <div class="menu-row-info">
+            <span class="menu-row-label">${m.label}</span>
+            <span class="menu-row-price">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.25"/><path d="M6 4.5v4M6 3.5v.3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/></svg>
+              ${m.price.toFixed(2).replace('.',',')}€
+            </span>
+          </div>
+          <div class="stepper-ctrl">
+            <button class="stepper-btn minus" data-key="${m.key}" data-action="dec" ${qty === 0 ? 'disabled' : ''}>−</button>
+            <span class="stepper-val" data-key="${m.key}">${qty}</span>
+            <button class="stepper-btn" data-key="${m.key}" data-action="inc">+</button>
+          </div>
+        </div>
+        ${courseHTML}
+      </div>`;
+    }).join('');
+
+    const total = info.menus.reduce((s, m) => s + (modalQuantities[m.key] ?? 0) * m.price, 0);
+    const was   = info.menus.reduce((s, m) => s + (modalQuantities[m.key] ?? 0) * m.price * 1.15, 0);
+
+    document.getElementById('modal-content').innerHTML = `
+      <div class="modal-img-wrap" style="position:relative;">
+        <img class="modal-img" src="${imgSrc}" alt="${name}" />
+        <button class="modal-close" id="modal-close-btn" aria-label="Fermer">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
+        </button>
+        <div class="modal-dots">
+          <div class="modal-dot active"></div>
+          <div class="modal-dot"></div>
+          <div class="modal-dot"></div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <h2 class="modal-title">${name}</h2>
+        <p class="modal-desc">${info.desc}</p>
+
+        <div class="modal-tabs">
+          <button class="modal-tab active" data-tab="menus">Menus</button>
+          <button class="modal-tab" data-tab="carte">Carte</button>
+        </div>
+
+        <!-- Menus tab -->
+        <div class="modal-tab-panel active" id="tab-menus">
+          <div class="modal-section-title">Choisissez vos menus</div>
+          <div id="modal-menu-rows">${menuRows}</div>
+        </div>
+
+        <!-- Carte tab -->
+        <div class="modal-tab-panel" id="tab-carte">
+          ${(CARTE[name] || []).map(section => `
+            <div class="carte-section">
+              <div class="carte-section-title">${section.section}</div>
+              <div class="carte-items">
+                ${section.items.map(item => `
+                  <div class="carte-item">
+                    <div>
+                      <div class="carte-item-name">${item.name}</div>
+                      <div class="carte-item-desc">${item.desc}</div>
+                    </div>
+                    <span class="carte-item-price">${item.price}</span>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+      <div class="modal-notes">
+        Diners les soirs de Cinéscénie : 18h30 et 20h15<br>
+        Diners en période Noces de Feu : 19h00<br>
+        Réservation conseillée. *Produit décongelé.<br>
+        Cette réduction s'applique uniquement si vous réservez votre repas en même temps que vos billets Puy du Fou.
+      </div>
+      <div class="modal-footer">
+        <div class="modal-price-total">
+          <span class="modal-price-label">Prix total</span>
+          <span class="modal-price-amount" id="modal-total">${total.toFixed(2).replace('.',',')}€</span>
+          <span class="modal-price-was"><s>au lieu de ${was.toFixed(2).replace('.',',')}€</s></span>
+        </div>
+        <button class="modal-cancel" id="modal-cancel-btn">Annuler</button>
+        <button class="modal-cta" id="modal-update-btn">
+          Continuer
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 8h8M9 5l3 3-3 3" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    `;
+
+    // Bind course accordions
+    document.querySelectorAll('.menu-course-trigger').forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const isOpen = trigger.classList.contains('open');
+        trigger.classList.toggle('open', !isOpen);
+      });
+    });
+
+    // Bind stepper buttons
+    document.querySelectorAll('.stepper-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const key = btn.dataset.key;
+        const action = btn.dataset.action;
+        if (action === 'inc') modalQuantities[key] = (modalQuantities[key] ?? 0) + 1;
+        if (action === 'dec') modalQuantities[key] = Math.max(0, (modalQuantities[key] ?? 0) - 1);
+        refreshModalTotals(info);
+      });
+    });
+
+    document.getElementById('modal-close-btn').addEventListener('click', closeModal);
+
+    // Tab switching
+    document.querySelectorAll('.modal-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.modal-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.modal-tab-panel').forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+      });
+    });
+    document.getElementById('modal-cancel-btn').addEventListener('click', closeModal);
+    document.getElementById('modal-update-btn').addEventListener('click', () => {
+      if (!activeModalCard) { closeModal(); return; }
+
+      // Compute totals from modal quantities
+      const adultQty = (modalQuantities['adult'] ?? 0) + (modalQuantities['veg-adult'] ?? 0);
+      const childQty = (modalQuantities['child'] ?? 0) + (modalQuantities['veg-child'] ?? 0);
+      const adultPrice = info.menus.find(m => m.key === 'adult' || m.key === 'veg-adult')?.price ?? 0;
+      const childPrice = info.menus.find(m => m.key === 'child' || m.key === 'veg-child')?.price ?? 0;
+
+      // Write back to card dataset so updateSummary picks it up
+      activeModalCard.dataset.adults = adultPrice; // price per person (unchanged)
+      activeModalCard.dataset.child  = childPrice;
+      // Store quantities separately for summary label
+      activeModalCard.dataset.adultQty = adultQty;
+      activeModalCard.dataset.childQty = childQty;
+
+      // Update guest-price labels on the card
+      const guestCols = activeModalCard.querySelectorAll('.guest-col');
+      if (guestCols[0]) {
+        guestCols[0].querySelector('.guest-label').textContent = `${adultQty} menu${adultQty !== 1 ? 's' : ''} adulte${adultQty !== 1 ? 's' : ''}`;
+        guestCols[0].querySelector('.guest-price').textContent = `+${adultPrice.toFixed(2).replace('.',',')}€/pers`;
+      }
+      if (guestCols[1]) {
+        guestCols[1].querySelector('.guest-label').textContent = `${childQty} menu${childQty !== 1 ? 's' : ''} enfant${childQty !== 1 ? 's' : ''}`;
+        guestCols[1].querySelector('.guest-price').textContent = `+${childPrice.toFixed(2).replace('.',',')}€/pers`;
+      }
+
+      // Check before closeModal nulls activeModalCard
+      const hasChanges = Object.keys(modalQuantities).some(k => modalQuantities[k] !== (modalOriginalQuantities[k] ?? 0));
+      const hasSlot = !!activeModalCard.querySelector('.slot-chip.active');
+      const cardToPrompt = (hasChanges && !hasSlot) ? activeModalCard : null;
+
+      closeModal();
+      updateSummary();
+
+      if (cardToPrompt) {
+        const slotSection = cardToPrompt.querySelector('.slot-section');
+        if (slotSection) {
+          slotSection.classList.add('needs-slot');
+          cardToPrompt.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
+        }
+      }
+    });
+  }
+
+  function refreshModalTotals(info) {
+    // Update stepper values and disable states
+    info.menus.forEach(m => {
+      const qty = modalQuantities[m.key] ?? 0;
+      const valEl = document.querySelector(`.stepper-val[data-key="${m.key}"]`);
+      const decBtn = document.querySelector(`.stepper-btn.minus[data-key="${m.key}"]`);
+      if (valEl) valEl.textContent = qty;
+      if (decBtn) decBtn.disabled = qty === 0;
+    });
+    const total = info.menus.reduce((s, m) => s + (modalQuantities[m.key] ?? 0) * m.price, 0);
+    const was   = info.menus.reduce((s, m) => s + (modalQuantities[m.key] ?? 0) * m.price * 1.15, 0);
+    const totalEl = document.getElementById('modal-total');
+    if (totalEl) totalEl.textContent = `${total.toFixed(2).replace('.',',')}€`;
+    const wasEl = document.querySelector('.modal-price-was s');
+    if (wasEl) wasEl.textContent = `au lieu de ${was.toFixed(2).replace('.',',')}€`;
+    // Update CTA label based on whether quantities changed
+    const hasChanges = Object.keys(modalQuantities).some(k => modalQuantities[k] !== (modalOriginalQuantities[k] ?? 0));
+    const ctaBtn = document.getElementById('modal-update-btn');
+    if (ctaBtn) ctaBtn.firstChild.textContent = hasChanges ? 'Mettre à jour' : 'Continuer';
+  }
+
+  // ── Filter modal ─────────────────────────────────────
+  function openFilterModal() {
+    document.getElementById('filter-modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeFilterModal() {
+    document.getElementById('filter-modal').classList.remove('open');
+    document.body.style.overflow = '';
+    updateFilterBadges();
+  }
+
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      openFilterModal();
+    });
+  });
+
+  document.getElementById('filter-close-btn').addEventListener('click', closeFilterModal);
+  document.getElementById('filter-reset-btn').addEventListener('click', () => {
+    document.querySelectorAll('#filter-modal input[type="checkbox"]').forEach(cb => cb.checked = false);
+    document.querySelector('#filter-modal input[value="recommended"]').checked = true;
+    closeFilterModal();
+  });
+  document.getElementById('filter-apply-btn').addEventListener('click', closeFilterModal);
+  document.getElementById('filter-modal').addEventListener('click', e => {
+    if (e.target === document.getElementById('filter-modal')) closeFilterModal();
+  });
+
+  function updateFilterBadges() {
+    const activeCount = document.querySelectorAll('#filter-modal input[type="checkbox"]:checked').length;
+    const sortChanged = !document.querySelector('#filter-modal input[value="recommended"]').checked;
+    const total = activeCount + (sortChanged ? 1 : 0);
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      const existing = btn.querySelector('.filter-badge');
+      if (existing) existing.remove();
+      if (total > 0) {
+        const badge = document.createElement('span');
+        badge.className = 'filter-badge';
+        badge.textContent = total;
+        btn.appendChild(badge);
+      }
+    });
+  }
+
+  // Open modal on info-btn, card name, or card image clicks
+  document.querySelectorAll('.resto-card').forEach(card => {
+    card.addEventListener('click', e => {
+      const infoTrigger = e.target.closest('.info-btn');
+      const nameTrigger = e.target.closest('.card-name');
+      const imgTrigger  = e.target.closest('.card-img-wrap');
+
+      if (infoTrigger || nameTrigger || (imgTrigger && !e.target.closest('.info-btn') && !e.target.closest('.selected-badge'))) {
+        e.stopPropagation();
+        openModal(card);
+      }
+    });
+  });
+
+  // Close on backdrop click
+  document.getElementById('modal').addEventListener('click', e => {
+    if (e.target === document.getElementById('modal')) closeModal();
+  });
+</script>
+
+
+</body>
+</html>
