@@ -738,6 +738,32 @@
       font-size: 10px; font-weight: 700; margin-left: 2px;
     }
 
+    /* ── Bottom bar recap drawer (mobile) ── */
+    .bottom-drawer {
+      display: none; /* desktop: hidden */
+    }
+    @media (max-width: 768px) {
+      .bottom-drawer {
+        display: block;
+        position: fixed; bottom: 56px; left: 0; right: 0; z-index: 49;
+        background: var(--bg-cards);
+        border-top: 1px solid var(--border-light);
+        box-shadow: 0 -4px 24px rgba(0,0,0,.12);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 380ms cubic-bezier(.4,0,.2,1);
+      }
+      .bottom-drawer.open { max-height: 60dvh; overflow-y: auto; }
+      .bottom-drawer-inner { padding: 16px 16px 8px; }
+      .bottom-drawer-title {
+        font-size: 11px; font-weight: 700; text-transform: uppercase;
+        letter-spacing: .07em; color: var(--grey); margin-bottom: 10px;
+      }
+      .bottom-drawer-empty {
+        font-size: 13px; color: var(--grey); text-align: center; padding: 8px 0 12px;
+      }
+    }
+
     /* ── Responsive ── */
     @media (max-width: 1024px) {
       .page-body { grid-template-columns: 260px 1fr; padding: 0 24px; }
@@ -748,10 +774,8 @@
       .meal-trigger-title { font-size: 18px; }
       .day-section { border-radius: 0; }
       .sidebar-card { border-radius: 0; }
-      /* Show recap on mobile but compact */
-      .summary-card { display: block; }
-      .summary-card h3 { margin-bottom: 6px; }
-      .sum-total { font-size: 13px; }
+      /* Hide sidebar recap on mobile — shown in bottom bar drawer instead */
+      .summary-card { display: none; }
       /* Day header: stack title above meta */
       .day-header {
         flex-direction: column;
@@ -1280,6 +1304,16 @@
   </main>
 </div>
 
+<!-- ── Bottom recap drawer (mobile) ── -->
+<div class="bottom-drawer" id="bottom-drawer">
+  <div class="bottom-drawer-inner">
+    <div class="bottom-drawer-title">Récapitulatif</div>
+    <div id="drawer-summary-items">
+      <p class="bottom-drawer-empty">Aucun restaurant sélectionné</p>
+    </div>
+  </div>
+</div>
+
 <!-- ── Bottom bar ── -->
 <div class="bottom-bar">
   <button class="bottom-total" id="total-btn">
@@ -1568,6 +1602,12 @@
   }
 
   // ── Summary ──────────────────────────────────────────
+  function closeDrawer() {
+    const drawer = document.getElementById('bottom-drawer');
+    if (drawer) drawer.classList.remove('open');
+    document.querySelector('.chevron-up')?.classList.remove('open');
+  }
+
   function updateSummary() {
     const selected = document.querySelectorAll('.resto-card.selected');
     const el = document.getElementById('summary-items');
@@ -1601,8 +1641,22 @@
   updateSummary();
 
   document.getElementById('total-btn').addEventListener('click', () => {
-    document.querySelector('.chevron-up').classList.toggle('open');
+    const drawer = document.getElementById('bottom-drawer');
+    if (!drawer) return;
+    const isOpen = drawer.classList.toggle('open');
+    document.querySelector('.chevron-up').classList.toggle('open', isOpen);
+    if (isOpen) syncDrawer();
   });
+
+  function syncDrawer() {
+    const drawer = document.getElementById('drawer-summary-items');
+    if (!drawer) return;
+    const src = document.getElementById('summary-items');
+    if (!src) return;
+    drawer.innerHTML = src.innerHTML;
+    // Apply same styles to cloned sum-rows and sum-total
+    drawer.querySelectorAll('.sum-row').forEach(r => r.style.fontSize = '13px');
+  }
   // ── Modal ────────────────────────────────────────────
   const COURSES = {
     adult: [
