@@ -50,29 +50,6 @@
       75%      { transform: translateX(6px); }
     }
   </style>
-  <script>
-    (function () {
-      var KEY = 'proto_unlocked';
-      var PWD = 'pdfUX';
-      if (sessionStorage.getItem(KEY) === '1') return;
-      document.addEventListener('DOMContentLoaded', function () {
-        var gate = document.getElementById('proto-gate');
-        if (!gate) return;
-        document.getElementById('proto-gate-form').addEventListener('submit', function (e) {
-          e.preventDefault();
-          var input = document.getElementById('proto-gate-input');
-          if (input.value === PWD) {
-            sessionStorage.setItem(KEY, '1');
-            gate.remove();
-          } else {
-            input.classList.add('error');
-            document.getElementById('proto-gate-error').textContent = 'Mot de passe incorrect.';
-            setTimeout(function () { input.classList.remove('error'); input.value = ''; input.focus(); }, 400);
-          }
-        });
-      });
-    })();
-  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
@@ -767,11 +744,30 @@
       .card-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 768px) {
-      .day-title { font-size: 20px; }
+      .day-title { font-size: 20px; line-height: 1.25; }
       .meal-trigger-title { font-size: 18px; }
       .day-section { border-radius: 0; }
       .sidebar-card { border-radius: 0; }
       .summary-card { display: none; }
+      /* Day header: stack title above meta */
+      .day-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+        padding: 14px 16px;
+      }
+      .day-meta { white-space: normal; font-size: 12px; }
+      /* Meal trigger: tighter padding */
+      .meal-trigger { padding: 12px 16px; }
+      .meal-trigger-subtitle { display: none; }
+      /* Meal controls: wrap onto two lines if needed */
+      .meal-controls {
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 0 16px 10px;
+      }
+      .meal-count { width: 100%; }
+      .controls-right { margin-left: auto; }
       /* Full-width page, all children constrained */
       .page-body {
         grid-template-columns: 1fr;
@@ -821,6 +817,26 @@
     <div id="proto-gate-error"></div>
   </form>
 </div>
+<script>
+  (function () {
+    var KEY = 'proto_unlocked';
+    var PWD = 'pdfUX';
+    var gate = document.getElementById('proto-gate');
+    if (sessionStorage.getItem(KEY) === '1') { gate.style.display = 'none'; return; }
+    document.getElementById('proto-gate-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var input = document.getElementById('proto-gate-input');
+      if (input.value === PWD) {
+        sessionStorage.setItem(KEY, '1');
+        gate.style.display = 'none';
+      } else {
+        input.classList.add('error');
+        document.getElementById('proto-gate-error').textContent = 'Mot de passe incorrect.';
+        setTimeout(function () { input.classList.remove('error'); input.value = ''; input.focus(); }, 400);
+      }
+    });
+  })();
+</script>
 
 <a href="../index.html#prototypes" class="dev-back">← Hub</a>
 
