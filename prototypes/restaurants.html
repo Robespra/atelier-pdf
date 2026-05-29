@@ -239,7 +239,7 @@
       padding: 16px 24px; gap: 16px; background: none; text-align: left;
       transition: background 120ms;
     }
-    .meal-trigger:hover { background: #FAF6EF; }
+    .meal-trigger:hover { background: #F0EAD8; }
     .meal-trigger-left { display: flex; align-items: center; gap: 12px; }
     .meal-trigger-icon { font-size: 16px; flex-shrink: 0; }
     .meal-trigger-title { font-family: Georgia, serif; font-size: 20px; font-weight: 700; }
@@ -748,7 +748,10 @@
       .meal-trigger-title { font-size: 18px; }
       .day-section { border-radius: 0; }
       .sidebar-card { border-radius: 0; }
-      .summary-card { display: none; }
+      /* Show recap on mobile but compact */
+      .summary-card { display: block; }
+      .summary-card h3 { margin-bottom: 6px; }
+      .sum-total { font-size: 13px; }
       /* Day header: stack title above meta */
       .day-header {
         flex-direction: column;
