@@ -484,22 +484,32 @@
     .modal-backdrop {
       position: fixed; inset: 0; z-index: 200;
       background: rgba(0,0,0,.45);
-      display: flex; align-items: flex-end; justify-content: center;
+      display: flex; align-items: center; justify-content: center;
       opacity: 0; pointer-events: none;
       transition: opacity 220ms ease;
     }
     .modal-backdrop.open { opacity: 1; pointer-events: all; }
     .modal-sheet {
       background: var(--bg-cards);
-      border-radius: 20px 20px 0 0;
+      border-radius: 16px;
       width: 100%; max-width: 560px;
-      max-height: 92dvh;
+      max-height: 90dvh;
       overflow-y: auto;
-      transform: translateY(40px);
+      transform: translateY(20px);
       transition: transform 260ms cubic-bezier(.32,1,.4,1);
       display: flex; flex-direction: column;
     }
     .modal-backdrop.open .modal-sheet { transform: translateY(0); }
+    /* Mobile: slide up from bottom */
+    @media (max-width: 768px) {
+      .modal-backdrop { align-items: flex-end; }
+      .modal-sheet {
+        border-radius: 20px 20px 0 0;
+        max-width: 100%;
+        max-height: 92dvh;
+        transform: translateY(40px);
+      }
+    }
     .modal-close {
       position: absolute; top: 14px; right: 14px;
       width: 32px; height: 32px; border-radius: 50%;
@@ -661,9 +671,17 @@
     /* ── Filter modal ── */
     .filter-sheet {
       max-width: 420px;
+      border-radius: 16px;
       display: flex;
       flex-direction: column;
-      max-height: 92dvh;
+      max-height: 90dvh;
+    }
+    @media (max-width: 768px) {
+      .filter-sheet {
+        max-width: 100%;
+        border-radius: 20px 20px 0 0;
+        max-height: 92dvh;
+      }
     }
     .filter-header {
       display: flex; align-items: center; justify-content: space-between;
