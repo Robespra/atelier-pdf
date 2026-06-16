@@ -316,8 +316,93 @@
   gap: 1rem;
 }
 
-/* ---------- Knowledge section + Craft section ---------- */
-.knowledge-sub-tabs,
+/* ---------- Knowledge section ---------- */
+.knowledge-sub-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.knowledge-tab-btn {
+  padding: 0.35rem 0.85rem;
+  border-radius: 2rem;
+  border: 1.5px solid #E6D7BA;
+  background: #fff;
+  color: #75633F;
+  font-size: 0.78rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+
+.knowledge-tab-btn.active,
+.knowledge-tab-btn:hover {
+  border-color: #C6A669;
+  background: #FBF7F0;
+  color: #211C12;
+}
+
+.knowledge-panel {
+  display: none;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.knowledge-panel.active {
+  display: flex;
+}
+
+.resource-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.85rem 1rem;
+  background: #fff;
+  border: 1.5px solid #E6D7BA;
+  border-radius: 0.65rem;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.resource-card:hover {
+  border-color: #C6A669;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.resource-type-badge {
+  flex-shrink: 0;
+  padding: 0.2rem 0.55rem;
+  border-radius: 0.35rem;
+  font-size: 0.67rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 2px;
+}
+
+.resource-type-book   { background: #EFE7D5; color: #75633F; }
+.resource-type-article { background: #E8F0E8; color: #2E7D32; }
+.resource-type-site   { background: #E8EEF8; color: #1A56A0; }
+.resource-type-video  { background: #FDE8E8; color: #C0272D; }
+.resource-type-tool   { background: #F0EAF8; color: #6A3FA0; }
+
+.resource-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #211C12;
+  margin-bottom: 0.2rem;
+  line-height: 1.35;
+}
+
+.resource-desc {
+  font-size: 0.78rem;
+  color: #75633F;
+  line-height: 1.5;
+}
+
 .craft-placeholder {
   font-size: 0.82rem;
   color: #75633F;
@@ -893,6 +978,7 @@
 
   .knowledge-panel.active,
   .craft-panel.active {
+    display: grid;
     grid-template-columns: 1fr 1fr;
   }
 
