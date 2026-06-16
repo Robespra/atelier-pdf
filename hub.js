@@ -14,7 +14,7 @@
       /* Nav */
       nav_design_systems: 'Design Systems',
       nav_components:     'Kitchen Sink',
-      nav_craft:          'Savoir-faire',
+      nav_craft:          'Savoir-faire & Outils',
       nav_knowledge:      'Connaissances',
       nav_quiz:           'UI Quiz',
       nav_prompting:      'Prompting',
@@ -44,8 +44,8 @@
       quiz_stat_categories: 'catégories',
       quiz_stat_bonus:    'bonus labels',
       /* Craft section */
-      craft_title:        'Savoir-faire',
-      craft_subtitle:     'Ressources sélectionnées pour développer votre savoir-faire en design d\'interface — cours, références et exercices pratiques.',
+      craft_title:        'Savoir-faire & Outils',
+      craft_subtitle:     'Ressources, outils et exercices pour développer votre pratique du design d\'interface.',
       /* Prompting section */
       prompt_title:       'Prompting Design',
       prompt_subtitle:    'Problèmes fréquents des prompts vagues et 5 stratégies pour des outputs de meilleure qualité.',
@@ -73,7 +73,7 @@
       /* Nav */
       nav_design_systems: 'Design Systems',
       nav_components:     'Kitchen Sink',
-      nav_craft:          'Savoir-faire',
+      nav_craft:          'Savoir-faire & Outils',
       nav_knowledge:      'Knowledge',
       nav_quiz:           'UI Quiz',
       nav_prompting:      'Prompting',
@@ -103,8 +103,8 @@
       quiz_stat_categories: 'categories',
       quiz_stat_bonus:    'bonus labels',
       /* Craft section */
-      craft_title:        'Savoir-faire',
-      craft_subtitle:     'Curated resources to develop your UI design craft — courses, references and practical exercises.',
+      craft_title:        'Savoir-faire & Tools',
+      craft_subtitle:     'Resources, tools and exercises to develop your UI design practice.',
       /* Prompting section */
       prompt_title:       'Design Prompting',
       prompt_subtitle:    'Common issues with vague prompts and 5 strategies for better AI outputs.',
@@ -2051,9 +2051,64 @@
     const root = document.getElementById('craft-root');
     if (!root) return;
     const isFr = lang === 'fr';
-    root.innerHTML = `<p class="craft-placeholder">${isFr
-      ? 'Les cours et ressources arrivent bientôt.'
-      : 'Courses and resources coming soon.'}</p>`;
+    const t = I18N[lang];
+
+    const cardStyle = `
+      background:#fff;
+      border:1.5px solid #C6A669;
+      border-radius:0.75rem;
+      overflow:hidden;
+      text-decoration:none;
+      color:inherit;
+      display:flex;
+      flex-direction:column;
+      transition:box-shadow 160ms ease, transform 160ms ease;
+      cursor:pointer;
+      max-width:280px;
+    `;
+    const thumbStyle = `
+      background:#EFE7D5;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:1.25rem 0 1rem;
+      min-height:108px;
+    `;
+
+    const thumb = `<svg width="120" height="72" viewBox="0 0 120 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="6" y="8" width="108" height="56" rx="6" fill="#EFE7D5" stroke="#C9982A" stroke-width="1.5"/>
+      <rect x="16" y="18" width="36" height="6" rx="3" fill="#C0272D" fill-opacity="0.15"/>
+      <rect x="16" y="28" width="26" height="5" rx="2.5" fill="#C9982A" fill-opacity="0.5"/>
+      <rect x="16" y="37" width="32" height="5" rx="2.5" fill="#2E7D32" fill-opacity="0.25"/>
+      <rect x="16" y="46" width="22" height="5" rx="2.5" fill="#2D5BA8" fill-opacity="0.25"/>
+      <rect x="68" y="10" width="38" height="52" rx="18" fill="#1A1208" fill-opacity="0.06" stroke="#C9982A" stroke-width="1"/>
+      <circle cx="87" cy="28" r="10" fill="#EFE7D5" stroke="#C9982A" stroke-width="1"/>
+      <rect x="80" y="42" width="14" height="3" rx="1.5" fill="#C9982A" fill-opacity="0.6"/>
+      <rect x="80" y="49" width="14" height="3" rx="1.5" fill="#C9982A" fill-opacity="0.3"/>
+      <rect x="80" y="56" width="10" height="3" rx="1.5" fill="#C9982A" fill-opacity="0.2"/>
+      <rect x="72" y="20" width="30" height="5" rx="2.5" fill="#C0272D"/>
+    </svg>`;
+
+    root.innerHTML = `
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;margin-top:0.5rem;">
+        <a href="pdf-filter-builder.html" style="${cardStyle}"
+           onmouseover="this.style.boxShadow='0 6px 24px #46474733';this.style.transform='translateY(-2px)'"
+           onmouseout="this.style.boxShadow='none';this.style.transform='none'">
+          <div style="${thumbStyle}">${thumb}</div>
+          <div style="padding:0.9rem;display:flex;flex-direction:column;gap:0.4rem;flex:1;">
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:0.5rem;">
+              <span style="font-weight:700;font-size:0.85rem;line-height:1.3;">${isFr ? 'Constructeur de filtres' : 'Filter builder'}</span>
+              <span style="font-size:0.65rem;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;padding:0.2rem 0.55rem;border-radius:999px;background:#C6A66918;color:#C6A669;display:inline-block;flex-shrink:0;">${isFr ? 'Outil' : 'Tool'}</span>
+            </div>
+            <p style="font-size:0.76rem;color:#616161;line-height:1.5;margin:0;">${isFr
+              ? 'Choisissez vos critères — l\'outil déduit le contrôle UI et la logique AND/OR adaptés.'
+              : 'Define filter criteria and get the right UI control and AND/OR logic recommended automatically.'
+            }</p>
+            <span style="font-size:0.75rem;font-weight:700;color:#B40020;margin-top:auto;padding-top:0.4rem;">${t.proto_open}</span>
+          </div>
+        </a>
+      </div>
+    `;
   }
 
   /* ══════════════════════════════════════════
@@ -3027,29 +3082,6 @@
           <rect x="68" y="46" width="30" height="3" rx="1.5" fill="#E6D7BA"/>
           <rect x="68" y="52" width="22" height="3" rx="1.5" fill="#E6D7BA"/>
           <rect x="30" y="62" width="60" height="6" rx="3" fill="#1D1D1B"/>
-        </svg>`,
-      },
-      {
-        id: 'filter-builder',
-        href: 'pdf-filter-builder.html',
-        tag: t.proto_tag_tools,
-        tagColor: '#C6A669',
-        title: isFr ? 'Constructeur de filtres' : 'Filter builder',
-        desc: isFr
-          ? 'Outil guidé : choisissez vos critères, l\'outil déduit le contrôle UI et la logique AND/OR adaptés.'
-          : 'Guided tool: define filter criteria and get the right UI control and AND/OR logic recommended automatically.',
-        thumb: `<svg width="120" height="72" viewBox="0 0 120 72" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="6" y="8" width="108" height="56" rx="6" fill="#EFE7D5" stroke="#C9982A" stroke-width="1.5"/>
-          <rect x="16" y="18" width="36" height="6" rx="3" fill="#C0272D" fill-opacity="0.15"/>
-          <rect x="16" y="28" width="26" height="5" rx="2.5" fill="#C9982A" fill-opacity="0.5"/>
-          <rect x="16" y="37" width="32" height="5" rx="2.5" fill="#2E7D32" fill-opacity="0.25"/>
-          <rect x="16" y="46" width="22" height="5" rx="2.5" fill="#2D5BA8" fill-opacity="0.25"/>
-          <rect x="68" y="10" width="38" height="52" rx="18" fill="#1A1208" fill-opacity="0.06" stroke="#C9982A" stroke-width="1"/>
-          <circle cx="87" cy="28" r="10" fill="#EFE7D5" stroke="#C9982A" stroke-width="1"/>
-          <rect x="80" y="42" width="14" height="3" rx="1.5" fill="#C9982A" fill-opacity="0.6"/>
-          <rect x="80" y="49" width="14" height="3" rx="1.5" fill="#C9982A" fill-opacity="0.3"/>
-          <rect x="80" y="56" width="10" height="3" rx="1.5" fill="#C9982A" fill-opacity="0.2"/>
-          <rect x="72" y="20" width="30" height="5" rx="2.5" fill="#C0272D"/>
         </svg>`,
       },
     ];
