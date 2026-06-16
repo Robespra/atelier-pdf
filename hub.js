@@ -61,6 +61,7 @@
       proto_subtitle:     'Explorations interactives — améliorations de pages existantes et nouvelles pistes UX.',
       nav_prototypes:     'Prototypes',
       proto_tag_booking:  'Réservation',
+      proto_tag_tools:    'Outil',
       proto_tag_wip:      'En cours',
       proto_open:         'Ouvrir →',
       proto_placeholder:  'Prochain prototype',
@@ -119,6 +120,7 @@
       proto_subtitle:     'Interactive explorations — enhancements of existing pages and new UX directions.',
       nav_prototypes:     'Prototypes',
       proto_tag_booking:  'Booking',
+      proto_tag_tools:    'Tool',
       proto_tag_wip:      'In progress',
       proto_open:         'Open →',
       proto_placeholder:  'Next prototype',
@@ -3025,6 +3027,29 @@
           <rect x="68" y="46" width="30" height="3" rx="1.5" fill="#E6D7BA"/>
           <rect x="68" y="52" width="22" height="3" rx="1.5" fill="#E6D7BA"/>
           <rect x="30" y="62" width="60" height="6" rx="3" fill="#1D1D1B"/>
+        </svg>`,
+      },
+      {
+        id: 'filter-builder',
+        href: 'pdf-filter-builder.html',
+        tag: t.proto_tag_tools,
+        tagColor: '#C6A669',
+        title: isFr ? 'Constructeur de filtres' : 'Filter builder',
+        desc: isFr
+          ? 'Outil guidé : choisissez vos critères, l\'outil déduit le contrôle UI et la logique AND/OR adaptés.'
+          : 'Guided tool: define filter criteria and get the right UI control and AND/OR logic recommended automatically.',
+        thumb: `<svg width="120" height="72" viewBox="0 0 120 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="6" y="8" width="108" height="56" rx="6" fill="#EFE7D5" stroke="#C9982A" stroke-width="1.5"/>
+          <rect x="16" y="18" width="36" height="6" rx="3" fill="#C0272D" fill-opacity="0.15"/>
+          <rect x="16" y="28" width="26" height="5" rx="2.5" fill="#C9982A" fill-opacity="0.5"/>
+          <rect x="16" y="37" width="32" height="5" rx="2.5" fill="#2E7D32" fill-opacity="0.25"/>
+          <rect x="16" y="46" width="22" height="5" rx="2.5" fill="#2D5BA8" fill-opacity="0.25"/>
+          <rect x="68" y="10" width="38" height="52" rx="18" fill="#1A1208" fill-opacity="0.06" stroke="#C9982A" stroke-width="1"/>
+          <circle cx="87" cy="28" r="10" fill="#EFE7D5" stroke="#C9982A" stroke-width="1"/>
+          <rect x="80" y="42" width="14" height="3" rx="1.5" fill="#C9982A" fill-opacity="0.6"/>
+          <rect x="80" y="49" width="14" height="3" rx="1.5" fill="#C9982A" fill-opacity="0.3"/>
+          <rect x="80" y="56" width="10" height="3" rx="1.5" fill="#C9982A" fill-opacity="0.2"/>
+          <rect x="72" y="20" width="30" height="5" rx="2.5" fill="#C0272D"/>
         </svg>`,
       },
     ];
