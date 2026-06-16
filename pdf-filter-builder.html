@@ -284,6 +284,35 @@
   }
   .toggle-shortcut-btn:hover { background: var(--red); }
 
+  /* gate checkbox in wizard */
+  .gate-check {
+    display: flex; gap: 10px; align-items: flex-start; padding: 12px 14px;
+    background: #fff; border: 1.5px solid var(--border); border-radius: 0.5rem; margin-bottom: 10px;
+    font-size: 0.78rem; color: var(--ink-soft); line-height: 1.55; cursor: pointer;
+    transition: border-color 0.15s;
+  }
+  .gate-check.on { border-color: var(--ink); background: #f8f6f2; color: var(--ink); }
+  .gate-check input { margin-top: 2px; accent-color: var(--ink); width: 15px; height: 15px; flex-shrink: 0; }
+  .gate-check strong { color: var(--ink); }
+
+  /* gate badge on cards */
+  .badge.gate { background: var(--ink); color: #FBF7F0; border-color: var(--ink); }
+
+  /* gate section in phone preview */
+  .pv-gate-section {
+    padding: 10px 16px;
+    background: var(--ink);
+    border-bottom: 2px solid var(--red);
+  }
+  .pv-gate-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+  .pv-gate-label { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); }
+  .pv-gate-section .pv-row-label { color: #FBF7F0; }
+  .pv-gate-section .pv-toggle { background: rgba(255,255,255,0.2); }
+  .pv-gate-section .pv-toggle.on { background: var(--red); }
+
+  /* reorder buttons */
+  .icon-btn.reorder { font-size: 11px; }
+
   /* big choice buttons */
   .choice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
   .choice-grid.one { grid-template-columns: 1fr; }
@@ -675,7 +704,7 @@ function startWizard(editId) {
     draft = JSON.parse(JSON.stringify(f));
     draft.step = 1; draft.editing = editId;
   } else {
-    draft = { step: 1, id: uid++, name: '', options: [], classification: null, nature: null, rareOption: false, oneCutOk: false, editing: null };
+    draft = { step: 1, id: uid++, name: '', options: [], classification: null, nature: null, rareOption: false, isGate: false, editing: null };
   }
   renderWizard();
 }
@@ -693,7 +722,18 @@ function applyToggleShortcut() {
   draft.classification = 'exclusive';
   draft.nature = 'toggle';
   draft.options = [];
-  commitFilter();
+  // Show gate question before committing
+  draft.step = 4;
+  draft._fromShortcut = true;
+  renderWizard();
+}
+
+function moveFilter(id, dir) {
+  const idx = filters.findIndex(f => f.id === id);
+  const target = idx + dir;
+  if (target < 0 || target >= filters.length) return;
+  [filters[idx], filters[target]] = [filters[target], filters[idx]];
+  renderBuilder();
 }
 
 function wizNext() {
@@ -715,7 +755,10 @@ function wizNext() {
   if (draft.step < 4) { draft.step++; renderWizard(); }
   else commitFilter();
 }
-function wizBack() { if (draft.step > 1) { draft.step--; renderWizard(); } else cancelWizard(); }
+function wizBack() {
+  if (draft._fromShortcut && draft.step === 4) { draft._fromShortcut = false; draft.step = 2; draft.classification = null; draft.nature = null; renderWizard(); return; }
+  if (draft.step > 1) { draft.step--; renderWizard(); } else cancelWizard();
+}
 
 function setClassification(c) {
   draft.classification = c;
@@ -738,7 +781,8 @@ function commitFilter() {
     id: draft.id, name: draft.name.trim(), options: draft.options.slice(),
     classification: draft.classification, nature: draft.nature,
     control: derived.control, controlKey: derived.controlKey,
-    intra: derived.intra, inter: derived.inter, rareOption: draft.rareOption
+    intra: derived.intra, inter: derived.inter, rareOption: draft.rareOption,
+    isGate: !!draft.isGate
   };
   if (draft.editing != null) {
     const idx = filters.findIndex(x => x.id === draft.editing);
@@ -810,12 +854,23 @@ function renderWizard() {
   }
   // STEP 4 — control + review
   else if (d.step === 4) {
-    if (d.classification === 'inclusive') {
+    if (d._fromShortcut || (d.classification === 'exclusive' && d.nature === 'toggle' && d.options.length === 0)) {
+      // Shortcut toggle path — just ask gate question
+      const derived = deriveControl(d);
+      bodyHTML = `
+        <div class="wiz-q">Dernière question sur « ${esc(d.name)} »</div>
+        <div class="wiz-help">Le contrôle est une <b>bascule (toggle)</b> — déduit automatiquement.</div>
+        ${reviewBox(d, derived)}
+        ${gateCheckHTML(d)}
+        ${riskCheckHTML(d)}
+      `;
+    } else if (d.classification === 'inclusive') {
       const derived = deriveControl(d);
       bodyHTML = `
         <div class="wiz-q">Contrôle déduit automatiquement</div>
         <div class="wiz-help">Un critère inclusif utilise toujours des cases à cocher (sélection multiple).</div>
         ${reviewBox(d, derived)}
+        ${gateCheckHTML(d)}
         ${riskCheckHTML(d)}
       `;
     } else {
@@ -845,7 +900,7 @@ function renderWizard() {
             <div class="choice-ex">→ Curseur · ex : Distance, Prix</div>
           </button>
         </div>
-        ${derived ? reviewBox(d, derived) + riskCheckHTML(d) : ''}
+        ${derived ? reviewBox(d, derived) + gateCheckHTML(d) + riskCheckHTML(d) : ''}
       `;
     }
   }
@@ -890,6 +945,14 @@ function riskCheckHTML(d) {
     </label>`;
 }
 
+function gateCheckHTML(d) {
+  return `
+    <label class="gate-check ${d.isGate?'on':''}">
+      <input type="checkbox" ${d.isGate?'checked':''} onchange="draft.isGate=this.checked; renderWizard()">
+      <span><b>Filtre global (verrou).</b> Ce filtre agit sur <em>l'ensemble du catalogue</em> avant que les autres filtres s'appliquent — il réduit le pool de résultats pour tous. Typique : « Click & Collect », « Places libres ». Dans l'aperçu, il apparaîtra en tête, séparé des autres filtres.</span>
+    </label>`;
+}
+
 // ════════════════════════════════════════
 //  RENDER — BUILDER LIST
 // ════════════════════════════════════════
@@ -902,22 +965,27 @@ function renderBuilder() {
     listHTML = filters.map((f,i)=>{
       const clsBadge = f.classification==='exclusive'
         ? '<span class="badge exc">⊘ Exclusif</span>' : '<span class="badge inc">⊕ Inclusif</span>';
+      const gateBadge = f.isGate ? '<span class="badge gate">⊠ Verrou global</span>' : '';
       const intraBadge = f.intra==='OR' ? '<span class="badge or">OR intra</span>' : '';
-      const risk = f.rareOption ? '<span class="badge risk">⚠ Compteur conseillé</span>' : '';
-      const opts = f.controlKey==='toggle'  ? 'activé / désactivé'
-        : f.controlKey==='slider'  ? 'plage numérique'
+      const risk = f.rareOption ? '<span class="badge risk">⚠ Compteur</span>' : '';
+      const opts = f.controlKey==='toggle' ? 'activé / désactivé'
+        : f.controlKey==='slider' ? 'plage numérique'
         : (f.options.length ? f.options.join(' · ') : '—');
+      const canUp   = i > 0;
+      const canDown = i < filters.length - 1;
       return `
-        <div class="fcard">
+        <div class="fcard" style="${f.isGate ? 'border-left:3px solid var(--ink);' : ''}">
           <div class="fcard-top">
             <div class="fcard-name"><span class="fcard-num">${i+1}</span>${esc(f.name)}</div>
             <div class="fcard-actions">
+              <button class="icon-btn reorder" title="Monter"  onclick="moveFilter(${f.id},-1)" ${canUp?'':'disabled style="opacity:0.3;pointer-events:none;"'}>↑</button>
+              <button class="icon-btn reorder" title="Descendre" onclick="moveFilter(${f.id},1)"  ${canDown?'':'disabled style="opacity:0.3;pointer-events:none;"'}>↓</button>
               <button class="icon-btn" title="Modifier" onclick="startWizard(${f.id})">✎</button>
               <button class="icon-btn" title="Supprimer" onclick="removeFilter(${f.id})">🗑</button>
             </div>
           </div>
           <div class="fcard-meta">
-            ${clsBadge}<span class="badge ctrl">${f.control}</span>${intraBadge}<span class="badge and">AND inter</span>${risk}
+            ${gateBadge}${clsBadge}<span class="badge ctrl">${f.control}</span>${intraBadge}${f.isGate ? '' : '<span class="badge and">AND inter</span>'}${risk}
           </div>
           <div class="fcard-opts">${esc(opts)}</div>
         </div>`;
@@ -948,8 +1016,23 @@ function renderPhone() {
     return;
   }
 
+  const gates = live.filter(f => f.isGate);
+  const peers = live.filter(f => !f.isGate);
+
   let html = '';
-  live.forEach(f => {
+
+  // Gate filters — rendered first in a dark bar
+  if (gates.length) {
+    html += `<div class="pv-gate-section">`;
+    html += `<div class="pv-gate-head"><span class="pv-gate-label">Filtres globaux</span></div>`;
+    gates.forEach(f => {
+      html += `<div class="pv-toggle-row"><span class="pv-row-label">${esc(f.name)}</span><div class="pv-toggle on" onclick="this.classList.toggle('on')"></div></div>`;
+    });
+    html += `</div>`;
+  }
+
+  // Peer filters
+  peers.forEach(f => {
     const logicBadges = `
       <div class="pv-logic">
         <span class="lb ${f.classification==='exclusive'?'lb-exc':'lb-inc'}">${f.classification==='exclusive'?'EXCL':'INCL'}</span>
@@ -1001,20 +1084,37 @@ function renderPhone() {
 function exportSpec() {
   const out = document.getElementById('spec-out');
   if (filters.length === 0) { toast('Ajoutez au moins un critère'); return; }
-  let md = `## 🎯 Spécification des filtres — Puy du Fou\n\n`;
+  const gates = filters.filter(f => f.isGate);
+  const peers = filters.filter(f => !f.isGate);
+  let md = `## 🎯 Spécification des filtres\n\n`;
   md += `**Règle de combinaison :** OR à l'intérieur d'une classe · AND entre les classes\n\n`;
-  md += `| Critère | Type | Contrôle UI | Intra | Inter | Garde-fou |\n`;
-  md += `|---|---|---|---|---|---|\n`;
-  filters.forEach(f => {
-    md += `| ${f.name} | ${f.classification==='exclusive'?'Exclusif':'Inclusif'} | ${f.control} | ${f.intra} | ${f.inter} | ${f.rareOption?'Compteur + grisé si 0':'—'} |\n`;
-  });
-  md += `\n### 📋 Détail par critère\n`;
+  if (gates.length) {
+    md += `### ⊠ Filtres globaux (verrous)\n`;
+    md += `> Ces filtres agissent sur **l'ensemble du catalogue** avant les autres — ils réduisent le pool de résultats pour tous les filtres suivants.\n\n`;
+    md += `| Critère | Contrôle UI | Effet |\n`;
+    md += `|---|---|---|\n`;
+    gates.forEach(f => {
+      md += `| ${f.name} | ${f.control} | Réduit le catalogue global |\n`;
+    });
+    md += `\n`;
+  }
+  if (peers.length) {
+    md += `### Filtres contextuels\n\n`;
+    md += `| Critère | Type | Contrôle UI | Intra | Garde-fou |\n`;
+    md += `|---|---|---|---|---|\n`;
+    peers.forEach(f => {
+      md += `| ${f.name} | ${f.classification==='exclusive'?'Exclusif':'Inclusif'} | ${f.control} | ${f.intra} | ${f.rareOption?'Compteur + grisé si 0':'—'} |\n`;
+    });
+    md += `\n`;
+  }
+  md += `### 📋 Détail par critère\n`;
   filters.forEach((f,i) => {
-    md += `\n**${i+1}. ${f.name}**\n`;
+    md += `\n**${i+1}. ${f.name}**${f.isGate?' ⊠ Verrou global':''}\n`;
+    if (f.isGate) md += `- **Portée : globale** — s'applique avant tous les autres filtres\n`;
     md += `- Type : ${f.classification==='exclusive'?'mutuellement exclusif':'mutuellement inclusif'}\n`;
-    md += `- Options : ${f.controlKey==='slider'?'plage numérique':(f.options.join(', ')||'—')}\n`;
+    md += `- Options : ${f.controlKey==='toggle'?'activé / désactivé':f.controlKey==='slider'?'plage numérique':(f.options.join(', ')||'—')}\n`;
     md += `- Contrôle : ${f.control}\n`;
-    md += `- Logique : ${f.intra!=='—'?f.intra+' entre options, ':''}AND avec les autres filtres\n`;
+    if (!f.isGate) md += `- Logique : ${f.intra!=='—'?f.intra+' entre options, ':''}AND avec les autres filtres\n`;
     if (f.rareOption) md += `- ⚠ Risque zéro-résultat : afficher le compteur par option, griser à 0\n`;
   });
   out.textContent = md;
@@ -1027,11 +1127,11 @@ function exportSpec() {
 // ════════════════════════════════════════
 function loadExample() {
   filters = [
-    { id: uid++, name:'Disponibilité', options:['Places libres'], classification:'exclusive', nature:'toggle', control:'Bascule (toggle)', controlKey:'toggle', intra:'—', inter:'AND', rareOption:false },
-    { id: uid++, name:'Horaire', options:['Jour','Soir'], classification:'exclusive', nature:'segmented', control:'Contrôle segmenté', controlKey:'segmented', intra:'—', inter:'AND', rareOption:false },
-    { id: uid++, name:'Lieu', options:['Extérieur','Intérieur'], classification:'exclusive', nature:'segmented', control:'Contrôle segmenté', controlKey:'segmented', intra:'—', inter:'AND', rareOption:true },
-    { id: uid++, name:'Public', options:['Pour les enfants','En famille','Romantique','Nocturne'], classification:'inclusive', nature:'checkbox', control:'Cases à cocher', controlKey:'checkbox', intra:'OR', inter:'AND', rareOption:false },
-    { id: uid++, name:'Proximité', options:['0 m','1500 m'], classification:'exclusive', nature:'slider', control:'Curseur (slider)', controlKey:'slider', intra:'—', inter:'AND', rareOption:false },
+    { id: uid++, name:'Places libres', options:[], classification:'exclusive', nature:'toggle', control:'Bascule (toggle)', controlKey:'toggle', intra:'—', inter:'AND', rareOption:false, isGate:true },
+    { id: uid++, name:'Horaire', options:['Jour','Soir'], classification:'exclusive', nature:'segmented', control:'Contrôle segmenté', controlKey:'segmented', intra:'—', inter:'AND', rareOption:false, isGate:false },
+    { id: uid++, name:'Lieu', options:['Extérieur','Intérieur'], classification:'exclusive', nature:'segmented', control:'Contrôle segmenté', controlKey:'segmented', intra:'—', inter:'AND', rareOption:true, isGate:false },
+    { id: uid++, name:'Public', options:['Pour les enfants','En famille','Romantique','Nocturne'], classification:'inclusive', nature:'checkbox', control:'Cases à cocher', controlKey:'checkbox', intra:'OR', inter:'AND', rareOption:false, isGate:false },
+    { id: uid++, name:'Proximité', options:['0 m','1500 m'], classification:'exclusive', nature:'slider', control:'Curseur (slider)', controlKey:'slider', intra:'—', inter:'AND', rareOption:false, isGate:false },
   ];
   draft = null;
   renderBuilder();
