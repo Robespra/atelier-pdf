@@ -1,9 +1,14 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="pduf">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Constructeur de Filtres — Puy du Fou</title>
+<title>Constructeur de Filtres — Atelier Design</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%23CB1617'/><text x='16' y='21' font-family='Georgia,serif' font-size='13' font-weight='900' fill='%23FBF7F0' text-anchor='middle'>UI</text></svg>" />
+<link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<link href="https://cdn.jsdelivr.net/npm/daisyui@5/daisyui.css" rel="stylesheet" />
+<link rel="stylesheet" href="hub.css" />
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&display=swap');
 
@@ -449,16 +454,121 @@
   @media (max-width: 920px) {
     .workspace { grid-template-columns: 1fr; }
     .preview-col { position: static; margin-top: 10px; }
-    header { padding: 22px 20px; } .workspace { padding: 22px 20px 50px; }
+    .workspace { padding: 22px 20px 50px; }
+  }
+
+  /* ── Hub integration overrides ── */
+  body {
+    background: var(--parchemin) !important;
+    background-image:
+      radial-gradient(circle at 12% 8%, rgba(201,152,42,0.05), transparent 40%),
+      radial-gradient(circle at 88% 92%, rgba(192,39,45,0.04), transparent 40%) !important;
+    font-family: 'Crimson Pro', Georgia, serif !important;
+  }
+  #tool-main {
+    flex: 1;
+    min-width: 0;
+    overflow-y: auto;
+    min-height: 100dvh;
+  }
+  .tool-header {
+    background: linear-gradient(135deg, var(--rouge-dark) 0%, var(--rouge) 65%, #7d1619 100%);
+    padding: 22px 40px 18px;
+    border-bottom: 3px solid var(--or);
+    position: relative;
+    overflow: hidden;
+  }
+  .tool-header::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 18v-4h-1v4h-4v1h4v4h1v-4h4v-1h-4z' fill='%23ffffff' fill-opacity='0.05'/%3E%3C/svg%3E");
+  }
+  .tool-header h1 {
+    font-family: 'Cinzel', serif; font-size: 20px; font-weight: 900;
+    letter-spacing: 2px; text-transform: uppercase; color: var(--creme);
+    position: relative; display: flex; align-items: center; gap: 10px;
+  }
+  .tool-header h1 .crest { font-size: 18px; }
+  .tool-header h1 span { color: var(--or-light); }
+  .tool-header p {
+    font-size: 14px; font-style: italic; color: rgba(245,239,224,0.72);
+    margin-top: 4px; font-weight: 300; position: relative;
+  }
+
+  /* Hub sidebar nav active state for this page */
+  #hub-sidebar .hub-nav-btn[data-section="craft"] {
+    color: #211C12;
+    background: rgba(203, 22, 23, 0.06);
+    border-radius: 0.5rem;
+  }
+  #hub-sidebar .hub-nav-btn[data-section="craft"]::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 10%; bottom: 10%;
+    width: 3px;
+    background: #CB1617;
+    border-radius: 0 2px 2px 0;
+  }
+  #hub-sidebar .hub-nav-btn {
+    position: relative;
   }
 </style>
 </head>
 <body>
 
-<header>
-  <h1><span class="crest">⚜</span> Constructeur de Filtres <span>· Puy du Fou</span></h1>
-  <p>Répondez à quelques questions — l'outil déduit le bon contrôle et la bonne logique</p>
-</header>
+  <!-- ── Hub sidebar ── -->
+  <aside id="hub-sidebar" aria-label="Navigation principale">
+    <a href="index.html" class="hub-sidebar-logo" style="text-decoration:none;">
+      <div class="hub-sidebar-logo-mark">UI</div>
+      <div class="hub-sidebar-logo-text">Atelier<br>Design</div>
+    </a>
+    <nav class="hub-sidebar-nav" role="navigation">
+      <a href="index.html#design-systems" class="hub-nav-btn" style="text-decoration:none;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        Design Systems
+      </a>
+      <a href="index.html#components" class="hub-nav-btn" style="text-decoration:none;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+        Kitchen Sink
+      </a>
+      <a href="index.html#craft" class="hub-nav-btn" data-section="craft" style="text-decoration:none;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+        Savoir-faire & Outils
+      </a>
+      <a href="index.html#knowledge" class="hub-nav-btn" style="text-decoration:none;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        Connaissances
+      </a>
+      <a href="index.html#quiz" class="hub-nav-btn" style="text-decoration:none;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        UI Quiz
+      </a>
+      <a href="index.html#prompting" class="hub-nav-btn" style="text-decoration:none;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Prompting
+      </a>
+      <a href="index.html#careers" class="hub-nav-btn" style="text-decoration:none;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        Carrières
+      </a>
+      <a href="index.html#designops" class="hub-nav-btn" style="text-decoration:none;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M4.93 4.93a10 10 0 0 0 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M8.46 8.46a5 5 0 0 0 0 7.07"/></svg>
+        DesignOps
+      </a>
+      <a href="index.html#prototypes" class="hub-nav-btn" style="text-decoration:none;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 8h.01M10 8h7M7 11h4"/></svg>
+        Prototypes
+      </a>
+    </nav>
+  </aside>
+
+  <!-- ── Tool content ── -->
+  <div id="tool-main">
+
+  <div class="tool-header">
+    <h1><span class="crest">⚜</span> Constructeur de Filtres <span>· Puy du Fou</span></h1>
+    <p>Répondez à quelques questions — l'outil déduit le bon contrôle et la bonne logique</p>
+  </div>
 
 <div class="workspace">
 
@@ -950,5 +1060,6 @@ function toggleTheory(){
   document.getElementById('theory-toggle').classList.toggle('open');
 }
 </script>
+  </div><!-- /#tool-main -->
 </body>
 </html>
