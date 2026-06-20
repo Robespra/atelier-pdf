@@ -3068,8 +3068,8 @@
         tagColor: '#009A58',
         title: isFr ? 'Réservation restaurants' : 'Restaurant booking',
         desc: isFr
-          ? 'Refonte de la page restaurant — sélection de menu, horaire et résumé de commande en temps réel.'
-          : 'Redesign of the restaurant page — menu selection, time slot and real-time order summary.',
+          ? 'Refonte de la page restaurant de la VEL — sélection de menu, horaires et résumé de commande en temps réel.'
+          : 'Redesign of the restaurant page — menu selection, time slots and real-time order summary.',
         thumb: `<svg width="120" height="72" viewBox="0 0 120 72" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect x="6" y="6" width="48" height="60" rx="6" fill="#FBF7F0" stroke="#C6A669" stroke-width="1.5"/>
           <rect x="60" y="6" width="54" height="60" rx="6" fill="#FBF7F0" stroke="#C6A669" stroke-width="1.5"/>
