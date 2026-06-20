@@ -591,15 +591,16 @@
             <span class="th-tag">⊘ Mutuellement exclusif</span>
             <h4>Un seul choix possible</h4>
             <p>Un spectacle ne peut pas appartenir aux deux options en même temps. Choisir l'un exclut l'autre.</p>
-            <div class="th-ex"><span class="ch">Jour</span><span class="ch sel">Soir ✓</span></div>
+            <div class="th-ex"><span class="ch">Jour</span><span class="ch sel">Nocturne ✓</span></div>
             <div class="th-ex"><span class="ch sel">Places libres ✓</span><span class="ch">Complet</span></div>
+            <div class="th-ex"><span class="ch sel">Intérieur ✓</span><span class="ch">Extérieur</span></div>
             <div class="th-rule">→ Contrôle : <b>bascule / segmenté / radio</b> · Pas de combinaison entre options</div>
           </div>
           <div class="th-card inc">
             <span class="th-tag">⊕ Mutuellement inclusif</span>
             <h4>Plusieurs choix cumulables</h4>
             <p>Un spectacle peut appartenir à plusieurs options à la fois. Les catégories ne se contredisent pas.</p>
-            <div class="th-ex"><span class="ch sel">Enfants ✓</span><span class="ch sel">Nocturne ✓</span><span class="ch">Romantique</span></div>
+            <div class="th-ex"><span class="ch sel">Animaux ✓</span><span class="ch sel">Famille ✓</span><span class="ch">Nouveauté</span></div>
             <div class="th-ex"><span class="ch sel">Traditionnel ✓</span><span class="ch sel">Terrasse ✓</span><span class="ch">Rapide</span></div>
             <div class="th-rule">→ Contrôle : <b>cases à cocher</b> · Logique entre options : <b>OR</b> (l'union)</div>
           </div>
@@ -610,19 +611,19 @@
           <div class="th-lc or">
             <h4>OR</h4>
             <p><b>À l'intérieur</b> d'une classe (entre les options d'un même filtre). Affiche tout ce qui correspond à <em>au moins une</em> option.</p>
-            <div class="ex">👉 Nocturne <b>OR</b> Enfants<br>→ les spectacles nocturnes <em>+</em> les spectacles enfants</div>
+            <div class="ex">👉 Immersif <b>OR</b> famille<br>→ les spectacles immersifs <em>+</em> les spectacles famille</div>
           </div>
           <div class="th-lc and">
             <h4>AND</h4>
             <p><b>Entre les classes</b> (entre deux filtres différents). Affiche seulement ce qui respecte <em>toutes</em> les conditions.</p>
-            <div class="ex">👉 Enfants <b>AND</b> Places libres<br>→ seulement les spectacles enfants encore dispo</div>
+            <div class="ex">👉 Enfants <b>AND</b> Places libres<br>→ seulement les spectacles famille encore dispo</div>
           </div>
         </div>
 
         <div class="th-goldrule">
           <div class="grtitle">⚜ La règle d'or Puy du Fou</div>
-          <div class="grline"><span class="grb or">OR</span><span>à l'<b>intérieur</b> d'une classe — entre les options d'un même filtre (Enfants <em>ou</em> Famille <em>ou</em> Romantique)</span></div>
-          <div class="grline"><span class="grb and">AND</span><span>à l'<b>extérieur</b> — entre deux filtres différents (Public=Enfants <em>et</em> Dispo=Places libres)</span></div>
+          <div class="grline"><span class="grb or">OR</span><span>à l'<b>intérieur</b> d'une classe — entre les options d'un même filtre (Famille <em>ou</em> Nouveauté <em>ou</em> Immersifs)</span></div>
+          <div class="grline"><span class="grb and">AND</span><span>à l'<b>extérieur</b> — entre deux filtres différents (Public=Famille <em>et</em> Dispo=Places libres)</span></div>
           <div class="grsub">Toujours AND → souvent 0 résultat. Toujours OR → trop de bruit. La bonne combinaison donne des résultats pertinents.</div>
         </div>
 
@@ -1129,7 +1130,7 @@ function loadExample() {
     { id: uid++, name:'Places libres', options:[], classification:'exclusive', nature:'toggle', control:'Bascule (toggle)', controlKey:'toggle', intra:'—', inter:'AND', rareOption:false, isGate:true },
     { id: uid++, name:'Horaire', options:['Jour','Soir'], classification:'exclusive', nature:'segmented', control:'Contrôle segmenté', controlKey:'segmented', intra:'—', inter:'AND', rareOption:false, isGate:false },
     { id: uid++, name:'Lieu', options:['Extérieur','Intérieur'], classification:'exclusive', nature:'segmented', control:'Contrôle segmenté', controlKey:'segmented', intra:'—', inter:'AND', rareOption:true, isGate:false },
-    { id: uid++, name:'Public', options:['Pour les enfants','En famille','Romantique','Nocturne'], classification:'inclusive', nature:'checkbox', control:'Cases à cocher', controlKey:'checkbox', intra:'OR', inter:'AND', rareOption:false, isGate:false },
+    { id: uid++, name:'Public', options:['Pour les enfants','En famille','Danse','Nocturne'], classification:'inclusive', nature:'checkbox', control:'Cases à cocher', controlKey:'checkbox', intra:'OR', inter:'AND', rareOption:false, isGate:false },
     { id: uid++, name:'Proximité', options:['0 m','1500 m'], classification:'exclusive', nature:'slider', control:'Curseur (slider)', controlKey:'slider', intra:'—', inter:'AND', rareOption:false, isGate:false },
   ];
   draft = null;
