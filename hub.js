@@ -1357,31 +1357,31 @@
       },
       timeline: {
         fr: [
-          { phase: '0', label: 'Phase 0', period: 'Mi-2026', title: 'DS AI-ready', color: '#4a9e8e', bg: '#e8f5f2' },
-          { phase: '1', label: 'Phase 1', period: 'Mi → Fin 2026', title: 'PO → génération', color: '#6b4ba8', bg: '#f0ebfa' },
-          { phase: '2', label: 'Phase 2', period: 'Début 2027', title: 'Refonte site', color: '#2859a8', bg: '#eef3fd' },
-          { phase: '3', label: 'Phase 3', period: 'Mi-2027', title: 'Flutter extraction', color: '#c0533a', bg: '#fdf0ec' },
-          { phase: '∞', label: 'Horizon', period: 'Fin 2027+', title: 'Gouvernance & auto.', color: '#007a40', bg: '#e8f8ee' },
+          { phase: '0', label: 'Phase 0', period: 'Mi-2026', title: 'DS AI-ready', color: '#1a472a', bg: '#f5f9f6' },
+          { phase: '1', label: 'Phase 1', period: 'Mi → Fin 2026', title: 'PO → génération', color: '#211C12', bg: '#FDFAF5' },
+          { phase: '2', label: 'Phase 2', period: 'Début 2027', title: 'Refonte site', color: '#211C12', bg: '#FDFAF5' },
+          { phase: '3', label: 'Phase 3', period: 'Mi-2027', title: 'Flutter extraction', color: '#CB1617', bg: '#fdf5f2' },
+          { phase: '∞', label: 'Horizon', period: 'Fin 2027+', title: 'Gouvernance & auto.', color: '#1a472a', bg: '#f5f9f6' },
         ],
         en: [
-          { phase: '0', label: 'Phase 0', period: 'Mid-2026', title: 'AI-ready DS', color: '#4a9e8e', bg: '#e8f5f2' },
-          { phase: '1', label: 'Phase 1', period: 'Mid → End 2026', title: 'PO → generation', color: '#6b4ba8', bg: '#f0ebfa' },
-          { phase: '2', label: 'Phase 2', period: 'Early 2027', title: 'Website redesign', color: '#2859a8', bg: '#eef3fd' },
-          { phase: '3', label: 'Phase 3', period: 'Mid-2027', title: 'Flutter extraction', color: '#c0533a', bg: '#fdf0ec' },
-          { phase: '∞', label: 'Horizon', period: 'End 2027+', title: 'Governance & auto.', color: '#007a40', bg: '#e8f8ee' },
+          { phase: '0', label: 'Phase 0', period: 'Mid-2026', title: 'AI-ready DS', color: '#1a472a', bg: '#f5f9f6' },
+          { phase: '1', label: 'Phase 1', period: 'Mid → End 2026', title: 'PO → generation', color: '#211C12', bg: '#FDFAF5' },
+          { phase: '2', label: 'Phase 2', period: 'Early 2027', title: 'Website redesign', color: '#211C12', bg: '#FDFAF5' },
+          { phase: '3', label: 'Phase 3', period: 'Mid-2027', title: 'Flutter extraction', color: '#CB1617', bg: '#fdf5f2' },
+          { phase: '∞', label: 'Horizon', period: 'End 2027+', title: 'Governance & auto.', color: '#1a472a', bg: '#f5f9f6' },
         ],
       },
       trantor: {
         scenarios: {
           fr: [
-            { id: 'A', title: 'Scénario A — Wrapper chat seul', verdict: 'Incompatible', verdictStatus: 'bad', color: '#c0533a', bg: '#fdf0ec', bd: '#e8b8a8', body: 'Trantor = interface conversationnelle sur API.\nPas de support MCP natif, pas de tool calls en boucle.\nIncompatible avec le pipeline agentique tel quel.' },
-            { id: 'B', title: 'Scénario B — API brute accessible', verdict: '~ Partiel', verdictStatus: 'mid', color: '#a07020', bg: '#fdf8ed', bd: '#e8d8a0', body: 'Trantor expose un endpoint compatible OpenAI/Anthropic.\nClaude Code ou agent custom l\'utilise comme backend.\nPipeline identique, modèle fourni par la DSI.' },
-            { id: 'C', title: 'Scénario C — Tool calls supportés', verdict: '✓ Idéal', verdictStatus: 'good', color: '#007a40', bg: '#e8f8ee', bd: '#a0d8b8', body: 'Trantor supporte le function calling natif.\nL\'agent peut interagir directement avec le Figma MCP.\nPipeline complet, zéro licence externe.' },
+            { id: 'A', title: 'Scénario A — Wrapper chat seul', verdict: 'Incompatible', verdictStatus: 'bad', color: '#CB1617', bg: '#fdf5f2', bd: '#E6D7BA', body: 'Trantor = interface conversationnelle sur API.\nPas de support MCP natif, pas de tool calls en boucle.\nIncompatible avec le pipeline agentique tel quel.' },
+            { id: 'B', title: 'Scénario B — API brute accessible', verdict: '~ Partiel', verdictStatus: 'mid', color: '#75633F', bg: '#FDFAF5', bd: '#E6D7BA', body: 'Trantor expose un endpoint compatible OpenAI/Anthropic.\nClaude Code ou agent custom l\'utilise comme backend.\nPipeline identique, modèle fourni par la DSI.' },
+            { id: 'C', title: 'Scénario C — Tool calls supportés', verdict: '✓ Idéal', verdictStatus: 'good', color: '#1a472a', bg: '#f5f9f6', bd: '#c8d8c8', body: 'Trantor supporte le function calling natif.\nL\'agent peut interagir directement avec le Figma MCP.\nPipeline complet, zéro licence externe.' },
           ],
           en: [
-            { id: 'A', title: 'Scenario A — Chat wrapper only', verdict: 'Incompatible', verdictStatus: 'bad', color: '#c0533a', bg: '#fdf0ec', bd: '#e8b8a8', body: 'Trantor = conversational interface on API.\nNo native MCP support, no looping tool calls.\nIncompatible with the agentic pipeline as-is.' },
-            { id: 'B', title: 'Scenario B — Raw API accessible', verdict: '~ Partial', verdictStatus: 'mid', color: '#a07020', bg: '#fdf8ed', bd: '#e8d8a0', body: 'Trantor exposes an OpenAI/Anthropic-compatible endpoint.\nClaude Code or custom agent uses it as backend.\nSame pipeline, model provided by DSI.' },
-            { id: 'C', title: 'Scenario C — Tool calls supported', verdict: '✓ Ideal', verdictStatus: 'good', color: '#007a40', bg: '#e8f8ee', bd: '#a0d8b8', body: 'Trantor supports native function calling.\nAgent can interact directly with Figma MCP.\nFull pipeline, zero external licences.' },
+            { id: 'A', title: 'Scenario A — Chat wrapper only', verdict: 'Incompatible', verdictStatus: 'bad', color: '#CB1617', bg: '#fdf5f2', bd: '#E6D7BA', body: 'Trantor = conversational interface on API.\nNo native MCP support, no looping tool calls.\nIncompatible with the agentic pipeline as-is.' },
+            { id: 'B', title: 'Scenario B — Raw API accessible', verdict: '~ Partial', verdictStatus: 'mid', color: '#75633F', bg: '#FDFAF5', bd: '#E6D7BA', body: 'Trantor exposes an OpenAI/Anthropic-compatible endpoint.\nClaude Code or custom agent uses it as backend.\nSame pipeline, model provided by DSI.' },
+            { id: 'C', title: 'Scenario C — Tool calls supported', verdict: '✓ Ideal', verdictStatus: 'good', color: '#1a472a', bg: '#f5f9f6', bd: '#c8d8c8', body: 'Trantor supports native function calling.\nAgent can interact directly with Figma MCP.\nFull pipeline, zero external licences.' },
           ],
         },
         questions: {
@@ -1394,14 +1394,14 @@
         },
         hosting: {
           fr: [
-            { id: 'A', title: 'Option A — Claude Code', recommended: true, color: '#6b4ba8', bg: '#f0ebfa', bd: '#cebfe8', body: 'Agent loge dans Claude Code sur ta machine.\nTranstor configuré comme backend API.\nPhase 0 reste zéro DSI.', pros: ['Même pipeline qu\'uSpec', 'Modèle Trantor = économie licences', 'Indépendant DSI en Phase 0'], cons: ['Nécessite API Trantor compatible'] },
+            { id: 'A', title: 'Option A — Claude Code', recommended: true, color: '#1a472a', bg: '#f5f9f6', bd: '#c8d8c8', body: 'Agent loge dans Claude Code sur ta machine.\nTranstor configuré comme backend API.\nPhase 0 reste zéro DSI.', pros: ['Même pipeline qu\'uSpec', 'Modèle Trantor = économie licences', 'Indépendant DSI en Phase 0'], cons: ['Nécessite API Trantor compatible'] },
             { id: 'B', title: 'Option B — Script custom local', recommended: false, color: '#464747', bg: '#f5f5f3', bd: '#ddd', body: 'Un script Python/Node orchestre la boucle :\nintention PO → Skills → API Trantor → Figma MCP.', pros: ['Contrôle total', 'Pas de dépendance IDE'], cons: ['Plus de code à maintenir', 'Moins d\'outillage natif'] },
-            { id: 'C', title: 'Option C — Hébergé côté DSI', recommended: false, color: '#c0533a', bg: '#fdf0ec', bd: '#e8b8a8', body: 'L\'agent tourne sur un serveur DSI,\nconnecté à Trantor en interne.', pros: ['Propre techniquement', 'Intégré infrastructure DSI'], cons: ['Implique DSI dès le départ', 'Contredit logique Phase 0'] },
+            { id: 'C', title: 'Option C — Hébergé côté DSI', recommended: false, color: '#75633F', bg: '#FDFAF5', bd: '#E6D7BA', body: 'L\'agent tourne sur un serveur DSI,\nconnecté à Trantor en interne.', pros: ['Propre techniquement', 'Intégré infrastructure DSI'], cons: ['Implique DSI dès le départ', 'Contredit logique Phase 0'] },
           ],
           en: [
-            { id: 'A', title: 'Option A — Claude Code', recommended: true, color: '#6b4ba8', bg: '#f0ebfa', bd: '#cebfe8', body: 'Agent runs in Claude Code on your machine.\nTrantor configured as API backend.\nPhase 0 stays zero DSI.', pros: ['Same pipeline as uSpec', 'Trantor model = licence savings', 'DSI-independent in Phase 0'], cons: ['Requires compatible Trantor API'] },
+            { id: 'A', title: 'Option A — Claude Code', recommended: true, color: '#1a472a', bg: '#f5f9f6', bd: '#c8d8c8', body: 'Agent runs in Claude Code on your machine.\nTrantor configured as API backend.\nPhase 0 stays zero DSI.', pros: ['Same pipeline as uSpec', 'Trantor model = licence savings', 'DSI-independent in Phase 0'], cons: ['Requires compatible Trantor API'] },
             { id: 'B', title: 'Option B — Custom local script', recommended: false, color: '#464747', bg: '#f5f5f3', bd: '#ddd', body: 'A Python/Node script orchestrates the loop:\nPO intent → Skills → Trantor API → Figma MCP.', pros: ['Total control', 'No IDE dependency'], cons: ['More code to maintain', 'Less native tooling'] },
-            { id: 'C', title: 'Option C — DSI-hosted', recommended: false, color: '#c0533a', bg: '#fdf0ec', bd: '#e8b8a8', body: 'Agent runs on a DSI server,\nconnected to Trantor internally.', pros: ['Technically clean', 'Integrated into DSI infrastructure'], cons: ['Involves DSI from day one', 'Contradicts Phase 0 logic'] },
+            { id: 'C', title: 'Option C — DSI-hosted', recommended: false, color: '#75633F', bg: '#FDFAF5', bd: '#E6D7BA', body: 'Agent runs on a DSI server,\nconnected to Trantor internally.', pros: ['Technically clean', 'Integrated into DSI infrastructure'], cons: ['Involves DSI from day one', 'Contradicts Phase 0 logic'] },
           ],
         },
       },
@@ -1411,9 +1411,9 @@
             id: 'exploration',
             icon: '🔭',
             label: 'Exploration / Discovery',
-            color: '#2859a8',
-            bg: '#eef3fd',
-            bd: '#b3c8f0',
+            color: '#1a472a',
+            bg: '#FDFAF5',
+            bd: '#E6D7BA',
             trigger: 'Nouvelle fonctionnalité, brief flou, inconnu à clarifier',
             who: 'Designer mène — PO en co-pilote',
             aiUse: 'none',
@@ -1425,17 +1425,17 @@
             id: 'iteration',
             icon: '✏️',
             label: 'Itération / Variante',
-            color: '#a07020',
-            bg: '#fdf8ed',
-            bd: '#e8d8a0',
+            color: '#C6A669',
+            bg: '#FDFAF5',
+            bd: '#E6D7BA',
             trigger: 'Écran existant, composant connu, changement défini',
             who: 'Designer · PO valide',
             aiUse: 'optional',
             aiLabel: 'Figma ou IA selon scope',
             steps: ['Brief PO → designer', 'Changement rapide ?'],
             fork: {
-              yes: { label: 'Oui — simple', path: ['Modifier dans Figma', 'Livrer la spec'], color: '#007a40' },
-              no:  { label: 'Non — multi-états / génération', path: ['Workflow IA (6 étapes) ↓'], color: '#6b4ba8' },
+              yes: { label: 'Oui — simple', path: ['Modifier dans Figma', 'Livrer la spec'], color: '#1a472a' },
+              no:  { label: 'Non — multi-états / génération', path: ['Workflow IA (6 étapes) ↓'], color: '#211C12' },
             },
             note: 'La décision de recourir à l\'IA dépend de la complexité : nombre d\'états à générer, scope du composant, temps disponible.',
           },
@@ -1443,9 +1443,9 @@
             id: 'new-screen',
             icon: '🆕',
             label: 'Nouvel écran / Flux complexe',
-            color: '#6b4ba8',
-            bg: '#f0ebfa',
-            bd: '#cebfe8',
+            color: '#CB1617',
+            bg: '#FDFAF5',
+            bd: '#E6D7BA',
             trigger: 'Nouvelle surface, multiples états, scope générateur',
             who: 'Designer opère l\'IA — PO pilote l\'intention',
             aiUse: 'full',
@@ -1459,9 +1459,9 @@
             id: 'exploration',
             icon: '🔭',
             label: 'Exploration / Discovery',
-            color: '#2859a8',
-            bg: '#eef3fd',
-            bd: '#b3c8f0',
+            color: '#1a472a',
+            bg: '#FDFAF5',
+            bd: '#E6D7BA',
             trigger: 'New feature, unclear brief, unknown to clarify',
             who: 'Designer leads — PO as co-pilot',
             aiUse: 'none',
@@ -1473,17 +1473,17 @@
             id: 'iteration',
             icon: '✏️',
             label: 'Iteration / Variant',
-            color: '#a07020',
-            bg: '#fdf8ed',
-            bd: '#e8d8a0',
+            color: '#C6A669',
+            bg: '#FDFAF5',
+            bd: '#E6D7BA',
             trigger: 'Existing screen, known component, defined change',
             who: 'Designer · PO validates',
             aiUse: 'optional',
             aiLabel: 'Figma or AI depending on scope',
             steps: ['PO brief → designer', 'Quick change?'],
             fork: {
-              yes: { label: 'Yes — simple', path: ['Edit in Figma', 'Ship the spec'], color: '#007a40' },
-              no:  { label: 'No — multi-state / generation', path: ['AI workflow (6 steps) ↓'], color: '#6b4ba8' },
+              yes: { label: 'Yes — simple', path: ['Edit in Figma', 'Ship the spec'], color: '#1a472a' },
+              no:  { label: 'No — multi-state / generation', path: ['AI workflow (6 steps) ↓'], color: '#211C12' },
             },
             note: 'The decision to use AI depends on complexity: number of states to generate, component scope, time available.',
           },
@@ -1491,9 +1491,9 @@
             id: 'new-screen',
             icon: '🆕',
             label: 'New screen / Complex flow',
-            color: '#6b4ba8',
-            bg: '#f0ebfa',
-            bd: '#cebfe8',
+            color: '#CB1617',
+            bg: '#FDFAF5',
+            bd: '#E6D7BA',
             trigger: 'New surface, multiple states, generation-worthy scope',
             who: 'Designer operates AI — PO drives intent',
             aiUse: 'full',
@@ -1506,24 +1506,24 @@
       tooling: {
         headers: { fr: ['Outil', 'Phase', 'Qui', 'Ce que ça fait'], en: ['Tool', 'Phase', 'Who', 'What it does'] },
         rows: [
-          { tool: 'Figma DS (bien structuré)', phase: '0', phaseColor: '#4a9e8e', who_fr: 'Designer', who_en: 'Designer', what_fr: 'Source de vérité composants + tokens lisible par IA', what_en: 'AI-readable component + token source of truth' },
-          { tool: 'Custom PdF Skills', phase: '0', phaseColor: '#4a9e8e', who_fr: 'Designer (markdown)', who_en: 'Designer (markdown)', what_fr: 'Enseigne aux agents les conventions PdF', what_en: 'Teach agents PdF conventions' },
-          { tool: 'Figma MCP (lecture)', phase: '0', phaseColor: '#4a9e8e', who_fr: 'Designer, agents IA', who_en: 'Designer, AI agents', what_fr: 'Lit composants, variables, styles, layout', what_en: 'Read components, variables, styles, layout' },
-          { tool: 'Figma MCP (écriture)', phase: '0–1', phaseColor: '#4a9e8e', who_fr: 'Designer (Full seat)', who_en: 'Designer (Full seat)', what_fr: 'Génère des frames Figma natives depuis le DS', what_en: 'Generate native Figma frames from DS' },
-          { tool: 'Claude Code + MCP', phase: '0–1', phaseColor: '#4a9e8e', who_fr: 'Designer', who_en: 'Designer', what_fr: 'Génère des designs depuis les descriptions PO', what_en: 'Generate designs from PO descriptions' },
-          { tool: 'Trantor (API backend)', phase: '0–1', phaseColor: '#4a9e8e', who_fr: 'Designer (si compatible)', who_en: 'Designer (if compatible)', what_fr: 'Modèle IA fourni par la DSI — remplace Claude si compat.', what_en: 'DSI-provided AI model — replaces Claude if compatible' },
-          { tool: 'Figma viewer + commentaires', phase: '1', phaseColor: '#6b4ba8', who_fr: 'POs (gratuit)', who_en: 'POs (free)', what_fr: 'Révision et annotation des designs générés', what_en: 'Review and annotate generated designs' },
-          { tool: 'AI rough drafts (Claude / v0 / Bolt)', phase: '1', phaseColor: '#6b4ba8', who_fr: 'POs', who_en: 'POs', what_fr: 'Maquettes externes informées par le DS', what_en: 'External DS-informed mockups' },
-          { tool: 'Figma Make / Google Stitch', phase: '1', phaseColor: '#6b4ba8', who_fr: 'PO & Designer', who_en: 'PO & Designer', what_fr: 'Génération UI depuis prompt, exports vers Figma', what_en: 'UI generation from prompt, export to Figma' },
-          { tool: 'Kameleoon SDK (app)', phase: '1', phaseColor: '#6b4ba8', who_fr: 'DSI', who_en: 'DSI', what_fr: 'A/B testing Flutter in-app (FR + ES)', what_en: 'Flutter in-app A/B testing (FR + ES)' },
-          { tool: 'Code Connect', phase: '2–3', phaseColor: '#2859a8', who_fr: 'Designer + devs', who_en: 'Designer + devs', what_fr: 'Mappe les composants Figma ↔ implémentations code', what_en: 'Map Figma components ↔ code implementations' },
-          { tool: 'Storybook + MCP', phase: '2', phaseColor: '#2859a8', who_fr: 'Refonte site', who_en: 'Website redesign', what_fr: 'Catalogue composants web + génération de code IA', what_en: 'Web component catalogue + AI code generation' },
-          { tool: 'Kameleoon SDK (web)', phase: '2', phaseColor: '#2859a8', who_fr: 'DSI + Marketing', who_en: 'DSI + Marketing', what_fr: 'A/B testing web (FR + ES) avec variantes DS', what_en: 'Web A/B testing (FR + ES) with DS-compliant variants' },
-          { tool: 'Widgetbook', phase: '3', phaseColor: '#c0533a', who_fr: 'Équipe app', who_en: 'App team', what_fr: 'Catalogue composants Flutter', what_en: 'Flutter component catalogue' },
-          { tool: 'ZeroHeight / Supernova', phase: '∞', phaseColor: '#007a40', who_fr: 'Designer', who_en: 'Designer', what_fr: 'Plateforme DSM — documentation + release notes', what_en: 'DSM platform — documentation + release notes' },
-          { tool: 'Axe / Stark', phase: '∞', phaseColor: '#007a40', who_fr: 'Designer + QA', who_en: 'Designer + QA', what_fr: 'Audit accessibilité automatisé', what_en: 'Automated accessibility auditing' },
-          { tool: 'Figma Analytics', phase: '∞', phaseColor: '#007a40', who_fr: 'Designer', who_en: 'Designer', what_fr: 'Usage composants en design — adoption DS', what_en: 'Component usage in design — DS adoption' },
-          { tool: 'Tests IA + régression visuelle', phase: '∞', phaseColor: '#007a40', who_fr: 'Designer + devs', who_en: 'Designer + devs', what_fr: 'Revue conformité DS avant merge, snapshots visuels', what_en: 'DS compliance review before merge, visual snapshots' },
+          { tool: 'Figma DS (bien structuré)', phase: '0', phaseColor: '#1a472a', who_fr: 'Designer', who_en: 'Designer', what_fr: 'Source de vérité composants + tokens lisible par IA', what_en: 'AI-readable component + token source of truth' },
+          { tool: 'Custom PdF Skills', phase: '0', phaseColor: '#1a472a', who_fr: 'Designer (markdown)', who_en: 'Designer (markdown)', what_fr: 'Enseigne aux agents les conventions PdF', what_en: 'Teach agents PdF conventions' },
+          { tool: 'Figma MCP (lecture)', phase: '0', phaseColor: '#1a472a', who_fr: 'Designer, agents IA', who_en: 'Designer, AI agents', what_fr: 'Lit composants, variables, styles, layout', what_en: 'Read components, variables, styles, layout' },
+          { tool: 'Figma MCP (écriture)', phase: '0–1', phaseColor: '#1a472a', who_fr: 'Designer (Full seat)', who_en: 'Designer (Full seat)', what_fr: 'Génère des frames Figma natives depuis le DS', what_en: 'Generate native Figma frames from DS' },
+          { tool: 'Claude Code + MCP', phase: '0–1', phaseColor: '#1a472a', who_fr: 'Designer', who_en: 'Designer', what_fr: 'Génère des designs depuis les descriptions PO', what_en: 'Generate designs from PO descriptions' },
+          { tool: 'Trantor (API backend)', phase: '0–1', phaseColor: '#1a472a', who_fr: 'Designer (si compatible)', who_en: 'Designer (if compatible)', what_fr: 'Modèle IA fourni par la DSI — remplace Claude si compat.', what_en: 'DSI-provided AI model — replaces Claude if compatible' },
+          { tool: 'Figma viewer + commentaires', phase: '1', phaseColor: '#211C12', who_fr: 'POs (gratuit)', who_en: 'POs (free)', what_fr: 'Révision et annotation des designs générés', what_en: 'Review and annotate generated designs' },
+          { tool: 'AI rough drafts (Claude / v0 / Bolt)', phase: '1', phaseColor: '#211C12', who_fr: 'POs', who_en: 'POs', what_fr: 'Maquettes externes informées par le DS', what_en: 'External DS-informed mockups' },
+          { tool: 'Figma Make / Google Stitch', phase: '1', phaseColor: '#211C12', who_fr: 'PO & Designer', who_en: 'PO & Designer', what_fr: 'Génération UI depuis prompt, exports vers Figma', what_en: 'UI generation from prompt, export to Figma' },
+          { tool: 'Kameleoon SDK (app)', phase: '1', phaseColor: '#211C12', who_fr: 'DSI', who_en: 'DSI', what_fr: 'A/B testing Flutter in-app (FR + ES)', what_en: 'Flutter in-app A/B testing (FR + ES)' },
+          { tool: 'Code Connect', phase: '2–3', phaseColor: '#211C12', who_fr: 'Designer + devs', who_en: 'Designer + devs', what_fr: 'Mappe les composants Figma ↔ implémentations code', what_en: 'Map Figma components ↔ code implementations' },
+          { tool: 'Storybook + MCP', phase: '2', phaseColor: '#211C12', who_fr: 'Refonte site', who_en: 'Website redesign', what_fr: 'Catalogue composants web + génération de code IA', what_en: 'Web component catalogue + AI code generation' },
+          { tool: 'Kameleoon SDK (web)', phase: '2', phaseColor: '#211C12', who_fr: 'DSI + Marketing', who_en: 'DSI + Marketing', what_fr: 'A/B testing web (FR + ES) avec variantes DS', what_en: 'Web A/B testing (FR + ES) with DS-compliant variants' },
+          { tool: 'Widgetbook', phase: '3', phaseColor: '#CB1617', who_fr: 'Équipe app', who_en: 'App team', what_fr: 'Catalogue composants Flutter', what_en: 'Flutter component catalogue' },
+          { tool: 'ZeroHeight / Supernova', phase: '∞', phaseColor: '#1a472a', who_fr: 'Designer', who_en: 'Designer', what_fr: 'Plateforme DSM — documentation + release notes', what_en: 'DSM platform — documentation + release notes' },
+          { tool: 'Axe / Stark', phase: '∞', phaseColor: '#1a472a', who_fr: 'Designer + QA', who_en: 'Designer + QA', what_fr: 'Audit accessibilité automatisé', what_en: 'Automated accessibility auditing' },
+          { tool: 'Figma Analytics', phase: '∞', phaseColor: '#1a472a', who_fr: 'Designer', who_en: 'Designer', what_fr: 'Usage composants en design — adoption DS', what_en: 'Component usage in design — DS adoption' },
+          { tool: 'Tests IA + régression visuelle', phase: '∞', phaseColor: '#1a472a', who_fr: 'Designer + devs', who_en: 'Designer + devs', what_fr: 'Revue conformité DS avant merge, snapshots visuels', what_en: 'DS compliance review before merge, visual snapshots' },
         ],
       },
       governance: {
@@ -1766,7 +1766,7 @@
         themeVariables: {
           primaryColor: '#eef3fd',
           primaryTextColor: '#211C12',
-          primaryBorderColor: '#2859a8',
+          primaryBorderColor: '#1a472a',
           lineColor: '#C6A669',
           secondaryColor: '#e8f8ee',
           tertiaryColor: '#f0ebfa',
@@ -2140,7 +2140,7 @@
       <rect x="166" y="52" width="48" height="20" rx="0" fill="#F1E8D7" stroke="#211C12" stroke-width="1.5"/>
       <rect x="166" y="76" width="48" height="20" rx="0" fill="#E6D7BA" stroke="#211C12" stroke-width="1.5"/>
       <rect x="118" y="100" width="96" height="10" rx="0" fill="#F1E8D7" stroke="#211C12" stroke-width="1"/>
-      <text x="216" y="${H - 5}" text-anchor="end" font-family="-apple-system,sans-serif" font-size="7" fill="#007a40" font-weight="700">${isFr ? 'précis → cohérent' : 'precise → consistent'}</text>
+      <text x="216" y="${H - 5}" text-anchor="end" font-family="-apple-system,sans-serif" font-size="7" fill="#1a472a" font-weight="700">${isFr ? 'précis → cohérent' : 'precise → consistent'}</text>
     </svg>`;
   }
 
@@ -2705,7 +2705,7 @@
     const ptypes = d.projectTypes[lang];
 
     const aiTag = ai => {
-      const labels = { none: ['Figma', '#C6A669'], optional: [isFr ? 'Figma ou IA' : 'Figma or AI', '#a07020'], full: ['AI', '#CB1617'] };
+      const labels = { none: ['Figma', '#75633F'], optional: [isFr ? 'Figma ou IA' : 'Figma or AI', '#1a472a'], full: ['AI', '#CB1617'] };
       const [txt, col] = labels[ai];
       return `<span style="font-size:0.56rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:${col};background:transparent;border:1px solid ${col};padding:0.15rem 0.45rem;">${txt}</span>`;
     };
@@ -2768,38 +2768,38 @@
         <div style="width:0;height:0;border-top:4px solid transparent;border-bottom:4px solid transparent;border-left:5px solid #C6A669;"></div>
       </div>`;
 
-    const tag = (txt, color, bg) =>
-      `<span style="display:inline-block;font-size:0.52rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:${color};background:${bg};border-radius:999px;padding:0.1rem 0.5rem;margin-bottom:0.35rem;">${txt}</span>`;
+    const tag = (txt, color) =>
+      `<span style="display:inline-block;font-size:0.52rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:${color};margin-bottom:0.35rem;">${txt}</span>`;
 
     const stageCard = (title, titleColor, bdColor, bgColor, body, footer = '') =>
-      `<div style="border:1.5px solid ${bdColor};border-radius:0.65rem;background:${bgColor};padding:0.75rem 0.85rem;flex:1;min-width:0;display:flex;flex-direction:column;gap:0.4rem;">
-        <div style="font-size:0.7rem;font-weight:700;color:${titleColor};line-height:1.3;">${title}</div>
+      `<div style="border-left:2px solid ${bdColor};background:#fff;padding:0.85rem 1rem;flex:1;min-width:0;display:flex;flex-direction:column;gap:0.45rem;">
+        <div style="font-size:0.68rem;font-weight:700;color:${titleColor};line-height:1.3;letter-spacing:0.02em;">${title}</div>
         <div style="flex:1;">${body}</div>
-        ${footer ? `<div style="border-top:1px solid ${bdColor};padding-top:0.4rem;margin-top:0.2rem;">${footer}</div>` : ''}
+        ${footer ? `<div style="border-top:1px solid #E6D7BA;padding-top:0.45rem;margin-top:0.25rem;">${footer}</div>` : ''}
       </div>`;
 
     const pill2 = (label, bg, color, sub = '') =>
-      `<div style="background:${bg};border-radius:0.35rem;padding:0.3rem 0.5rem;margin-bottom:0.25rem;">
-        <div style="font-size:0.65rem;font-weight:700;color:${color};line-height:1.25;">${label}</div>
-        ${sub ? `<div style="font-size:0.57rem;color:${color};opacity:0.72;line-height:1.3;">${sub}</div>` : ''}
+      `<div style="border-left:2px solid ${color};padding:0.25rem 0 0.25rem 0.55rem;margin-bottom:0.3rem;">
+        <div style="font-size:0.65rem;font-weight:600;color:#211C12;line-height:1.3;">${label}</div>
+        ${sub ? `<div style="font-size:0.57rem;color:#75633F;line-height:1.35;margin-top:0.05rem;">${sub}</div>` : ''}
       </div>`;
 
     const step = (n, txt, color = '#464747') =>
-      `<div style="display:flex;gap:0.4rem;align-items:baseline;margin-bottom:0.25rem;">
-        <span style="font-size:0.58rem;font-weight:700;color:#C6A669;flex-shrink:0;min-width:0.8rem;">${n}.</span>
-        <span style="font-size:0.63rem;color:${color};line-height:1.45;">${txt}</span>
+      `<div style="display:flex;gap:0.4rem;align-items:baseline;margin-bottom:0.3rem;">
+        <span style="font-size:0.58rem;font-weight:700;color:#75633F;flex-shrink:0;min-width:0.8rem;">${n}.</span>
+        <span style="font-size:0.65rem;color:${color};line-height:1.5;">${txt}</span>
       </div>`;
 
     /* ── Lane builder — 4 stages in a horizontal flex row ── */
     const lane = (laneAccent, laneBg, laneTitle, laneSubtitle, stages) =>
-      `<div style="border-radius:0.65rem;border:1.5px solid ${laneAccent};background:${laneBg};overflow:hidden;margin-bottom:0.85rem;">
+      `<div style="border:1px solid #E6D7BA;background:#FDFAF5;overflow:hidden;margin-bottom:1rem;">
         <!-- Lane header -->
-        <div style="background:${laneAccent};padding:0.45rem 0.85rem;display:flex;align-items:baseline;gap:0.75rem;">
-          <span style="font-size:0.72rem;font-weight:700;color:#fff;letter-spacing:-0.01em;">${laneTitle}</span>
-          <span style="font-size:0.6rem;color:rgba(255,255,255,0.75);">${laneSubtitle}</span>
+        <div style="border-bottom:1px solid #E6D7BA;padding:0.6rem 1rem;display:flex;align-items:baseline;gap:0.75rem;">
+          <span style="font-size:0.72rem;font-weight:700;color:#211C12;letter-spacing:-0.01em;">${laneTitle}</span>
+          <span style="font-size:0.6rem;color:#75633F;">${laneSubtitle}</span>
         </div>
         <!-- Stages row -->
-        <div style="display:flex;align-items:stretch;padding:0.75rem;gap:0;min-height:0;">
+        <div style="display:flex;align-items:stretch;padding:0.85rem;gap:0;min-height:0;">
           ${stages.map((s, i) => `
             ${stageCard(s.title, s.titleColor, s.bd, s.bg, s.body, s.footer || '')}
             ${i < stages.length - 1 ? hArrow(s.arrowLabel || '') : ''}
@@ -2809,104 +2809,104 @@
 
     /* ── Lane 1: Collaboration / New creation ── */
     const l1s1body = isFr
-      ? `${tag('Product Owner', '#6b4ba8', '#f0ebfa')}
+      ? `${tag('Product Owner', '#75633F')}
          ${step(1, 'Rassemble briefs, notes, transcriptions et données produit')}
          ${step(2, 'Décrit le besoin — brief structuré ou description informelle')}
          <div style="font-size:0.58rem;font-weight:700;color:#75633F;letter-spacing:0.05em;text-transform:uppercase;margin:0.35rem 0 0.2rem;">Voie A — PO illustre l\'idée</div>
          ${step('→', 'Génère un premier jet (Claude, v0, Figma Make) · passe la main au designer', '#6b4ba8')}
          <div style="font-size:0.58rem;font-weight:700;color:#75633F;letter-spacing:0.05em;text-transform:uppercase;margin:0.35rem 0 0.2rem;">Voie B — Designer produit directement</div>
          ${step('→', 'Travaille dans Figma avec ou sans outil selon le scope', '#2859a8')}
-         ${tag('UX/UI Designer', '#2859a8', '#eef3fd')}
+         ${tag('UX/UI Designer', '#1a472a')}
          <div style="font-size:0.63rem;color:#464747;line-height:1.45;">${'Affine · aligne DS · valide états & accessibilité · livre la spec'}</div>`
-      : `${tag('Product Owner', '#6b4ba8', '#f0ebfa')}
+      : `${tag('Product Owner', '#75633F')}
          ${step(1, 'Gathers briefs, notes, transcripts and product data')}
          ${step(2, 'Describes the need — structured brief or informal description')}
          <div style="font-size:0.58rem;font-weight:700;color:#75633F;letter-spacing:0.05em;text-transform:uppercase;margin:0.35rem 0 0.2rem;">Path A — PO illustrates the idea</div>
          ${step('→', 'Generates a first draft (Claude, v0, Figma Make) · hands off to designer', '#6b4ba8')}
          <div style="font-size:0.58rem;font-weight:700;color:#75633F;letter-spacing:0.05em;text-transform:uppercase;margin:0.35rem 0 0.2rem;">Path B — Designer works directly</div>
          ${step('→', 'Works in Figma with or without a tool depending on scope', '#2859a8')}
-         ${tag('UX/UI Designer', '#2859a8', '#eef3fd')}
+         ${tag('UX/UI Designer', '#1a472a')}
          <div style="font-size:0.63rem;color:#464747;line-height:1.45;">${'Refines · aligns DS · validates states & accessibility · ships spec'}</div>`;
 
     const l1s2body =
-      `${pill2('Brand & Aesthetic', '#fdecea', '#CB1617', isFr ? 'Palette · type · règles visuelles' : 'Palette · type · visual rules')}
-       ${pill2('Design Tokens', '#e8f8ee', '#007a40', isFr ? 'Variables Figma ↔ AppColors Dart · FR/ES' : 'Figma variables ↔ AppColors Dart · FR/ES')}
-       ${pill2('Components & Patterns', '#eef3fd', '#2859a8', isFr ? 'Inventaire DS · variantes · règles d\'usage' : 'DS inventory · variants · usage rules')}
-       ${pill2('Platform Rules', '#fdf8ed', '#a07020', isFr ? 'Flutter · safe area · localisation' : 'Flutter · safe area · localisation')}
-       ${pill2('Copy & Tone', '#fdf0f8', '#b03080', isFr ? 'Formulations positives · tonalité · FR/ES' : 'Positive phrasing · tone · FR/ES')}`;
+      `${pill2('Brand & Aesthetic', '', '#CB1617', isFr ? 'Palette · type · règles visuelles' : 'Palette · type · visual rules')}
+       ${pill2('Design Tokens', '', '#1a472a', isFr ? 'Variables Figma ↔ AppColors Dart · FR/ES' : 'Figma variables ↔ AppColors Dart · FR/ES')}
+       ${pill2('Components & Patterns', '', '#1a472a', isFr ? 'Inventaire DS · variantes · règles d\'usage' : 'DS inventory · variants · usage rules')}
+       ${pill2('Platform Rules', '', '#C6A669', isFr ? 'Flutter · safe area · localisation' : 'Flutter · safe area · localisation')}
+       ${pill2('Copy & Tone', '', '#C6A669', isFr ? 'Formulations positives · tonalité · FR/ES' : 'Positive phrasing · tone · FR/ES')}`;
 
     const l1s3body =
-      `<div style="font-size:0.58rem;color:#75633F;font-style:italic;margin-bottom:0.4rem;line-height:1.4;">${isFr ? 'Selon le scope — Figma direct ou outil de génération' : 'Depending on scope — Figma direct or generation tool'}</div>
-       ${pill2('Figma', '#eef3fd', '#2859a8', isFr ? 'Conception directe — toujours disponible' : 'Direct design — always available')}
-       ${pill2('Figma MCP', '#f0ebfa', '#6b4ba8', isFr ? 'Option : API write access via WebSocket' : 'Option: API write access via WebSocket')}
-       ${pill2('Claude / v0 / Figma Make', '#f0ebfa', '#6b4ba8', isFr ? 'Option : génération UI depuis prompt' : 'Option: UI generation from prompt')}`;
+      `<div style="font-size:0.58rem;color:#75633F;font-style:italic;margin-bottom:0.5rem;line-height:1.45;">${isFr ? 'Selon le scope — Figma direct ou outil de génération' : 'Depending on scope — Figma direct or generation tool'}</div>
+       ${pill2('Figma', '', '#1a472a', isFr ? 'Conception directe — toujours disponible' : 'Direct design — always available')}
+       ${pill2('Figma MCP', '', '#75633F', isFr ? 'Option : API write access via WebSocket' : 'Option: API write access via WebSocket')}
+       ${pill2('Claude / v0 / Figma Make', '', '#75633F', isFr ? 'Option : génération UI depuis prompt' : 'Option: UI generation from prompt')}`;
 
     const l1s4body =
-      `${pill2(isFr ? 'Frames Figma' : 'Figma frames', '#eef3fd', '#2859a8', isFr ? 'Générées · à affiner par le designer' : 'Generated · to be refined by designer')}
-       ${pill2('Story UI', '#eef3fd', '#2859a8', isFr ? 'Branch 7 · Sent UI ?' : 'Branch 7 · Sent UI?')}
-       ${pill2('UX/UI Designer', '#e8f8ee', '#007a40', isFr ? 'Affine · valide avec PO · livre' : 'Refines · validates with PO · ships')}`;
+      `${pill2(isFr ? 'Frames Figma' : 'Figma frames', '', '#211C12', isFr ? 'Générées · à affiner par le designer' : 'Generated · to be refined by designer')}
+       ${pill2('Story UI', '', '#211C12', isFr ? 'Branch 7 · Sent UI ?' : 'Branch 7 · Sent UI?')}
+       ${pill2('UX/UI Designer', '', '#1a472a', isFr ? 'Affine · valide avec PO · livre' : 'Refines · validates with PO · ships')}`;
 
     const lane1 = lane(
-      '#2859a8', '#f5f8ff',
-      isFr ? '🤝 Collaboration — Nouvelle création' : '🤝 Collaboration — New creation',
+      '#211C12', '#FDFAF5',
+      isFr ? 'Collaboration — Nouvelle création' : 'Collaboration — New creation',
       isFr ? 'PO cadre le besoin · Designer produit & affine · livrable Figma' : 'PO frames the need · Designer produces & refines · Figma deliverable',
       [
-        { title: isFr ? 'Acteurs' : 'Actors', titleColor: '#211C12', bd: '#dde6f8', bg: '#fff', body: l1s1body, arrowLabel: '→' },
-        { title: isFr ? 'Couche connaissance (.md)' : 'Knowledge layer (.md)', titleColor: '#007a40', bd: '#a0d8b8', bg: '#f0faf5', body: l1s2body, arrowLabel: '→' },
-        { title: isFr ? 'Outils & infrastructure' : 'Tools & infrastructure', titleColor: '#6b4ba8', bd: '#cebfe8', bg: '#f8f4ff', body: l1s3body, arrowLabel: '→' },
-        { title: 'Outputs', titleColor: '#c0533a', bd: '#e8b8a8', bg: '#fdf5f2', body: l1s4body },
+        { title: isFr ? 'Acteurs' : 'Actors', titleColor: '#211C12', bd: '#E6D7BA', bg: '#fff', body: l1s1body, arrowLabel: '→' },
+        { title: isFr ? 'Couche connaissance (.md)' : 'Knowledge layer (.md)', titleColor: '#1a472a', bd: '#1a472a', bg: '#fff', body: l1s2body, arrowLabel: '→' },
+        { title: isFr ? 'Outils & infrastructure' : 'Tools & infrastructure', titleColor: '#75633F', bd: '#C6A669', bg: '#fff', body: l1s3body, arrowLabel: '→' },
+        { title: 'Outputs', titleColor: '#CB1617', bd: '#CB1617', bg: '#fff', body: l1s4body },
       ]
     );
 
     /* ── Lane 2: Code-focused / Small iterations ── */
     const l2s1body = isFr
-      ? `${tag('Product Owner', '#6b4ba8', '#f0ebfa')}
+      ? `${tag('Product Owner', '#75633F')}
          ${step(1, 'Décrit la modification souhaitée (variante, bug, ajustement)')}
          ${step(2, 'Partage le contexte : composant existant, état, comportement attendu')}
-         ${tag('UX/UI Designer', '#2859a8', '#eef3fd')}
+         ${tag('UX/UI Designer', '#1a472a')}
          <div style="font-size:0.63rem;color:#464747;line-height:1.45;">${'Modifie dans Figma · utilise un outil si ça fait gagner du temps · valide · livre'}</div>`
-      : `${tag('Product Owner', '#6b4ba8', '#f0ebfa')}
+      : `${tag('Product Owner', '#75633F')}
          ${step(1, 'Describes the desired change (variant, bug, adjustment)')}
          ${step(2, 'Shares context: existing component, state, expected behaviour')}
-         ${tag('UX/UI Designer', '#2859a8', '#eef3fd')}
+         ${tag('UX/UI Designer', '#1a472a')}
          <div style="font-size:0.63rem;color:#464747;line-height:1.45;">${'Edits in Figma · uses a tool if it saves time · validates · ships'}</div>`;
 
     const l2s2body =
-      `${pill2(isFr ? 'Bibliothèque composants (code)' : 'Component library (code)', '#f0ebfa', '#6b4ba8', 'Storybook · StoryUI')}
-       ${pill2('Skills PdF Markdown', '#e8f8ee', '#007a40', isFr ? 'Conventions · règles DS · patterns' : 'Conventions · DS rules · patterns')}
-       ${pill2('Code Connect', '#eef3fd', '#2859a8', isFr ? 'Mapping Figma ↔ implémentations' : 'Figma ↔ code implementation mapping')}`;
+      `${pill2(isFr ? 'Bibliothèque composants (code)' : 'Component library (code)', '', '#75633F', 'Storybook · StoryUI')}
+       ${pill2('Skills PdF Markdown', '', '#1a472a', isFr ? 'Conventions · règles DS · patterns' : 'Conventions · DS rules · patterns')}
+       ${pill2('Code Connect', '', '#1a472a', isFr ? 'Mapping Figma ↔ implémentations' : 'Figma ↔ code implementation mapping')}`;
 
     const l2s3body =
-      `<div style="font-size:0.58rem;color:#75633F;font-style:italic;margin-bottom:0.4rem;line-height:1.4;">${isFr ? 'Figma suffit souvent — outils optionnels si gain de temps' : 'Figma is often enough — tools optional if they save time'}</div>
-       ${pill2('Figma', '#eef3fd', '#2859a8', isFr ? 'Modification directe — cas le plus fréquent' : 'Direct edit — most common case')}
-       ${pill2('Figma MCP', '#f0ebfa', '#6b4ba8', isFr ? 'Option : plugin bridge · API write access' : 'Option: plugin bridge · API write access')}
-       ${pill2('Trantor / Claude', '#f0ebfa', '#6b4ba8', isFr ? 'Option : infrastructure locale' : 'Option: local infrastructure')}`;
+      `<div style="font-size:0.58rem;color:#75633F;font-style:italic;margin-bottom:0.5rem;line-height:1.45;">${isFr ? 'Figma suffit souvent — outils optionnels si gain de temps' : 'Figma is often enough — tools optional if they save time'}</div>
+       ${pill2('Figma', '', '#1a472a', isFr ? 'Modification directe — cas le plus fréquent' : 'Direct edit — most common case')}
+       ${pill2('Figma MCP', '', '#75633F', isFr ? 'Option : plugin bridge · API write access' : 'Option: plugin bridge · API write access')}
+       ${pill2('Trantor / Claude', '', '#75633F', isFr ? 'Option : infrastructure locale' : 'Option: local infrastructure')}`;
 
     const l2s4body =
-      `${pill2(isFr ? 'Livrable handoff' : 'Handoff deliverable', '#fdf0ec', '#c0533a', isFr ? 'Figma · specs · annotations · update Storybook ?' : 'Figma · specs · annotations · update Storybook?')}
-       ${pill2(isFr ? 'Code production' : 'Production code', '#eef3fd', '#2859a8', 'Flutter · Drupal · DSI')}`;
+      `${pill2(isFr ? 'Livrable handoff' : 'Handoff deliverable', '', '#CB1617', isFr ? 'Figma · specs · annotations · update Storybook ?' : 'Figma · specs · annotations · update Storybook?')}
+       ${pill2(isFr ? 'Code production' : 'Production code', '', '#211C12', 'Flutter · Drupal · DSI')}`;
 
     const lane2 = lane(
-      '#007a40', '#f2faf5',
-      isFr ? '💻 Code-focused — Itération UI existante' : '💻 Code-focused — Existing UI iteration',
+      '#211C12', '#FDFAF5',
+      isFr ? 'Code-focused — Itération UI existante' : 'Code-focused — Existing UI iteration',
       isFr ? 'Modification ciblée · outils au choix · livrable code' : 'Targeted change · tools of choice · code deliverable',
       [
-        { title: isFr ? 'Acteurs' : 'Actors', titleColor: '#211C12', bd: '#b8ddc8', bg: '#fff', body: l2s1body, arrowLabel: '→' },
-        { title: isFr ? 'Couche connaissance (.md)' : 'Knowledge layer (.md)', titleColor: '#007a40', bd: '#a0d8b8', bg: '#eaf8f0', body: l2s2body, arrowLabel: '→' },
-        { title: isFr ? 'Outils & infrastructure' : 'Tools & infrastructure', titleColor: '#6b4ba8', bd: '#cebfe8', bg: '#f8f4ff', body: l2s3body, arrowLabel: '→' },
-        { title: 'Outputs', titleColor: '#c0533a', bd: '#e8b8a8', bg: '#fdf5f2', body: l2s4body },
+        { title: isFr ? 'Acteurs' : 'Actors', titleColor: '#211C12', bd: '#E6D7BA', bg: '#fff', body: l2s1body, arrowLabel: '→' },
+        { title: isFr ? 'Couche connaissance (.md)' : 'Knowledge layer (.md)', titleColor: '#1a472a', bd: '#1a472a', bg: '#fff', body: l2s2body, arrowLabel: '→' },
+        { title: isFr ? 'Outils & infrastructure' : 'Tools & infrastructure', titleColor: '#75633F', bd: '#C6A669', bg: '#fff', body: l2s3body, arrowLabel: '→' },
+        { title: 'Outputs', titleColor: '#CB1617', bd: '#CB1617', bg: '#fff', body: l2s4body },
       ]
     );
 
     const landscape = `
-      <div style="margin-bottom:1.75rem;">
+      <div style="margin-bottom:2rem;">
         ${lane1}
         ${lane2}
         <!-- DSI/Dev shared footer -->
-        <div style="background:#F1E8D7;border:1px solid #E6D7BA;border-radius:0.5rem;padding:0.5rem 0.85rem;display:flex;align-items:center;gap:0.75rem;">
+        <div style="border-top:1px solid #E6D7BA;padding:0.65rem 1rem;display:flex;align-items:center;gap:0.75rem;">
           <span style="font-size:0.65rem;font-weight:700;color:#211C12;white-space:nowrap;">DSI / Dev</span>
           <svg width="16" height="10" viewBox="0 0 16 10" style="flex-shrink:0;"><line x1="0" y1="5" x2="10" y2="5" stroke="#C6A669" stroke-width="1.5"/><path d="M8,2 L14,5 L8,8" stroke="#C6A669" stroke-width="1.5" fill="none"/></svg>
-          <span style="font-size:0.62rem;color:#75633F;line-height:1.5;">${isFr ? 'Accède aux Skills PdF + à la Bibliothèque de composants (code) · reçoit le livrable handoff · implémente le code output' : 'Accesses PdF Skills + Component library (code) · receives the handoff deliverable · implements the code output'}</span>
+          <span style="font-size:0.65rem;color:#75633F;line-height:1.55;">${isFr ? 'Accède aux Skills PdF + à la Bibliothèque de composants (code) · reçoit le livrable handoff · implémente le code output' : 'Accesses PdF Skills + Component library (code) · receives the handoff deliverable · implements the code output'}</span>
         </div>
       </div>`;
 
@@ -2988,7 +2988,7 @@
         ${phases.slice(0,2).map(p => `
           <div class="dops-phase">
             <div class="dops-phase-header">
-              <div class="dops-phase-num" style="background:${p.number==='0'?'#4a9e8e':'#6b4ba8'};">${p.number}</div>
+              <div class="dops-phase-num" style="background:${p.number==='0'?'#1a472a':'#211C12'};">${p.number}</div>
               <div class="dops-phase-title">${p.title}</div>
               <span class="dops-status-badge ${statusClass(p.status)}">${p.statusLabel}</span>
             </div>
@@ -3005,7 +3005,7 @@
         ${phases.slice(2).map(p => `
           <div class="dops-phase">
             <div class="dops-phase-header">
-              <div class="dops-phase-num" style="background:${p.number==='2'?'#2859a8':'#c0533a'};">${p.number}</div>
+              <div class="dops-phase-num" style="background:${p.number==='2'?'#211C12':'#CB1617'};">${p.number}</div>
               <div class="dops-phase-title">${p.title}</div>
               <span class="dops-status-badge ${statusClass(p.status)}">${p.statusLabel}</span>
             </div>
@@ -3019,7 +3019,7 @@
       <!-- Slide 4 — Horizon 2027: Governance + Metrics + Automation + Flywheel -->
       <div class="dops-section-label">${isFr ? 'Horizon 2027 — Gouvernance, métriques & automatisation' : 'Horizon 2027 — Governance, metrics & automation'}</div>
 
-      <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:#007a40;margin-bottom:0.5rem;">${isFr?'Rituels':'Rituals'}</div>
+      <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:#1a472a;margin-bottom:0.5rem;">${isFr?'Rituels':'Rituals'}</div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin-bottom:0.75rem;">
         ${d.governance.rituals[lang].map(r => `
           <div style="background:#FBF7F0;border:1px solid #E6D7BA;border-radius:0.6rem;padding:0.65rem 0.85rem;">

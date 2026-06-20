@@ -96,9 +96,9 @@
 .hub-section-subtitle {
   font-size: 0.82rem;
   color: #75633F;
-  margin-bottom: 2.25rem;
+  margin-bottom: 2.75rem;
   line-height: 1.7;
-  padding-bottom: 1.5rem;
+  padding-bottom: 1.75rem;
   border-bottom: 1px solid #E6D7BA;
 }
 
@@ -383,11 +383,11 @@
   margin-top: 2px;
 }
 
-.resource-type-book   { background: #EFE7D5; color: #75633F; }
-.resource-type-article { background: #E8F0E8; color: #2E7D32; }
-.resource-type-site   { background: #E8EEF8; color: #1A56A0; }
-.resource-type-video  { background: #FDE8E8; color: #C0272D; }
-.resource-type-tool   { background: #F0EAF8; color: #6A3FA0; }
+.resource-type-book    { background: #EFE7D5; color: #75633F; }
+.resource-type-article { background: #f0f5f1; color: #1a472a; }
+.resource-type-site    { background: #FDFAF5; color: #211C12; }
+.resource-type-video   { background: #fdf5f2; color: #CB1617; }
+.resource-type-tool    { background: #EFE7D5; color: #75633F; }
 
 .resource-title {
   font-size: 0.875rem;
@@ -553,9 +553,9 @@
 }
 
 .checklist-item input:checked + label {
-  color: #009A58;
+  color: #1a472a;
   text-decoration: line-through;
-  text-decoration-color: #009A5866;
+  text-decoration-color: #1a472a66;
 }
 
 /* ---------- Role-fit quiz ---------- */
@@ -586,15 +586,15 @@
 }
 
 .quiz-stmt.selected {
-  background: #EEF3FD;
-  border-color: #2859a8;
-  color: #1a3d7a;
+  background: #f0f5f1;
+  border-color: #1a472a;
+  color: #1a472a;
 }
 
 .quiz-stmt.correct {
   background: #E8F8EE;
-  border-color: #009A58;
-  color: #00663A;
+  border-color: #1a472a;
+  color: #1a472a;
   cursor: default;
 }
 
@@ -846,7 +846,7 @@
 
 .tip-why {
   font-size: 0.72rem;
-  color: #009A58;
+  color: #1a472a;
   font-weight: 600;
   margin-top: 0.35rem;
 }
@@ -962,7 +962,7 @@
 
   #hub-main {
     flex: 1;
-    padding: 3rem 4rem;
+    padding: 3.5rem 5rem;
     max-width: none;
     overflow-y: auto;
     background: #F7F2E8;
@@ -1078,8 +1078,8 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #75633F;
-  margin-bottom: 1rem;
-  margin-top: 0.25rem;
+  margin-bottom: 1.25rem;
+  margin-top: 0.5rem;
 }
 .dops-section-label::before {
   content: '';
@@ -1171,7 +1171,7 @@
   flex-shrink: 0;
 }
 
-.dops-status-now    { background: #007a40; color: #fff; }
+.dops-status-now    { background: #1a472a; color: #fff; }
 .dops-status-soon   { background: #E6D7BA; color: #211C12; }
 .dops-status-future { background: transparent; color: #75633F; border: 1px solid #E6D7BA; }
 
