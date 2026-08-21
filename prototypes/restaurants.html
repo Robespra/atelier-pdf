@@ -480,20 +480,22 @@
     /* Hide pricing rows on selected cards to save space */
     .resto-card.selected .guests-row { display: none; }
 
-    /* Discount total line — "62,50€ au lieu de 76,00€" — shown before AND after slot selection */
+    /* Discount total line — "98,00€ sur réservation / au lieu de 117,00€ sur place" — shown before AND after slot selection */
     .price-discount {
-      display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap;
+      display: flex; flex-direction: column; gap: 1px;
+    }
+    .price-discount .now {
       font-size: 13px; font-weight: 800; color: var(--green);
     }
     .price-discount .was {
-      font-size: 12px; font-weight: 500; color: var(--grey);
-      text-decoration: line-through;
+      font-size: 11px; font-weight: 500; color: var(--grey);
     }
+    .price-discount .was s { text-decoration: line-through; }
     .resto-card.selected .price-discount { display: none; }
 
     /* Voir menus et carte button */
     .modify-link {
-      display: flex; align-items: center; justify-content: center;
+      display: flex; align-items: center; justify-content: center; gap: 6px;
       width: 100%; padding: 8px 12px; margin-top: 2px;
       font-size: 12px; font-weight: 600; font-family: inherit;
       background: none; border: 1.5px solid var(--border);
@@ -501,6 +503,14 @@
       transition: border-color 140ms;
     }
     .modify-link:hover { border-color: var(--text); }
+    /* Once booked, this button edits the selection — give it a pencil cue */
+    .resto-card.selected .modify-link::before {
+      content: '';
+      width: 11px; height: 11px; flex-shrink: 0;
+      background-color: currentColor;
+      -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M11.5 2.5l2 2-7.5 7.5-2.6.6.6-2.6z' stroke='black' stroke-width='1.3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+      mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M11.5 2.5l2 2-7.5 7.5-2.6.6.6-2.6z' stroke='black' stroke-width='1.3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+    }
 
     /* Hide separate cancel link — Annuler now lives inside confirmed-banner */
     .cancel-link { display: none !important; }
@@ -517,8 +527,9 @@
     .confirmed-banner-left { display: flex; flex-direction: column; gap: 1px; }
     .confirmed-banner-left-top { display: flex; align-items: center; gap: 4px; }
     .confirmed-banner-was {
+      display: block;
       font-size: 10px; font-weight: 500; color: var(--grey);
-      text-decoration: line-through; margin-left: 14px;
+      margin-left: 14px;
     }
     .confirmed-banner-cancel {
       font-size: 11px; font-weight: 600; color: var(--grey);
@@ -1777,6 +1788,8 @@
         card.classList.remove('selected', 'ready');
         card.querySelector('.selected-badge')?.remove();
         card.querySelector('.confirmed-banner')?.remove();
+        const modifyBtnReset = card.querySelector('.modify-link');
+        if (modifyBtnReset) modifyBtnReset.textContent = 'Voir menus et carte';
         // Unlock all siblings in this meal
         document.querySelectorAll(`.resto-card[data-meal="${meal}"]`).forEach(c => {
           c.classList.remove('meal-locked');
@@ -1806,6 +1819,8 @@
         c.classList.remove('selected', 'ready');
         c.querySelector('.selected-badge')?.remove();
         c.querySelector('.confirmed-banner')?.remove();
+        const siblingModifyBtn = c.querySelector('.modify-link');
+        if (siblingModifyBtn) siblingModifyBtn.textContent = 'Voir menus et carte';
         // Clear any active slot chip on siblings so they don't show stale state
         c.querySelectorAll('.slot-chip').forEach(sc => sc.classList.remove('active'));
       });
@@ -1845,7 +1860,7 @@
           const origTotal  = origAdultPrice * adultQty + origChildPrice * childQty;
           const totalStr   = total.toFixed(2).replace('.', ',') + '€';
           const wasHTML    = origTotal > total
-            ? `<s class="confirmed-banner-was">au lieu de ${origTotal.toFixed(2).replace('.', ',')}€</s>`
+            ? `<span class="confirmed-banner-was">au lieu de <s>${origTotal.toFixed(2).replace('.', ',')}€</s> sur place</span>`
             : '';
           const banner = document.createElement('div');
           banner.className = 'confirmed-banner';
@@ -1860,6 +1875,7 @@
             <button class="confirmed-banner-cancel">Annuler</button>`;
           modifyBtn.parentNode.insertBefore(banner, modifyBtn);
         }
+        if (modifyBtn) modifyBtn.textContent = 'Modifier ma sélection';
 
         // Update accordion trigger chip
         const block = card.closest('.meal-block');
@@ -1917,6 +1933,8 @@
         card.querySelector('.selected-badge')?.remove();
         card.querySelector('.confirmed-banner')?.remove();
         card.querySelectorAll('.slot-chip').forEach(c => c.classList.remove('active'));
+        const cancelModifyBtn = card.querySelector('.modify-link');
+        if (cancelModifyBtn) cancelModifyBtn.textContent = 'Voir menus et carte';
         // Unlock siblings
         document.querySelectorAll(`.resto-card[data-meal="${meal}"]`).forEach(c => c.classList.remove('meal-locked'));
         // Reset accordion trigger chip + cancel pending collapse listener
@@ -2026,7 +2044,7 @@
     const total     = adultPrice * adultQty + childPrice * childQty;
     const origTotal = origAdultPrice * adultQty + origChildPrice * childQty;
     if (!(origTotal > total)) { el.innerHTML = ''; return; }
-    el.innerHTML = `${total.toFixed(2).replace('.', ',')}€ <span class="was">au lieu de ${origTotal.toFixed(2).replace('.', ',')}€</span>`;
+    el.innerHTML = `<span class="now">${total.toFixed(2).replace('.', ',')}€ sur réservation</span><span class="was">au lieu de <s>${origTotal.toFixed(2).replace('.', ',')}€</s> sur place</span>`;
   }
   document.querySelectorAll('.resto-card').forEach(updateCardDiscount);
 
@@ -2408,7 +2426,7 @@
         <div class="modal-price-total">
           <span class="modal-price-label">Prix total</span>
           <span class="modal-price-amount" id="modal-total">${total.toFixed(2).replace('.',',')}€</span>
-          <span class="modal-price-was"><s>au lieu de ${was.toFixed(2).replace('.',',')}€</s></span>
+          <span class="modal-price-was">au lieu de <s>${was.toFixed(2).replace('.',',')}€</s> sur place</span>
         </div>
         <button class="modal-cancel" id="modal-cancel-btn">Annuler</button>
         <button class="modal-cta" id="modal-update-btn">
@@ -2538,7 +2556,7 @@
     const totalEl = document.getElementById('modal-total');
     if (totalEl) totalEl.textContent = `${total.toFixed(2).replace('.',',')}€`;
     const wasEl = document.querySelector('.modal-price-was s');
-    if (wasEl) wasEl.textContent = `au lieu de ${was.toFixed(2).replace('.',',')}€`;
+    if (wasEl) wasEl.textContent = `${was.toFixed(2).replace('.',',')}€`;
     // Update CTA label based on whether quantities changed
     const hasChanges = Object.keys(modalQuantities).some(k => modalQuantities[k] !== (modalOriginalQuantities[k] ?? 0));
     const ctaBtn = document.getElementById('modal-update-btn');
