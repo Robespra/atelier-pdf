@@ -302,6 +302,9 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 14px;
     }
+    .resto-card[data-page="2"] { display: none; }
+    .card-grid.page-2 .resto-card[data-page="1"] { display: none; }
+    .card-grid.page-2 .resto-card[data-page="2"] { display: flex; }
 
     /* ── Restaurant card ── */
     .resto-card {
@@ -369,6 +372,13 @@
       background: rgba(255,255,255,.92); backdrop-filter: blur(4px);
       color: var(--text);
       box-shadow: 0 1px 3px rgba(70,71,71,.18);
+      cursor: pointer;
+      transition: box-shadow 140ms, background 140ms;
+    }
+    .card-location:hover, .card-location:focus-visible {
+      background: #fff;
+      box-shadow: 0 2px 6px rgba(70,71,71,.28);
+      outline: none;
     }
     .card-location span {
       overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
@@ -567,24 +577,50 @@
     }
     .modal-close:hover { background: rgba(0,0,0,.13); }
     .modal-img-wrap { position: relative; flex-shrink: 0; }
+    .modal-img-track {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      border-radius: 16px 16px 0 0;
+    }
+    .modal-img-track::-webkit-scrollbar { display: none; }
     .modal-img {
+      flex: 0 0 100%;
       width: 100%; height: 140px;
       object-fit: cover; object-position: center;
-      display: block; border-radius: 16px 16px 0 0;
+      display: block;
+      scroll-snap-align: start;
     }
     @media (max-width: 768px) {
-      .modal-img { height: 200px; border-radius: 20px 20px 0 0; }
+      .modal-img { height: 200px; }
+      .modal-img-track { border-radius: 20px 20px 0 0; }
     }
+    /* prev/next arrows — hidden when there's only one photo */
+    .modal-img-nav {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 28px; height: 28px; border-radius: 50%;
+      background: rgba(255,255,255,.88); backdrop-filter: blur(4px);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text); z-index: 2;
+      transition: background 140ms;
+    }
+    .modal-img-nav:hover { background: #fff; }
+    .modal-img-nav.prev { left: 10px; }
+    .modal-img-nav.next { right: 10px; }
     /* dot indicators */
     .modal-dots {
       position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);
-      display: flex; gap: 5px;
+      display: flex; gap: 5px; z-index: 2;
     }
     .modal-dot {
       width: 6px; height: 6px; border-radius: 50%;
       background: rgba(255,255,255,.5);
+      cursor: pointer; padding: 0; border: none;
+      transition: background 140ms, transform 140ms;
     }
-    .modal-dot.active { background: #fff; }
+    .modal-dot.active { background: #fff; transform: scale(1.25); }
     .modal-body { padding: 20px 20px 0; }
     .modal-title { font-family: Georgia, serif; font-size: 20px; font-weight: 700; margin-bottom: 8px; }
     .modal-desc { font-size: 13px; color: var(--grey); line-height: 1.6; margin-bottom: 14px; }
@@ -806,6 +842,42 @@
       background: var(--red); color: #fff;
       font-size: 10px; font-weight: 700; margin-left: 2px;
     }
+
+    /* ── Location map modal ── */
+    .map-sheet {
+      max-width: 460px;
+      border-radius: 16px;
+      display: flex;
+      flex-direction: column;
+    }
+    @media (max-width: 768px) {
+      .map-sheet {
+        max-width: 100%;
+        border-radius: 20px 20px 0 0;
+        max-height: 92dvh;
+      }
+    }
+    .map-plan-wrap { padding: 16px 20px 4px; }
+    .map-plan {
+      width: 100%; height: auto; display: block;
+      border-radius: 10px;
+      border: 1px solid var(--border-light);
+    }
+    .map-pin { opacity: .35; }
+    .map-pin path { fill: var(--grey); transition: fill 200ms ease; }
+    .map-pin.active { opacity: 1; }
+    .map-pin.active path { fill: var(--red); }
+    .map-pin.active .pin-scale { animation: map-pin-pulse 900ms ease-out; }
+    @keyframes map-pin-pulse {
+      0%   { transform: scale(1.5); }
+      60%  { transform: scale(1); }
+      100% { transform: scale(1); }
+    }
+    .map-legend {
+      padding: 10px 20px 18px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .map-legend-note { font-size: 11px; color: var(--grey); }
 
     /* ── Bottom bar recap drawer (mobile) ── */
     .bottom-drawer {
@@ -1036,16 +1108,16 @@
                   Filtrer
                 </button>
                 <div class="pagination">
-                  <button class="page-btn" disabled><svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M10 4l-4 4 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-                  <span>1 / 2</span>
-                  <button class="page-btn filled"><svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                  <button class="page-btn" data-dir="prev" disabled><svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M10 4l-4 4 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                  <span class="page-indicator">1 / 2</span>
+                  <button class="page-btn" data-dir="next"><svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
                 </div>
               </div>
             </div>
             <div class="card-grid">
 
               <!-- Card 1 -->
-              <div class="resto-card" data-meal="day1-lunch" data-name="L'Orangerie" data-adults="42" data-child="14" data-orig-adults="50" data-orig-child="17">
+              <div class="resto-card" data-meal="day1-lunch" data-name="L'Orangerie" data-adults="42" data-child="14" data-orig-adults="50" data-orig-child="17" data-page="1">
                 <div class="card-img-wrap">
                   <img class="card-img" src="../assets/prototypes/restaurants/orangerie.webp" alt="L'Orangerie" />
                                     <button class="info-btn" aria-label="Informations"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#1D1D1B" stroke-width="1.25"/><path d="M6 5v4M6 3.5v.5" stroke="#1D1D1B" stroke-width="1.25" stroke-linecap="round"/></svg></button>
@@ -1075,7 +1147,7 @@
               </div>
 
               <!-- Card 2 -->
-              <div class="resto-card" data-meal="day1-lunch" data-name="L'Orangerie" data-adults="42" data-child="14" data-orig-adults="50" data-orig-child="17">
+              <div class="resto-card" data-meal="day1-lunch" data-name="L'Orangerie" data-adults="42" data-child="14" data-orig-adults="50" data-orig-child="17" data-page="1">
                 <div class="card-img-wrap">
                   <img class="card-img" src="../assets/prototypes/restaurants/orangerie.webp" alt="" />
                                     <button class="info-btn" aria-label="Informations"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#1D1D1B" stroke-width="1.25"/><path d="M6 5v4M6 3.5v.5" stroke="#1D1D1B" stroke-width="1.25" stroke-linecap="round"/></svg></button>
@@ -1105,7 +1177,7 @@
               </div>
 
               <!-- Card — idle (no slot selected yet) -->
-              <div class="resto-card" data-meal="day1-lunch" data-name="L'Echansonnerie" data-adults="38" data-child="12" data-orig-adults="45" data-orig-child="15">
+              <div class="resto-card" data-meal="day1-lunch" data-name="L'Echansonnerie" data-adults="38" data-child="12" data-orig-adults="45" data-orig-child="15" data-page="1">
                 <div class="card-img-wrap">
                   <img class="card-img" src="../assets/prototypes/restaurants/echansonnerie.webp" alt="" />
                                     <button class="info-btn" aria-label="Informations"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#1D1D1B" stroke-width="1.25"/><path d="M6 5v4M6 3.5v.5" stroke="#1D1D1B" stroke-width="1.25" stroke-linecap="round"/></svg></button>
@@ -1132,6 +1204,34 @@
                   <button class="modify-link">Voir menus et carte</button>
                 </div>
               </div>
+              <div class="resto-card" data-meal="day1-lunch" data-name="Le Bistrot" data-adults="36" data-child="13" data-orig-adults="43" data-orig-child="16" data-page="2">
+                <div class="card-img-wrap">
+                  <img class="card-img" src="../assets/prototypes/restaurants/bistrot.webp" alt="" />
+                  <button class="info-btn" aria-label="Informations"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#1D1D1B" stroke-width="1.25"/><path d="M6 5v4M6 3.5v.5" stroke="#1D1D1B" stroke-width="1.25" stroke-linecap="round"/></svg></button>
+                  <div class="card-location"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M6 1C4 1 2.5 2.5 2.5 4.5c0 2.5 3.5 6.5 3.5 6.5s3.5-4 3.5-6.5C9.5 2.5 8 1 6 1z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/><circle cx="6" cy="4.5" r="1.2" stroke="currentColor" stroke-width="1"/></svg><span>Dans le parc · village Bourg Bérard</span></div>
+                </div>
+                <div class="booking-overlay"><div class="spinner"></div><p>Confirmation<br>en cours…</p></div>
+                <div class="card-body">
+                  <div class="card-name">Le Bistrot</div>
+                  <div class="card-tags">Cuisine traditionnelle</div>
+                  <div class="slot-section">
+                    <div class="slot-label-text"><svg width="11" height="11" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.25" stroke="currentColor" stroke-width="1.4"/><path d="M8 4.75v3.5l2.5 1.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Sélectionnez un horaire</div>
+                    <div class="slot-chips">
+                      <button class="slot-chip" data-slot="12:00">12:00</button>
+                      <button class="slot-chip" data-slot="12:30">12:30</button>
+                      <button class="slot-chip" data-slot="13:15">13:15</button>
+                    </div>
+                    <div class="slot-reassurance"><svg width="9" height="9" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.1"/><path d="M6 5.5v3M6 3.8v.4" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg>Modifiable jusqu'à la veille, sans frais</div>
+                  </div>
+                  <div class="guests-row">
+                    <div class="guest-col"><span class="guest-label">2 menus adultes</span><span class="guest-price">+36,00€/pers</span></div>
+                    <div class="guest-col"><span class="guest-label">1 menu enfant</span><span class="guest-price">+13,00€/pers</span></div>
+                  </div>
+                  <div class="price-discount"></div>
+                  <button class="modify-link">Voir menus et carte</button>
+                </div>
+              </div>
+
 
             </div>
           </div>
@@ -1162,16 +1262,16 @@
               <div class="controls-right">
                 <button class="filter-btn"><svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M4 8h8M6 12h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg> Filtrer</button>
                 <div class="pagination">
-                  <button class="page-btn" disabled><svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M10 4l-4 4 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-                  <span>1 / 2</span>
-                  <button class="page-btn filled"><svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                  <button class="page-btn" data-dir="prev" disabled><svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M10 4l-4 4 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                  <span class="page-indicator">1 / 2</span>
+                  <button class="page-btn" data-dir="next"><svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
                 </div>
               </div>
             </div>
             <div class="card-grid">
 
               <!-- Idle -->
-              <div class="resto-card" data-meal="day1-dinner" data-name="L'Orangerie" data-adults="42" data-child="14" data-orig-adults="50" data-orig-child="17">
+              <div class="resto-card" data-meal="day1-dinner" data-name="L'Orangerie" data-adults="42" data-child="14" data-orig-adults="50" data-orig-child="17" data-page="1">
                 <div class="card-img-wrap">
                   <img class="card-img" src="../assets/prototypes/restaurants/orangerie.webp" alt="" />
                                     <button class="info-btn" aria-label="Informations"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#1D1D1B" stroke-width="1.25"/><path d="M6 5v4M6 3.5v.5" stroke="#1D1D1B" stroke-width="1.25" stroke-linecap="round"/></svg></button>
@@ -1200,7 +1300,7 @@
               </div>
 
               <!-- Card 2 (dinner) -->
-              <div class="resto-card" data-meal="day1-dinner" data-name="L'Orangerie" data-adults="42" data-child="14" data-orig-adults="50" data-orig-child="17">
+              <div class="resto-card" data-meal="day1-dinner" data-name="L'Orangerie" data-adults="42" data-child="14" data-orig-adults="50" data-orig-child="17" data-page="1">
                 <div class="card-img-wrap">
                   <img class="card-img" src="../assets/prototypes/restaurants/orangerie.webp" alt="" />
                                     <button class="info-btn" aria-label="Informations"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#1D1D1B" stroke-width="1.25"/><path d="M6 5v4M6 3.5v.5" stroke="#1D1D1B" stroke-width="1.25" stroke-linecap="round"/></svg></button>
@@ -1229,7 +1329,7 @@
               </div>
 
               <!-- Idle -->
-              <div class="resto-card" data-meal="day1-dinner" data-name="La Mijoterie du Roy Henry" data-adults="35" data-child="12" data-orig-adults="42" data-orig-child="15">
+              <div class="resto-card" data-meal="day1-dinner" data-name="La Mijoterie du Roy Henry" data-adults="35" data-child="12" data-orig-adults="42" data-orig-child="15" data-page="1">
                 <div class="card-img-wrap">
                   <img class="card-img" src="../assets/prototypes/restaurants/mijoterie.webp" alt="" />
                                     <button class="info-btn" aria-label="Informations"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#1D1D1B" stroke-width="1.25"/><path d="M6 5v4M6 3.5v.5" stroke="#1D1D1B" stroke-width="1.25" stroke-linecap="round"/></svg></button>
@@ -1256,6 +1356,34 @@
                   <button class="modify-link">Voir menus et carte</button>
                 </div>
               </div>
+              <div class="resto-card" data-meal="day1-dinner" data-name="Le Bistrot" data-adults="36" data-child="13" data-orig-adults="43" data-orig-child="16" data-page="2">
+                <div class="card-img-wrap">
+                  <img class="card-img" src="../assets/prototypes/restaurants/bistrot.webp" alt="" />
+                  <button class="info-btn" aria-label="Informations"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#1D1D1B" stroke-width="1.25"/><path d="M6 5v4M6 3.5v.5" stroke="#1D1D1B" stroke-width="1.25" stroke-linecap="round"/></svg></button>
+                  <div class="card-location"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M6 1C4 1 2.5 2.5 2.5 4.5c0 2.5 3.5 6.5 3.5 6.5s3.5-4 3.5-6.5C9.5 2.5 8 1 6 1z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/><circle cx="6" cy="4.5" r="1.2" stroke="currentColor" stroke-width="1"/></svg><span>Dans le parc · village Bourg Bérard</span></div>
+                </div>
+                <div class="booking-overlay"><div class="spinner"></div><p>Confirmation<br>en cours…</p></div>
+                <div class="card-body">
+                  <div class="card-name">Le Bistrot</div>
+                  <div class="card-tags">Cuisine traditionnelle</div>
+                  <div class="slot-section">
+                    <div class="slot-label-text"><svg width="11" height="11" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.25" stroke="currentColor" stroke-width="1.4"/><path d="M8 4.75v3.5l2.5 1.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Sélectionnez un horaire</div>
+                    <div class="slot-chips">
+                      <button class="slot-chip" data-slot="19:00">19:00</button>
+                      <button class="slot-chip" data-slot="19:30">19:30</button>
+                      <button class="slot-chip" data-slot="20:15">20:15</button>
+                    </div>
+                    <div class="slot-reassurance"><svg width="9" height="9" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.1"/><path d="M6 5.5v3M6 3.8v.4" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg>Modifiable jusqu'à la veille, sans frais</div>
+                  </div>
+                  <div class="guests-row">
+                    <div class="guest-col"><span class="guest-label">2 menus adultes</span><span class="guest-price">+36,00€/pers</span></div>
+                    <div class="guest-col"><span class="guest-label">1 menu enfant</span><span class="guest-price">+13,00€/pers</span></div>
+                  </div>
+                  <div class="price-discount"></div>
+                  <button class="modify-link">Voir menus et carte</button>
+                </div>
+              </div>
+
 
             </div>
           </div>
@@ -1300,15 +1428,15 @@
               <div class="controls-right">
                 <button class="filter-btn"><svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M4 8h8M6 12h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg> Filtrer</button>
                 <div class="pagination">
-                  <button class="page-btn" disabled><svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M10 4l-4 4 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-                  <span>1 / 2</span>
-                  <button class="page-btn filled"><svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                  <button class="page-btn" data-dir="prev" disabled><svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M10 4l-4 4 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                  <span class="page-indicator">1 / 2</span>
+                  <button class="page-btn" data-dir="next"><svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
                 </div>
               </div>
             </div>
             <div class="card-grid">
 
-              <div class="resto-card" data-meal="day2-lunch" data-name="L'Orangerie" data-adults="42" data-child="14" data-orig-adults="50" data-orig-child="17">
+              <div class="resto-card" data-meal="day2-lunch" data-name="L'Orangerie" data-adults="42" data-child="14" data-orig-adults="50" data-orig-child="17" data-page="1">
                 <div class="card-img-wrap">
                   <img class="card-img" src="../assets/prototypes/restaurants/orangerie.webp" alt="" />
                                     <button class="info-btn" aria-label="Informations"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#1D1D1B" stroke-width="1.25"/><path d="M6 5v4M6 3.5v.5" stroke="#1D1D1B" stroke-width="1.25" stroke-linecap="round"/></svg></button>
@@ -1336,7 +1464,7 @@
                 </div>
               </div>
 
-              <div class="resto-card" data-meal="day2-lunch" data-name="L'Echansonnerie" data-adults="38" data-child="12" data-orig-adults="45" data-orig-child="15">
+              <div class="resto-card" data-meal="day2-lunch" data-name="L'Echansonnerie" data-adults="38" data-child="12" data-orig-adults="45" data-orig-child="15" data-page="1">
                 <div class="card-img-wrap">
                   <img class="card-img" src="../assets/prototypes/restaurants/echansonnerie.webp" alt="" />
                                     <button class="info-btn" aria-label="Informations"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#1D1D1B" stroke-width="1.25"/><path d="M6 5v4M6 3.5v.5" stroke="#1D1D1B" stroke-width="1.25" stroke-linecap="round"/></svg></button>
@@ -1364,7 +1492,7 @@
                 </div>
               </div>
 
-              <div class="resto-card" data-meal="day2-lunch" data-name="L'Auberge par Alexandre Couillon" data-adults="44" data-child="16" data-orig-adults="52" data-orig-child="19">
+              <div class="resto-card" data-meal="day2-lunch" data-name="L'Auberge par Alexandre Couillon" data-adults="44" data-child="16" data-orig-adults="52" data-orig-child="19" data-page="1">
                 <div class="card-img-wrap">
                   <img class="card-img" src="../assets/prototypes/restaurants/auberge-couillon.webp" alt="" />
                                     <button class="info-btn" aria-label="Informations"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#1D1D1B" stroke-width="1.25"/><path d="M6 5v4M6 3.5v.5" stroke="#1D1D1B" stroke-width="1.25" stroke-linecap="round"/></svg></button>
@@ -1390,6 +1518,34 @@
                   <button class="modify-link">Voir menus et carte</button>
                 </div>
               </div>
+              <div class="resto-card" data-meal="day2-lunch" data-name="Le Bistrot" data-adults="36" data-child="13" data-orig-adults="43" data-orig-child="16" data-page="2">
+                <div class="card-img-wrap">
+                  <img class="card-img" src="../assets/prototypes/restaurants/bistrot.webp" alt="" />
+                  <button class="info-btn" aria-label="Informations"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#1D1D1B" stroke-width="1.25"/><path d="M6 5v4M6 3.5v.5" stroke="#1D1D1B" stroke-width="1.25" stroke-linecap="round"/></svg></button>
+                  <div class="card-location"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M6 1C4 1 2.5 2.5 2.5 4.5c0 2.5 3.5 6.5 3.5 6.5s3.5-4 3.5-6.5C9.5 2.5 8 1 6 1z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/><circle cx="6" cy="4.5" r="1.2" stroke="currentColor" stroke-width="1"/></svg><span>Dans le parc · village Bourg Bérard</span></div>
+                </div>
+                <div class="booking-overlay"><div class="spinner"></div><p>Confirmation<br>en cours…</p></div>
+                <div class="card-body">
+                  <div class="card-name">Le Bistrot</div>
+                  <div class="card-tags">Cuisine traditionnelle</div>
+                  <div class="slot-section">
+                    <div class="slot-label-text"><svg width="11" height="11" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.25" stroke="currentColor" stroke-width="1.4"/><path d="M8 4.75v3.5l2.5 1.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Sélectionnez un horaire</div>
+                    <div class="slot-chips">
+                      <button class="slot-chip" data-slot="12:00">12:00</button>
+                      <button class="slot-chip" data-slot="12:45">12:45</button>
+                      <button class="slot-chip" data-slot="13:15">13:15</button>
+                    </div>
+                    <div class="slot-reassurance"><svg width="9" height="9" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.1"/><path d="M6 5.5v3M6 3.8v.4" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg>Modifiable jusqu'à la veille, sans frais</div>
+                  </div>
+                  <div class="guests-row">
+                    <div class="guest-col"><span class="guest-label">2 menus adultes</span><span class="guest-price">+36,00€/pers</span></div>
+                    <div class="guest-col"><span class="guest-label">1 menu enfant</span><span class="guest-price">+13,00€/pers</span></div>
+                  </div>
+                  <div class="price-discount"></div>
+                  <button class="modify-link">Voir menus et carte</button>
+                </div>
+              </div>
+
 
             </div>
           </div>
@@ -1486,6 +1642,71 @@
         Appliquer les filtres
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 8h8M9 5l3 3-3 3" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
+    </div>
+  </div>
+</div>
+
+<!-- ── Location map modal ── -->
+<div class="modal-backdrop" id="map-modal" role="dialog" aria-modal="true" aria-label="Plan du parc">
+  <div class="modal-sheet map-sheet">
+    <div class="filter-header">
+      <span class="filter-header-title" id="map-modal-title">Où se trouve ce restaurant ?</span>
+      <button class="filter-close" id="map-close-btn" aria-label="Fermer">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="map-plan-wrap">
+      <svg class="map-plan" viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0" y="0" width="320" height="220" fill="#F3EDE0" />
+        <path d="M20 190 C 40 60, 120 20, 160 20 C 220 20, 300 60, 300 130 C 300 180, 240 200, 180 200 C 100 205, 40 205, 20 190 Z" fill="#EAE2D0" stroke="#CAA367" stroke-width="1.5" />
+        <circle cx="160" cy="110" r="34" fill="#E4DAC2" stroke="#CAA367" stroke-width="1.25" />
+        <text x="160" y="107" text-anchor="middle" font-family="Georgia, serif" font-size="9" font-weight="700" fill="#A18756">GRAND</text>
+        <text x="160" y="118" text-anchor="middle" font-family="Georgia, serif" font-size="9" font-weight="700" fill="#A18756">CARROUSEL</text>
+        <ellipse cx="80" cy="60" rx="34" ry="22" fill="#E4DAC2" stroke="#CAA367" stroke-width="1.25" />
+        <text x="80" y="58" text-anchor="middle" font-family="Georgia, serif" font-size="8" font-weight="700" fill="#A18756">CHASSELOUP</text>
+        <text x="80" y="68" text-anchor="middle" font-family="Georgia, serif" font-size="7" fill="#A18756">Village XVIIIe</text>
+        <ellipse cx="240" cy="70" rx="38" ry="24" fill="#E4DAC2" stroke="#CAA367" stroke-width="1.25" />
+        <text x="240" y="66" text-anchor="middle" font-family="Georgia, serif" font-size="8" font-weight="700" fill="#A18756">VILLAGE</text>
+        <text x="240" y="76" text-anchor="middle" font-family="Georgia, serif" font-size="8" font-weight="700" fill="#A18756">RENAISSANCE</text>
+        <ellipse cx="80" cy="165" rx="36" ry="20" fill="#E4DAC2" stroke="#CAA367" stroke-width="1.25" />
+        <text x="80" y="168" text-anchor="middle" font-family="Georgia, serif" font-size="8" font-weight="700" fill="#A18756">BOURG BÉRARD</text>
+        <path d="M28 175 L292 130" stroke="#CAA367" stroke-width="1" stroke-dasharray="2 3" opacity=".6" />
+        <path d="M80 82 L140 100" stroke="#CAA367" stroke-width="1" stroke-dasharray="2 3" opacity=".6" />
+        <path d="M240 94 L180 105" stroke="#CAA367" stroke-width="1" stroke-dasharray="2 3" opacity=".6" />
+        <g id="map-pin-orangerie" class="map-pin" data-restaurant="L'Orangerie" transform="translate(150,140)">
+          <g class="pin-scale">
+            <path d="M0 0C-6 0-11 5-11 11c0 8 11 20 11 20s11-12 11-20c0-6-5-11-11-11z" stroke="#fff" stroke-width="1.5"/>
+            <circle cx="0" cy="11" r="4" fill="#fff"/>
+          </g>
+        </g>
+        <g id="map-pin-echansonnerie" class="map-pin" data-restaurant="L'Echansonnerie" transform="translate(235,90)">
+          <g class="pin-scale">
+            <path d="M0 0C-6 0-11 5-11 11c0 8 11 20 11 20s11-12 11-20c0-6-5-11-11-11z" stroke="#fff" stroke-width="1.5"/>
+            <circle cx="0" cy="11" r="4" fill="#fff"/>
+          </g>
+        </g>
+        <g id="map-pin-mijoterie" class="map-pin" data-restaurant="La Mijoterie du Roy Henry" transform="translate(255,55)">
+          <g class="pin-scale">
+            <path d="M0 0C-6 0-11 5-11 11c0 8 11 20 11 20s11-12 11-20c0-6-5-11-11-11z" stroke="#fff" stroke-width="1.5"/>
+            <circle cx="0" cy="11" r="4" fill="#fff"/>
+          </g>
+        </g>
+        <g id="map-pin-auberge" class="map-pin" data-restaurant="L'Auberge par Alexandre Couillon" transform="translate(95,42)">
+          <g class="pin-scale">
+            <path d="M0 0C-6 0-11 5-11 11c0 8 11 20 11 20s11-12 11-20c0-6-5-11-11-11z" stroke="#fff" stroke-width="1.5"/>
+            <circle cx="0" cy="11" r="4" fill="#fff"/>
+          </g>
+        </g>
+        <g id="map-pin-bistrot" class="map-pin" data-restaurant="Le Bistrot" transform="translate(80,150)">
+          <g class="pin-scale">
+            <path d="M0 0C-6 0-11 5-11 11c0 8 11 20 11 20s11-12 11-20c0-6-5-11-11-11z" stroke="#fff" stroke-width="1.5"/>
+            <circle cx="0" cy="11" r="4" fill="#fff"/>
+          </g>
+        </g>
+      </svg>
+    </div>
+    <div class="map-legend">
+      <span class="map-legend-note">Illustration schématique · non contractuelle</span>
     </div>
   </div>
 </div>
@@ -1869,6 +2090,21 @@
         { name: 'Mille-feuille caramel', desc: 'Crème légère au praliné, caramel fleur de sel', price: '12,00€' },
       ]},
     ],
+    "Le Bistrot": [
+      { section: 'Entrées', items: [
+        { name: 'Œuf mimosa à la ciboulette', desc: 'Mayonnaise maison, herbes fraîches', price: '7,50€' },
+        { name: 'Terrine de campagne', desc: 'Cornichons, pain de campagne grillé', price: '8,50€' },
+      ]},
+      { section: 'Plats', items: [
+        { name: 'Blanquette de veau', desc: 'Riz pilaf, légumes de saison', price: '19,50€' },
+        { name: 'Poulet fermier rôti', desc: 'Purée maison, jus corsé', price: '18,00€' },
+        { name: 'Tarte fine aux légumes', desc: 'Salade verte, vinaigrette moutarde', price: '15,50€' },
+      ]},
+      { section: 'Desserts', items: [
+        { name: 'Tarte Tatin maison', desc: 'Crème fraîche épaisse', price: '7,50€' },
+        { name: 'Mousse au chocolat', desc: 'Recette traditionnelle', price: '6,50€' },
+      ]},
+    ],
   };
 
   const RESTAURANTS = {
@@ -1904,6 +2140,13 @@
         { label: 'Menu(s) Végétarien Enfant',  price: 16, key: 'veg-child' },
       ],
     },
+    "Le Bistrot": {
+      desc: "Dans le village d'époque « Bourg Bérard », redécouvrez les saveurs de la cuisine traditionnelle dans un cadre chaleureux.",
+      menus: [
+        { label: 'Menu(s) Adulte',   price: 36, key: 'adult' },
+        { label: 'Menu(s) Enfants',  price: 13, key: 'child' },
+      ],
+    },
   };
 
   let modalQuantities = {};
@@ -1937,14 +2180,39 @@
   }
 
   const RESTAURANT_IMAGES = {
-    "L'Orangerie": '../assets/prototypes/restaurants/orangerie.webp',
-    "L'Echansonnerie": '../assets/prototypes/restaurants/echansonnerie.webp',
-    "La Mijoterie du Roy Henry": '../assets/prototypes/restaurants/mijoterie.webp',
-    "L'Auberge par Alexandre Couillon": '../assets/prototypes/restaurants/auberge-couillon.webp',
+    "L'Orangerie": [
+      '../assets/prototypes/restaurants/orangerie.webp',
+      '../assets/prototypes/restaurants/orangerie-2.webp',
+      '../assets/prototypes/restaurants/orangerie-3.webp',
+      '../assets/prototypes/restaurants/orangerie-4.webp',
+    ],
+    "L'Echansonnerie": [
+      '../assets/prototypes/restaurants/echansonnerie.webp',
+      '../assets/prototypes/restaurants/echansonnerie-2.webp',
+      '../assets/prototypes/restaurants/echansonnerie-3.webp',
+      '../assets/prototypes/restaurants/echansonnerie-4.webp',
+    ],
+    "La Mijoterie du Roy Henry": [
+      '../assets/prototypes/restaurants/mijoterie.webp',
+      '../assets/prototypes/restaurants/mijoterie-2.webp',
+      '../assets/prototypes/restaurants/mijoterie-3.webp',
+      '../assets/prototypes/restaurants/mijoterie-4.webp',
+    ],
+    "L'Auberge par Alexandre Couillon": [
+      '../assets/prototypes/restaurants/auberge-couillon.webp',
+      '../assets/prototypes/restaurants/auberge-couillon-2.webp',
+      '../assets/prototypes/restaurants/auberge-couillon-3.webp',
+    ],
+    "Le Bistrot": [
+      '../assets/prototypes/restaurants/bistrot.webp',
+      '../assets/prototypes/restaurants/bistrot-2.webp',
+      '../assets/prototypes/restaurants/bistrot-3.webp',
+      '../assets/prototypes/restaurants/bistrot-4.webp',
+    ],
   };
 
   function renderModal(name, info) {
-    const imgSrc = RESTAURANT_IMAGES[name] || '../assets/prototypes/restaurantimg.png';
+    const images = RESTAURANT_IMAGES[name] || ['../assets/prototypes/restaurantimg.png'];
 
     let menuRows = info.menus.map(m => {
       const qty = modalQuantities[m.key] ?? 0;
@@ -1985,17 +2253,23 @@
     const total = info.menus.reduce((s, m) => s + (modalQuantities[m.key] ?? 0) * m.price, 0);
     const was   = info.menus.reduce((s, m) => s + (modalQuantities[m.key] ?? 0) * m.price * 1.15, 0);
 
+    const imgTrackHTML = images.map((src, i) => `<img class="modal-img" src="${src}" alt="${name} ${i + 1}" />`).join('');
+    const dotsHTML = images.length > 1
+      ? `<div class="modal-dots">${images.map((_, i) => `<button class="modal-dot${i === 0 ? ' active' : ''}" data-index="${i}" aria-label="Photo ${i + 1}"></button>`).join('')}</div>`
+      : '';
+    const navHTML = images.length > 1
+      ? `<button class="modal-img-nav prev" id="modal-img-prev" aria-label="Photo précédente"><svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M10 4l-4 4 4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+         <button class="modal-img-nav next" id="modal-img-next" aria-label="Photo suivante"><svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></button>`
+      : '';
+
     document.getElementById('modal-content').innerHTML = `
       <div class="modal-img-wrap" style="position:relative;">
-        <img class="modal-img" src="${imgSrc}" alt="${name}" />
+        <div class="modal-img-track" id="modal-img-track">${imgTrackHTML}</div>
         <button class="modal-close" id="modal-close-btn" aria-label="Fermer">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
         </button>
-        <div class="modal-dots">
-          <div class="modal-dot active"></div>
-          <div class="modal-dot"></div>
-          <div class="modal-dot"></div>
-        </div>
+        ${navHTML}
+        ${dotsHTML}
       </div>
       <div class="modal-body">
         <h2 class="modal-title">${name}</h2>
@@ -2072,6 +2346,33 @@
     });
 
     document.getElementById('modal-close-btn').addEventListener('click', closeModal);
+
+    // Photo carousel
+    if (images.length > 1) {
+      const track = document.getElementById('modal-img-track');
+      const dots = Array.from(document.querySelectorAll('.modal-dot'));
+      const prevBtn = document.getElementById('modal-img-prev');
+      const nextBtn = document.getElementById('modal-img-next');
+
+      const goTo = index => {
+        const clamped = Math.max(0, Math.min(images.length - 1, index));
+        track.scrollTo({ left: clamped * track.clientWidth, behavior: 'smooth' });
+      };
+      dots.forEach(dot => {
+        dot.addEventListener('click', () => goTo(parseInt(dot.dataset.index)));
+      });
+      prevBtn.addEventListener('click', () => goTo(Math.round(track.scrollLeft / track.clientWidth) - 1));
+      nextBtn.addEventListener('click', () => goTo(Math.round(track.scrollLeft / track.clientWidth) + 1));
+
+      let scrollTimeout;
+      track.addEventListener('scroll', () => {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+          const current = Math.round(track.scrollLeft / track.clientWidth);
+          dots.forEach((dot, i) => dot.classList.toggle('active', i === current));
+        }, 80);
+      });
+    }
 
     // Tab switching
     document.querySelectorAll('.modal-tab').forEach(tab => {
@@ -2200,6 +2501,7 @@
   // Open modal on info-btn, card name, or card image clicks
   document.querySelectorAll('.resto-card').forEach(card => {
     card.addEventListener('click', e => {
+      if (e.target.closest('.card-location')) return; // handled separately, opens the map modal
       const infoTrigger = e.target.closest('.info-btn');
       const nameTrigger = e.target.closest('.card-name');
       const imgTrigger  = e.target.closest('.card-img-wrap');
@@ -2214,6 +2516,76 @@
   // Close on backdrop click
   document.getElementById('modal').addEventListener('click', e => {
     if (e.target === document.getElementById('modal')) closeModal();
+  });
+
+  // ── Location map modal ───────────────────────────────
+  function openMapModal(restaurantName) {
+    document.querySelectorAll('.map-pin').forEach(pin => {
+      pin.classList.toggle('active', pin.dataset.restaurant === restaurantName);
+    });
+    const title = document.getElementById('map-modal-title');
+    if (title) title.textContent = restaurantName ? `Où se trouve « ${restaurantName} » ?` : 'Où se trouve ce restaurant ?';
+    document.getElementById('map-modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMapModal() {
+    document.getElementById('map-modal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.querySelectorAll('.card-location').forEach(badge => {
+    badge.setAttribute('role', 'button');
+    badge.setAttribute('tabindex', '0');
+    badge.addEventListener('click', e => {
+      e.stopPropagation();
+      const card = badge.closest('.resto-card');
+      openMapModal(card?.dataset.name);
+    });
+    badge.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        badge.click();
+      }
+    });
+  });
+  document.getElementById('map-close-btn').addEventListener('click', closeMapModal);
+  document.getElementById('map-modal').addEventListener('click', e => {
+    if (e.target === document.getElementById('map-modal')) closeMapModal();
+  });
+
+  // ── Card grid pagination ─────────────────────────────
+  document.querySelectorAll('.pagination').forEach(pagination => {
+    const mealBodyInner = pagination.closest('.meal-body-inner');
+    const grid = mealBodyInner?.querySelector('.card-grid');
+    if (!grid) return;
+
+    const totalPages = grid.querySelectorAll('.resto-card[data-page="2"]').length ? 2 : 1;
+    const indicator = pagination.querySelector('.page-indicator');
+    const prevBtn = pagination.querySelector('.page-btn[data-dir="prev"]');
+    const nextBtn = pagination.querySelector('.page-btn[data-dir="next"]');
+
+    if (totalPages < 2) {
+      pagination.style.display = 'none';
+      return;
+    }
+
+    let currentPage = 1;
+    function render() {
+      grid.classList.toggle('page-2', currentPage === 2);
+      indicator.textContent = `${currentPage} / ${totalPages}`;
+      prevBtn.disabled = currentPage === 1;
+      nextBtn.disabled = currentPage === totalPages;
+      prevBtn.classList.toggle('filled', currentPage !== 1);
+      nextBtn.classList.toggle('filled', currentPage === 1);
+    }
+    prevBtn.addEventListener('click', e => {
+      e.stopPropagation();
+      if (currentPage > 1) { currentPage--; render(); }
+    });
+    nextBtn.addEventListener('click', e => {
+      e.stopPropagation();
+      if (currentPage < totalPages) { currentPage++; render(); }
+    });
+    render();
   });
 </script>
 
