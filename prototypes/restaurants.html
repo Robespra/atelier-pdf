@@ -332,6 +332,43 @@
       width: 100%; height: 120px;
       display: flex; align-items: center; justify-content: center;
     }
+    /* Card-level photo carousel (swipe track), built from RESTAURANT_IMAGES */
+    .card-img-track {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .card-img-track::-webkit-scrollbar { display: none; }
+    .card-img-track .card-img { flex: 0 0 100%; scroll-snap-align: start; }
+    .card-img-nav {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 22px; height: 22px; border-radius: 50%;
+      background: rgba(255,255,255,.85); backdrop-filter: blur(4px);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text); z-index: 1;
+      opacity: 0; transition: opacity 140ms, background 140ms;
+    }
+    .card-img-wrap:hover .card-img-nav { opacity: 1; }
+    .card-img-nav:hover { background: #fff; }
+    .card-img-nav.prev { left: 6px; }
+    .card-img-nav.next { right: 6px; }
+    /* Touch devices have no hover — keep arrows always visible as a reliable
+       fallback since the photo swipe track is nested inside the card-swipe strip */
+    @media (hover: none) {
+      .card-img-nav { opacity: 1; }
+    }
+    .card-img-dots {
+      position: absolute; bottom: 6px; left: 50%; transform: translateX(-50%);
+      display: flex; gap: 3px; z-index: 1;
+    }
+    .card-img-dot {
+      width: 4px; height: 4px; border-radius: 50%;
+      background: rgba(255,255,255,.55);
+      transition: background 140ms, transform 140ms;
+    }
+    .card-img-dot.active { background: #fff; transform: scale(1.3); }
     /* Selected badge */
     .selected-badge {
       position: absolute; top: 7px; left: 7px;
@@ -2210,6 +2247,61 @@
       '../assets/prototypes/restaurants/bistrot-4.webp',
     ],
   };
+
+  // ── Card-level photo carousel ────────────────────────
+  // Replaces each card's single <img> with a swipeable track when more than one photo exists.
+  document.querySelectorAll('.resto-card').forEach(card => {
+    const wrap = card.querySelector('.card-img-wrap');
+    const img = wrap?.querySelector('.card-img');
+    if (!wrap || !img) return;
+
+    const images = RESTAURANT_IMAGES[card.dataset.name];
+    if (!images || images.length < 2) return;
+
+    const alt = img.getAttribute('alt') || card.dataset.name;
+    const track = document.createElement('div');
+    track.className = 'card-img-track';
+    track.innerHTML = images.map((src, i) => `<img class="card-img" src="${src}" alt="${alt} ${i + 1}" />`).join('');
+    img.replaceWith(track);
+
+    const prevBtn = document.createElement('button');
+    prevBtn.className = 'card-img-nav prev';
+    prevBtn.setAttribute('aria-label', 'Photo précédente');
+    prevBtn.innerHTML = '<svg width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M10 4l-4 4 4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+    const nextBtn = document.createElement('button');
+    nextBtn.className = 'card-img-nav next';
+    nextBtn.setAttribute('aria-label', 'Photo suivante');
+    nextBtn.innerHTML = '<svg width="10" height="10" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+    const dotsWrap = document.createElement('div');
+    dotsWrap.className = 'card-img-dots';
+    dotsWrap.innerHTML = images.map((_, i) => `<span class="card-img-dot${i === 0 ? ' active' : ''}"></span>`).join('');
+
+    wrap.append(prevBtn, nextBtn, dotsWrap);
+
+    const dots = Array.from(dotsWrap.children);
+    const goTo = index => {
+      const clamped = Math.max(0, Math.min(images.length - 1, index));
+      track.scrollTo({ left: clamped * track.clientWidth, behavior: 'smooth' });
+    };
+    prevBtn.addEventListener('click', e => {
+      e.stopPropagation();
+      goTo(Math.round(track.scrollLeft / track.clientWidth) - 1);
+    });
+    nextBtn.addEventListener('click', e => {
+      e.stopPropagation();
+      goTo(Math.round(track.scrollLeft / track.clientWidth) + 1);
+    });
+    let scrollTimeout;
+    track.addEventListener('scroll', () => {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        const current = Math.round(track.scrollLeft / track.clientWidth);
+        dots.forEach((dot, i) => dot.classList.toggle('active', i === current));
+      }, 80);
+    });
+  });
 
   function renderModal(name, info) {
     const images = RESTAURANT_IMAGES[name] || ['../assets/prototypes/restaurantimg.png'];
