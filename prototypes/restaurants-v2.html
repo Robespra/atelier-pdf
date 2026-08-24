@@ -435,6 +435,49 @@
       100% { transform: scale(1); box-shadow: none; }
     }
     .slot-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+    /* Many time slots (5+) — a dropdown replaces the chip row so every option
+       stays reachable with a click, not just via horizontal scroll/swipe. */
+    .slot-chips.many { display: none; }
+    .slot-dropdown { position: relative; display: inline-block; }
+    .slot-dropdown-trigger {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12px; font-weight: 700;
+      padding: 6px 12px; border-radius: 999px;
+      border: 1.5px solid var(--border);
+      background: var(--bg-cards); color: var(--text);
+      cursor: pointer;
+      box-shadow: 0 1px 2px rgba(70,71,71,.12);
+      transition: border-color 120ms, box-shadow 120ms;
+      font-family: inherit;
+    }
+    .slot-dropdown-trigger:hover { border-color: var(--text); box-shadow: 0 2px 6px rgba(70,71,71,.2); }
+    .slot-dropdown-trigger.active { background: var(--text); border-color: var(--text); color: #fff; }
+    .slot-dropdown-trigger .chevron { transition: transform 160ms; flex-shrink: 0; }
+    .slot-dropdown-trigger.open .chevron { transform: rotate(180deg); }
+    .slot-dropdown-panel {
+      /* Rendered into <body> when open (via JS) so .resto-card's overflow:hidden
+         (needed for the rounded card image) can't clip it. */
+      position: fixed; z-index: 300;
+      background: var(--bg-cards); border: 1.5px solid var(--border);
+      border-radius: 12px; box-shadow: var(--shadow-m);
+      padding: 6px; display: none;
+      max-height: 220px; overflow-y: auto;
+      min-width: 140px;
+    }
+    .slot-dropdown-panel.open { display: block; }
+    .slot-dropdown-option {
+      display: block; width: 100%; text-align: left;
+      font-size: 13px; font-weight: 600; color: var(--text);
+      padding: 8px 10px; border-radius: 8px;
+      background: none; border: none; cursor: pointer;
+      font-family: inherit;
+      transition: background 100ms;
+    }
+    .slot-dropdown-option:hover:not(.unavailable) { background: #F3EDE3; }
+    .slot-dropdown-option.active { background: var(--text); color: #fff; }
+    .slot-dropdown-option.unavailable { opacity: .35; pointer-events: none; }
+    /* Time-range restaurant — one wide chip instead of a picker ("service continu 13:00 à 17:00") */
+    .slot-chip.range { padding: 6px 16px; }
     .slot-chip {
       font-size: 12px; font-weight: 700;
       padding: 6px 12px; border-radius: 999px;
@@ -1160,7 +1203,6 @@
               <div class="resto-card" data-meal="day1-lunch" data-name="L'Orangerie" data-adults="42" data-child="14" data-orig-adults="50" data-orig-child="17" data-page="1" data-tags="dans-parc buffet reservation psh sur-place traditionnelle vegetarien">
                 <div class="card-img-wrap">
                   <img class="card-img" src="../assets/prototypes/restaurants/orangerie.webp" alt="L'Orangerie" />
-                                    <button class="info-btn" aria-label="Informations"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#1D1D1B" stroke-width="1.25"/><path d="M6 5v4M6 3.5v.5" stroke="#1D1D1B" stroke-width="1.25" stroke-linecap="round"/></svg></button>
                   <div class="card-location"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M6 1C4 1 2.5 2.5 2.5 4.5c0 2.5 3.5 6.5 3.5 6.5s3.5-4 3.5-6.5C9.5 2.5 8 1 6 1z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/><circle cx="6" cy="4.5" r="1.2" stroke="currentColor" stroke-width="1"/></svg><span>Dans le parc · 2 min du Grand Carrousel</span></div>
                   </div>
                 <div class="booking-overlay"><div class="spinner"></div><p>Confirmation<br>en cours…</p></div>
@@ -1175,7 +1217,6 @@
                       <button class="slot-chip" data-slot="12:30">12:30</button>
                       <button class="slot-chip" data-slot="13:00">13:00</button>
                     </div>
-                                      <div class="slot-reassurance"><svg width="9" height="9" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.1"/><path d="M6 5.5v3M6 3.8v.4" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg>Modifiable jusqu'à la veille, sans frais</div>
                   </div>
                   <div class="guests-row">
                     <div class="guest-col"><span class="guest-label">2 menus adultes</span><span class="guest-price">+42,00€/pers</span></div>
@@ -1190,7 +1231,6 @@
               <div class="resto-card" data-meal="day1-lunch" data-name="Le Chaudron" data-adults="15" data-child="9" data-orig-adults="18" data-orig-child="11" data-page="1" data-tags="dans-parc emporter click-collect poissons">
                 <div class="card-img-wrap">
                   <img class="card-img" src="../assets/prototypes/restaurants/chaudron.webp" alt="" />
-                  <button class="info-btn" aria-label="Informations"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#1D1D1B" stroke-width="1.25"/><path d="M6 5v4M6 3.5v.5" stroke="#1D1D1B" stroke-width="1.25" stroke-linecap="round"/></svg></button>
                   <div class="card-location"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M6 1C4 1 2.5 2.5 2.5 4.5c0 2.5 3.5 6.5 3.5 6.5s3.5-4 3.5-6.5C9.5 2.5 8 1 6 1z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/><circle cx="6" cy="4.5" r="1.2" stroke="currentColor" stroke-width="1"/></svg><span>Dans le parc · zone restauration rapide</span></div>
                   </div>
                 <div class="booking-overlay"><div class="spinner"></div><p>Confirmation<br>en cours…</p></div>
@@ -1204,7 +1244,6 @@
                       <button class="slot-chip" data-slot="12:30">12:30</button>
                       <button class="slot-chip" data-slot="13:00">13:00</button>
                     </div>
-                                      <div class="slot-reassurance"><svg width="9" height="9" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.1"/><path d="M6 5.5v3M6 3.8v.4" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg>Modifiable jusqu'à la veille, sans frais</div>
                   </div>
                   <div class="guests-row">
                     <div class="guest-col"><span class="guest-label">2 menus adultes</span><span class="guest-price">+15,00€/pers</span></div>
@@ -1219,7 +1258,6 @@
               <div class="resto-card" data-meal="day1-lunch" data-name="L'Echansonnerie" data-adults="38" data-child="12" data-orig-adults="45" data-orig-child="15" data-page="1" data-tags="dans-parc buffet reservation sur-place locales viandes">
                 <div class="card-img-wrap">
                   <img class="card-img" src="../assets/prototypes/restaurants/echansonnerie.webp" alt="" />
-                                    <button class="info-btn" aria-label="Informations"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#1D1D1B" stroke-width="1.25"/><path d="M6 5v4M6 3.5v.5" stroke="#1D1D1B" stroke-width="1.25" stroke-linecap="round"/></svg></button>
                   <div class="card-location"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M6 1C4 1 2.5 2.5 2.5 4.5c0 2.5 3.5 6.5 3.5 6.5s3.5-4 3.5-6.5C9.5 2.5 8 1 6 1z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/><circle cx="6" cy="4.5" r="1.2" stroke="currentColor" stroke-width="1"/></svg><span>Dans le parc · village Renaissance</span></div>
                   </div>
                 <div class="booking-overlay"><div class="spinner"></div><p>Confirmation<br>en cours…</p></div>
@@ -1233,7 +1271,6 @@
                       <button class="slot-chip" data-slot="12:30">12:30</button>
                       <button class="slot-chip" data-slot="13:00">13:00</button>
                     </div>
-                                      <div class="slot-reassurance"><svg width="9" height="9" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.1"/><path d="M6 5.5v3M6 3.8v.4" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg>Modifiable jusqu'à la veille, sans frais</div>
                   </div>
                   <div class="guests-row">
                     <div class="guest-col"><span class="guest-label">2 menus adultes</span><span class="guest-price">+38,00€/pers</span></div>
@@ -1246,7 +1283,6 @@
               <div class="resto-card" data-meal="day1-lunch" data-name="Le Bistrot" data-adults="36" data-child="13" data-orig-adults="43" data-orig-child="16" data-page="2" data-tags="dans-parc table reservation sur-place traditionnelle">
                 <div class="card-img-wrap">
                   <img class="card-img" src="../assets/prototypes/restaurants/bistrot.webp" alt="" />
-                  <button class="info-btn" aria-label="Informations"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#1D1D1B" stroke-width="1.25"/><path d="M6 5v4M6 3.5v.5" stroke="#1D1D1B" stroke-width="1.25" stroke-linecap="round"/></svg></button>
                   <div class="card-location"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M6 1C4 1 2.5 2.5 2.5 4.5c0 2.5 3.5 6.5 3.5 6.5s3.5-4 3.5-6.5C9.5 2.5 8 1 6 1z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/><circle cx="6" cy="4.5" r="1.2" stroke="currentColor" stroke-width="1"/></svg><span>Dans le parc · village Bourg Bérard</span></div>
                 </div>
                 <div class="booking-overlay"><div class="spinner"></div><p>Confirmation<br>en cours…</p></div>
@@ -1260,7 +1296,6 @@
                       <button class="slot-chip" data-slot="12:30">12:30</button>
                       <button class="slot-chip" data-slot="13:15">13:15</button>
                     </div>
-                    <div class="slot-reassurance"><svg width="9" height="9" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.1"/><path d="M6 5.5v3M6 3.8v.4" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg>Modifiable jusqu'à la veille, sans frais</div>
                   </div>
                   <div class="guests-row">
                     <div class="guest-col"><span class="guest-label">2 menus adultes</span><span class="guest-price">+36,00€/pers</span></div>
@@ -1298,7 +1333,7 @@
         <div class="meal-body">
           <div class="meal-body-inner">
             <div class="meal-controls">
-              <span class="meal-count">4 restaurants recommandés (2 adultes · 1 enfant)</span>
+              <span class="meal-count">5 restaurants recommandés (2 adultes · 1 enfant)</span>
               <div class="controls-right">
                 <button class="filter-btn"><svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M4 8h8M6 12h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg> Filtrer</button>
                 <div class="pagination">
@@ -1314,7 +1349,6 @@
               <div class="resto-card" data-meal="day1-dinner" data-name="L'Orangerie" data-adults="42" data-child="14" data-orig-adults="50" data-orig-child="17" data-page="1" data-tags="dans-parc buffet reservation psh sur-place traditionnelle vegetarien">
                 <div class="card-img-wrap">
                   <img class="card-img" src="../assets/prototypes/restaurants/orangerie.webp" alt="" />
-                                    <button class="info-btn" aria-label="Informations"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#1D1D1B" stroke-width="1.25"/><path d="M6 5v4M6 3.5v.5" stroke="#1D1D1B" stroke-width="1.25" stroke-linecap="round"/></svg></button>
                   <div class="card-location"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M6 1C4 1 2.5 2.5 2.5 4.5c0 2.5 3.5 6.5 3.5 6.5s3.5-4 3.5-6.5C9.5 2.5 8 1 6 1z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/><circle cx="6" cy="4.5" r="1.2" stroke="currentColor" stroke-width="1"/></svg><span>Dans le parc · 2 min du Grand Carrousel</span></div>
                   </div>
                 <div class="booking-overlay"><div class="spinner"></div><p>Confirmation<br>en cours…</p></div>
@@ -1328,7 +1362,6 @@
                       <button class="slot-chip" data-slot="19:30">19:30</button>
                       <button class="slot-chip" data-slot="20:00">20:00</button>
                     </div>
-                                      <div class="slot-reassurance"><svg width="9" height="9" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.1"/><path d="M6 5.5v3M6 3.8v.4" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg>Modifiable jusqu'à la veille, sans frais</div>
                   </div>
                   <div class="guests-row">
                     <div class="guest-col"><span class="guest-label">2 menus adultes</span><span class="guest-price">+42,00€/pers</span></div>
@@ -1343,7 +1376,6 @@
               <div class="resto-card" data-meal="day1-dinner" data-name="La Table des Ambassadeurs" data-adults="48" data-child="18" data-orig-adults="57" data-orig-child="21" data-page="1" data-tags="dans-hotel table reservation psh gastro">
                 <div class="card-img-wrap">
                   <img class="card-img" src="../assets/prototypes/restaurants/table-ambassadeurs.webp" alt="" />
-                  <button class="info-btn" aria-label="Informations"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#1D1D1B" stroke-width="1.25"/><path d="M6 5v4M6 3.5v.5" stroke="#1D1D1B" stroke-width="1.25" stroke-linecap="round"/></svg></button>
                   <div class="card-location"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M6 1C4 1 2.5 2.5 2.5 4.5c0 2.5 3.5 6.5 3.5 6.5s3.5-4 3.5-6.5C9.5 2.5 8 1 6 1z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/><circle cx="6" cy="4.5" r="1.2" stroke="currentColor" stroke-width="1"/></svg><span>Dans l'hôtel Le Grand Siècle</span></div>
                   </div>
                 <div class="booking-overlay"><div class="spinner"></div><p>Confirmation<br>en cours…</p></div>
@@ -1357,7 +1389,6 @@
                       <button class="slot-chip" data-slot="19:30">19:30</button>
                       <button class="slot-chip" data-slot="20:00">20:00</button>
                     </div>
-                                      <div class="slot-reassurance"><svg width="9" height="9" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.1"/><path d="M6 5.5v3M6 3.8v.4" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg>Modifiable jusqu'à la veille, sans frais</div>
                   </div>
                   <div class="guests-row">
                     <div class="guest-col"><span class="guest-label">2 menus adultes</span><span class="guest-price">+48,00€/pers</span></div>
@@ -1372,7 +1403,6 @@
               <div class="resto-card" data-meal="day1-dinner" data-name="La Mijoterie du Roy Henry" data-adults="35" data-child="12" data-orig-adults="42" data-orig-child="15" data-page="1" data-tags="dans-parc table reservation psh sur-place grillades viandes">
                 <div class="card-img-wrap">
                   <img class="card-img" src="../assets/prototypes/restaurants/mijoterie.webp" alt="" />
-                                    <button class="info-btn" aria-label="Informations"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#1D1D1B" stroke-width="1.25"/><path d="M6 5v4M6 3.5v.5" stroke="#1D1D1B" stroke-width="1.25" stroke-linecap="round"/></svg></button>
                   <div class="card-location"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M6 1C4 1 2.5 2.5 2.5 4.5c0 2.5 3.5 6.5 3.5 6.5s3.5-4 3.5-6.5C9.5 2.5 8 1 6 1z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/><circle cx="6" cy="4.5" r="1.2" stroke="currentColor" stroke-width="1"/></svg><span>Dans le parc · village Renaissance</span></div>
                   </div>
                 <div class="booking-overlay"><div class="spinner"></div><p>Confirmation<br>en cours…</p></div>
@@ -1386,7 +1416,6 @@
                       <button class="slot-chip" data-slot="20:00">20:00</button>
                       <button class="slot-chip unavailable" data-slot="20:30">20:30</button>
                     </div>
-                                      <div class="slot-reassurance"><svg width="9" height="9" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.1"/><path d="M6 5.5v3M6 3.8v.4" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg>Modifiable jusqu'à la veille, sans frais</div>
                   </div>
                   <div class="guests-row">
                     <div class="guest-col"><span class="guest-label">2 menus adultes</span><span class="guest-price">+35,00€/pers</span></div>
@@ -1399,7 +1428,6 @@
               <div class="resto-card" data-meal="day1-dinner" data-name="Le Bistrot" data-adults="36" data-child="13" data-orig-adults="43" data-orig-child="16" data-page="2" data-tags="dans-parc table reservation sur-place traditionnelle">
                 <div class="card-img-wrap">
                   <img class="card-img" src="../assets/prototypes/restaurants/bistrot.webp" alt="" />
-                  <button class="info-btn" aria-label="Informations"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#1D1D1B" stroke-width="1.25"/><path d="M6 5v4M6 3.5v.5" stroke="#1D1D1B" stroke-width="1.25" stroke-linecap="round"/></svg></button>
                   <div class="card-location"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M6 1C4 1 2.5 2.5 2.5 4.5c0 2.5 3.5 6.5 3.5 6.5s3.5-4 3.5-6.5C9.5 2.5 8 1 6 1z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/><circle cx="6" cy="4.5" r="1.2" stroke="currentColor" stroke-width="1"/></svg><span>Dans le parc · village Bourg Bérard</span></div>
                 </div>
                 <div class="booking-overlay"><div class="spinner"></div><p>Confirmation<br>en cours…</p></div>
@@ -1413,7 +1441,6 @@
                       <button class="slot-chip" data-slot="19:30">19:30</button>
                       <button class="slot-chip" data-slot="20:15">20:15</button>
                     </div>
-                    <div class="slot-reassurance"><svg width="9" height="9" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.1"/><path d="M6 5.5v3M6 3.8v.4" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg>Modifiable jusqu'à la veille, sans frais</div>
                   </div>
                   <div class="guests-row">
                     <div class="guest-col"><span class="guest-label">2 menus adultes</span><span class="guest-price">+36,00€/pers</span></div>
@@ -1424,6 +1451,29 @@
                 </div>
               </div>
 
+              <div class="resto-card" data-meal="day1-dinner" data-name="El Rincón de Tapas" data-adults="32" data-child="14" data-orig-adults="38" data-orig-child="17" data-page="2" data-tags="dans-parc sur-place traditionnelle vegetarien">
+                <div class="card-img-wrap">
+                  <img class="card-img" src="../assets/prototypes/restaurants/mijoterie.webp" alt="" style="filter: sepia(.15) saturate(1.15);" />
+                  <div class="card-location"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M6 1C4 1 2.5 2.5 2.5 4.5c0 2.5 3.5 6.5 3.5 6.5s3.5-4 3.5-6.5C9.5 2.5 8 1 6 1z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/><circle cx="6" cy="4.5" r="1.2" stroke="currentColor" stroke-width="1"/></svg><span>Dans le parc · village Renaissance</span></div>
+                </div>
+                <div class="booking-overlay"><div class="spinner"></div><p>Confirmation<br>en cours…</p></div>
+                <div class="card-body">
+                  <div class="card-name">El Rincón de Tapas</div>
+                  <div class="card-tags">Buffet de tapas · Service continu</div>
+                  <div class="slot-section">
+                    <div class="slot-label-text"><svg width="11" height="11" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.25" stroke="currentColor" stroke-width="1.4"/><path d="M8 4.75v3.5l2.5 1.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Service continu</div>
+                    <div class="slot-chips">
+                      <button class="slot-chip range" data-slot="18:00 à 22:00">18:00 à 22:00</button>
+                    </div>
+                  </div>
+                  <div class="guests-row">
+                    <div class="guest-col"><span class="guest-label">2 menus adultes</span><span class="guest-price">+32,00€/pers</span></div>
+                    <div class="guest-col"><span class="guest-label">1 menu enfant</span><span class="guest-price">+14,00€/pers</span></div>
+                  </div>
+                  <div class="price-discount"></div>
+                  <button class="modify-link">Voir menus et carte</button>
+                </div>
+              </div>
 
             </div>
           </div>
@@ -1480,7 +1530,6 @@
               <div class="resto-card" data-meal="day2-lunch" data-name="L'Orangerie" data-adults="42" data-child="14" data-orig-adults="50" data-orig-child="17" data-page="1" data-tags="dans-parc buffet reservation psh sur-place traditionnelle vegetarien">
                 <div class="card-img-wrap">
                   <img class="card-img" src="../assets/prototypes/restaurants/orangerie.webp" alt="" />
-                                    <button class="info-btn" aria-label="Informations"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#1D1D1B" stroke-width="1.25"/><path d="M6 5v4M6 3.5v.5" stroke="#1D1D1B" stroke-width="1.25" stroke-linecap="round"/></svg></button>
                   <div class="card-location"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M6 1C4 1 2.5 2.5 2.5 4.5c0 2.5 3.5 6.5 3.5 6.5s3.5-4 3.5-6.5C9.5 2.5 8 1 6 1z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/><circle cx="6" cy="4.5" r="1.2" stroke="currentColor" stroke-width="1"/></svg><span>Dans le parc · 2 min du Grand Carrousel</span></div>
                   </div>
                 <div class="booking-overlay"><div class="spinner"></div><p>Confirmation<br>en cours…</p></div>
@@ -1490,11 +1539,15 @@
                   <div class="slot-section">
                     <div class="slot-label-text"><svg width="11" height="11" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.25" stroke="currentColor" stroke-width="1.4"/><path d="M8 4.75v3.5l2.5 1.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Sélectionnez un horaire</div>
                     <div class="slot-chips">
+                      <button class="slot-chip" data-slot="11:30">11:30</button>
+                      <button class="slot-chip" data-slot="11:45">11:45</button>
                       <button class="slot-chip" data-slot="12:00">12:00</button>
+                      <button class="slot-chip" data-slot="12:15">12:15</button>
                       <button class="slot-chip" data-slot="12:30">12:30</button>
+                      <button class="slot-chip" data-slot="12:45">12:45</button>
                       <button class="slot-chip" data-slot="13:00">13:00</button>
+                      <button class="slot-chip" data-slot="13:15">13:15</button>
                     </div>
-                                      <div class="slot-reassurance"><svg width="9" height="9" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.1"/><path d="M6 5.5v3M6 3.8v.4" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg>Modifiable jusqu'à la veille, sans frais</div>
                   </div>
                   <div class="guests-row">
                     <div class="guest-col"><span class="guest-label">2 menus adultes</span><span class="guest-price">+42,00€/pers</span></div>
@@ -1508,7 +1561,6 @@
               <div class="resto-card" data-meal="day2-lunch" data-name="L'Echansonnerie" data-adults="38" data-child="12" data-orig-adults="45" data-orig-child="15" data-page="1" data-tags="dans-parc buffet reservation sur-place locales viandes">
                 <div class="card-img-wrap">
                   <img class="card-img" src="../assets/prototypes/restaurants/echansonnerie.webp" alt="" />
-                                    <button class="info-btn" aria-label="Informations"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#1D1D1B" stroke-width="1.25"/><path d="M6 5v4M6 3.5v.5" stroke="#1D1D1B" stroke-width="1.25" stroke-linecap="round"/></svg></button>
                   <div class="card-location"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M6 1C4 1 2.5 2.5 2.5 4.5c0 2.5 3.5 6.5 3.5 6.5s3.5-4 3.5-6.5C9.5 2.5 8 1 6 1z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/><circle cx="6" cy="4.5" r="1.2" stroke="currentColor" stroke-width="1"/></svg><span>Dans le parc · village Renaissance</span></div>
                   </div>
                 <div class="booking-overlay"><div class="spinner"></div><p>Confirmation<br>en cours…</p></div>
@@ -1522,7 +1574,6 @@
                       <button class="slot-chip" data-slot="12:30">12:30</button>
                       <button class="slot-chip" data-slot="13:00">13:00</button>
                     </div>
-                                      <div class="slot-reassurance"><svg width="9" height="9" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.1"/><path d="M6 5.5v3M6 3.8v.4" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg>Modifiable jusqu'à la veille, sans frais</div>
                   </div>
                   <div class="guests-row">
                     <div class="guest-col"><span class="guest-label">2 menus adultes</span><span class="guest-price">+38,00€/pers</span></div>
@@ -1536,7 +1587,6 @@
               <div class="resto-card" data-meal="day2-lunch" data-name="L'Auberge par Alexandre Couillon" data-adults="44" data-child="16" data-orig-adults="52" data-orig-child="19" data-page="1" data-tags="dans-parc table reservation psh gastro">
                 <div class="card-img-wrap">
                   <img class="card-img" src="../assets/prototypes/restaurants/auberge-couillon.webp" alt="" />
-                                    <button class="info-btn" aria-label="Informations"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#1D1D1B" stroke-width="1.25"/><path d="M6 5v4M6 3.5v.5" stroke="#1D1D1B" stroke-width="1.25" stroke-linecap="round"/></svg></button>
                   <div class="card-location"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M6 1C4 1 2.5 2.5 2.5 4.5c0 2.5 3.5 6.5 3.5 6.5s3.5-4 3.5-6.5C9.5 2.5 8 1 6 1z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/><circle cx="6" cy="4.5" r="1.2" stroke="currentColor" stroke-width="1"/></svg><span>Dans le parc · village de Chasseloup</span></div>
                   </div>
                 <div class="booking-overlay"><div class="spinner"></div><p>Confirmation<br>en cours…</p></div>
@@ -1549,7 +1599,6 @@
                       <button class="slot-chip" data-slot="12:00">12:00</button>
                       <button class="slot-chip" data-slot="13:00">13:00</button>
                     </div>
-                                      <div class="slot-reassurance"><svg width="9" height="9" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.1"/><path d="M6 5.5v3M6 3.8v.4" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg>Modifiable jusqu'à la veille, sans frais</div>
                   </div>
                   <div class="guests-row">
                     <div class="guest-col"><span class="guest-label">2 menus adultes</span><span class="guest-price">+44,00€/pers</span></div>
@@ -1562,7 +1611,6 @@
               <div class="resto-card" data-meal="day2-lunch" data-name="Le Rendez-Vous des Ventres Faims" data-adults="16" data-child="9" data-orig-adults="19" data-orig-child="11" data-page="2" data-tags="dans-parc click-collect emporter sur-place burgers vegetarien">
                 <div class="card-img-wrap">
                   <img class="card-img" src="../assets/prototypes/restaurants/ventres-faims.webp" alt="" />
-                  <button class="info-btn" aria-label="Informations"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#1D1D1B" stroke-width="1.25"/><path d="M6 5v4M6 3.5v.5" stroke="#1D1D1B" stroke-width="1.25" stroke-linecap="round"/></svg></button>
                   <div class="card-location"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M6 1C4 1 2.5 2.5 2.5 4.5c0 2.5 3.5 6.5 3.5 6.5s3.5-4 3.5-6.5C9.5 2.5 8 1 6 1z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/><circle cx="6" cy="4.5" r="1.2" stroke="currentColor" stroke-width="1"/></svg><span>Dans le parc · en forêt</span></div>
                 </div>
                 <div class="booking-overlay"><div class="spinner"></div><p>Confirmation<br>en cours…</p></div>
@@ -1576,7 +1624,6 @@
                       <button class="slot-chip" data-slot="12:45">12:45</button>
                       <button class="slot-chip" data-slot="13:15">13:15</button>
                     </div>
-                    <div class="slot-reassurance"><svg width="9" height="9" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.1"/><path d="M6 5.5v3M6 3.8v.4" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg>Modifiable jusqu'à la veille, sans frais</div>
                   </div>
                   <div class="guests-row">
                     <div class="guest-col"><span class="guest-label">2 menus adultes</span><span class="guest-price">+16,00€/pers</span></div>
@@ -1714,6 +1761,98 @@
     });
   });
 
+  // ── Business rule: 5+ time slots → dropdown instead of a chip row ────
+  // Keeps the real .slot-chip buttons in the DOM (hidden) so the booking
+  // flow below stays a single source of truth; the dropdown just clicks them.
+  const MANY_SLOTS_THRESHOLD = 5;
+  const openSlotDropdowns = []; // { trigger, panel, homeAnchor } for whichever dropdown(s) are open
+  function closeSlotDropdown(entry) {
+    entry.panel.classList.remove('open');
+    entry.trigger.classList.remove('open');
+    // Return the panel to its place in the card so it isn't left dangling on <body>
+    entry.homeAnchor.parentNode.insertBefore(entry.panel, entry.homeAnchor.nextSibling);
+    const idx = openSlotDropdowns.indexOf(entry);
+    if (idx !== -1) openSlotDropdowns.splice(idx, 1);
+  }
+  function closeAllSlotDropdowns() {
+    openSlotDropdowns.slice().forEach(closeSlotDropdown);
+  }
+  function positionSlotDropdownPanel(trigger, panel) {
+    const rect = trigger.getBoundingClientRect();
+    const panelWidth = Math.max(panel.offsetWidth, rect.width);
+    let left = rect.left;
+    if (left + panelWidth > window.innerWidth - 8) left = window.innerWidth - panelWidth - 8;
+    panel.style.left = `${Math.max(8, left)}px`;
+    panel.style.top = `${rect.bottom + 6}px`;
+    panel.style.minWidth = `${rect.width}px`;
+  }
+
+  document.querySelectorAll('.slot-chips').forEach(chips => {
+    const chipEls = Array.from(chips.querySelectorAll('.slot-chip'));
+    if (chipEls.length < MANY_SLOTS_THRESHOLD || chips.closest('.slot-chip.range')) return;
+    chips.classList.add('many');
+
+    const dropdown = document.createElement('div');
+    dropdown.className = 'slot-dropdown';
+    const trigger = document.createElement('button');
+    trigger.type = 'button';
+    trigger.className = 'slot-dropdown-trigger';
+    trigger.innerHTML = `<span class="slot-dropdown-label">Choisir un horaire</span><svg class="chevron" width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+    const panel = document.createElement('div');
+    panel.className = 'slot-dropdown-panel';
+    // Placeholder left behind in the card's DOM position so the panel can be
+    // returned there on close (it lives on <body> only while open).
+    const homeAnchor = document.createComment('slot-dropdown-panel-home');
+    chipEls.forEach(chip => {
+      const opt = document.createElement('button');
+      opt.type = 'button';
+      opt.className = 'slot-dropdown-option' + (chip.classList.contains('unavailable') ? ' unavailable' : '');
+      opt.textContent = chip.dataset.slot;
+      opt.addEventListener('click', e => {
+        e.stopPropagation();
+        chip.click();
+        closeSlotDropdown(entry);
+      });
+      panel.appendChild(opt);
+    });
+    dropdown.append(trigger, homeAnchor, panel);
+    chips.parentElement.insertBefore(dropdown, chips);
+
+    const entry = { trigger, panel, homeAnchor };
+
+    trigger.addEventListener('click', e => {
+      e.stopPropagation();
+      const isOpen = openSlotDropdowns.includes(entry);
+      closeAllSlotDropdowns();
+      if (isOpen) return; // was open → just closed above, done
+      document.body.appendChild(panel);
+      positionSlotDropdownPanel(trigger, panel);
+      panel.classList.add('open');
+      trigger.classList.add('open');
+      openSlotDropdowns.push(entry);
+    });
+
+    // Keep the trigger label + active option in sync with whichever chip is active
+    const syncLabel = () => {
+      const activeChip = chipEls.find(c => c.classList.contains('active'));
+      trigger.querySelector('.slot-dropdown-label').textContent = activeChip ? activeChip.dataset.slot : 'Choisir un horaire';
+      trigger.classList.toggle('active', !!activeChip);
+      panel.querySelectorAll('.slot-dropdown-option').forEach((opt, i) => {
+        opt.classList.toggle('active', chipEls[i] === activeChip);
+      });
+    };
+    new MutationObserver(syncLabel).observe(chips, { attributes: true, attributeFilter: ['class'], subtree: true });
+    syncLabel();
+  });
+  document.addEventListener('click', e => {
+    if (e.target.closest('.slot-dropdown-panel') || e.target.closest('.slot-dropdown-trigger')) return;
+    closeAllSlotDropdowns();
+  });
+  window.addEventListener('scroll', () => {
+    openSlotDropdowns.forEach(entry => positionSlotDropdownPanel(entry.trigger, entry.panel));
+  }, { passive: true, capture: true });
+  window.addEventListener('resize', closeAllSlotDropdowns);
+
   // ── Slot chip click → lock siblings → spinner → confirmed → collapse ─
   document.querySelectorAll('.slot-chips').forEach(chips => {
     chips.addEventListener('click', e => {
@@ -1734,6 +1873,7 @@
         card.querySelector('.confirmed-banner')?.remove();
         const modifyBtnReset = card.querySelector('.modify-link');
         if (modifyBtnReset) modifyBtnReset.textContent = 'Voir menus et carte';
+        restoreCardPosition(card);
         // Unlock all siblings in this meal
         document.querySelectorAll(`.resto-card[data-meal="${meal}"]`).forEach(c => {
           c.classList.remove('meal-locked');
@@ -1767,6 +1907,7 @@
         if (siblingModifyBtn) siblingModifyBtn.textContent = 'Voir menus et carte';
         // Clear any active slot chip on siblings so they don't show stale state
         c.querySelectorAll('.slot-chip').forEach(sc => sc.classList.remove('active'));
+        restoreCardPosition(c);
       });
 
       // Update totals immediately so bottom bar reflects the new selection
@@ -1792,34 +1933,13 @@
           wrap.appendChild(badge);
         }
 
+        renderConfirmedBanner(card);
         const modifyBtn = card.querySelector('.modify-link');
-        if (modifyBtn && !card.querySelector('.confirmed-banner')) {
-          const adultPrice = parseFloat(card.dataset.adults) || 0;
-          const childPrice = parseFloat(card.dataset.child)  || 0;
-          const origAdultPrice = parseFloat(card.dataset.origAdults) || adultPrice;
-          const origChildPrice = parseFloat(card.dataset.origChild)  || childPrice;
-          const adultQty   = card.dataset.adultQty !== undefined ? parseInt(card.dataset.adultQty) : 2;
-          const childQty   = card.dataset.childQty !== undefined ? parseInt(card.dataset.childQty) : 1;
-          const total      = adultPrice * adultQty + childPrice * childQty;
-          const origTotal  = origAdultPrice * adultQty + origChildPrice * childQty;
-          const totalStr   = total.toFixed(2).replace('.', ',') + '€';
-          const wasHTML    = origTotal > total
-            ? `<span class="confirmed-banner-was">au lieu de <s>${origTotal.toFixed(2).replace('.', ',')}€</s> sur place</span>`
-            : '';
-          const banner = document.createElement('div');
-          banner.className = 'confirmed-banner';
-          banner.innerHTML = `
-            <span class="confirmed-banner-left">
-              <span class="confirmed-banner-left-top">
-                <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                Restaurant réservé · <strong style="margin-left:2px;">${totalStr}</strong>
-              </span>
-              ${wasHTML}
-            </span>
-            <button class="confirmed-banner-cancel">Annuler</button>`;
-          modifyBtn.parentNode.insertBefore(banner, modifyBtn);
-        }
         if (modifyBtn) modifyBtn.textContent = 'Modifier ma sélection';
+
+        // Bring the booked restaurant to the front so it's easy to find again
+        // after scrolling/browsing the rest of the list (esp. on mobile).
+        moveCardToFront(card);
 
         // Update accordion trigger chip
         const block = card.closest('.meal-block');
@@ -1879,6 +1999,7 @@
         card.querySelectorAll('.slot-chip').forEach(c => c.classList.remove('active'));
         const cancelModifyBtn = card.querySelector('.modify-link');
         if (cancelModifyBtn) cancelModifyBtn.textContent = 'Voir menus et carte';
+        restoreCardPosition(card);
         // Unlock siblings
         document.querySelectorAll(`.resto-card[data-meal="${meal}"]`).forEach(c => c.classList.remove('meal-locked'));
         // Reset accordion trigger chip + cancel pending collapse listener
@@ -1991,6 +2112,82 @@
     el.innerHTML = `<span class="now">${total.toFixed(2).replace('.', ',')}€ sur réservation</span><span class="was">au lieu de <s>${origTotal.toFixed(2).replace('.', ',')}€</s> sur place</span>`;
   }
   document.querySelectorAll('.resto-card').forEach(updateCardDiscount);
+
+  // ── Confirmed banner ("Restaurant réservé · 2 adultes, 1 enfant · 98,00€") ─
+  // Rebuilds from current card dataset so it stays in sync after "Modifier ma sélection".
+  function renderConfirmedBanner(card) {
+    const modifyBtn = card.querySelector('.modify-link');
+    if (!modifyBtn) return;
+    card.querySelector('.confirmed-banner')?.remove();
+
+    const adultPrice = parseFloat(card.dataset.adults) || 0;
+    const childPrice = parseFloat(card.dataset.child)  || 0;
+    const origAdultPrice = parseFloat(card.dataset.origAdults) || adultPrice;
+    const origChildPrice = parseFloat(card.dataset.origChild)  || childPrice;
+    const adultQty   = card.dataset.adultQty !== undefined ? parseInt(card.dataset.adultQty) : 2;
+    const childQty   = card.dataset.childQty !== undefined ? parseInt(card.dataset.childQty) : 1;
+    const total      = adultPrice * adultQty + childPrice * childQty;
+    const origTotal  = origAdultPrice * adultQty + origChildPrice * childQty;
+    const totalStr   = total.toFixed(2).replace('.', ',') + '€';
+    const wasHTML    = origTotal > total
+      ? `<span class="confirmed-banner-was">au lieu de <s>${origTotal.toFixed(2).replace('.', ',')}€</s> sur place</span>`
+      : '';
+    const coversParts = [];
+    if (adultQty > 0) coversParts.push(`${adultQty} adulte${adultQty > 1 ? 's' : ''}`);
+    if (childQty > 0) coversParts.push(`${childQty} enfant${childQty > 1 ? 's' : ''}`);
+    const covers = coversParts.join(', ');
+
+    const banner = document.createElement('div');
+    banner.className = 'confirmed-banner';
+    banner.innerHTML = `
+      <span class="confirmed-banner-left">
+        <span class="confirmed-banner-left-top">
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Restaurant réservé · ${covers} · <strong style="margin-left:2px;">${totalStr}</strong>
+        </span>
+        ${wasHTML}
+      </span>
+      <button class="confirmed-banner-cancel">Annuler</button>`;
+    modifyBtn.parentNode.insertBefore(banner, modifyBtn);
+  }
+
+  // ── Bring a booked card to the front of its list/grid so it's easy to
+  //    find again after scrolling — restored to its original spot on cancel.
+  function moveCardToFront(card) {
+    const container = card.parentElement;
+    if (!container) return;
+    if (card.dataset.originalIndex === undefined) {
+      card.dataset.originalIndex = Array.from(container.children).indexOf(card);
+    }
+    // If this card was on page 2 of a paginated grid, treat it as page 1 now that it leads,
+    // and snap the pagination back to page 1 so it doesn't strand the view on an empty page 2.
+    if (card.dataset.page === '2') {
+      card.dataset.originalPage = '2';
+      card.dataset.page = '1';
+      card.closest('.meal-block')?._goToPageOne?.();
+    }
+    container.prepend(card);
+  }
+
+  function restoreCardPosition(card) {
+    const container = card.parentElement;
+    if (!container || card.dataset.originalIndex === undefined) return;
+    let pageChanged = false;
+    if (card.dataset.originalPage) {
+      card.dataset.page = card.dataset.originalPage;
+      delete card.dataset.originalPage;
+      pageChanged = true;
+    }
+    const index = parseInt(card.dataset.originalIndex, 10);
+    const siblings = Array.from(container.children).filter(el => el !== card);
+    if (index >= siblings.length) {
+      container.appendChild(card);
+    } else {
+      container.insertBefore(card, siblings[index]);
+    }
+    delete card.dataset.originalIndex;
+    if (pageChanged) card.closest('.meal-block')?._refreshPagination?.();
+  }
 
   document.getElementById('total-btn').addEventListener('click', () => {
     const drawer = document.getElementById('bottom-drawer');
@@ -2138,6 +2335,20 @@
         { name: 'Limonade artisanale', desc: 'Citron pressé, menthe fraîche', price: '4,00€' },
       ]},
     ],
+    "El Rincón de Tapas": [
+      { section: 'Tapas froides', items: [
+        { name: 'Jamón ibérico', desc: 'Pain grillé, tomate fraîche', price: '9,50€' },
+        { name: 'Ensaladilla rusa', desc: 'Salade russe traditionnelle', price: '6,00€' },
+      ]},
+      { section: 'Tapas chaudes', items: [
+        { name: 'Croquetas de jamón', desc: 'Croquettes maison au jambon', price: '7,50€' },
+        { name: 'Patatas bravas', desc: 'Sauce épicée et aïoli', price: '6,50€' },
+        { name: 'Gambas al ajillo', desc: 'Crevettes à l\'ail et au piment', price: '11,00€' },
+      ]},
+      { section: 'Desserts', items: [
+        { name: 'Crema catalana', desc: 'Crème brûlée à la catalane', price: '6,50€' },
+      ]},
+    ],
   };
 
   const RESTAURANTS = {
@@ -2202,6 +2413,14 @@
         { label: 'Menu(s) Enfants',  price: 9,  key: 'child' },
       ],
     },
+    "El Rincón de Tapas": {
+      desc: "Un service continu à l'espagnole : profitez d'un buffet de tapas de 18h00 à 22h00, sans créneau fixe à respecter.",
+      menus: [
+        { label: 'Menu(s) Adulte',            price: 32, key: 'adult' },
+        { label: 'Menu(s) Végétarien Adulte', price: 32, key: 'veg-adult' },
+        { label: 'Menu(s) Enfants',           price: 14, key: 'child' },
+      ],
+    },
   };
 
   let modalQuantities = {};
@@ -2245,6 +2464,7 @@
     "Le Rendez-Vous des Ventres Faims": [190, 150],
     "Le Chaudron": [200, 175],
     "La Table des Ambassadeurs": [291, 175],
+    "El Rincón de Tapas": [220, 95],
   };
   // Restaurants located outside the park (in a partner hotel) — pin drawn
   // past the park boundary on the map to make the detour visually honest.
@@ -2329,6 +2549,9 @@
     ],
     "Le Chaudron": [
       '../assets/prototypes/restaurants/chaudron.webp',
+    ],
+    "El Rincón de Tapas": [
+      '../assets/prototypes/restaurants/mijoterie.webp',
     ],
   };
 
@@ -2863,22 +3086,23 @@
     const mealBlock = pagination.closest('.meal-block');
     if (!grid) return;
 
-    const totalPages = grid.querySelectorAll('.resto-card[data-page="2"]').length ? 2 : 1;
     const indicator = pagination.querySelector('.page-indicator');
     const prevBtn = pagination.querySelector('.page-btn[data-dir="prev"]');
     const nextBtn = pagination.querySelector('.page-btn[data-dir="next"]');
 
-    if (totalPages < 2) {
-      pagination.style.display = 'none';
-      return;
-    }
-
     let currentPage = 1;
+    // Recomputed live — a booked card can be promoted to page 1, shrinking page 2 to empty.
+    function totalPages() {
+      return grid.querySelectorAll('.resto-card[data-page="2"]').length ? 2 : 1;
+    }
     function render() {
+      const pages = totalPages();
+      pagination.style.display = pages < 2 ? 'none' : '';
+      if (currentPage > pages) currentPage = pages;
       grid.classList.toggle('page-2', currentPage === 2);
-      indicator.textContent = `${currentPage} / ${totalPages}`;
+      indicator.textContent = `${currentPage} / ${pages}`;
       prevBtn.disabled = currentPage === 1;
-      nextBtn.disabled = currentPage === totalPages;
+      nextBtn.disabled = currentPage === pages;
       prevBtn.classList.toggle('filled', currentPage !== 1);
       nextBtn.classList.toggle('filled', currentPage === 1);
     }
@@ -2888,17 +3112,23 @@
     });
     nextBtn.addEventListener('click', e => {
       e.stopPropagation();
-      if (currentPage < totalPages) { currentPage++; render(); }
+      if (currentPage < totalPages()) { currentPage++; render(); }
     });
     render();
 
-    // Exposed so applyMealFilter() can restore normal pagination once filters clear
     if (mealBlock) {
+      // Exposed so applyMealFilter() can restore normal pagination once filters clear
       mealBlock._resetPagination = () => {
-        pagination.style.display = '';
         currentPage = 1;
         render();
       };
+      // Exposed so moveCardToFront()/restoreCardPosition() can keep the page
+      // count and current page in sync when a card's data-page changes.
+      mealBlock._goToPageOne = () => {
+        currentPage = 1;
+        render();
+      };
+      mealBlock._refreshPagination = render;
     }
   });
 
