@@ -306,56 +306,6 @@
     }
     .resto-card:hover { box-shadow: var(--shadow-s); }
 
-    /* ── Row layout — compact vertical list instead of a card grid ── */
-    .resto-list {
-      display: flex; flex-direction: column; gap: 10px;
-    }
-    .resto-list .resto-card[data-page="2"] { display: flex; }
-    .resto-list .resto-card {
-      flex-direction: row;
-      border-radius: 12px;
-      min-height: 96px;
-    }
-    .resto-list .card-img-wrap {
-      width: 96px; flex-shrink: 0;
-      align-self: stretch;
-    }
-    .resto-list .card-img-track,
-    .resto-list .card-img { height: 100%; }
-    .resto-list .card-img-nav { width: 18px; height: 18px; }
-    .resto-list .card-img-dots { bottom: 4px; }
-    .resto-list .card-location { max-width: calc(100% - 10px); }
-    .resto-list .card-location span { display: none; }
-    .resto-list .card-location svg { margin: 0; }
-    .resto-list .info-btn { width: 20px; height: 20px; }
-    .resto-list .selected-badge { font-size: 0; padding: 4px; border-radius: 50%; }
-    .resto-list .selected-badge svg { width: 10px; height: 10px; }
-    .resto-list .card-body {
-      flex: 1; min-width: 0;
-      padding: 10px 14px;
-      flex-direction: row; align-items: center; flex-wrap: wrap;
-      gap: 8px 16px;
-    }
-    .resto-list .card-name { font-size: 13px; flex: 0 0 auto; min-width: 130px; }
-    .resto-list .card-tags { display: none; }
-    .resto-list .slot-section { flex: 1 1 auto; min-width: 200px; }
-    .resto-list .slot-label-text { display: none; }
-    .resto-list .slot-reassurance { display: none; }
-    .resto-list .guests-row { display: none !important; }
-    .resto-list .price-discount { flex: 0 0 auto; min-width: 110px; }
-    .resto-list .price-discount .was { display: none; }
-    .resto-list .modify-link {
-      width: auto; flex: 0 0 auto; margin-top: 0;
-      padding: 7px 14px; font-size: 11px;
-    }
-    .resto-list .confirmed-banner { flex: 1 1 100%; }
-    @media (max-width: 640px) {
-      .resto-list .resto-card { flex-direction: column; }
-      .resto-list .card-img-wrap { width: 100%; height: 110px; align-self: stretch; }
-      .resto-list .card-body { flex-direction: column; align-items: stretch; }
-      .resto-list .card-name { min-width: 0; }
-    }
-
     /* Card image */
     .card-img-wrap { position: relative; }
     .card-img {
@@ -1240,9 +1190,14 @@
                   <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M4 8h8M6 12h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
                   Filtrer
                 </button>
+                <div class="pagination">
+                  <button class="page-btn" data-dir="prev" disabled><svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M10 4l-4 4 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                  <span class="page-indicator">1 / 2</span>
+                  <button class="page-btn" data-dir="next"><svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                </div>
               </div>
             </div>
-            <div class="resto-list">
+            <div class="card-grid">
 
               <!-- Card 1 -->
               <div class="resto-card" data-meal="day1-lunch" data-name="L'Orangerie" data-adults="42" data-child="14" data-orig-adults="50" data-orig-child="17" data-page="1" data-tags="dans-parc buffet reservation psh sur-place traditionnelle vegetarien">
@@ -1381,9 +1336,14 @@
               <span class="meal-count">5 restaurants recommandés (2 adultes · 1 enfant)</span>
               <div class="controls-right">
                 <button class="filter-btn"><svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M4 8h8M6 12h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg> Filtrer</button>
+                <div class="pagination">
+                  <button class="page-btn" data-dir="prev" disabled><svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M10 4l-4 4 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                  <span class="page-indicator">1 / 2</span>
+                  <button class="page-btn" data-dir="next"><svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                </div>
               </div>
             </div>
-            <div class="resto-list">
+            <div class="card-grid">
 
               <!-- Idle -->
               <div class="resto-card" data-meal="day1-dinner" data-name="L'Orangerie" data-adults="42" data-child="14" data-orig-adults="50" data-orig-child="17" data-page="1" data-tags="dans-parc buffet reservation psh sur-place traditionnelle vegetarien">
@@ -1491,7 +1451,7 @@
                 </div>
               </div>
 
-              <div class="resto-card" data-meal="day1-dinner" data-name="El Rincón de Tapas" data-adults="32" data-child="14" data-orig-adults="38" data-orig-child="17" data-page="1" data-tags="dans-parc sur-place traditionnelle vegetarien">
+              <div class="resto-card" data-meal="day1-dinner" data-name="El Rincón de Tapas" data-adults="32" data-child="14" data-orig-adults="38" data-orig-child="17" data-page="2" data-tags="dans-parc sur-place traditionnelle vegetarien">
                 <div class="card-img-wrap">
                   <img class="card-img" src="../assets/prototypes/restaurants/mijoterie.webp" alt="" style="filter: sepia(.15) saturate(1.15);" />
                   <div class="card-location"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M6 1C4 1 2.5 2.5 2.5 4.5c0 2.5 3.5 6.5 3.5 6.5s3.5-4 3.5-6.5C9.5 2.5 8 1 6 1z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round"/><circle cx="6" cy="4.5" r="1.2" stroke="currentColor" stroke-width="1"/></svg><span>Dans le parc · village Renaissance</span></div>
@@ -3069,24 +3029,10 @@
     }
   }
 
-  // Open modal on info-btn, card name, or card image clicks
+  // Open modal on card name or card image clicks
   document.querySelectorAll('.resto-card').forEach(card => {
     card.addEventListener('click', e => {
       if (e.target.closest('.card-location')) return; // handled separately, opens the map modal
-
-      // Row layout — the whole row opens the modal, except interactive controls
-      // that already have their own behavior (slot chips, cancel, the CTA itself).
-      if (card.closest('.resto-list')) {
-        if (
-          e.target.closest('.slot-chip') ||
-          e.target.closest('.confirmed-banner-cancel') ||
-          e.target.closest('.modify-link')
-        ) return;
-        if (card.dataset.confirming) return;
-        e.stopPropagation();
-        openModal(card);
-        return;
-      }
 
       const infoTrigger = e.target.closest('.info-btn');
       const nameTrigger = e.target.closest('.card-name');
