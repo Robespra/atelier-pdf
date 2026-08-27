@@ -803,6 +803,8 @@
       background: var(--bg-cards);
       border-top: 1px solid var(--border-light);
       padding: 14px 20px;
+    }
+    .modal-footer-main {
       display: flex; align-items: center; justify-content: space-between;
       gap: 12px;
     }
@@ -829,11 +831,7 @@
     .modal-cancel:hover { color: var(--text); text-decoration: none; }
 
     /* ── Modal "choose your slot" step (shown after Continuer) ── */
-    .modal-slots-step {
-      display: none;
-      padding: 16px 20px;
-      border-top: 1px solid var(--border-light);
-    }
+    .modal-slots-step { display: none; }
     .modal-slots-step.active { display: block; }
     .modal-slots-title {
       font-size: 13px; font-weight: 700; margin-bottom: 10px;
@@ -2728,22 +2726,24 @@
         Réservation conseillée. *Produit décongelé.<br>
         Cette réduction s'applique uniquement si vous réservez votre repas en même temps que vos billets Puy du Fou.
       </div>
-      <div class="modal-slots-step" id="modal-slots-step">
-        <div class="modal-slots-title">Choisissez votre horaire</div>
-        <div class="modal-slots-chips" id="modal-slots-chips"></div>
-        <button class="modal-slots-back" id="modal-slots-back">← Revenir aux menus</button>
-      </div>
       <div class="modal-footer">
-        <div class="modal-price-total">
-          <span class="modal-price-label">Prix total</span>
-          <span class="modal-price-amount" id="modal-total">${total.toFixed(2).replace('.',',')}€</span>
-          <span class="modal-price-was">au lieu de <s>${was.toFixed(2).replace('.',',')}€</s> sur place</span>
+        <div class="modal-footer-main" id="modal-footer-main">
+          <div class="modal-price-total">
+            <span class="modal-price-label">Prix total</span>
+            <span class="modal-price-amount" id="modal-total">${total.toFixed(2).replace('.',',')}€</span>
+            <span class="modal-price-was">au lieu de <s>${was.toFixed(2).replace('.',',')}€</s> sur place</span>
+          </div>
+          <button class="modal-cancel" id="modal-cancel-btn">Annuler</button>
+          <button class="modal-cta" id="modal-update-btn">
+            Continuer
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 8h8M9 5l3 3-3 3" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
         </div>
-        <button class="modal-cancel" id="modal-cancel-btn">Annuler</button>
-        <button class="modal-cta" id="modal-update-btn">
-          Continuer
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 8h8M9 5l3 3-3 3" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
+        <div class="modal-slots-step" id="modal-slots-step">
+          <div class="modal-slots-title">Choisissez votre horaire</div>
+          <div class="modal-slots-chips" id="modal-slots-chips"></div>
+          <button class="modal-slots-back" id="modal-slots-back">← Revenir aux menus</button>
+        </div>
       </div>
     `;
 
@@ -2873,14 +2873,14 @@
       target.appendChild(clone);
     });
 
-    document.querySelector('.modal-footer').style.display = 'none';
+    document.getElementById('modal-footer-main').style.display = 'none';
     document.getElementById('modal-slots-step').classList.add('active');
   }
 
   function hideModalSlotsStep() {
-    document.getElementById('modal-slots-step').classList.remove('active');
-    const footer = document.querySelector('.modal-footer');
-    if (footer) footer.style.display = '';
+    document.getElementById('modal-slots-step')?.classList.remove('active');
+    const footerMain = document.getElementById('modal-footer-main');
+    if (footerMain) footerMain.style.display = '';
   }
 
   function refreshModalTotals(info) {
