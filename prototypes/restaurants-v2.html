@@ -2906,15 +2906,12 @@
       target.appendChild(clone);
     });
 
-    document.querySelector('.modal-body').style.display = 'none';
     document.querySelector('.modal-footer').style.display = 'none';
     document.getElementById('modal-slots-step').classList.add('active');
   }
 
   function hideModalSlotsStep() {
     document.getElementById('modal-slots-step').classList.remove('active');
-    const body = document.querySelector('.modal-body');
-    if (body) body.style.display = '';
     const footer = document.querySelector('.modal-footer');
     if (footer) footer.style.display = '';
   }
