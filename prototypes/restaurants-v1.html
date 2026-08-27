@@ -828,6 +828,27 @@
     }
     .modal-cancel:hover { color: var(--text); text-decoration: none; }
 
+    /* ── Modal "choose your slot" step (shown after Continuer) ── */
+    .modal-slots-step {
+      display: none;
+      padding: 16px 20px;
+      border-top: 1px solid var(--border-light);
+    }
+    .modal-slots-step.active { display: block; }
+    .modal-slots-title {
+      font-size: 13px; font-weight: 700; margin-bottom: 10px;
+    }
+    .modal-slots-chips {
+      display: flex; flex-wrap: wrap; gap: 8px;
+    }
+    .modal-slots-back {
+      display: block; margin-top: 12px;
+      font-size: 12px; font-weight: 700; color: var(--grey);
+      background: none; border: none; cursor: pointer; font-family: inherit;
+      text-decoration: underline; padding: 0;
+    }
+    .modal-slots-back:hover { color: var(--text); text-decoration: none; }
+
     /* ── Filter modal ── */
     .filter-sheet {
       max-width: 420px;
@@ -2489,6 +2510,7 @@
     document.getElementById('modal').classList.remove('open');
     document.body.style.overflow = '';
     activeModalCard = null;
+    hideModalSlotsStep();
   }
 
   const RESTAURANT_IMAGES = {
@@ -2706,6 +2728,11 @@
         Réservation conseillée. *Produit décongelé.<br>
         Cette réduction s'applique uniquement si vous réservez votre repas en même temps que vos billets Puy du Fou.
       </div>
+      <div class="modal-slots-step" id="modal-slots-step">
+        <div class="modal-slots-title">Choisissez votre horaire</div>
+        <div class="modal-slots-chips" id="modal-slots-chips"></div>
+        <button class="modal-slots-back" id="modal-slots-back">← Revenir aux menus</button>
+      </div>
       <div class="modal-footer">
         <div class="modal-price-total">
           <span class="modal-price-label">Prix total</span>
@@ -2809,24 +2836,54 @@
         renderConfirmedBanner(activeModalCard);
       }
 
-      // Check before closeModal nulls activeModalCard
-      const hasChanges = Object.keys(modalQuantities).some(k => modalQuantities[k] !== (modalOriginalQuantities[k] ?? 0));
-      const hasSlot = !!activeModalCard.querySelector('.slot-chip.active');
-      const cardToPrompt = (hasChanges && !hasSlot) ? activeModalCard : null;
-
-      closeModal();
       updateSummary();
 
-      if (cardToPrompt) {
-        const slotSection = cardToPrompt.querySelector('.slot-section');
-        if (slotSection) {
-          slotSection.classList.add('needs-slot');
-          const label = slotSection.querySelector('.slot-label-text');
-          if (label) label.lastChild.textContent = 'Choisissez votre horaire pour réserver votre table';
-          cardToPrompt.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
-        }
+      const hasSlot = !!activeModalCard.querySelector('.slot-chip.active');
+      if (!hasSlot) {
+        showModalSlotsStep(activeModalCard);
+      } else {
+        closeModal();
       }
     });
+
+    document.getElementById('modal-slots-back').addEventListener('click', () => {
+      hideModalSlotsStep();
+    });
+  }
+
+  // ── Slots step: shown inside the modal after "Continuer" when the card
+  //    has no time chosen yet. Clicking a slot here proxies to the real
+  //    chip on the card, reusing all existing booking logic, then closes.
+  function showModalSlotsStep(card) {
+    const chipsSource = card.querySelector('.slot-chips');
+    const target = document.getElementById('modal-slots-chips');
+    if (!chipsSource || !target) return;
+    target.innerHTML = '';
+    Array.from(chipsSource.querySelectorAll('.slot-chip')).forEach(realChip => {
+      const clone = document.createElement('button');
+      clone.type = 'button';
+      clone.className = realChip.className;
+      clone.textContent = realChip.textContent;
+      if (!realChip.classList.contains('unavailable')) {
+        clone.addEventListener('click', () => {
+          realChip.click();
+          closeModal();
+        });
+      }
+      target.appendChild(clone);
+    });
+
+    document.querySelector('.modal-body').style.display = 'none';
+    document.querySelector('.modal-footer').style.display = 'none';
+    document.getElementById('modal-slots-step').classList.add('active');
+  }
+
+  function hideModalSlotsStep() {
+    document.getElementById('modal-slots-step').classList.remove('active');
+    const body = document.querySelector('.modal-body');
+    if (body) body.style.display = '';
+    const footer = document.querySelector('.modal-footer');
+    if (footer) footer.style.display = '';
   }
 
   function refreshModalTotals(info) {
