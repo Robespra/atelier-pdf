@@ -847,6 +847,30 @@
     }
     .modal-slots-back:hover { color: var(--text); text-decoration: none; }
 
+    /* ── Modal "confirming your booking" state ── */
+    .modal-confirming {
+      display: none; align-items: center; gap: 12px;
+      padding: 4px 0;
+    }
+    .modal-confirming.active { display: flex; }
+    .modal-confirming .spinner {
+      width: 24px; height: 24px; flex-shrink: 0;
+      border: 2.5px solid #E8E2D8;
+      border-top-color: var(--red);
+      border-radius: 50%;
+      animation: spin 700ms linear infinite;
+    }
+    .modal-confirming p {
+      font-size: 13px; font-weight: 700; color: var(--text);
+    }
+
+    /* Brief highlight on the card once its modal-confirmed booking lands */
+    @keyframes card-just-booked {
+      0%   { box-shadow: 0 0 0 0 rgba(180,0,32,.35); }
+      100% { box-shadow: 0 0 0 10px rgba(180,0,32,0); }
+    }
+    .resto-card.just-booked { animation: card-just-booked 900ms ease-out; }
+
     /* ── Filter modal ── */
     .filter-sheet {
       max-width: 420px;
@@ -2744,6 +2768,10 @@
           <div class="modal-slots-chips" id="modal-slots-chips"></div>
           <button class="modal-slots-back" id="modal-slots-back">← Revenir aux menus</button>
         </div>
+        <div class="modal-confirming" id="modal-confirming">
+          <div class="spinner"></div>
+          <p>Confirmation en cours…</p>
+        </div>
       </div>
     `;
 
@@ -2866,8 +2894,14 @@
       clone.textContent = realChip.textContent;
       if (!realChip.classList.contains('unavailable')) {
         clone.addEventListener('click', () => {
+          document.getElementById('modal-slots-step').classList.remove('active');
+          document.getElementById('modal-confirming').classList.add('active');
           realChip.click();
-          closeModal();
+          setTimeout(() => {
+            closeModal();
+            card.classList.add('just-booked');
+            card.addEventListener('animationend', () => card.classList.remove('just-booked'), { once: true });
+          }, 1400);
         });
       }
       target.appendChild(clone);
@@ -2879,6 +2913,7 @@
 
   function hideModalSlotsStep() {
     document.getElementById('modal-slots-step')?.classList.remove('active');
+    document.getElementById('modal-confirming')?.classList.remove('active');
     const footerMain = document.getElementById('modal-footer-main');
     if (footerMain) footerMain.style.display = '';
   }
