@@ -245,6 +245,64 @@
           "description": "Signification des formes standard (losange = décision, rectangle = action, ovale = début/fin)."
         }
       ]
+    },
+    {
+      "id": "inspiration",
+      "label": "Inspiration",
+      "icon": "✨",
+      "linkList": true,
+      "resources": []
+    },
+    {
+      "id": "icons",
+      "label": "Icônes",
+      "icon": "🔷",
+      "linkList": true,
+      "resources": []
+    },
+    {
+      "id": "ui-elements",
+      "label": "Éléments UI",
+      "icon": "🧩",
+      "linkList": true,
+      "resources": [
+        {
+          "title": "Stepper UI Examples — Eleken",
+          "url": "https://www.eleken.co/blog-posts/stepper-ui-examples"
+        },
+        {
+          "title": "Stepper — UX Components",
+          "url": "https://www.ux-components.com/components/stepper"
+        },
+        {
+          "title": "Progress Bars vs Steppers in Checkout Flows",
+          "url": "https://developerux.com/2026/06/26/progress-bars-vs-steppers-in-checkout-flows/"
+        },
+        {
+          "title": "Breadcrumb — Dribbble",
+          "url": "https://dribbble.com/search/breadcrumb"
+        },
+        {
+          "title": "Steppers — Dribbble",
+          "url": "https://dribbble.com/search/steppers"
+        },
+        {
+          "title": "Stepper — Astryx",
+          "url": "https://astryx.atmeta.com/components/Stepper"
+        },
+        {
+          "title": "Animated Stepper — SmoothUI",
+          "url": "https://smoothui.dev/docs/components/animated-stepper"
+        },
+        {
+          "title": "Checkout Breadcrumb Nav — shadcn.io",
+          "url": "https://www.shadcn.io/blocks/checkout-breadcrumb-nav"
+        },
+        {
+          "title": "E-Commerce Checkout — Dribbble",
+          "url": "https://dribbble.com/shots/19461727-E-Commerce-Checkout"
+        }
+      ]
     }
   ]
 }

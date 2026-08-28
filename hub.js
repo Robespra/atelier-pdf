@@ -15,7 +15,7 @@
       nav_design_systems: 'Design Systems',
       nav_components:     'Kitchen Sink',
       nav_craft:          'Savoir-faire & Outils',
-      nav_knowledge:      'Connaissances',
+      nav_knowledge:      'Ressources',
       nav_quiz:           'UI Quiz',
       nav_prompting:      'Prompting',
       nav_careers:        'Carrières',
@@ -31,10 +31,11 @@
       comp_loading:       'Chargement des composants…',
       comp_not_found:     'Composant introuvable.',
       /* Knowledge section */
-      know_title:         'Connaissances',
-      know_subtitle:      'Ressources sélectionnées en psychologie, communication et accessibilité.',
+      know_title:         'Ressources',
+      know_subtitle:      'Ressources sélectionnées en psychologie, communication, accessibilité, inspiration, icônes et éléments UI.',
       know_loading:       'Chargement…',
       know_error:         'Impossible de charger les ressources.',
+      know_list_empty:    'Liens à venir.',
       /* Quiz section */
       quiz_title:         'Name That UI',
       quiz_subtitle:      'Testez votre culture design en identifiant des composants UI réels.',
@@ -74,7 +75,7 @@
       nav_design_systems: 'Design Systems',
       nav_components:     'Kitchen Sink',
       nav_craft:          'Savoir-faire & Outils',
-      nav_knowledge:      'Knowledge',
+      nav_knowledge:      'Resources',
       nav_quiz:           'UI Quiz',
       nav_prompting:      'Prompting',
       nav_careers:        'Careers',
@@ -90,10 +91,11 @@
       comp_loading:       'Loading components…',
       comp_not_found:     'Component not found.',
       /* Knowledge section */
-      know_title:         'Knowledge',
-      know_subtitle:      'Curated resources on psychology, communication and accessibility.',
+      know_title:         'Resources',
+      know_subtitle:      'Curated resources on psychology, communication, accessibility, inspiration, icons and UI elements.',
       know_loading:       'Loading…',
       know_error:         'Could not load resources.',
+      know_list_empty:    'Links coming soon.',
       /* Quiz section */
       quiz_title:         'Name That UI',
       quiz_subtitle:      'Test your design knowledge by identifying real UI components.',
@@ -2012,6 +2014,9 @@
       'mobile-desktop': { fr: '📱 Mobile vs Desktop',                    en: '📱 Mobile vs Desktop' },
       microcopy:      { fr: '✍️ Microcopy',                              en: '✍️ Microcopy' },
       'user-flows':   { fr: '🗺️ User Flows',                             en: '🗺️ User Flows' },
+      inspiration:    { fr: '✨ Inspiration',                             en: '✨ Inspiration' },
+      icons:          { fr: '🔷 Icônes',                                  en: '🔷 Icons' },
+      'ui-elements':  { fr: '🧩 Éléments UI',                             en: '🧩 UI Elements' },
     };
 
     root.innerHTML = `
@@ -2022,8 +2027,14 @@
           </button>`).join('')}
       </div>
       ${data.categories.map((cat, i) => `
-        <div class="knowledge-panel ${i === 0 ? 'active' : ''}" id="kpanel-${cat.id}">
-          ${cat.resources.map(r => `
+        <div class="knowledge-panel ${cat.linkList ? 'link-list' : ''} ${i === 0 ? 'active' : ''}" id="kpanel-${cat.id}">
+          ${cat.linkList ? (
+            cat.resources.length ? cat.resources.map(r => `
+              <a href="${r.url}" target="_blank" rel="noopener" class="link-list-row">
+                ${r.title}
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>`).join('') : `<div class="link-list-empty">${t('know_list_empty')}</div>`
+          ) : cat.resources.map(r => `
             <a href="${r.url}" target="_blank" rel="noopener" class="resource-card">
               <span class="resource-type-badge resource-type-${r.type}">${r.type}</span>
               <div>

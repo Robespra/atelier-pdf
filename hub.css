@@ -426,6 +426,53 @@
 .resource-type-video   { background: var(--red-tint-bg); color: var(--red); }
 .resource-type-tool    { background: var(--bg-card-muted); color: var(--text-muted); }
 
+/* Simple link-list panel — used for categories that are just curated
+   link lists (title + URL) rather than description cards. */
+.knowledge-panel.link-list {
+  flex-direction: column;
+  gap: 0;
+  background: var(--bg-card);
+  border: 1.5px solid var(--border);
+  border-radius: 0.65rem;
+  overflow: hidden;
+}
+
+.link-list-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.15s, color 0.15s;
+}
+
+.link-list-row:last-child { border-bottom: none; }
+
+.link-list-row:hover {
+  background: var(--bg-card-muted);
+  color: var(--gold);
+}
+
+.link-list-row svg {
+  flex-shrink: 0;
+  color: var(--text-muted);
+  transition: color 0.15s;
+}
+
+.link-list-row:hover svg { color: var(--gold); }
+
+.link-list-empty {
+  padding: 1.5rem 1rem;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
 .resource-title {
   font-size: 0.875rem;
   font-weight: 600;
@@ -1017,6 +1064,11 @@
   .craft-panel.active {
     display: grid;
     grid-template-columns: 1fr 1fr;
+  }
+
+  .knowledge-panel.link-list.active {
+    display: flex;
+    flex-direction: column;
   }
 
   .careers-grid {
