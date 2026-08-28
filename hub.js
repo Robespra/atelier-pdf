@@ -405,7 +405,7 @@
           icon: 'fit',
           summary: 'Suis-je fait pour ce poste ?',
           body: `
-            <p style="font-size:0.82rem;color:#464747;margin:0 0 1rem">Parmi les affirmations ci-dessous, sélectionnez celles que vous croyez <strong>vraies</strong> pour un bon designer UI/UX. Certaines sont des idées reçues — saurez-vous les repérer ?</p>
+            <p style="font-size:0.82rem;color:var(--text-muted);margin:0 0 1rem">Parmi les affirmations ci-dessous, sélectionnez celles que vous croyez <strong>vraies</strong> pour un bon designer UI/UX. Certaines sont des idées reçues — saurez-vous les repérer ?</p>
             <div class="quiz-stmts" id="quiz-fit-fr">
               <button class="quiz-stmt" data-idx="0" onclick="quizToggle(this)">J'aime résoudre des problèmes ouverts — et je suis à l'aise sans connaître la réponse au départ.</button>
               <button class="quiz-stmt" data-idx="1" onclick="quizToggle(this)">Le design UX consiste principalement à rendre les interfaces belles et visuellement attrayantes.</button>
@@ -687,7 +687,7 @@
               <li><strong>Communication</strong> — exprimez-vous vos idées clairement et de façon constructive ?</li>
             </ul>
             <h3>Framework en 3 étapes</h3>
-            <ol style="padding-left:1.25rem;font-size:0.84rem;color:#464747;line-height:1.8;">
+            <ol style="padding-left:1.25rem;font-size:0.84rem;color:var(--text-muted);line-height:1.8;">
               <li><strong>Contexte</strong> — quel problème l'app résout-elle ? Pour qui ?</li>
               <li><strong>Choisissez un flux</strong> — parcourez-le en commentant les bons ET mauvais aspects</li>
               <li><strong>Temps restant</strong> — second flux ou analyse du design system de l'app</li>
@@ -700,7 +700,7 @@
             <p>On vous donne un problème et du temps pour le résoudre sur tableau blanc ou FigJam.</p>
             <div class="callout">L'interviewer ne cherche PAS des maquettes en haute fidélité. Il évalue votre processus de pensée.</div>
             <h3>Framework en 7 étapes</h3>
-            <ol style="padding-left:1.25rem;font-size:0.84rem;color:#464747;line-height:1.9;">
+            <ol style="padding-left:1.25rem;font-size:0.84rem;color:var(--text-muted);line-height:1.9;">
               <li><strong>Écrivez un plan</strong> — structurez votre approche avant de commencer</li>
               <li><strong>Définissez l'objectif</strong> — à quoi ressemble le résultat attendu ?</li>
               <li><strong>Gagnez du contexte</strong> — posez des questions sur le problème, le produit, les utilisateurs</li>
@@ -766,7 +766,7 @@
           icon: 'fit',
           summary: 'Is this role right for me?',
           body: `
-            <p style="font-size:0.82rem;color:#464747;margin:0 0 1rem">From the statements below, select the ones you believe are <strong>true</strong> for a good UI/UX designer. Some are common misconceptions — can you spot them?</p>
+            <p style="font-size:0.82rem;color:var(--text-muted);margin:0 0 1rem">From the statements below, select the ones you believe are <strong>true</strong> for a good UI/UX designer. Some are common misconceptions — can you spot them?</p>
             <div class="quiz-stmts" id="quiz-fit-en">
               <button class="quiz-stmt" data-idx="0" onclick="quizToggle(this)">I enjoy tackling open-ended problems — and I'm comfortable starting without knowing the answer.</button>
               <button class="quiz-stmt" data-idx="1" onclick="quizToggle(this)">UX design is mainly about making interfaces beautiful and visually attractive.</button>
@@ -1050,7 +1050,7 @@
               <li><strong>Communication</strong> — do you express your ideas clearly and constructively?</li>
             </ul>
             <h3>3-step framework</h3>
-            <ol style="padding-left:1.25rem;font-size:0.84rem;color:#464747;line-height:1.8;">
+            <ol style="padding-left:1.25rem;font-size:0.84rem;color:var(--text-muted);line-height:1.8;">
               <li><strong>Context</strong> — what problem does the app solve? For whom?</li>
               <li><strong>Choose a flow</strong> — walk through it commenting on both good and bad aspects</li>
               <li><strong>Remaining time</strong> — a second flow or a design system analysis</li>
@@ -1063,7 +1063,7 @@
             <p>You're given a problem and time to solve it on a whiteboard or in FigJam.</p>
             <div class="callout">Interviewers are NOT looking for high-fidelity designs. They're evaluating your thinking process.</div>
             <h3>7-step framework</h3>
-            <ol style="padding-left:1.25rem;font-size:0.84rem;color:#464747;line-height:1.9;">
+            <ol style="padding-left:1.25rem;font-size:0.84rem;color:var(--text-muted);line-height:1.9;">
               <li><strong>Write a plan</strong> — outline your approach before starting</li>
               <li><strong>Set a goal</strong> — what should the outcome look like?</li>
               <li><strong>Gain context</strong> — ask questions about the problem, product, and users</li>
@@ -1357,31 +1357,31 @@
       },
       timeline: {
         fr: [
-          { phase: '0', label: 'Phase 0', period: 'Mi-2026', title: 'DS AI-ready', color: '#1a472a', bg: '#f5f9f6' },
-          { phase: '1', label: 'Phase 1', period: 'Mi → Fin 2026', title: 'PO → génération', color: '#211C12', bg: '#FDFAF5' },
-          { phase: '2', label: 'Phase 2', period: 'Début 2027', title: 'Refonte site', color: '#211C12', bg: '#FDFAF5' },
-          { phase: '3', label: 'Phase 3', period: 'Mi-2027', title: 'Flutter extraction', color: '#CB1617', bg: '#fdf5f2' },
-          { phase: '∞', label: 'Horizon', period: 'Fin 2027+', title: 'Gouvernance & auto.', color: '#1a472a', bg: '#f5f9f6' },
+          { phase: '0', label: 'Phase 0', period: 'Mi-2026', title: 'DS AI-ready', color: 'var(--green)', bg: 'var(--green-tint-bg)' },
+          { phase: '1', label: 'Phase 1', period: 'Mi → Fin 2026', title: 'PO → génération', color: 'var(--text-primary)', bg: 'var(--bg-card-muted)' },
+          { phase: '2', label: 'Phase 2', period: 'Début 2027', title: 'Refonte site', color: 'var(--text-primary)', bg: 'var(--bg-card-muted)' },
+          { phase: '3', label: 'Phase 3', period: 'Mi-2027', title: 'Flutter extraction', color: 'var(--red)', bg: 'var(--red-tint-bg)' },
+          { phase: '∞', label: 'Horizon', period: 'Fin 2027+', title: 'Gouvernance & auto.', color: 'var(--green)', bg: 'var(--green-tint-bg)' },
         ],
         en: [
-          { phase: '0', label: 'Phase 0', period: 'Mid-2026', title: 'AI-ready DS', color: '#1a472a', bg: '#f5f9f6' },
-          { phase: '1', label: 'Phase 1', period: 'Mid → End 2026', title: 'PO → generation', color: '#211C12', bg: '#FDFAF5' },
-          { phase: '2', label: 'Phase 2', period: 'Early 2027', title: 'Website redesign', color: '#211C12', bg: '#FDFAF5' },
-          { phase: '3', label: 'Phase 3', period: 'Mid-2027', title: 'Flutter extraction', color: '#CB1617', bg: '#fdf5f2' },
-          { phase: '∞', label: 'Horizon', period: 'End 2027+', title: 'Governance & auto.', color: '#1a472a', bg: '#f5f9f6' },
+          { phase: '0', label: 'Phase 0', period: 'Mid-2026', title: 'AI-ready DS', color: 'var(--green)', bg: 'var(--green-tint-bg)' },
+          { phase: '1', label: 'Phase 1', period: 'Mid → End 2026', title: 'PO → generation', color: 'var(--text-primary)', bg: 'var(--bg-card-muted)' },
+          { phase: '2', label: 'Phase 2', period: 'Early 2027', title: 'Website redesign', color: 'var(--text-primary)', bg: 'var(--bg-card-muted)' },
+          { phase: '3', label: 'Phase 3', period: 'Mid-2027', title: 'Flutter extraction', color: 'var(--red)', bg: 'var(--red-tint-bg)' },
+          { phase: '∞', label: 'Horizon', period: 'End 2027+', title: 'Governance & auto.', color: 'var(--green)', bg: 'var(--green-tint-bg)' },
         ],
       },
       trantor: {
         scenarios: {
           fr: [
-            { id: 'A', title: 'Scénario A — Wrapper chat seul', verdict: 'Incompatible', verdictStatus: 'bad', color: '#CB1617', bg: '#fdf5f2', bd: '#E6D7BA', body: 'Trantor = interface conversationnelle sur API.\nPas de support MCP natif, pas de tool calls en boucle.\nIncompatible avec le pipeline agentique tel quel.' },
-            { id: 'B', title: 'Scénario B — API brute accessible', verdict: '~ Partiel', verdictStatus: 'mid', color: '#75633F', bg: '#FDFAF5', bd: '#E6D7BA', body: 'Trantor expose un endpoint compatible OpenAI/Anthropic.\nClaude Code ou agent custom l\'utilise comme backend.\nPipeline identique, modèle fourni par la DSI.' },
-            { id: 'C', title: 'Scénario C — Tool calls supportés', verdict: '✓ Idéal', verdictStatus: 'good', color: '#1a472a', bg: '#f5f9f6', bd: '#c8d8c8', body: 'Trantor supporte le function calling natif.\nL\'agent peut interagir directement avec le Figma MCP.\nPipeline complet, zéro licence externe.' },
+            { id: 'A', title: 'Scénario A — Wrapper chat seul', verdict: 'Incompatible', verdictStatus: 'bad', color: 'var(--red)', bg: 'var(--red-tint-bg)', bd: 'var(--border)', body: 'Trantor = interface conversationnelle sur API.\nPas de support MCP natif, pas de tool calls en boucle.\nIncompatible avec le pipeline agentique tel quel.' },
+            { id: 'B', title: 'Scénario B — API brute accessible', verdict: '~ Partiel', verdictStatus: 'mid', color: 'var(--text-muted)', bg: 'var(--bg-card-muted)', bd: 'var(--border)', body: 'Trantor expose un endpoint compatible OpenAI/Anthropic.\nClaude Code ou agent custom l\'utilise comme backend.\nPipeline identique, modèle fourni par la DSI.' },
+            { id: 'C', title: 'Scénario C — Tool calls supportés', verdict: '✓ Idéal', verdictStatus: 'good', color: 'var(--green)', bg: 'var(--green-tint-bg)', bd: 'rgba(46,158,91,.35)', body: 'Trantor supporte le function calling natif.\nL\'agent peut interagir directement avec le Figma MCP.\nPipeline complet, zéro licence externe.' },
           ],
           en: [
-            { id: 'A', title: 'Scenario A — Chat wrapper only', verdict: 'Incompatible', verdictStatus: 'bad', color: '#CB1617', bg: '#fdf5f2', bd: '#E6D7BA', body: 'Trantor = conversational interface on API.\nNo native MCP support, no looping tool calls.\nIncompatible with the agentic pipeline as-is.' },
-            { id: 'B', title: 'Scenario B — Raw API accessible', verdict: '~ Partial', verdictStatus: 'mid', color: '#75633F', bg: '#FDFAF5', bd: '#E6D7BA', body: 'Trantor exposes an OpenAI/Anthropic-compatible endpoint.\nClaude Code or custom agent uses it as backend.\nSame pipeline, model provided by DSI.' },
-            { id: 'C', title: 'Scenario C — Tool calls supported', verdict: '✓ Ideal', verdictStatus: 'good', color: '#1a472a', bg: '#f5f9f6', bd: '#c8d8c8', body: 'Trantor supports native function calling.\nAgent can interact directly with Figma MCP.\nFull pipeline, zero external licences.' },
+            { id: 'A', title: 'Scenario A — Chat wrapper only', verdict: 'Incompatible', verdictStatus: 'bad', color: 'var(--red)', bg: 'var(--red-tint-bg)', bd: 'var(--border)', body: 'Trantor = conversational interface on API.\nNo native MCP support, no looping tool calls.\nIncompatible with the agentic pipeline as-is.' },
+            { id: 'B', title: 'Scenario B — Raw API accessible', verdict: '~ Partial', verdictStatus: 'mid', color: 'var(--text-muted)', bg: 'var(--bg-card-muted)', bd: 'var(--border)', body: 'Trantor exposes an OpenAI/Anthropic-compatible endpoint.\nClaude Code or custom agent uses it as backend.\nSame pipeline, model provided by DSI.' },
+            { id: 'C', title: 'Scenario C — Tool calls supported', verdict: '✓ Ideal', verdictStatus: 'good', color: 'var(--green)', bg: 'var(--green-tint-bg)', bd: 'rgba(46,158,91,.35)', body: 'Trantor supports native function calling.\nAgent can interact directly with Figma MCP.\nFull pipeline, zero external licences.' },
           ],
         },
         questions: {
@@ -1394,14 +1394,14 @@
         },
         hosting: {
           fr: [
-            { id: 'A', title: 'Option A — Claude Code', recommended: true, color: '#1a472a', bg: '#f5f9f6', bd: '#c8d8c8', body: 'Agent loge dans Claude Code sur ta machine.\nTranstor configuré comme backend API.\nPhase 0 reste zéro DSI.', pros: ['Même pipeline qu\'uSpec', 'Modèle Trantor = économie licences', 'Indépendant DSI en Phase 0'], cons: ['Nécessite API Trantor compatible'] },
-            { id: 'B', title: 'Option B — Script custom local', recommended: false, color: '#464747', bg: '#f5f5f3', bd: '#ddd', body: 'Un script Python/Node orchestre la boucle :\nintention PO → Skills → API Trantor → Figma MCP.', pros: ['Contrôle total', 'Pas de dépendance IDE'], cons: ['Plus de code à maintenir', 'Moins d\'outillage natif'] },
-            { id: 'C', title: 'Option C — Hébergé côté DSI', recommended: false, color: '#75633F', bg: '#FDFAF5', bd: '#E6D7BA', body: 'L\'agent tourne sur un serveur DSI,\nconnecté à Trantor en interne.', pros: ['Propre techniquement', 'Intégré infrastructure DSI'], cons: ['Implique DSI dès le départ', 'Contredit logique Phase 0'] },
+            { id: 'A', title: 'Option A — Claude Code', recommended: true, color: 'var(--green)', bg: 'var(--green-tint-bg)', bd: 'rgba(46,158,91,.35)', body: 'Agent loge dans Claude Code sur ta machine.\nTranstor configuré comme backend API.\nPhase 0 reste zéro DSI.', pros: ['Même pipeline qu\'uSpec', 'Modèle Trantor = économie licences', 'Indépendant DSI en Phase 0'], cons: ['Nécessite API Trantor compatible'] },
+            { id: 'B', title: 'Option B — Script custom local', recommended: false, color: 'var(--text-muted)', bg: 'var(--bg-card-muted)', bd: 'var(--border)', body: 'Un script Python/Node orchestre la boucle :\nintention PO → Skills → API Trantor → Figma MCP.', pros: ['Contrôle total', 'Pas de dépendance IDE'], cons: ['Plus de code à maintenir', 'Moins d\'outillage natif'] },
+            { id: 'C', title: 'Option C — Hébergé côté DSI', recommended: false, color: 'var(--text-muted)', bg: 'var(--bg-card-muted)', bd: 'var(--border)', body: 'L\'agent tourne sur un serveur DSI,\nconnecté à Trantor en interne.', pros: ['Propre techniquement', 'Intégré infrastructure DSI'], cons: ['Implique DSI dès le départ', 'Contredit logique Phase 0'] },
           ],
           en: [
-            { id: 'A', title: 'Option A — Claude Code', recommended: true, color: '#1a472a', bg: '#f5f9f6', bd: '#c8d8c8', body: 'Agent runs in Claude Code on your machine.\nTrantor configured as API backend.\nPhase 0 stays zero DSI.', pros: ['Same pipeline as uSpec', 'Trantor model = licence savings', 'DSI-independent in Phase 0'], cons: ['Requires compatible Trantor API'] },
-            { id: 'B', title: 'Option B — Custom local script', recommended: false, color: '#464747', bg: '#f5f5f3', bd: '#ddd', body: 'A Python/Node script orchestrates the loop:\nPO intent → Skills → Trantor API → Figma MCP.', pros: ['Total control', 'No IDE dependency'], cons: ['More code to maintain', 'Less native tooling'] },
-            { id: 'C', title: 'Option C — DSI-hosted', recommended: false, color: '#75633F', bg: '#FDFAF5', bd: '#E6D7BA', body: 'Agent runs on a DSI server,\nconnected to Trantor internally.', pros: ['Technically clean', 'Integrated into DSI infrastructure'], cons: ['Involves DSI from day one', 'Contradicts Phase 0 logic'] },
+            { id: 'A', title: 'Option A — Claude Code', recommended: true, color: 'var(--green)', bg: 'var(--green-tint-bg)', bd: 'rgba(46,158,91,.35)', body: 'Agent runs in Claude Code on your machine.\nTrantor configured as API backend.\nPhase 0 stays zero DSI.', pros: ['Same pipeline as uSpec', 'Trantor model = licence savings', 'DSI-independent in Phase 0'], cons: ['Requires compatible Trantor API'] },
+            { id: 'B', title: 'Option B — Custom local script', recommended: false, color: 'var(--text-muted)', bg: 'var(--bg-card-muted)', bd: 'var(--border)', body: 'A Python/Node script orchestrates the loop:\nPO intent → Skills → Trantor API → Figma MCP.', pros: ['Total control', 'No IDE dependency'], cons: ['More code to maintain', 'Less native tooling'] },
+            { id: 'C', title: 'Option C — DSI-hosted', recommended: false, color: 'var(--text-muted)', bg: 'var(--bg-card-muted)', bd: 'var(--border)', body: 'Agent runs on a DSI server,\nconnected to Trantor internally.', pros: ['Technically clean', 'Integrated into DSI infrastructure'], cons: ['Involves DSI from day one', 'Contradicts Phase 0 logic'] },
           ],
         },
       },
@@ -1411,9 +1411,9 @@
             id: 'exploration',
             icon: '🔭',
             label: 'Exploration / Discovery',
-            color: '#1a472a',
-            bg: '#FDFAF5',
-            bd: '#E6D7BA',
+            color: 'var(--green)',
+            bg: 'var(--bg-card-muted)',
+            bd: 'var(--border)',
             trigger: 'Nouvelle fonctionnalité, brief flou, inconnu à clarifier',
             who: 'Designer mène — PO en co-pilote',
             aiUse: 'none',
@@ -1425,17 +1425,17 @@
             id: 'iteration',
             icon: '✏️',
             label: 'Itération / Variante',
-            color: '#C6A669',
-            bg: '#FDFAF5',
-            bd: '#E6D7BA',
+            color: 'var(--gold)',
+            bg: 'var(--bg-card-muted)',
+            bd: 'var(--border)',
             trigger: 'Écran existant, composant connu, changement défini',
             who: 'Designer · PO valide',
             aiUse: 'optional',
             aiLabel: 'Figma ou IA selon scope',
             steps: ['Brief PO → designer', 'Changement rapide ?'],
             fork: {
-              yes: { label: 'Oui — simple', path: ['Modifier dans Figma', 'Livrer la spec'], color: '#1a472a' },
-              no:  { label: 'Non — multi-états / génération', path: ['Workflow IA (6 étapes) ↓'], color: '#211C12' },
+              yes: { label: 'Oui — simple', path: ['Modifier dans Figma', 'Livrer la spec'], color: 'var(--green)' },
+              no:  { label: 'Non — multi-états / génération', path: ['Workflow IA (6 étapes) ↓'], color: 'var(--text-primary)' },
             },
             note: 'La décision de recourir à l\'IA dépend de la complexité : nombre d\'états à générer, scope du composant, temps disponible.',
           },
@@ -1443,9 +1443,9 @@
             id: 'new-screen',
             icon: '🆕',
             label: 'Nouvel écran / Flux complexe',
-            color: '#CB1617',
-            bg: '#FDFAF5',
-            bd: '#E6D7BA',
+            color: 'var(--red)',
+            bg: 'var(--bg-card-muted)',
+            bd: 'var(--border)',
             trigger: 'Nouvelle surface, multiples états, scope générateur',
             who: 'Designer opère l\'IA — PO pilote l\'intention',
             aiUse: 'full',
@@ -1459,9 +1459,9 @@
             id: 'exploration',
             icon: '🔭',
             label: 'Exploration / Discovery',
-            color: '#1a472a',
-            bg: '#FDFAF5',
-            bd: '#E6D7BA',
+            color: 'var(--green)',
+            bg: 'var(--bg-card-muted)',
+            bd: 'var(--border)',
             trigger: 'New feature, unclear brief, unknown to clarify',
             who: 'Designer leads — PO as co-pilot',
             aiUse: 'none',
@@ -1473,17 +1473,17 @@
             id: 'iteration',
             icon: '✏️',
             label: 'Iteration / Variant',
-            color: '#C6A669',
-            bg: '#FDFAF5',
-            bd: '#E6D7BA',
+            color: 'var(--gold)',
+            bg: 'var(--bg-card-muted)',
+            bd: 'var(--border)',
             trigger: 'Existing screen, known component, defined change',
             who: 'Designer · PO validates',
             aiUse: 'optional',
             aiLabel: 'Figma or AI depending on scope',
             steps: ['PO brief → designer', 'Quick change?'],
             fork: {
-              yes: { label: 'Yes — simple', path: ['Edit in Figma', 'Ship the spec'], color: '#1a472a' },
-              no:  { label: 'No — multi-state / generation', path: ['AI workflow (6 steps) ↓'], color: '#211C12' },
+              yes: { label: 'Yes — simple', path: ['Edit in Figma', 'Ship the spec'], color: 'var(--green)' },
+              no:  { label: 'No — multi-state / generation', path: ['AI workflow (6 steps) ↓'], color: 'var(--text-primary)' },
             },
             note: 'The decision to use AI depends on complexity: number of states to generate, component scope, time available.',
           },
@@ -1491,9 +1491,9 @@
             id: 'new-screen',
             icon: '🆕',
             label: 'New screen / Complex flow',
-            color: '#CB1617',
-            bg: '#FDFAF5',
-            bd: '#E6D7BA',
+            color: 'var(--red)',
+            bg: 'var(--bg-card-muted)',
+            bd: 'var(--border)',
             trigger: 'New surface, multiple states, generation-worthy scope',
             who: 'Designer operates AI — PO drives intent',
             aiUse: 'full',
@@ -1506,24 +1506,24 @@
       tooling: {
         headers: { fr: ['Outil', 'Phase', 'Qui', 'Ce que ça fait'], en: ['Tool', 'Phase', 'Who', 'What it does'] },
         rows: [
-          { tool: 'Figma DS (bien structuré)', phase: '0', phaseColor: '#1a472a', who_fr: 'Designer', who_en: 'Designer', what_fr: 'Source de vérité composants + tokens lisible par IA', what_en: 'AI-readable component + token source of truth' },
-          { tool: 'Custom PdF Skills', phase: '0', phaseColor: '#1a472a', who_fr: 'Designer (markdown)', who_en: 'Designer (markdown)', what_fr: 'Enseigne aux agents les conventions PdF', what_en: 'Teach agents PdF conventions' },
-          { tool: 'Figma MCP (lecture)', phase: '0', phaseColor: '#1a472a', who_fr: 'Designer, agents IA', who_en: 'Designer, AI agents', what_fr: 'Lit composants, variables, styles, layout', what_en: 'Read components, variables, styles, layout' },
-          { tool: 'Figma MCP (écriture)', phase: '0–1', phaseColor: '#1a472a', who_fr: 'Designer (Full seat)', who_en: 'Designer (Full seat)', what_fr: 'Génère des frames Figma natives depuis le DS', what_en: 'Generate native Figma frames from DS' },
-          { tool: 'Claude Code + MCP', phase: '0–1', phaseColor: '#1a472a', who_fr: 'Designer', who_en: 'Designer', what_fr: 'Génère des designs depuis les descriptions PO', what_en: 'Generate designs from PO descriptions' },
-          { tool: 'Trantor (API backend)', phase: '0–1', phaseColor: '#1a472a', who_fr: 'Designer (si compatible)', who_en: 'Designer (if compatible)', what_fr: 'Modèle IA fourni par la DSI — remplace Claude si compat.', what_en: 'DSI-provided AI model — replaces Claude if compatible' },
-          { tool: 'Figma viewer + commentaires', phase: '1', phaseColor: '#211C12', who_fr: 'POs (gratuit)', who_en: 'POs (free)', what_fr: 'Révision et annotation des designs générés', what_en: 'Review and annotate generated designs' },
-          { tool: 'AI rough drafts (Claude / v0 / Bolt)', phase: '1', phaseColor: '#211C12', who_fr: 'POs', who_en: 'POs', what_fr: 'Maquettes externes informées par le DS', what_en: 'External DS-informed mockups' },
-          { tool: 'Figma Make / Google Stitch', phase: '1', phaseColor: '#211C12', who_fr: 'PO & Designer', who_en: 'PO & Designer', what_fr: 'Génération UI depuis prompt, exports vers Figma', what_en: 'UI generation from prompt, export to Figma' },
-          { tool: 'Kameleoon SDK (app)', phase: '1', phaseColor: '#211C12', who_fr: 'DSI', who_en: 'DSI', what_fr: 'A/B testing Flutter in-app (FR + ES)', what_en: 'Flutter in-app A/B testing (FR + ES)' },
-          { tool: 'Code Connect', phase: '2–3', phaseColor: '#211C12', who_fr: 'Designer + devs', who_en: 'Designer + devs', what_fr: 'Mappe les composants Figma ↔ implémentations code', what_en: 'Map Figma components ↔ code implementations' },
-          { tool: 'Storybook + MCP', phase: '2', phaseColor: '#211C12', who_fr: 'Refonte site', who_en: 'Website redesign', what_fr: 'Catalogue composants web + génération de code IA', what_en: 'Web component catalogue + AI code generation' },
-          { tool: 'Kameleoon SDK (web)', phase: '2', phaseColor: '#211C12', who_fr: 'DSI + Marketing', who_en: 'DSI + Marketing', what_fr: 'A/B testing web (FR + ES) avec variantes DS', what_en: 'Web A/B testing (FR + ES) with DS-compliant variants' },
-          { tool: 'Widgetbook', phase: '3', phaseColor: '#CB1617', who_fr: 'Équipe app', who_en: 'App team', what_fr: 'Catalogue composants Flutter', what_en: 'Flutter component catalogue' },
-          { tool: 'ZeroHeight / Supernova', phase: '∞', phaseColor: '#1a472a', who_fr: 'Designer', who_en: 'Designer', what_fr: 'Plateforme DSM — documentation + release notes', what_en: 'DSM platform — documentation + release notes' },
-          { tool: 'Axe / Stark', phase: '∞', phaseColor: '#1a472a', who_fr: 'Designer + QA', who_en: 'Designer + QA', what_fr: 'Audit accessibilité automatisé', what_en: 'Automated accessibility auditing' },
-          { tool: 'Figma Analytics', phase: '∞', phaseColor: '#1a472a', who_fr: 'Designer', who_en: 'Designer', what_fr: 'Usage composants en design — adoption DS', what_en: 'Component usage in design — DS adoption' },
-          { tool: 'Tests IA + régression visuelle', phase: '∞', phaseColor: '#1a472a', who_fr: 'Designer + devs', who_en: 'Designer + devs', what_fr: 'Revue conformité DS avant merge, snapshots visuels', what_en: 'DS compliance review before merge, visual snapshots' },
+          { tool: 'Figma DS (bien structuré)', phase: '0', phaseColor: 'var(--green)', who_fr: 'Designer', who_en: 'Designer', what_fr: 'Source de vérité composants + tokens lisible par IA', what_en: 'AI-readable component + token source of truth' },
+          { tool: 'Custom PdF Skills', phase: '0', phaseColor: 'var(--green)', who_fr: 'Designer (markdown)', who_en: 'Designer (markdown)', what_fr: 'Enseigne aux agents les conventions PdF', what_en: 'Teach agents PdF conventions' },
+          { tool: 'Figma MCP (lecture)', phase: '0', phaseColor: 'var(--green)', who_fr: 'Designer, agents IA', who_en: 'Designer, AI agents', what_fr: 'Lit composants, variables, styles, layout', what_en: 'Read components, variables, styles, layout' },
+          { tool: 'Figma MCP (écriture)', phase: '0–1', phaseColor: 'var(--green)', who_fr: 'Designer (Full seat)', who_en: 'Designer (Full seat)', what_fr: 'Génère des frames Figma natives depuis le DS', what_en: 'Generate native Figma frames from DS' },
+          { tool: 'Claude Code + MCP', phase: '0–1', phaseColor: 'var(--green)', who_fr: 'Designer', who_en: 'Designer', what_fr: 'Génère des designs depuis les descriptions PO', what_en: 'Generate designs from PO descriptions' },
+          { tool: 'Trantor (API backend)', phase: '0–1', phaseColor: 'var(--green)', who_fr: 'Designer (si compatible)', who_en: 'Designer (if compatible)', what_fr: 'Modèle IA fourni par la DSI — remplace Claude si compat.', what_en: 'DSI-provided AI model — replaces Claude if compatible' },
+          { tool: 'Figma viewer + commentaires', phase: '1', phaseColor: 'var(--text-primary)', who_fr: 'POs (gratuit)', who_en: 'POs (free)', what_fr: 'Révision et annotation des designs générés', what_en: 'Review and annotate generated designs' },
+          { tool: 'AI rough drafts (Claude / v0 / Bolt)', phase: '1', phaseColor: 'var(--text-primary)', who_fr: 'POs', who_en: 'POs', what_fr: 'Maquettes externes informées par le DS', what_en: 'External DS-informed mockups' },
+          { tool: 'Figma Make / Google Stitch', phase: '1', phaseColor: 'var(--text-primary)', who_fr: 'PO & Designer', who_en: 'PO & Designer', what_fr: 'Génération UI depuis prompt, exports vers Figma', what_en: 'UI generation from prompt, export to Figma' },
+          { tool: 'Kameleoon SDK (app)', phase: '1', phaseColor: 'var(--text-primary)', who_fr: 'DSI', who_en: 'DSI', what_fr: 'A/B testing Flutter in-app (FR + ES)', what_en: 'Flutter in-app A/B testing (FR + ES)' },
+          { tool: 'Code Connect', phase: '2–3', phaseColor: 'var(--text-primary)', who_fr: 'Designer + devs', who_en: 'Designer + devs', what_fr: 'Mappe les composants Figma ↔ implémentations code', what_en: 'Map Figma components ↔ code implementations' },
+          { tool: 'Storybook + MCP', phase: '2', phaseColor: 'var(--text-primary)', who_fr: 'Refonte site', who_en: 'Website redesign', what_fr: 'Catalogue composants web + génération de code IA', what_en: 'Web component catalogue + AI code generation' },
+          { tool: 'Kameleoon SDK (web)', phase: '2', phaseColor: 'var(--text-primary)', who_fr: 'DSI + Marketing', who_en: 'DSI + Marketing', what_fr: 'A/B testing web (FR + ES) avec variantes DS', what_en: 'Web A/B testing (FR + ES) with DS-compliant variants' },
+          { tool: 'Widgetbook', phase: '3', phaseColor: 'var(--red)', who_fr: 'Équipe app', who_en: 'App team', what_fr: 'Catalogue composants Flutter', what_en: 'Flutter component catalogue' },
+          { tool: 'ZeroHeight / Supernova', phase: '∞', phaseColor: 'var(--green)', who_fr: 'Designer', who_en: 'Designer', what_fr: 'Plateforme DSM — documentation + release notes', what_en: 'DSM platform — documentation + release notes' },
+          { tool: 'Axe / Stark', phase: '∞', phaseColor: 'var(--green)', who_fr: 'Designer + QA', who_en: 'Designer + QA', what_fr: 'Audit accessibilité automatisé', what_en: 'Automated accessibility auditing' },
+          { tool: 'Figma Analytics', phase: '∞', phaseColor: 'var(--green)', who_fr: 'Designer', who_en: 'Designer', what_fr: 'Usage composants en design — adoption DS', what_en: 'Component usage in design — DS adoption' },
+          { tool: 'Tests IA + régression visuelle', phase: '∞', phaseColor: 'var(--green)', who_fr: 'Designer + devs', who_en: 'Designer + devs', what_fr: 'Revue conformité DS avant merge, snapshots visuels', what_en: 'DS compliance review before merge, visual snapshots' },
         ],
       },
       governance: {
@@ -1764,19 +1764,19 @@
         startOnLoad: false,
         theme: 'base',
         themeVariables: {
-          primaryColor: '#eef3fd',
-          primaryTextColor: '#211C12',
-          primaryBorderColor: '#1a472a',
+          primaryColor: '#2a3a52',
+          primaryTextColor: '#F5F0E8',
+          primaryBorderColor: '#2E9E5B',
           lineColor: '#C6A669',
-          secondaryColor: '#e8f8ee',
-          tertiaryColor: '#f0ebfa',
-          background: '#FBF7F0',
-          mainBkg: '#FBF7F0',
-          nodeBorder: '#E6D7BA',
-          clusterBkg: '#FBF7F0',
-          clusterBorder: '#E6D7BA',
-          titleColor: '#211C12',
-          edgeLabelBackground: '#FBF7F0',
+          secondaryColor: '#20342a',
+          tertiaryColor: '#2e2640',
+          background: '#1a1a1c',
+          mainBkg: '#1a1a1c',
+          nodeBorder: '#3a3a3d',
+          clusterBkg: '#1a1a1c',
+          clusterBorder: '#3a3a3d',
+          titleColor: '#F5F0E8',
+          edgeLabelBackground: '#1a1a1c',
           fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
           fontSize: '13px',
         },
@@ -1843,7 +1843,7 @@
         description_en: 'Shared foundation across all product teams — tokens, typography, colours, grids, shadows and base components.',
         badge_fr: 'Fondation',
         badge_en: 'Foundation',
-        accent: '#CB1617',
+        accent: 'var(--red)',
       },
       {
         id: 'app',
@@ -1854,7 +1854,7 @@
         description_en: 'Components and patterns for the mobile app (iOS & Android) — built on the foundation.',
         badge_fr: 'App mobile',
         badge_en: 'Mobile app',
-        accent: '#09406D',
+        accent: 'var(--blue)',
       },
       {
         id: 'vel',
@@ -1865,7 +1865,7 @@
         description_en: 'Design system for the VEL e-commerce journey — purchase funnel, reservations and online ticketing.',
         badge_fr: 'E-commerce',
         badge_en: 'E-commerce',
-        accent: '#A18756',
+        accent: 'var(--gold-dark)',
       },
     ],
   };
@@ -1897,7 +1897,7 @@
     if (!first) return;
     const linkSvg = w => `<svg width="${w}" height="${w}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>`;
     const card = (sys, large) => `
-      <a href="${sys.url}" target="_blank" rel="noopener" class="${large ? 'ds-card-foundation' : 'ds-card-product'}" style="border-top: 3px solid ${sys.accent || '#CB1617'};">
+      <a href="${sys.url}" target="_blank" rel="noopener" class="${large ? 'ds-card-foundation' : 'ds-card-product'}" style="border-top: 3px solid ${sys.accent || 'var(--red)'};">
         <span class="ds-badge">${isFr ? sys.badge_fr : sys.badge_en}</span>
         <div class="ds-name">${isFr ? sys.name_fr : sys.name}</div>
         <div class="ds-desc">${isFr ? sys.description_fr : sys.description_en}</div>
@@ -1906,7 +1906,7 @@
     const aiChecklist = `
       <div style="margin-top:2rem;">
         <div class="dops-section-label">${isFr ? 'Checklist — prêt pour l\'IA ?' : 'Checklist — AI readiness?'}</div>
-        <p style="font-size:0.75rem;color:#75633F;line-height:1.7;margin-bottom:1rem;">${isFr ? 'Vérifiez que votre DS est structuré pour tirer parti des outils IA (Figma MCP, variables, génération automatisée).' : 'Verify your DS is structured to leverage AI tools (Figma MCP, variables, automated generation).'}</p>
+        <p style="font-size:0.75rem;color:var(--text-muted);line-height:1.7;margin-bottom:1rem;">${isFr ? 'Vérifiez que votre DS est structuré pour tirer parti des outils IA (Figma MCP, variables, génération automatisée).' : 'Verify your DS is structured to leverage AI tools (Figma MCP, variables, automated generation).'}</p>
         <div style="display:flex;flex-direction:column;gap:0.5rem;">
           ${[
             {
@@ -1940,7 +1940,7 @@
           ].map(group => `
             <details class="ai-tool-details">
               <summary class="ai-tool-summary">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#CB1617" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
                 ${group.label}
               </summary>
               <div class="ai-tool-body">
@@ -1980,7 +1980,7 @@
           if (body) iframe.style.height = Math.max(body.scrollHeight, 180) + 'px';
         });
       } catch {
-        iframe.srcdoc = `<p style="padding:1rem;font-size:0.8rem;color:#75633F;">${t('comp_not_found')}</p>`;
+        iframe.srcdoc = `<p style="padding:1rem;font-size:0.8rem;color:#75633F;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">${t('comp_not_found')}</p>`;
       }
     }
   }
@@ -1996,7 +1996,7 @@
       renderKnowledge(knowledgeData);
     } catch {
       document.getElementById('knowledge-root').innerHTML =
-        `<p style="color:#75633F;font-size:0.85rem;margin-top:1rem;">${t('know_error')}</p>`;
+        `<p style="color:var(--text-muted);font-size:0.85rem;margin-top:1rem;">${t('know_error')}</p>`;
     }
   }
 
@@ -2054,12 +2054,12 @@
     const t = I18N[lang];
 
     const cardStyle = `
-      background:#fff;
-      border:1.5px solid #C6A669;
+      background:var(--bg-card);
+      border:1.5px solid var(--gold);
       border-radius:0.75rem;
       overflow:hidden;
       text-decoration:none;
-      color:inherit;
+      color:var(--text-primary);
       display:flex;
       flex-direction:column;
       transition:box-shadow 160ms ease, transform 160ms ease;
@@ -2067,7 +2067,7 @@
       max-width:280px;
     `;
     const thumbStyle = `
-      background:#EFE7D5;
+      background:var(--bg-card-muted);
       display:flex;
       align-items:center;
       justify-content:center;
@@ -2076,35 +2076,35 @@
     `;
 
     const thumb = `<svg width="120" height="72" viewBox="0 0 120 72" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="6" y="8" width="108" height="56" rx="6" fill="#EFE7D5" stroke="#C9982A" stroke-width="1.5"/>
-      <rect x="16" y="18" width="36" height="6" rx="3" fill="#C0272D" fill-opacity="0.15"/>
-      <rect x="16" y="28" width="26" height="5" rx="2.5" fill="#C9982A" fill-opacity="0.5"/>
-      <rect x="16" y="37" width="32" height="5" rx="2.5" fill="#2E7D32" fill-opacity="0.25"/>
-      <rect x="16" y="46" width="22" height="5" rx="2.5" fill="#2D5BA8" fill-opacity="0.25"/>
-      <rect x="68" y="10" width="38" height="52" rx="18" fill="#1A1208" fill-opacity="0.06" stroke="#C9982A" stroke-width="1"/>
-      <circle cx="87" cy="28" r="10" fill="#EFE7D5" stroke="#C9982A" stroke-width="1"/>
-      <rect x="80" y="42" width="14" height="3" rx="1.5" fill="#C9982A" fill-opacity="0.6"/>
-      <rect x="80" y="49" width="14" height="3" rx="1.5" fill="#C9982A" fill-opacity="0.3"/>
-      <rect x="80" y="56" width="10" height="3" rx="1.5" fill="#C9982A" fill-opacity="0.2"/>
-      <rect x="72" y="20" width="30" height="5" rx="2.5" fill="#C0272D"/>
+      <rect x="6" y="8" width="108" height="56" rx="6" fill="var(--bg-card-muted)" stroke="var(--gold2)" stroke-width="1.5"/>
+      <rect x="16" y="18" width="36" height="6" rx="3" fill="var(--crimson)" fill-opacity="0.15"/>
+      <rect x="16" y="28" width="26" height="5" rx="2.5" fill="var(--gold2)" fill-opacity="0.5"/>
+      <rect x="16" y="37" width="32" height="5" rx="2.5" fill="var(--green)" fill-opacity="0.25"/>
+      <rect x="16" y="46" width="22" height="5" rx="2.5" fill="var(--blue)" fill-opacity="0.25"/>
+      <rect x="68" y="10" width="38" height="52" rx="18" fill="var(--bg-card-sunken)" fill-opacity="0.06" stroke="var(--gold2)" stroke-width="1"/>
+      <circle cx="87" cy="28" r="10" fill="var(--bg-card-muted)" stroke="var(--gold2)" stroke-width="1"/>
+      <rect x="80" y="42" width="14" height="3" rx="1.5" fill="var(--gold2)" fill-opacity="0.6"/>
+      <rect x="80" y="49" width="14" height="3" rx="1.5" fill="var(--gold2)" fill-opacity="0.3"/>
+      <rect x="80" y="56" width="10" height="3" rx="1.5" fill="var(--gold2)" fill-opacity="0.2"/>
+      <rect x="72" y="20" width="30" height="5" rx="2.5" fill="var(--crimson)"/>
     </svg>`;
 
     root.innerHTML = `
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;margin-top:0.5rem;">
         <a href="pdf-filter-builder.html" style="${cardStyle}"
-           onmouseover="this.style.boxShadow='0 6px 24px #46474733';this.style.transform='translateY(-2px)'"
+           onmouseover="this.style.boxShadow='0 6px 24px rgba(154,154,154,.2)';this.style.transform='translateY(-2px)'"
            onmouseout="this.style.boxShadow='none';this.style.transform='none'">
           <div style="${thumbStyle}">${thumb}</div>
           <div style="padding:0.9rem;display:flex;flex-direction:column;gap:0.4rem;flex:1;">
             <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:0.5rem;">
               <span style="font-weight:700;font-size:0.85rem;line-height:1.3;">${isFr ? 'Constructeur de filtres' : 'Filter builder'}</span>
-              <span style="font-size:0.65rem;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;padding:0.2rem 0.55rem;border-radius:999px;background:#C6A66918;color:#C6A669;display:inline-block;flex-shrink:0;">${isFr ? 'Outil' : 'Tool'}</span>
+              <span style="font-size:0.65rem;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;padding:0.2rem 0.55rem;border-radius:999px;background:var(--gold-tint-bg);color:var(--gold);display:inline-block;flex-shrink:0;">${isFr ? 'Outil' : 'Tool'}</span>
             </div>
-            <p style="font-size:0.76rem;color:#616161;line-height:1.5;margin:0;">${isFr
+            <p style="font-size:0.76rem;color:var(--text-muted);line-height:1.5;margin:0;">${isFr
               ? 'Choisissez vos critères — l\'outil déduit le contrôle UI et la logique AND/OR adaptés.'
               : 'Define filter criteria and get the right UI control and AND/OR logic recommended automatically.'
             }</p>
-            <span style="font-size:0.75rem;font-weight:700;color:#B40020;margin-top:auto;padding-top:0.4rem;">${t.proto_open}</span>
+            <span style="font-size:0.75rem;font-weight:700;color:var(--crimson);margin-top:auto;padding-top:0.4rem;">${t.proto_open}</span>
           </div>
         </a>
       </div>
@@ -2120,40 +2120,40 @@
     const bad  = isFr ? '"tendance"' : '"trendy"';
     const good = 'neobrutalist';
     return `<svg viewBox="0 0 ${W} ${H}" width="100%" style="max-width:${W}px;display:block;" aria-hidden="true">
-      <rect x="0" y="0" width="104" height="${H}" fill="#FBF7F0"/>
-      <rect x="116" y="0" width="104" height="${H}" fill="#FBF7F0"/>
-      <line x1="110" y1="0" x2="110" y2="${H}" stroke="#E6D7BA" stroke-width="1"/>
-      <rect x="6" y="8" width="92" height="18" rx="3" fill="#F1E8D7" stroke="#E6D7BA" stroke-width="1"/>
-      <text x="10" y="20" font-family="-apple-system,sans-serif" font-size="7.5" fill="#CB1617" opacity="0.8">${bad}</text>
-      <rect x="6"  y="34" width="40" height="28" rx="2" fill="#E6D7BA" opacity="0.5"/>
-      <rect x="52" y="34" width="46" height="12" rx="2" fill="#E6D7BA" opacity="0.35"/>
-      <rect x="52" y="50" width="30" height="12" rx="2" fill="#E6D7BA" opacity="0.25"/>
-      <rect x="6"  y="68" width="92" height="8"  rx="2" fill="#E6D7BA" opacity="0.4"/>
-      <rect x="6"  y="80" width="60" height="8"  rx="2" fill="#E6D7BA" opacity="0.3"/>
-      <rect x="6"  y="92" width="80" height="22" rx="2" fill="#E6D7BA" opacity="0.25"/>
-      <text x="52" y="${H - 5}" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="7" fill="#CB1617" font-weight="700">${isFr ? 'vague → imprévisible' : 'vague → unpredictable'}</text>
-      <rect x="118" y="8" width="96" height="18" rx="3" fill="#211C12"/>
-      <text x="122" y="20" font-family="-apple-system,sans-serif" font-size="7.5" fill="#C6A669">${good}</text>
-      <rect x="118" y="34" width="96" height="14" rx="0" fill="#211C12"/>
-      <text x="122" y="44" font-family="Georgia,serif" font-size="7" fill="#FBF7F0" font-weight="700">HEADING</text>
-      <rect x="118" y="52" width="44" height="44" rx="0" fill="#CB1617"/>
-      <rect x="166" y="52" width="48" height="20" rx="0" fill="#F1E8D7" stroke="#211C12" stroke-width="1.5"/>
-      <rect x="166" y="76" width="48" height="20" rx="0" fill="#E6D7BA" stroke="#211C12" stroke-width="1.5"/>
-      <rect x="118" y="100" width="96" height="10" rx="0" fill="#F1E8D7" stroke="#211C12" stroke-width="1"/>
-      <text x="216" y="${H - 5}" text-anchor="end" font-family="-apple-system,sans-serif" font-size="7" fill="#1a472a" font-weight="700">${isFr ? 'précis → cohérent' : 'precise → consistent'}</text>
+      <rect x="0" y="0" width="104" height="${H}" fill="var(--bg-card)"/>
+      <rect x="116" y="0" width="104" height="${H}" fill="var(--bg-card)"/>
+      <line x1="110" y1="0" x2="110" y2="${H}" stroke="var(--border)" stroke-width="1"/>
+      <rect x="6" y="8" width="92" height="18" rx="3" fill="var(--bg-card-muted)" stroke="var(--border)" stroke-width="1"/>
+      <text x="10" y="20" font-family="-apple-system,sans-serif" font-size="7.5" fill="var(--red)" opacity="0.8">${bad}</text>
+      <rect x="6"  y="34" width="40" height="28" rx="2" fill="var(--border)" opacity="0.5"/>
+      <rect x="52" y="34" width="46" height="12" rx="2" fill="var(--border)" opacity="0.35"/>
+      <rect x="52" y="50" width="30" height="12" rx="2" fill="var(--border)" opacity="0.25"/>
+      <rect x="6"  y="68" width="92" height="8"  rx="2" fill="var(--border)" opacity="0.4"/>
+      <rect x="6"  y="80" width="60" height="8"  rx="2" fill="var(--border)" opacity="0.3"/>
+      <rect x="6"  y="92" width="80" height="22" rx="2" fill="var(--border)" opacity="0.25"/>
+      <text x="52" y="${H - 5}" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="7" fill="var(--red)" font-weight="700">${isFr ? 'vague → imprévisible' : 'vague → unpredictable'}</text>
+      <rect x="118" y="8" width="96" height="18" rx="3" fill="var(--text-primary)"/>
+      <text x="122" y="20" font-family="-apple-system,sans-serif" font-size="7.5" fill="var(--gold)">${good}</text>
+      <rect x="118" y="34" width="96" height="14" rx="0" fill="var(--text-primary)"/>
+      <text x="122" y="44" font-family="Georgia,serif" font-size="7" fill="var(--bg-card)" font-weight="700">HEADING</text>
+      <rect x="118" y="52" width="44" height="44" rx="0" fill="var(--red)"/>
+      <rect x="166" y="52" width="48" height="20" rx="0" fill="var(--bg-card-muted)" stroke="var(--text-primary)" stroke-width="1.5"/>
+      <rect x="166" y="76" width="48" height="20" rx="0" fill="var(--border)" stroke="var(--text-primary)" stroke-width="1.5"/>
+      <rect x="118" y="100" width="96" height="10" rx="0" fill="var(--bg-card-muted)" stroke="var(--text-primary)" stroke-width="1"/>
+      <text x="216" y="${H - 5}" text-anchor="end" font-family="-apple-system,sans-serif" font-size="7" fill="var(--green)" font-weight="700">${isFr ? 'précis → cohérent' : 'precise → consistent'}</text>
     </svg>`;
   }
 
   function svgVisualRef(isFr) {
     const W = 220, H = 136;
     const levels = isFr ? ['Moodboard', 'Screenshot DS', 'Figma MCP'] : ['Moodboard', 'DS screenshot', 'Figma MCP'];
-    const colors = ['#a07020', '#2859a8', '#007a40'];
-    const fills  = ['#fdf8ed', '#eef3fd', '#e8f8ee'];
+    const colors = ['var(--gold2)', 'var(--blue)', 'var(--green)'];
+    const fills  = ['var(--gold2-bg)', 'var(--blue-tint-bg)', 'var(--green-tint-bg)'];
     const descs  = isFr ? ['style ~approx.', 'tokens + couleurs', 'précision max'] : ['~approx. style', 'tokens + colours', 'max precision'];
     const bw = 58, bh = 52, gap = 12, startX = 8;
     return `<svg viewBox="0 0 ${W} ${H}" width="100%" style="max-width:${W}px;display:block;" aria-hidden="true">
-      <defs><marker id="ref-arr" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="#C6A669"/></marker></defs>
-      <text x="${W/2}" y="11" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="7" fill="#75633F" letter-spacing="0.08em">${isFr ? 'FIDÉLITÉ CROISSANTE →' : 'INCREASING FIDELITY →'}</text>
+      <defs><marker id="ref-arr" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="var(--gold)"/></marker></defs>
+      <text x="${W/2}" y="11" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="7" fill="var(--text-muted)" letter-spacing="0.08em">${isFr ? 'FIDÉLITÉ CROISSANTE →' : 'INCREASING FIDELITY →'}</text>
       ${levels.map((l, i) => {
         const x = startX + i * (bw + gap);
         return `<rect x="${x}" y="18" width="${bw}" height="${bh}" rx="3" fill="${fills[i]}" stroke="${colors[i]}" stroke-width="1.5"/>
@@ -2163,10 +2163,10 @@
         <rect x="${x+4}" y="44" width="${bw*0.5}" height="4" rx="1" fill="${colors[i]}" opacity="0.2"/>
         ${i === 2 ? `<text x="${x+bw/2}" y="59" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="8" fill="${colors[i]}" font-weight="700">★</text>` : ''}
         <text x="${x+bw/2}" y="80" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="7" fill="${colors[i]}" font-weight="700">${l}</text>
-        <text x="${x+bw/2}" y="90" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="6" fill="#75633F">${descs[i]}</text>
-        ${i < levels.length - 1 ? `<line x1="${x+bw+2}" y1="44" x2="${x+bw+gap-3}" y2="44" stroke="#C6A669" stroke-width="1.5" marker-end="url(#ref-arr)"/>` : ''}`;
+        <text x="${x+bw/2}" y="90" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="6" fill="var(--text-muted)">${descs[i]}</text>
+        ${i < levels.length - 1 ? `<line x1="${x+bw+2}" y1="44" x2="${x+bw+gap-3}" y2="44" stroke="var(--gold)" stroke-width="1.5" marker-end="url(#ref-arr)"/>` : ''}`;
       }).join('')}
-      <text x="${W/2}" y="${H - 5}" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="6.5" fill="#75633F" font-style="italic">${isFr ? 'fidélité visuelle ≠ qualité design' : 'visual fidelity ≠ design quality'}</text>
+      <text x="${W/2}" y="${H - 5}" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="6.5" fill="var(--text-muted)" font-style="italic">${isFr ? 'fidélité visuelle ≠ qualité design' : 'visual fidelity ≠ design quality'}</text>
     </svg>`;
   }
 
@@ -2174,96 +2174,96 @@
     const W = 220, H = 136;
     const tokens = isFr ? ['fond sombre', 'typo blanche', 'contraste ↑', 'flat design'] : ['dark bg', 'white type', 'high contrast', 'flat design'];
     return `<svg viewBox="0 0 ${W} ${H}" width="100%" style="max-width:${W}px;display:block;" aria-hidden="true">
-      <defs><marker id="ana-arr" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="#C6A669"/></marker></defs>
-      <rect x="4" y="14" width="44" height="60" rx="3" fill="#1a1a2e" stroke="#E6D7BA" stroke-width="1"/>
-      <rect x="4" y="14" width="44" height="14" rx="3" fill="#2d2b6e"/>
-      <rect x="8" y="32" width="36" height="4" rx="1" fill="#fff" opacity="0.6"/>
-      <rect x="8" y="39" width="26" height="3" rx="1" fill="#fff" opacity="0.35"/>
-      <rect x="8" y="45" width="32" height="3" rx="1" fill="#fff" opacity="0.25"/>
-      <rect x="8" y="51" width="16" height="8" rx="2" fill="#4a4adb"/>
-      <text x="26" y="84" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="6.5" fill="#75633F">${isFr ? 'Page ref.' : 'Ref. page'}</text>
-      <line x1="50" y1="44" x2="62" y2="44" stroke="#C6A669" stroke-width="1.5" marker-end="url(#ana-arr)"/>
-      <rect x="64" y="24" width="40" height="40" rx="20" fill="#F1E8D7" stroke="#C6A669" stroke-width="1.5"/>
+      <defs><marker id="ana-arr" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="var(--gold)"/></marker></defs>
+      <rect x="4" y="14" width="44" height="60" rx="3" fill="var(--bg-card-sunken)" stroke="var(--border)" stroke-width="1"/>
+      <rect x="4" y="14" width="44" height="14" rx="3" fill="var(--purple-tint-bg)"/>
+      <rect x="8" y="32" width="36" height="4" rx="1" fill="var(--white)" opacity="0.6"/>
+      <rect x="8" y="39" width="26" height="3" rx="1" fill="var(--white)" opacity="0.35"/>
+      <rect x="8" y="45" width="32" height="3" rx="1" fill="var(--white)" opacity="0.25"/>
+      <rect x="8" y="51" width="16" height="8" rx="2" fill="var(--purple)"/>
+      <text x="26" y="84" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="6.5" fill="var(--text-muted)">${isFr ? 'Page ref.' : 'Ref. page'}</text>
+      <line x1="50" y1="44" x2="62" y2="44" stroke="var(--gold)" stroke-width="1.5" marker-end="url(#ana-arr)"/>
+      <rect x="64" y="24" width="40" height="40" rx="20" fill="var(--bg-card-muted)" stroke="var(--gold)" stroke-width="1.5"/>
       <text x="84" y="49" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="18">🤖</text>
-      <text x="84" y="74" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="6.5" fill="#75633F">AI chat</text>
-      <line x1="106" y1="44" x2="118" y2="44" stroke="#C6A669" stroke-width="1.5" marker-end="url(#ana-arr)"/>
+      <text x="84" y="74" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="6.5" fill="var(--text-muted)">AI chat</text>
+      <line x1="106" y1="44" x2="118" y2="44" stroke="var(--gold)" stroke-width="1.5" marker-end="url(#ana-arr)"/>
       ${tokens.map((tok, i) => {
         const x = 120 + (i % 2) * 48;
         const y = 14 + Math.floor(i / 2) * 22;
-        return `<rect x="${x}" y="${y}" width="44" height="14" rx="7" fill="#211C12"/>
-        <text x="${x+22}" y="${y+9.5}" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="6" fill="#C6A669">${tok}</text>`;
+        return `<rect x="${x}" y="${y}" width="44" height="14" rx="7" fill="var(--text-primary)"/>
+        <text x="${x+22}" y="${y+9.5}" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="6" fill="var(--gold)">${tok}</text>`;
       }).join('')}
-      <line x1="142" y1="72" x2="142" y2="82" stroke="#C6A669" stroke-width="1.5" marker-end="url(#ana-arr)"/>
-      <rect x="118" y="84" width="96" height="20" rx="3" fill="#FBF7F0" stroke="#CB1617" stroke-width="1.5"/>
-      <text x="166" y="97" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="6.5" fill="#CB1617" font-weight="700">→ ${isFr ? 'Nouveau prompt' : 'New prompt'}</text>
-      <text x="${W/2}" y="${H - 4}" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="6.5" fill="#75633F" font-style="italic">${isFr ? 'description → contexte visuel' : 'description → visual context'}</text>
+      <line x1="142" y1="72" x2="142" y2="82" stroke="var(--gold)" stroke-width="1.5" marker-end="url(#ana-arr)"/>
+      <rect x="118" y="84" width="96" height="20" rx="3" fill="var(--bg-card)" stroke="var(--red)" stroke-width="1.5"/>
+      <text x="166" y="97" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="6.5" fill="var(--red)" font-weight="700">→ ${isFr ? 'Nouveau prompt' : 'New prompt'}</text>
+      <text x="${W/2}" y="${H - 4}" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="6.5" fill="var(--text-muted)" font-style="italic">${isFr ? 'description → contexte visuel' : 'description → visual context'}</text>
     </svg>`;
   }
 
   function svgMockData(isFr) {
     const W = 220, H = 136;
     return `<svg viewBox="0 0 ${W} ${H}" width="100%" style="max-width:${W}px;display:block;" aria-hidden="true">
-      <defs><marker id="dat-arr" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="#C6A669"/></marker></defs>
-      <rect x="4" y="8" width="86" height="96" rx="3" fill="#1a1510" stroke="#C6A669" stroke-width="1"/>
-      <text x="10" y="22" font-family="monospace" font-size="7" fill="#C6A669">{&quot;user&quot;:</text>
-      <text x="14" y="32" font-family="monospace" font-size="6.5" fill="#FBF7F0">&quot;Sarah K.&quot;,</text>
-      <text x="10" y="42" font-family="monospace" font-size="7" fill="#C6A669">&quot;courses&quot;:</text>
-      <text x="14" y="52" font-family="monospace" font-size="6.5" fill="#FBF7F0">[{</text>
-      <text x="18" y="62" font-family="monospace" font-size="6.5" fill="#4a9e8e">&quot;name&quot;:</text>
-      <text x="18" y="71" font-family="monospace" font-size="6" fill="#FBF7F0">&quot;UX Research&quot;</text>
-      <text x="18" y="80" font-family="monospace" font-size="6.5" fill="#4a9e8e">&quot;status&quot;:</text>
-      <text x="18" y="89" font-family="monospace" font-size="6" fill="#007a40">&quot;done&quot;</text>
-      <text x="14" y="98" font-family="monospace" font-size="6.5" fill="#FBF7F0">}]}</text>
-      <text x="45" y="${H - 4}" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="6.5" fill="#75633F">JSON mock</text>
-      <line x1="92" y1="56" x2="106" y2="56" stroke="#C6A669" stroke-width="1.5" marker-end="url(#dat-arr)"/>
-      <rect x="108" y="8" width="108" height="96" rx="3" fill="#FBF7F0" stroke="#E6D7BA" stroke-width="1"/>
-      <circle cx="122" cy="28" r="10" fill="#CB1617"/>
-      <text x="122" y="32" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#FBF7F0" font-weight="700">SK</text>
-      <rect x="136" y="21" width="52" height="6" rx="1" fill="#211C12" opacity="0.7"/>
-      <rect x="136" y="30" width="34" height="4" rx="1" fill="#E6D7BA"/>
-      <rect x="112" y="46" width="100" height="4" rx="2" fill="#F1E8D7"/>
-      <rect x="112" y="46" width="65"  height="4" rx="2" fill="#007a40"/>
-      <rect x="112" y="56" width="100" height="16" rx="2" fill="#F1E8D7"/>
-      <rect x="116" y="60" width="48" height="4" rx="1" fill="#211C12" opacity="0.6"/>
-      <rect x="172" y="59" width="34" height="6" rx="3" fill="#007a40"/>
-      <text x="189" y="64.5" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="5.5" fill="#fff" font-weight="700">${isFr ? 'Terminé' : 'Done'}</text>
-      <rect x="112" y="76" width="100" height="16" rx="2" fill="#F1E8D7"/>
-      <rect x="116" y="80" width="54" height="4" rx="1" fill="#211C12" opacity="0.6"/>
-      <rect x="172" y="79" width="34" height="6" rx="3" fill="#2859a8"/>
-      <text x="189" y="84.5" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="5.5" fill="#fff" font-weight="700">${isFr ? 'Actif' : 'Active'}</text>
-      <text x="162" y="${H - 4}" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="6.5" fill="#75633F">${isFr ? 'contenu guide le layout' : 'content drives layout'}</text>
+      <defs><marker id="dat-arr" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="var(--gold)"/></marker></defs>
+      <rect x="4" y="8" width="86" height="96" rx="3" fill="var(--bg-card-sunken)" stroke="var(--gold)" stroke-width="1"/>
+      <text x="10" y="22" font-family="monospace" font-size="7" fill="var(--gold)">{&quot;user&quot;:</text>
+      <text x="14" y="32" font-family="monospace" font-size="6.5" fill="var(--bg-card)">&quot;Sarah K.&quot;,</text>
+      <text x="10" y="42" font-family="monospace" font-size="7" fill="var(--gold)">&quot;courses&quot;:</text>
+      <text x="14" y="52" font-family="monospace" font-size="6.5" fill="var(--bg-card)">[{</text>
+      <text x="18" y="62" font-family="monospace" font-size="6.5" fill="var(--teal)">&quot;name&quot;:</text>
+      <text x="18" y="71" font-family="monospace" font-size="6" fill="var(--bg-card)">&quot;UX Research&quot;</text>
+      <text x="18" y="80" font-family="monospace" font-size="6.5" fill="var(--teal)">&quot;status&quot;:</text>
+      <text x="18" y="89" font-family="monospace" font-size="6" fill="var(--green)">&quot;done&quot;</text>
+      <text x="14" y="98" font-family="monospace" font-size="6.5" fill="var(--bg-card)">}]}</text>
+      <text x="45" y="${H - 4}" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="6.5" fill="var(--text-muted)">JSON mock</text>
+      <line x1="92" y1="56" x2="106" y2="56" stroke="var(--gold)" stroke-width="1.5" marker-end="url(#dat-arr)"/>
+      <rect x="108" y="8" width="108" height="96" rx="3" fill="var(--bg-card)" stroke="var(--border)" stroke-width="1"/>
+      <circle cx="122" cy="28" r="10" fill="var(--red)"/>
+      <text x="122" y="32" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="var(--bg-card)" font-weight="700">SK</text>
+      <rect x="136" y="21" width="52" height="6" rx="1" fill="var(--text-primary)" opacity="0.7"/>
+      <rect x="136" y="30" width="34" height="4" rx="1" fill="var(--border)"/>
+      <rect x="112" y="46" width="100" height="4" rx="2" fill="var(--bg-card-muted)"/>
+      <rect x="112" y="46" width="65"  height="4" rx="2" fill="var(--green)"/>
+      <rect x="112" y="56" width="100" height="16" rx="2" fill="var(--bg-card-muted)"/>
+      <rect x="116" y="60" width="48" height="4" rx="1" fill="var(--text-primary)" opacity="0.6"/>
+      <rect x="172" y="59" width="34" height="6" rx="3" fill="var(--green)"/>
+      <text x="189" y="64.5" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="5.5" fill="var(--white)" font-weight="700">${isFr ? 'Terminé' : 'Done'}</text>
+      <rect x="112" y="76" width="100" height="16" rx="2" fill="var(--bg-card-muted)"/>
+      <rect x="116" y="80" width="54" height="4" rx="1" fill="var(--text-primary)" opacity="0.6"/>
+      <rect x="172" y="79" width="34" height="6" rx="3" fill="var(--blue)"/>
+      <text x="189" y="84.5" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="5.5" fill="var(--white)" font-weight="700">${isFr ? 'Actif' : 'Active'}</text>
+      <text x="162" y="${H - 4}" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="6.5" fill="var(--text-muted)">${isFr ? 'contenu guide le layout' : 'content drives layout'}</text>
     </svg>`;
   }
 
   function svgCodeSnippet(isFr) {
     const W = 220, H = 136;
     return `<svg viewBox="0 0 ${W} ${H}" width="100%" style="max-width:${W}px;display:block;" aria-hidden="true">
-      <defs><marker id="snp-arr" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="#C6A669"/></marker></defs>
-      <text x="4" y="12" font-family="-apple-system,sans-serif" font-size="6.5" fill="#75633F">Polaris · Table</text>
-      <rect x="4" y="16" width="82" height="76" rx="3" fill="#1a1510" stroke="#C6A669" stroke-width="1"/>
-      <text x="10" y="28" font-family="monospace" font-size="6.5" fill="#6b4ba8">&lt;Table&gt;</text>
-      <text x="14" y="38" font-family="monospace" font-size="6.5" fill="#4a9e8e">&lt;thead&gt;</text>
-      <text x="18" y="47" font-family="monospace" font-size="6" fill="#FBF7F0">&lt;th&gt;Course&lt;/th&gt;</text>
-      <text x="18" y="56" font-family="monospace" font-size="6" fill="#FBF7F0">&lt;th&gt;Status&lt;/th&gt;</text>
-      <text x="14" y="65" font-family="monospace" font-size="6.5" fill="#4a9e8e">&lt;/thead&gt;</text>
-      <text x="14" y="74" font-family="monospace" font-size="6.5" fill="#FBF7F0">&lt;tbody&gt;…</text>
-      <text x="10" y="83" font-family="monospace" font-size="6.5" fill="#6b4ba8">&lt;/Table&gt;</text>
-      <text x="45" y="100" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="6" fill="#75633F">+ ${isFr ? 'prompt texte' : 'text prompt'}</text>
-      <line x1="88" y1="54" x2="100" y2="54" stroke="#C6A669" stroke-width="1.5" marker-end="url(#snp-arr)"/>
-      <rect x="102" y="40" width="28" height="28" rx="14" fill="#F1E8D7" stroke="#C6A669" stroke-width="1.5"/>
+      <defs><marker id="snp-arr" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="var(--gold)"/></marker></defs>
+      <text x="4" y="12" font-family="-apple-system,sans-serif" font-size="6.5" fill="var(--text-muted)">Polaris · Table</text>
+      <rect x="4" y="16" width="82" height="76" rx="3" fill="var(--bg-card-sunken)" stroke="var(--gold)" stroke-width="1"/>
+      <text x="10" y="28" font-family="monospace" font-size="6.5" fill="var(--purple)">&lt;Table&gt;</text>
+      <text x="14" y="38" font-family="monospace" font-size="6.5" fill="var(--teal)">&lt;thead&gt;</text>
+      <text x="18" y="47" font-family="monospace" font-size="6" fill="var(--bg-card)">&lt;th&gt;Course&lt;/th&gt;</text>
+      <text x="18" y="56" font-family="monospace" font-size="6" fill="var(--bg-card)">&lt;th&gt;Status&lt;/th&gt;</text>
+      <text x="14" y="65" font-family="monospace" font-size="6.5" fill="var(--teal)">&lt;/thead&gt;</text>
+      <text x="14" y="74" font-family="monospace" font-size="6.5" fill="var(--bg-card)">&lt;tbody&gt;…</text>
+      <text x="10" y="83" font-family="monospace" font-size="6.5" fill="var(--purple)">&lt;/Table&gt;</text>
+      <text x="45" y="100" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="6" fill="var(--text-muted)">+ ${isFr ? 'prompt texte' : 'text prompt'}</text>
+      <line x1="88" y1="54" x2="100" y2="54" stroke="var(--gold)" stroke-width="1.5" marker-end="url(#snp-arr)"/>
+      <rect x="102" y="40" width="28" height="28" rx="14" fill="var(--bg-card-muted)" stroke="var(--gold)" stroke-width="1.5"/>
       <text x="116" y="58" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="14">⚡</text>
-      <line x1="132" y1="54" x2="144" y2="54" stroke="#C6A669" stroke-width="1.5" marker-end="url(#snp-arr)"/>
-      <rect x="146" y="16" width="70" height="84" rx="3" fill="#FBF7F0" stroke="#E6D7BA" stroke-width="1"/>
-      <rect x="146" y="16" width="70" height="14" rx="2" fill="#F1E8D7"/>
-      <rect x="150" y="20" width="22" height="4" rx="1" fill="#75633F" opacity="0.6"/>
-      <rect x="178" y="20" width="18" height="4" rx="1" fill="#75633F" opacity="0.6"/>
+      <line x1="132" y1="54" x2="144" y2="54" stroke="var(--gold)" stroke-width="1.5" marker-end="url(#snp-arr)"/>
+      <rect x="146" y="16" width="70" height="84" rx="3" fill="var(--bg-card)" stroke="var(--border)" stroke-width="1"/>
+      <rect x="146" y="16" width="70" height="14" rx="2" fill="var(--bg-card-muted)"/>
+      <rect x="150" y="20" width="22" height="4" rx="1" fill="var(--text-muted)" opacity="0.6"/>
+      <rect x="178" y="20" width="18" height="4" rx="1" fill="var(--text-muted)" opacity="0.6"/>
       ${[0,1,2,3].map(i => `
-        <rect x="146" y="${30+i*16}" width="70" height="16" fill="${i%2===1?'#FDFAF5':'#FBF7F0'}" stroke="#F1E8D7" stroke-width="0.5"/>
-        <rect x="150" y="${34+i*16}" width="24" height="4" rx="1" fill="#211C12" opacity="0.45"/>
-        <rect x="180" y="${33+i*16}" width="14" height="6" rx="3" fill="${i===0?'#007a40':i===1?'#2859a8':i===2?'#a07020':'#E6D7BA'}"/>
+        <rect x="146" y="${30+i*16}" width="70" height="16" fill="${i%2===1?'var(--bg-card-muted)':'var(--bg-card)'}" stroke="var(--bg-card-muted)" stroke-width="0.5"/>
+        <rect x="150" y="${34+i*16}" width="24" height="4" rx="1" fill="var(--text-primary)" opacity="0.45"/>
+        <rect x="180" y="${33+i*16}" width="14" height="6" rx="3" fill="${i===0?'var(--green)':i===1?'var(--blue)':i===2?'var(--gold2)':'var(--border)'}"/>
       `).join('')}
-      <text x="45"  y="${H - 4}" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="6.5" fill="#75633F">${isFr ? 'composant source' : 'source component'}</text>
-      <text x="181" y="${H - 4}" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="6.5" fill="#007a40">${isFr ? 'output précis' : 'precise output'}</text>
+      <text x="45"  y="${H - 4}" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="6.5" fill="var(--text-muted)">${isFr ? 'composant source' : 'source component'}</text>
+      <text x="181" y="${H - 4}" text-anchor="middle" font-family="-apple-system,sans-serif" font-size="6.5" fill="var(--green)">${isFr ? 'output précis' : 'precise output'}</text>
     </svg>`;
   }
 
@@ -2277,7 +2277,7 @@
     const isFr = lang === 'fr';
 
     const exIcon = type => type === 'bad' ? '❌' : type === 'ok' ? '△' : type === 'good' ? '✅' : '→';
-    const exColor = type => type === 'bad' ? '#CB1617' : type === 'ok' ? '#a07020' : type === 'good' ? '#007a40' : '#75633F';
+    const exColor = type => type === 'bad' ? 'var(--red)' : type === 'ok' ? 'var(--gold2)' : type === 'good' ? 'var(--green)' : 'var(--text-muted)';
 
     const strategies = p.strategies[lang];
     const problems   = p.problems[lang];
@@ -2285,15 +2285,15 @@
 
     root.innerHTML = `
       <!-- Intro -->
-      <p style="font-size:0.82rem;color:#464747;line-height:1.8;margin-bottom:1.75rem;padding-bottom:1.5rem;border-bottom:1px solid #E6D7BA;">${p.intro[lang]}</p>
+      <p style="font-size:0.82rem;color:var(--text-muted);line-height:1.8;margin-bottom:1.75rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border);">${p.intro[lang]}</p>
 
       <!-- Problems -->
       <div class="dops-section-label">${isFr ? 'Problèmes fréquents des prompts vagues' : 'Common problems with vague prompts'}</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 0;margin-bottom:2rem;border-top:2px solid #211C12;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 0;margin-bottom:2rem;border-top:2px solid var(--text-primary);">
         ${problems.map((pb, i) => `
-          <div style="border-bottom:1px solid #E6D7BA;border-right:${i % 2 === 0 ? '1px solid #E6D7BA' : 'none'};padding:1rem 1.1rem;">
-            <div style="font-family:Georgia,serif;font-size:0.82rem;font-weight:700;color:#211C12;margin-bottom:0.4rem;">${pb.title}</div>
-            <div style="font-size:0.75rem;color:#75633F;line-height:1.7;">${pb.body}</div>
+          <div style="border-bottom:1px solid var(--border);border-right:${i % 2 === 0 ? '1px solid var(--border)' : 'none'};padding:1rem 1.1rem;">
+            <div style="font-family:Georgia,serif;font-size:0.82rem;font-weight:700;color:var(--text-primary);margin-bottom:0.4rem;">${pb.title}</div>
+            <div style="font-size:0.75rem;color:var(--text-muted);line-height:1.7;">${pb.body}</div>
           </div>`).join('')}
       </div>
 
@@ -2301,14 +2301,14 @@
       <div class="dops-section-label">${isFr ? '5 stratégies pour améliorer vos prompts' : '5 strategies to improve your prompts'}</div>
       <div style="display:flex;flex-direction:column;gap:0;margin-bottom:2rem;">
         ${strategies.map((s, si) => `
-          <div style="border-left:3px solid #CB1617;padding:1.1rem 0 1.25rem 1.25rem;border-bottom:1px solid #E6D7BA;">
+          <div style="border-left:3px solid var(--red);padding:1.1rem 0 1.25rem 1.25rem;border-bottom:1px solid var(--border);">
             <div style="display:flex;align-items:baseline;gap:0.65rem;margin-bottom:0.6rem;">
-              <span style="font-family:Georgia,serif;font-size:0.65rem;font-weight:700;color:#CB1617;letter-spacing:0.08em;">${s.num}</span>
-              <span style="font-family:Georgia,serif;font-size:0.92rem;font-weight:700;color:#211C12;">${s.title}</span>
+              <span style="font-family:Georgia,serif;font-size:0.65rem;font-weight:700;color:var(--red);letter-spacing:0.08em;">${s.num}</span>
+              <span style="font-family:Georgia,serif;font-size:0.92rem;font-weight:700;color:var(--text-primary);">${s.title}</span>
             </div>
             <div style="display:grid;grid-template-columns:1fr 220px;gap:1.25rem;align-items:start;">
               <div>
-                <p style="font-size:0.78rem;color:#464747;line-height:1.75;margin-bottom:0.75rem;">${s.body}</p>
+                <p style="font-size:0.78rem;color:var(--text-muted);line-height:1.75;margin-bottom:0.75rem;">${s.body}</p>
                 <div style="display:flex;flex-direction:column;gap:0.3rem;margin-bottom:${s.note ? '0.75rem' : '0'};">
                   ${s.examples.map(ex => `
                     <div style="display:flex;align-items:flex-start;gap:0.5rem;">
@@ -2316,7 +2316,7 @@
                       <span style="font-size:0.74rem;color:${exColor(ex.type)};line-height:1.6;font-style:${ex.type === 'note' ? 'italic' : 'normal'};">${ex.text}</span>
                     </div>`).join('')}
                 </div>
-                ${s.note ? `<div style="border-left:2px solid #E6D7BA;padding-left:0.75rem;font-size:0.72rem;color:#75633F;line-height:1.65;font-style:italic;">${s.note}</div>` : ''}
+                ${s.note ? `<div style="border-left:2px solid var(--border);padding-left:0.75rem;font-size:0.72rem;color:var(--text-muted);line-height:1.65;font-style:italic;">${s.note}</div>` : ''}
               </div>
               <div style="flex-shrink:0;">${[svgKeywords, svgVisualRef, svgAiAnalysis, svgMockData, svgCodeSnippet][si](isFr)}</div>
             </div>
@@ -2324,24 +2324,24 @@
       </div>
 
       <!-- Closing -->
-      <div style="border-left:3px solid #211C12;padding:0.85rem 1rem;margin-bottom:2rem;font-size:0.8rem;color:#211C12;line-height:1.7;">${p.closing[lang]}</div>
+      <div style="border-left:3px solid var(--text-primary);padding:0.85rem 1rem;margin-bottom:2rem;font-size:0.8rem;color:var(--text-primary);line-height:1.7;">${p.closing[lang]}</div>
 
       <!-- Quick reference tips -->
       <div class="dops-section-label">${isFr ? 'Référence rapide — tips de prompting' : 'Quick reference — prompting tips'}</div>
-      <div style="display:flex;flex-direction:column;gap:0;border-top:2px solid #211C12;margin-bottom:2rem;">
+      <div style="display:flex;flex-direction:column;gap:0;border-top:2px solid var(--text-primary);margin-bottom:2rem;">
         ${tips.map(t => `
-          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border-bottom:1px solid #E6D7BA;padding:0.7rem 0;">
-            <div style="font-size:0.74rem;font-weight:600;color:#211C12;padding-right:1rem;">${t.title}</div>
-            <div style="font-family:monospace;font-size:0.67rem;color:#75633F;line-height:1.6;padding-right:1rem;white-space:pre-wrap;">${t.example}</div>
-            <div style="font-size:0.7rem;color:#007a40;line-height:1.55;">${t.why}</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border-bottom:1px solid var(--border);padding:0.7rem 0;">
+            <div style="font-size:0.74rem;font-weight:600;color:var(--text-primary);padding-right:1rem;">${t.title}</div>
+            <div style="font-family:monospace;font-size:0.67rem;color:var(--text-muted);line-height:1.6;padding-right:1rem;white-space:pre-wrap;">${t.example}</div>
+            <div style="font-size:0.7rem;color:var(--green);line-height:1.55;">${t.why}</div>
           </div>`).join('')}
       </div>
 
       <!-- DS context files for Claude / cursor -->
       <div class="dops-section-label">${isFr ? 'Contexte design system pour l\'IA' : 'Design system context for AI'}</div>
-      <p style="font-size:0.75rem;color:#75633F;line-height:1.7;margin-bottom:1.25rem;">${isFr
-        ? 'Fichiers .md à glisser dans Claude, Cursor ou votre fichier <code style="font-family:monospace;font-size:0.72rem;background:#F1E8D7;color:#75633F;padding:0.1em 0.3em;border-radius:0.2rem;">.cursorrules</code> pour fournir du contexte design system lors de la génération d\'interfaces.'
-        : 'Drop these .md files into Claude, Cursor or your <code style="font-family:monospace;font-size:0.72rem;background:#F1E8D7;color:#75633F;padding:0.1em 0.3em;border-radius:0.2rem;">.cursorrules</code> to provide design system context when generating UI.'
+      <p style="font-size:0.75rem;color:var(--text-muted);line-height:1.7;margin-bottom:1.25rem;">${isFr
+        ? 'Fichiers .md à glisser dans Claude, Cursor ou votre fichier <code style="font-family:monospace;font-size:0.72rem;background:var(--bg-card-muted);color:var(--text-muted);padding:0.1em 0.3em;border-radius:0.2rem;">.cursorrules</code> pour fournir du contexte design system lors de la génération d\'interfaces.'
+        : 'Drop these .md files into Claude, Cursor or your <code style="font-family:monospace;font-size:0.72rem;background:var(--bg-card-muted);color:var(--text-muted);padding:0.1em 0.3em;border-radius:0.2rem;">.cursorrules</code> to provide design system context when generating UI.'
       }</p>
 
       ${(() => {
@@ -2468,7 +2468,7 @@
         ${p.aiTools.map(tool => `
           <details class="ai-tool-details">
             <summary class="ai-tool-summary">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#CB1617" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 8 16 12 12 16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 8 16 12 12 16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
               ${tool.title[lang]}
             </summary>
             <div class="ai-tool-body">
@@ -2481,7 +2481,7 @@
   /* ══════════════════════════════════════════
      CAREERS (dynamic render)
      ══════════════════════════════════════════ */
-  const _SVG = `xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C1121F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"`;
+  const _SVG = `xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"`;
   const CAREER_ICONS = {
     role:       `<svg ${_SVG}><circle cx="12" cy="12" r="9"/><path d="M12 17v.01"/><path d="M12 13.5a1.5 1.5 0 0 1 1-1.5 2.6 2.6 0 1 0 -3 -4"/></svg>`,
     fit:        `<svg ${_SVG}><path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"/><path d="M6 21v-2a4 4 0 0 1 4 -4h4"/><path d="M15 19l2 2l4 -4"/></svg>`,
@@ -2635,9 +2635,9 @@
       { step: '6', title: 'Ship & iterate', who: 'shared', whoLabel: 'Designer ships · PO & Designer iterate', desc: 'The designer finalises and ships the spec. The next iteration restarts the cycle — PO and designer together.' },
     ];
 
-    const whoColor  = w => w === 'designer' ? '#2859a8' : w === 'shared' ? '#6b4ba8' : '#007a40';
-    const whoBg     = w => w === 'designer' ? '#EEF3FD' : w === 'shared' ? '#F3F0F8' : '#E8F8EE';
-    const whoBorder = w => w === 'designer' ? '#b3c8f0' : w === 'shared' ? '#cebfe8' : '#b3e6c8';
+    const whoColor  = w => w === 'designer' ? 'var(--blue)' : w === 'shared' ? 'var(--purple)' : 'var(--green)';
+    const whoBg     = w => w === 'designer' ? 'var(--blue-tint-bg)' : w === 'shared' ? 'var(--purple-tint-bg)' : 'var(--green-tint-bg)';
+    const whoBorder = w => w === 'designer' ? 'rgba(111,160,224,.35)' : w === 'shared' ? 'rgba(169,140,224,.35)' : 'rgba(46,158,91,.35)';
 
     /* SVG flow diagram for the 6-step workflow */
     const svgW = 720, svgH = 320;
@@ -2660,20 +2660,20 @@
       if (sameRow) {
         const x1 = f.x + boxW, y1 = f.y + boxH / 2;
         const x2 = t.x,        y2 = t.y + boxH / 2;
-        return `<line x1="${x1}" y1="${y1}" x2="${x2 - 6}" y2="${y2}" stroke="#E6D7BA" stroke-width="1.5" marker-end="url(#arr)"/>`;
+        return `<line x1="${x1}" y1="${y1}" x2="${x2 - 6}" y2="${y2}" stroke="var(--border)" stroke-width="1.5" marker-end="url(#arr)"/>`;
       } else {
         /* last in row → first in next row: elbow down then across */
         const x1 = f.x + boxW / 2, y1 = f.y + boxH;
         const mx = f.x + boxW / 2, my = f.y + boxH + gapY / 2;
         const x2 = t.x + boxW / 2, y2 = t.y;
-        return `<polyline points="${x1},${y1} ${mx},${my} ${x2},${my} ${x2},${y2 - 6}" fill="none" stroke="#E6D7BA" stroke-width="1.5" marker-end="url(#arr)"/>`;
+        return `<polyline points="${x1},${y1} ${mx},${my} ${x2},${my} ${x2},${y2 - 6}" fill="none" stroke="var(--border)" stroke-width="1.5" marker-end="url(#arr)"/>`;
       }
     };
 
     const wfSvg = `<svg viewBox="0 0 ${svgW} ${svgH}" width="100%" style="max-width:${svgW}px;display:block;margin:0 auto 0.5rem;overflow:visible;" role="img" aria-label="${isFr ? 'Workflow IA en 6 étapes' : '6-step AI workflow'}">
       <defs>
         <marker id="arr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-          <path d="M0,0 L6,3 L0,6 Z" fill="#C6A669"/>
+          <path d="M0,0 L6,3 L0,6 Z" fill="var(--gold)"/>
         </marker>
       </defs>
       ${[0,1,2,3,4].map(i => arrow(i, i+1)).join('')}
@@ -2682,10 +2682,10 @@
         const c = whoColor(w.who), bg = whoBg(w.who), bd = whoBorder(w.who);
         const lines = w.title.match(/.{1,22}(\s|$)/g) || [w.title];
         return `<g>
-          <rect x="${x}" y="${y}" width="${boxW}" height="${boxH}" rx="8" fill="#FBF7F0" stroke="#E6D7BA" stroke-width="1"/>
+          <rect x="${x}" y="${y}" width="${boxW}" height="${boxH}" rx="8" fill="var(--bg-card)" stroke="var(--border)" stroke-width="1"/>
           <rect x="${x}" y="${y}" width="${boxW}" height="4" rx="4" fill="${c}" opacity="0.5"/>
-          <text x="${x+14}" y="${y+22}" font-family="Georgia,serif" font-size="18" font-weight="700" fill="#211C12">${w.step}</text>
-          ${lines.slice(0,2).map((l,li) => `<text x="${x+14}" y="${y+42+li*15}" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="10.5" font-weight="600" fill="#211C12">${l.trim()}</text>`).join('')}
+          <text x="${x+14}" y="${y+22}" font-family="Georgia,serif" font-size="18" font-weight="700" fill="var(--text-primary)">${w.step}</text>
+          ${lines.slice(0,2).map((l,li) => `<text x="${x+14}" y="${y+42+li*15}" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="10.5" font-weight="600" fill="var(--text-primary)">${l.trim()}</text>`).join('')}
           <rect x="${x+14}" y="${y+boxH-24}" width="${boxW-28}" height="16" rx="8" fill="${bg}" stroke="${bd}" stroke-width="0.75"/>
           <text x="${x+boxW/2}" y="${y+boxH-13}" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="8" font-weight="600" fill="${c}">${w.whoLabel}</text>
         </g>`;
@@ -2694,7 +2694,7 @@
 
     /* Tooltip / desc list below the SVG (compact) */
     const wfDesc = `<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.4rem 0.75rem;margin-bottom:1.5rem;">
-      ${workflow.map(w => `<div style="font-size:0.72rem;color:#75633F;line-height:1.5;"><strong style="color:#211C12;display:block;margin-bottom:0.1rem;">${w.step}. ${w.title}</strong>${w.desc}</div>`).join('')}
+      ${workflow.map(w => `<div style="font-size:0.72rem;color:var(--text-muted);line-height:1.5;"><strong style="color:var(--text-primary);display:block;margin-bottom:0.1rem;">${w.step}. ${w.title}</strong>${w.desc}</div>`).join('')}
     </div>`;
 
     const bottleneck = isFr
@@ -2705,7 +2705,7 @@
     const ptypes = d.projectTypes[lang];
 
     const aiTag = ai => {
-      const labels = { none: ['Figma', '#75633F'], optional: [isFr ? 'Figma ou IA' : 'Figma or AI', '#1a472a'], full: ['AI', '#CB1617'] };
+      const labels = { none: ['Figma', 'var(--text-muted)'], optional: [isFr ? 'Figma ou IA' : 'Figma or AI', 'var(--green)'], full: ['AI', 'var(--red)'] };
       const [txt, col] = labels[ai];
       return `<span style="font-size:0.56rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:${col};background:transparent;border:1px solid ${col};padding:0.15rem 0.45rem;">${txt}</span>`;
     };
@@ -2717,8 +2717,8 @@
       if (pt.id !== 'iteration') {
         return `<div style="display:flex;flex-direction:column;gap:0.3rem;">
           ${pt.steps.map((s, i) => `<div style="display:flex;align-items:baseline;gap:0.4rem;">
-            <span style="font-size:0.6rem;color:#C6A669;font-weight:700;flex-shrink:0;">${i + 1}</span>
-            ${stepLine(s, '#464747')}
+            <span style="font-size:0.6rem;color:var(--gold);font-weight:700;flex-shrink:0;">${i + 1}</span>
+            ${stepLine(s, 'var(--text-muted)')}
           </div>`).join('')}
         </div>`;
       }
@@ -2726,36 +2726,36 @@
       const f = pt.fork;
       return `<div style="display:flex;flex-direction:column;gap:0.3rem;margin-bottom:0.6rem;">
         ${pt.steps.map((s, i) => `<div style="display:flex;align-items:baseline;gap:0.4rem;">
-          <span style="font-size:0.6rem;color:#C6A669;font-weight:700;flex-shrink:0;">${i + 1}</span>
-          ${stepLine(s, '#464747')}
+          <span style="font-size:0.6rem;color:var(--gold);font-weight:700;flex-shrink:0;">${i + 1}</span>
+          ${stepLine(s, 'var(--text-muted)')}
         </div>`).join('')}
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;">
         <div style="border-left:2px solid ${f.yes.color};padding-left:0.6rem;">
           <div style="font-size:0.58rem;font-weight:700;color:${f.yes.color};text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.3rem;">${f.yes.label}</div>
-          ${f.yes.path.map(s => `<div style="font-size:0.67rem;color:#464747;line-height:1.5;">${s}</div>`).join('')}
+          ${f.yes.path.map(s => `<div style="font-size:0.67rem;color:var(--text-muted);line-height:1.5;">${s}</div>`).join('')}
         </div>
         <div style="border-left:2px solid ${f.no.color};padding-left:0.6rem;">
           <div style="font-size:0.58rem;font-weight:700;color:${f.no.color};text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.3rem;">${f.no.label}</div>
-          ${f.no.path.map(s => `<div style="font-size:0.67rem;color:#464747;line-height:1.5;">${s}</div>`).join('')}
+          ${f.no.path.map(s => `<div style="font-size:0.67rem;color:var(--text-muted);line-height:1.5;">${s}</div>`).join('')}
         </div>
       </div>`;
     };
 
     const ptypesBlock = `
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;margin-bottom:2rem;border-top:2px solid #211C12;">
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;margin-bottom:2rem;border-top:2px solid var(--text-primary);">
         ${ptypes.map(pt => `
-          <div style="border-left:3px solid ${pt.color};border-right:1px solid #E6D7BA;border-bottom:1px solid #E6D7BA;padding:1.1rem 1.1rem 1rem;display:flex;flex-direction:column;gap:0.6rem;background:#FBF7F0;">
+          <div style="border-left:3px solid ${pt.color};border-right:1px solid var(--border);border-bottom:1px solid var(--border);padding:1.1rem 1.1rem 1rem;display:flex;flex-direction:column;gap:0.6rem;background:var(--bg-card);">
             <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:0.5rem;">
-              <span style="font-family:Georgia,serif;font-size:0.82rem;font-weight:700;color:#211C12;line-height:1.3;">${pt.label}</span>
+              <span style="font-family:Georgia,serif;font-size:0.82rem;font-weight:700;color:var(--text-primary);line-height:1.3;">${pt.label}</span>
               ${aiTag(pt.aiUse)}
             </div>
-            <div style="font-size:0.7rem;color:#75633F;line-height:1.6;">${pt.trigger}</div>
-            <div style="font-size:0.67rem;color:#464747;line-height:1.5;"><span style="font-weight:600;color:#75633F;">${isFr ? 'Qui — ' : 'Who — '}</span>${pt.who}</div>
-            <div style="border-top:1px solid #E6D7BA;padding-top:0.65rem;margin-top:auto;">
+            <div style="font-size:0.7rem;color:var(--text-muted);line-height:1.6;">${pt.trigger}</div>
+            <div style="font-size:0.67rem;color:var(--text-muted);line-height:1.5;"><span style="font-weight:600;color:var(--text-muted);">${isFr ? 'Qui — ' : 'Who — '}</span>${pt.who}</div>
+            <div style="border-top:1px solid var(--border);padding-top:0.65rem;margin-top:auto;">
               ${renderPtypeSteps(pt)}
             </div>
-            ${pt.note ? `<div style="font-size:0.63rem;color:#75633F;line-height:1.55;font-style:italic;">${pt.note}</div>` : ''}
+            ${pt.note ? `<div style="font-size:0.63rem;color:var(--text-muted);line-height:1.55;font-style:italic;">${pt.note}</div>` : ''}
           </div>`).join('')}
       </div>`;
 
@@ -2764,39 +2764,39 @@
     /* Reusable helpers */
     const hArrow = () =>
       `<div style="display:flex;align-items:center;gap:0;flex-shrink:0;width:32px;">
-        <div style="flex:1;height:1.5px;background:#C6A669;"></div>
-        <div style="width:0;height:0;border-top:4px solid transparent;border-bottom:4px solid transparent;border-left:5px solid #C6A669;"></div>
+        <div style="flex:1;height:1.5px;background:var(--gold);"></div>
+        <div style="width:0;height:0;border-top:4px solid transparent;border-bottom:4px solid transparent;border-left:5px solid var(--gold);"></div>
       </div>`;
 
     const tag = (txt, color) =>
       `<span style="display:inline-block;font-size:0.52rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:${color};margin-bottom:0.35rem;">${txt}</span>`;
 
     const stageCard = (title, titleColor, bdColor, bgColor, body, footer = '') =>
-      `<div style="border-left:2px solid ${bdColor};background:#fff;padding:0.85rem 1rem;flex:1;min-width:0;display:flex;flex-direction:column;gap:0.45rem;">
+      `<div style="border-left:2px solid ${bdColor};background:var(--bg-card);padding:0.85rem 1rem;flex:1;min-width:0;display:flex;flex-direction:column;gap:0.45rem;">
         <div style="font-size:0.68rem;font-weight:700;color:${titleColor};line-height:1.3;letter-spacing:0.02em;">${title}</div>
         <div style="flex:1;">${body}</div>
-        ${footer ? `<div style="border-top:1px solid #E6D7BA;padding-top:0.45rem;margin-top:0.25rem;">${footer}</div>` : ''}
+        ${footer ? `<div style="border-top:1px solid var(--border);padding-top:0.45rem;margin-top:0.25rem;">${footer}</div>` : ''}
       </div>`;
 
     const pill2 = (label, bg, color, sub = '') =>
       `<div style="border-left:2px solid ${color};padding:0.25rem 0 0.25rem 0.55rem;margin-bottom:0.3rem;">
-        <div style="font-size:0.65rem;font-weight:600;color:#211C12;line-height:1.3;">${label}</div>
-        ${sub ? `<div style="font-size:0.57rem;color:#75633F;line-height:1.35;margin-top:0.05rem;">${sub}</div>` : ''}
+        <div style="font-size:0.65rem;font-weight:600;color:var(--text-primary);line-height:1.3;">${label}</div>
+        ${sub ? `<div style="font-size:0.57rem;color:var(--text-muted);line-height:1.35;margin-top:0.05rem;">${sub}</div>` : ''}
       </div>`;
 
-    const step = (n, txt, color = '#464747') =>
+    const step = (n, txt, color = 'var(--text-muted)') =>
       `<div style="display:flex;gap:0.4rem;align-items:baseline;margin-bottom:0.3rem;">
-        <span style="font-size:0.58rem;font-weight:700;color:#75633F;flex-shrink:0;min-width:0.8rem;">${n}.</span>
+        <span style="font-size:0.58rem;font-weight:700;color:var(--text-muted);flex-shrink:0;min-width:0.8rem;">${n}.</span>
         <span style="font-size:0.65rem;color:${color};line-height:1.5;">${txt}</span>
       </div>`;
 
     /* ── Lane builder — 4 stages in a horizontal flex row ── */
     const lane = (laneAccent, laneBg, laneTitle, laneSubtitle, stages) =>
-      `<div style="border:1px solid #E6D7BA;background:#FDFAF5;overflow:hidden;margin-bottom:1rem;">
+      `<div style="border:1px solid var(--border);background:var(--bg-card-muted);overflow:hidden;margin-bottom:1rem;">
         <!-- Lane header -->
-        <div style="border-bottom:1px solid #E6D7BA;padding:0.6rem 1rem;display:flex;align-items:baseline;gap:0.75rem;">
-          <span style="font-size:0.72rem;font-weight:700;color:#211C12;letter-spacing:-0.01em;">${laneTitle}</span>
-          <span style="font-size:0.6rem;color:#75633F;">${laneSubtitle}</span>
+        <div style="border-bottom:1px solid var(--border);padding:0.6rem 1rem;display:flex;align-items:baseline;gap:0.75rem;">
+          <span style="font-size:0.72rem;font-weight:700;color:var(--text-primary);letter-spacing:-0.01em;">${laneTitle}</span>
+          <span style="font-size:0.6rem;color:var(--text-muted);">${laneSubtitle}</span>
         </div>
         <!-- Stages row -->
         <div style="display:flex;align-items:stretch;padding:0.85rem;gap:0;min-height:0;">
@@ -2809,92 +2809,92 @@
 
     /* ── Lane 1: Collaboration / New creation ── */
     const l1s1body = isFr
-      ? `${tag('Product Owner', '#75633F')}
+      ? `${tag('Product Owner', 'var(--text-muted)')}
          ${step(1, 'Rassemble briefs, notes, transcriptions et données produit')}
          ${step(2, 'Décrit le besoin — brief structuré ou description informelle')}
-         <div style="font-size:0.58rem;font-weight:700;color:#75633F;letter-spacing:0.05em;text-transform:uppercase;margin:0.35rem 0 0.2rem;">Voie A — PO illustre l\'idée</div>
-         ${step('→', 'Génère un premier jet (Claude, v0, Figma Make) · passe la main au designer', '#6b4ba8')}
-         <div style="font-size:0.58rem;font-weight:700;color:#75633F;letter-spacing:0.05em;text-transform:uppercase;margin:0.35rem 0 0.2rem;">Voie B — Designer produit directement</div>
-         ${step('→', 'Travaille dans Figma avec ou sans outil selon le scope', '#2859a8')}
-         ${tag('UX/UI Designer', '#1a472a')}
-         <div style="font-size:0.63rem;color:#464747;line-height:1.45;">${'Affine · aligne DS · valide états & accessibilité · livre la spec'}</div>`
-      : `${tag('Product Owner', '#75633F')}
+         <div style="font-size:0.58rem;font-weight:700;color:var(--text-muted);letter-spacing:0.05em;text-transform:uppercase;margin:0.35rem 0 0.2rem;">Voie A — PO illustre l\'idée</div>
+         ${step('→', 'Génère un premier jet (Claude, v0, Figma Make) · passe la main au designer', 'var(--purple)')}
+         <div style="font-size:0.58rem;font-weight:700;color:var(--text-muted);letter-spacing:0.05em;text-transform:uppercase;margin:0.35rem 0 0.2rem;">Voie B — Designer produit directement</div>
+         ${step('→', 'Travaille dans Figma avec ou sans outil selon le scope', 'var(--blue)')}
+         ${tag('UX/UI Designer', 'var(--green)')}
+         <div style="font-size:0.63rem;color:var(--text-muted);line-height:1.45;">${'Affine · aligne DS · valide états & accessibilité · livre la spec'}</div>`
+      : `${tag('Product Owner', 'var(--text-muted)')}
          ${step(1, 'Gathers briefs, notes, transcripts and product data')}
          ${step(2, 'Describes the need — structured brief or informal description')}
-         <div style="font-size:0.58rem;font-weight:700;color:#75633F;letter-spacing:0.05em;text-transform:uppercase;margin:0.35rem 0 0.2rem;">Path A — PO illustrates the idea</div>
-         ${step('→', 'Generates a first draft (Claude, v0, Figma Make) · hands off to designer', '#6b4ba8')}
-         <div style="font-size:0.58rem;font-weight:700;color:#75633F;letter-spacing:0.05em;text-transform:uppercase;margin:0.35rem 0 0.2rem;">Path B — Designer works directly</div>
-         ${step('→', 'Works in Figma with or without a tool depending on scope', '#2859a8')}
-         ${tag('UX/UI Designer', '#1a472a')}
-         <div style="font-size:0.63rem;color:#464747;line-height:1.45;">${'Refines · aligns DS · validates states & accessibility · ships spec'}</div>`;
+         <div style="font-size:0.58rem;font-weight:700;color:var(--text-muted);letter-spacing:0.05em;text-transform:uppercase;margin:0.35rem 0 0.2rem;">Path A — PO illustrates the idea</div>
+         ${step('→', 'Generates a first draft (Claude, v0, Figma Make) · hands off to designer', 'var(--purple)')}
+         <div style="font-size:0.58rem;font-weight:700;color:var(--text-muted);letter-spacing:0.05em;text-transform:uppercase;margin:0.35rem 0 0.2rem;">Path B — Designer works directly</div>
+         ${step('→', 'Works in Figma with or without a tool depending on scope', 'var(--blue)')}
+         ${tag('UX/UI Designer', 'var(--green)')}
+         <div style="font-size:0.63rem;color:var(--text-muted);line-height:1.45;">${'Refines · aligns DS · validates states & accessibility · ships spec'}</div>`;
 
     const l1s2body =
-      `${pill2('Brand & Aesthetic', '', '#CB1617', isFr ? 'Palette · type · règles visuelles' : 'Palette · type · visual rules')}
-       ${pill2('Design Tokens', '', '#1a472a', isFr ? 'Variables Figma ↔ AppColors Dart · FR/ES' : 'Figma variables ↔ AppColors Dart · FR/ES')}
-       ${pill2('Components & Patterns', '', '#1a472a', isFr ? 'Inventaire DS · variantes · règles d\'usage' : 'DS inventory · variants · usage rules')}
-       ${pill2('Platform Rules', '', '#C6A669', isFr ? 'Flutter · safe area · localisation' : 'Flutter · safe area · localisation')}
-       ${pill2('Copy & Tone', '', '#C6A669', isFr ? 'Formulations positives · tonalité · FR/ES' : 'Positive phrasing · tone · FR/ES')}`;
+      `${pill2('Brand & Aesthetic', '', 'var(--red)', isFr ? 'Palette · type · règles visuelles' : 'Palette · type · visual rules')}
+       ${pill2('Design Tokens', '', 'var(--green)', isFr ? 'Variables Figma ↔ AppColors Dart · FR/ES' : 'Figma variables ↔ AppColors Dart · FR/ES')}
+       ${pill2('Components & Patterns', '', 'var(--green)', isFr ? 'Inventaire DS · variantes · règles d\'usage' : 'DS inventory · variants · usage rules')}
+       ${pill2('Platform Rules', '', 'var(--gold)', isFr ? 'Flutter · safe area · localisation' : 'Flutter · safe area · localisation')}
+       ${pill2('Copy & Tone', '', 'var(--gold)', isFr ? 'Formulations positives · tonalité · FR/ES' : 'Positive phrasing · tone · FR/ES')}`;
 
     const l1s3body =
-      `<div style="font-size:0.58rem;color:#75633F;font-style:italic;margin-bottom:0.5rem;line-height:1.45;">${isFr ? 'Selon le scope — Figma direct ou outil de génération' : 'Depending on scope — Figma direct or generation tool'}</div>
-       ${pill2('Figma', '', '#1a472a', isFr ? 'Conception directe — toujours disponible' : 'Direct design — always available')}
-       ${pill2('Figma MCP', '', '#75633F', isFr ? 'Option : API write access via WebSocket' : 'Option: API write access via WebSocket')}
-       ${pill2('Claude / v0 / Figma Make', '', '#75633F', isFr ? 'Option : génération UI depuis prompt' : 'Option: UI generation from prompt')}`;
+      `<div style="font-size:0.58rem;color:var(--text-muted);font-style:italic;margin-bottom:0.5rem;line-height:1.45;">${isFr ? 'Selon le scope — Figma direct ou outil de génération' : 'Depending on scope — Figma direct or generation tool'}</div>
+       ${pill2('Figma', '', 'var(--green)', isFr ? 'Conception directe — toujours disponible' : 'Direct design — always available')}
+       ${pill2('Figma MCP', '', 'var(--text-muted)', isFr ? 'Option : API write access via WebSocket' : 'Option: API write access via WebSocket')}
+       ${pill2('Claude / v0 / Figma Make', '', 'var(--text-muted)', isFr ? 'Option : génération UI depuis prompt' : 'Option: UI generation from prompt')}`;
 
     const l1s4body =
-      `${pill2(isFr ? 'Frames Figma' : 'Figma frames', '', '#211C12', isFr ? 'Générées · à affiner par le designer' : 'Generated · to be refined by designer')}
-       ${pill2('Story UI', '', '#211C12', isFr ? 'Branch 7 · Sent UI ?' : 'Branch 7 · Sent UI?')}
-       ${pill2('UX/UI Designer', '', '#1a472a', isFr ? 'Affine · valide avec PO · livre' : 'Refines · validates with PO · ships')}`;
+      `${pill2(isFr ? 'Frames Figma' : 'Figma frames', '', 'var(--text-primary)', isFr ? 'Générées · à affiner par le designer' : 'Generated · to be refined by designer')}
+       ${pill2('Story UI', '', 'var(--text-primary)', isFr ? 'Branch 7 · Sent UI ?' : 'Branch 7 · Sent UI?')}
+       ${pill2('UX/UI Designer', '', 'var(--green)', isFr ? 'Affine · valide avec PO · livre' : 'Refines · validates with PO · ships')}`;
 
     const lane1 = lane(
-      '#211C12', '#FDFAF5',
+      'var(--text-primary)', 'var(--bg-card-muted)',
       isFr ? 'Collaboration — Nouvelle création' : 'Collaboration — New creation',
       isFr ? 'PO cadre le besoin · Designer produit & affine · livrable Figma' : 'PO frames the need · Designer produces & refines · Figma deliverable',
       [
-        { title: isFr ? 'Acteurs' : 'Actors', titleColor: '#211C12', bd: '#E6D7BA', bg: '#fff', body: l1s1body, arrowLabel: '→' },
-        { title: isFr ? 'Couche connaissance (.md)' : 'Knowledge layer (.md)', titleColor: '#1a472a', bd: '#1a472a', bg: '#fff', body: l1s2body, arrowLabel: '→' },
-        { title: isFr ? 'Outils & infrastructure' : 'Tools & infrastructure', titleColor: '#75633F', bd: '#C6A669', bg: '#fff', body: l1s3body, arrowLabel: '→' },
-        { title: 'Outputs', titleColor: '#CB1617', bd: '#CB1617', bg: '#fff', body: l1s4body },
+        { title: isFr ? 'Acteurs' : 'Actors', titleColor: 'var(--text-primary)', bd: 'var(--border)', bg: 'var(--bg-card)', body: l1s1body, arrowLabel: '→' },
+        { title: isFr ? 'Couche connaissance (.md)' : 'Knowledge layer (.md)', titleColor: 'var(--green)', bd: 'var(--green)', bg: 'var(--bg-card)', body: l1s2body, arrowLabel: '→' },
+        { title: isFr ? 'Outils & infrastructure' : 'Tools & infrastructure', titleColor: 'var(--text-muted)', bd: 'var(--gold)', bg: 'var(--bg-card)', body: l1s3body, arrowLabel: '→' },
+        { title: 'Outputs', titleColor: 'var(--red)', bd: 'var(--red)', bg: 'var(--bg-card)', body: l1s4body },
       ]
     );
 
     /* ── Lane 2: Code-focused / Small iterations ── */
     const l2s1body = isFr
-      ? `${tag('Product Owner', '#75633F')}
+      ? `${tag('Product Owner', 'var(--text-muted)')}
          ${step(1, 'Décrit la modification souhaitée (variante, bug, ajustement)')}
          ${step(2, 'Partage le contexte : composant existant, état, comportement attendu')}
-         ${tag('UX/UI Designer', '#1a472a')}
-         <div style="font-size:0.63rem;color:#464747;line-height:1.45;">${'Modifie dans Figma · utilise un outil si ça fait gagner du temps · valide · livre'}</div>`
-      : `${tag('Product Owner', '#75633F')}
+         ${tag('UX/UI Designer', 'var(--green)')}
+         <div style="font-size:0.63rem;color:var(--text-muted);line-height:1.45;">${'Modifie dans Figma · utilise un outil si ça fait gagner du temps · valide · livre'}</div>`
+      : `${tag('Product Owner', 'var(--text-muted)')}
          ${step(1, 'Describes the desired change (variant, bug, adjustment)')}
          ${step(2, 'Shares context: existing component, state, expected behaviour')}
-         ${tag('UX/UI Designer', '#1a472a')}
-         <div style="font-size:0.63rem;color:#464747;line-height:1.45;">${'Edits in Figma · uses a tool if it saves time · validates · ships'}</div>`;
+         ${tag('UX/UI Designer', 'var(--green)')}
+         <div style="font-size:0.63rem;color:var(--text-muted);line-height:1.45;">${'Edits in Figma · uses a tool if it saves time · validates · ships'}</div>`;
 
     const l2s2body =
-      `${pill2(isFr ? 'Bibliothèque composants (code)' : 'Component library (code)', '', '#75633F', 'Storybook · StoryUI')}
-       ${pill2('Skills PdF Markdown', '', '#1a472a', isFr ? 'Conventions · règles DS · patterns' : 'Conventions · DS rules · patterns')}
-       ${pill2('Code Connect', '', '#1a472a', isFr ? 'Mapping Figma ↔ implémentations' : 'Figma ↔ code implementation mapping')}`;
+      `${pill2(isFr ? 'Bibliothèque composants (code)' : 'Component library (code)', '', 'var(--text-muted)', 'Storybook · StoryUI')}
+       ${pill2('Skills PdF Markdown', '', 'var(--green)', isFr ? 'Conventions · règles DS · patterns' : 'Conventions · DS rules · patterns')}
+       ${pill2('Code Connect', '', 'var(--green)', isFr ? 'Mapping Figma ↔ implémentations' : 'Figma ↔ code implementation mapping')}`;
 
     const l2s3body =
-      `<div style="font-size:0.58rem;color:#75633F;font-style:italic;margin-bottom:0.5rem;line-height:1.45;">${isFr ? 'Figma suffit souvent — outils optionnels si gain de temps' : 'Figma is often enough — tools optional if they save time'}</div>
-       ${pill2('Figma', '', '#1a472a', isFr ? 'Modification directe — cas le plus fréquent' : 'Direct edit — most common case')}
-       ${pill2('Figma MCP', '', '#75633F', isFr ? 'Option : plugin bridge · API write access' : 'Option: plugin bridge · API write access')}
-       ${pill2('Trantor / Claude', '', '#75633F', isFr ? 'Option : infrastructure locale' : 'Option: local infrastructure')}`;
+      `<div style="font-size:0.58rem;color:var(--text-muted);font-style:italic;margin-bottom:0.5rem;line-height:1.45;">${isFr ? 'Figma suffit souvent — outils optionnels si gain de temps' : 'Figma is often enough — tools optional if they save time'}</div>
+       ${pill2('Figma', '', 'var(--green)', isFr ? 'Modification directe — cas le plus fréquent' : 'Direct edit — most common case')}
+       ${pill2('Figma MCP', '', 'var(--text-muted)', isFr ? 'Option : plugin bridge · API write access' : 'Option: plugin bridge · API write access')}
+       ${pill2('Trantor / Claude', '', 'var(--text-muted)', isFr ? 'Option : infrastructure locale' : 'Option: local infrastructure')}`;
 
     const l2s4body =
-      `${pill2(isFr ? 'Livrable handoff' : 'Handoff deliverable', '', '#CB1617', isFr ? 'Figma · specs · annotations · update Storybook ?' : 'Figma · specs · annotations · update Storybook?')}
-       ${pill2(isFr ? 'Code production' : 'Production code', '', '#211C12', 'Flutter · Drupal · DSI')}`;
+      `${pill2(isFr ? 'Livrable handoff' : 'Handoff deliverable', '', 'var(--red)', isFr ? 'Figma · specs · annotations · update Storybook ?' : 'Figma · specs · annotations · update Storybook?')}
+       ${pill2(isFr ? 'Code production' : 'Production code', '', 'var(--text-primary)', 'Flutter · Drupal · DSI')}`;
 
     const lane2 = lane(
-      '#211C12', '#FDFAF5',
+      'var(--text-primary)', 'var(--bg-card-muted)',
       isFr ? 'Code-focused — Itération UI existante' : 'Code-focused — Existing UI iteration',
       isFr ? 'Modification ciblée · outils au choix · livrable code' : 'Targeted change · tools of choice · code deliverable',
       [
-        { title: isFr ? 'Acteurs' : 'Actors', titleColor: '#211C12', bd: '#E6D7BA', bg: '#fff', body: l2s1body, arrowLabel: '→' },
-        { title: isFr ? 'Couche connaissance (.md)' : 'Knowledge layer (.md)', titleColor: '#1a472a', bd: '#1a472a', bg: '#fff', body: l2s2body, arrowLabel: '→' },
-        { title: isFr ? 'Outils & infrastructure' : 'Tools & infrastructure', titleColor: '#75633F', bd: '#C6A669', bg: '#fff', body: l2s3body, arrowLabel: '→' },
-        { title: 'Outputs', titleColor: '#CB1617', bd: '#CB1617', bg: '#fff', body: l2s4body },
+        { title: isFr ? 'Acteurs' : 'Actors', titleColor: 'var(--text-primary)', bd: 'var(--border)', bg: 'var(--bg-card)', body: l2s1body, arrowLabel: '→' },
+        { title: isFr ? 'Couche connaissance (.md)' : 'Knowledge layer (.md)', titleColor: 'var(--green)', bd: 'var(--green)', bg: 'var(--bg-card)', body: l2s2body, arrowLabel: '→' },
+        { title: isFr ? 'Outils & infrastructure' : 'Tools & infrastructure', titleColor: 'var(--text-muted)', bd: 'var(--gold)', bg: 'var(--bg-card)', body: l2s3body, arrowLabel: '→' },
+        { title: 'Outputs', titleColor: 'var(--red)', bd: 'var(--red)', bg: 'var(--bg-card)', body: l2s4body },
       ]
     );
 
@@ -2903,10 +2903,10 @@
         ${lane1}
         ${lane2}
         <!-- DSI/Dev shared footer -->
-        <div style="border-top:1px solid #E6D7BA;padding:0.65rem 1rem;display:flex;align-items:center;gap:0.75rem;">
-          <span style="font-size:0.65rem;font-weight:700;color:#211C12;white-space:nowrap;">DSI / Dev</span>
-          <svg width="16" height="10" viewBox="0 0 16 10" style="flex-shrink:0;"><line x1="0" y1="5" x2="10" y2="5" stroke="#C6A669" stroke-width="1.5"/><path d="M8,2 L14,5 L8,8" stroke="#C6A669" stroke-width="1.5" fill="none"/></svg>
-          <span style="font-size:0.65rem;color:#75633F;line-height:1.55;">${isFr ? 'Accède aux Skills PdF + à la Bibliothèque de composants (code) · reçoit le livrable handoff · implémente le code output' : 'Accesses PdF Skills + Component library (code) · receives the handoff deliverable · implements the code output'}</span>
+        <div style="border-top:1px solid var(--border);padding:0.65rem 1rem;display:flex;align-items:center;gap:0.75rem;">
+          <span style="font-size:0.65rem;font-weight:700;color:var(--text-primary);white-space:nowrap;">DSI / Dev</span>
+          <svg width="16" height="10" viewBox="0 0 16 10" style="flex-shrink:0;"><line x1="0" y1="5" x2="10" y2="5" stroke="var(--gold)" stroke-width="1.5"/><path d="M8,2 L14,5 L8,8" stroke="var(--gold)" stroke-width="1.5" fill="none"/></svg>
+          <span style="font-size:0.65rem;color:var(--text-muted);line-height:1.55;">${isFr ? 'Accède aux Skills PdF + à la Bibliothèque de composants (code) · reçoit le livrable handoff · implémente le code output' : 'Accesses PdF Skills + Component library (code) · receives the handoff deliverable · implements the code output'}</span>
         </div>
       </div>`;
 
@@ -2959,26 +2959,26 @@
         ];
 
         return `
-          <p style="font-size:0.72rem;color:#75633F;line-height:1.7;margin-bottom:0.85rem;">${isFr
-            ? 'Glisser ces fichiers dans Claude, Cursor ou votre <code style="font-family:monospace;font-size:0.68rem;background:#F1E8D7;color:#75633F;padding:0.1em 0.3em;border-radius:0.2rem;">.cursorrules</code> pour fournir le contexte DS lors de la génération.'
-            : 'Drop these files into Claude, Cursor or your <code style="font-family:monospace;font-size:0.68rem;background:#F1E8D7;color:#75633F;padding:0.1em 0.3em;border-radius:0.2rem;">.cursorrules</code> to provide DS context when generating UI.'
+          <p style="font-size:0.72rem;color:var(--text-muted);line-height:1.7;margin-bottom:0.85rem;">${isFr
+            ? 'Glisser ces fichiers dans Claude, Cursor ou votre <code style="font-family:monospace;font-size:0.68rem;background:var(--bg-card-muted);color:var(--text-muted);padding:0.1em 0.3em;border-radius:0.2rem;">.cursorrules</code> pour fournir le contexte DS lors de la génération.'
+            : 'Drop these files into Claude, Cursor or your <code style="font-family:monospace;font-size:0.68rem;background:var(--bg-card-muted);color:var(--text-muted);padding:0.1em 0.3em;border-radius:0.2rem;">.cursorrules</code> to provide DS context when generating UI.'
           }</p>
 
           <div style="display:flex;flex-direction:column;gap:0.5rem;margin-bottom:0.75rem;">
             ${pFiles.map(f => `
-              <div style="display:flex;align-items:center;gap:0.75rem;background:#FBF7F0;border:1.5px solid #C6A669;border-radius:0.5rem;padding:0.6rem 0.85rem;">
-                <span style="font-size:0.55rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#C6A669;background:#FBF7F0;border:1px solid #C6A669;border-radius:999px;padding:0.1rem 0.45rem;white-space:nowrap;">${f.tag}</span>
+              <div style="display:flex;align-items:center;gap:0.75rem;background:var(--bg-card);border:1.5px solid var(--gold);border-radius:0.5rem;padding:0.6rem 0.85rem;">
+                <span style="font-size:0.55rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold);background:var(--bg-card);border:1px solid var(--gold);border-radius:999px;padding:0.1rem 0.45rem;white-space:nowrap;">${f.tag}</span>
                 <div style="flex:1;min-width:0;">
-                  <div style="font-size:0.7rem;font-weight:700;color:#211C12;margin-bottom:0.1rem;">${f.label}</div>
-                  <div style="font-size:0.62rem;color:#75633F;line-height:1.4;">${f.desc}</div>
+                  <div style="font-size:0.7rem;font-weight:700;color:var(--text-primary);margin-bottom:0.1rem;">${f.label}</div>
+                  <div style="font-size:0.62rem;color:var(--text-muted);line-height:1.4;">${f.desc}</div>
                 </div>
-                <a href="${f.href}" download style="display:flex;align-items:center;gap:0.3rem;font-size:0.62rem;font-weight:700;color:#C6A669;text-decoration:none;white-space:nowrap;flex-shrink:0;">${dlIcon} ${f.label}</a>
+                <a href="${f.href}" download style="display:flex;align-items:center;gap:0.3rem;font-size:0.62rem;font-weight:700;color:var(--gold);text-decoration:none;white-space:nowrap;flex-shrink:0;">${dlIcon} ${f.label}</a>
               </div>`).join('')}
           </div>
 
           <div style="display:flex;flex-wrap:wrap;gap:0.35rem;margin-bottom:1.5rem;">
             ${oFiles.map(f => `
-              <a href="${f.href}" download style="display:inline-flex;align-items:center;gap:0.25rem;font-size:0.63rem;font-weight:600;color:#75633F;background:#F1E8D7;border:1px solid #E6D7BA;border-radius:999px;padding:0.2rem 0.65rem;text-decoration:none;">${dlIcon} ${f.label}</a>`).join('')}
+              <a href="${f.href}" download style="display:inline-flex;align-items:center;gap:0.25rem;font-size:0.63rem;font-weight:600;color:var(--text-muted);background:var(--bg-card-muted);border:1px solid var(--border);border-radius:999px;padding:0.2rem 0.65rem;text-decoration:none;">${dlIcon} ${f.label}</a>`).join('')}
           </div>`;
       })()}
 
@@ -2988,7 +2988,7 @@
         ${phases.slice(0,2).map(p => `
           <div class="dops-phase">
             <div class="dops-phase-header">
-              <div class="dops-phase-num" style="background:${p.number==='0'?'#1a472a':'#211C12'};">${p.number}</div>
+              <div class="dops-phase-num" style="background:${p.number==='0'?'var(--green)':'var(--text-primary)'};">${p.number}</div>
               <div class="dops-phase-title">${p.title}</div>
               <span class="dops-status-badge ${statusClass(p.status)}">${p.statusLabel}</span>
             </div>
@@ -3005,7 +3005,7 @@
         ${phases.slice(2).map(p => `
           <div class="dops-phase">
             <div class="dops-phase-header">
-              <div class="dops-phase-num" style="background:${p.number==='2'?'#211C12':'#CB1617'};">${p.number}</div>
+              <div class="dops-phase-num" style="background:${p.number==='2'?'var(--text-primary)':'var(--red)'};">${p.number}</div>
               <div class="dops-phase-title">${p.title}</div>
               <span class="dops-status-badge ${statusClass(p.status)}">${p.statusLabel}</span>
             </div>
@@ -3019,19 +3019,19 @@
       <!-- Slide 4 — Horizon 2027: Governance + Metrics + Automation + Flywheel -->
       <div class="dops-section-label">${isFr ? 'Horizon 2027 — Gouvernance, métriques & automatisation' : 'Horizon 2027 — Governance, metrics & automation'}</div>
 
-      <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:#1a472a;margin-bottom:0.5rem;">${isFr?'Rituels':'Rituals'}</div>
+      <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:var(--green);margin-bottom:0.5rem;">${isFr?'Rituels':'Rituals'}</div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin-bottom:0.75rem;">
         ${d.governance.rituals[lang].map(r => `
-          <div style="background:#FBF7F0;border:1px solid #E6D7BA;border-radius:0.6rem;padding:0.65rem 0.85rem;">
-            <div style="font-size:0.76rem;font-weight:600;color:#211C12;margin-bottom:0.15rem;">${r.title}</div>
-            <div style="font-size:0.7rem;color:#75633F;line-height:1.5;">${r.desc}</div>
+          <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:0.6rem;padding:0.65rem 0.85rem;">
+            <div style="font-size:0.76rem;font-weight:600;color:var(--text-primary);margin-bottom:0.15rem;">${r.title}</div>
+            <div style="font-size:0.7rem;color:var(--text-muted);line-height:1.5;">${r.desc}</div>
           </div>`).join('')}
       </div>
       <div style="display:flex;flex-wrap:wrap;gap:0.3rem;margin-bottom:1rem;">
-        ${d.governance.artefacts[lang].map(a => `<span style="font-size:0.65rem;color:#75633F;background:#F1E8D7;border:1px solid #E6D7BA;border-radius:999px;padding:0.18rem 0.6rem;">→ ${a}</span>`).join('')}
+        ${d.governance.artefacts[lang].map(a => `<span style="font-size:0.65rem;color:var(--text-muted);background:var(--bg-card-muted);border:1px solid var(--border);border-radius:999px;padding:0.18rem 0.6rem;">→ ${a}</span>`).join('')}
       </div>
 
-      <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:#007a40;margin-bottom:0.5rem;">${isFr?'Métriques':'Metrics'}</div>
+      <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:var(--green);margin-bottom:0.5rem;">${isFr?'Métriques':'Metrics'}</div>
       <table class="dops-tooling-table" style="margin-bottom:1rem;">
         <thead><tr>
           <th>${isFr?'Métrique':'Metric'}</th>
@@ -3040,8 +3040,8 @@
         </tr></thead>
         <tbody>
           ${d.metrics.categories[lang].map(cat => `
-            <tr><td colspan="3" style="background:#F1E8D7;font-size:0.58rem;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:#75633F;padding:0.35rem 0.75rem;">${cat.label}</td></tr>
-            ${cat.items.map(item => `<tr><td style="font-weight:600;">${item.name}</td><td>${item.desc}</td><td style="color:#75633F;">${item.tool}</td></tr>`).join('')}
+            <tr><td colspan="3" style="background:var(--bg-card-muted);font-size:0.58rem;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:var(--text-muted);padding:0.35rem 0.75rem;">${cat.label}</td></tr>
+            ${cat.items.map(item => `<tr><td style="font-weight:600;">${item.name}</td><td>${item.desc}</td><td style="color:var(--text-muted);">${item.tool}</td></tr>`).join('')}
           `).join('')}
         </tbody>
       </table>
@@ -3065,41 +3065,41 @@
         id: 'restaurants',
         href: 'prototypes/restaurants.html',
         tag: t.proto_tag_booking,
-        tagColor: '#009A58',
+        tagColor: 'var(--green)',
         title: isFr ? 'Réservation restaurants' : 'Restaurant booking',
         desc: isFr
           ? 'Refonte de la page restaurant de la VEL — sélection de menu, horaires et résumé de commande en temps réel.'
           : 'Redesign of the restaurant page — menu selection, time slots and real-time order summary.',
         thumb: `<svg width="120" height="72" viewBox="0 0 120 72" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="6" y="6" width="48" height="60" rx="6" fill="#FBF7F0" stroke="#C6A669" stroke-width="1.5"/>
-          <rect x="60" y="6" width="54" height="60" rx="6" fill="#FBF7F0" stroke="#C6A669" stroke-width="1.5"/>
-          <rect x="14" y="16" width="32" height="16" rx="3" fill="#E6D7BA"/>
-          <rect x="14" y="38" width="18" height="4" rx="2" fill="#C6A669"/>
-          <rect x="14" y="46" width="26" height="3" rx="1.5" fill="#E6D7BA"/>
-          <rect x="14" y="52" width="20" height="3" rx="1.5" fill="#E6D7BA"/>
-          <rect x="68" y="16" width="38" height="16" rx="3" fill="#B40020" fill-opacity="0.12"/>
-          <rect x="68" y="38" width="18" height="4" rx="2" fill="#B40020"/>
-          <rect x="68" y="46" width="30" height="3" rx="1.5" fill="#E6D7BA"/>
-          <rect x="68" y="52" width="22" height="3" rx="1.5" fill="#E6D7BA"/>
-          <rect x="30" y="62" width="60" height="6" rx="3" fill="#1D1D1B"/>
+          <rect x="6" y="6" width="48" height="60" rx="6" fill="var(--bg-card)" stroke="var(--gold)" stroke-width="1.5"/>
+          <rect x="60" y="6" width="54" height="60" rx="6" fill="var(--bg-card)" stroke="var(--gold)" stroke-width="1.5"/>
+          <rect x="14" y="16" width="32" height="16" rx="3" fill="var(--border)"/>
+          <rect x="14" y="38" width="18" height="4" rx="2" fill="var(--gold)"/>
+          <rect x="14" y="46" width="26" height="3" rx="1.5" fill="var(--border)"/>
+          <rect x="14" y="52" width="20" height="3" rx="1.5" fill="var(--border)"/>
+          <rect x="68" y="16" width="38" height="16" rx="3" fill="var(--crimson)" fill-opacity="0.12"/>
+          <rect x="68" y="38" width="18" height="4" rx="2" fill="var(--crimson)"/>
+          <rect x="68" y="46" width="30" height="3" rx="1.5" fill="var(--border)"/>
+          <rect x="68" y="52" width="22" height="3" rx="1.5" fill="var(--border)"/>
+          <rect x="30" y="62" width="60" height="6" rx="3" fill="var(--bg-card-sunken)"/>
         </svg>`,
       },
     ];
 
     const cardStyle = `
-      background:#fff;
-      border:1.5px solid #C6A669;
+      background:var(--bg-card);
+      border:1.5px solid var(--gold);
       border-radius:0.75rem;
       overflow:hidden;
       text-decoration:none;
-      color:inherit;
+      color:var(--text-primary);
       display:flex;
       flex-direction:column;
       transition:box-shadow 160ms ease, transform 160ms ease;
       cursor:pointer;
     `;
     const thumbStyle = `
-      background:#F1E8D7;
+      background:var(--bg-card-muted);
       display:flex;
       align-items:center;
       justify-content:center;
@@ -3113,7 +3113,7 @@
       text-transform:uppercase;
       padding:0.2rem 0.55rem;
       border-radius:999px;
-      background:${color}18;
+      background:var(--green-tint-bg);
       color:${color};
       display:inline-block;
       flex-shrink:0;
@@ -3123,15 +3123,15 @@
 
     PROTOTYPES.forEach(p => {
       html += `
-        <a href="${p.href}" style="${cardStyle}" onmouseover="this.style.boxShadow='0 6px 24px #46474733';this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='none';this.style.transform='none'">
+        <a href="${p.href}" style="${cardStyle}" onmouseover="this.style.boxShadow='0 6px 24px rgba(154,154,154,.2)';this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='none';this.style.transform='none'">
           <div style="${thumbStyle}">${p.thumb}</div>
           <div style="padding:0.9rem;display:flex;flex-direction:column;gap:0.4rem;flex:1;">
             <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:0.5rem;">
               <span style="font-weight:700;font-size:0.85rem;line-height:1.3;">${p.title}</span>
               <span style="${tagStyle(p.tagColor)}">${p.tag}</span>
             </div>
-            <p style="font-size:0.76rem;color:#616161;line-height:1.5;margin:0;">${p.desc}</p>
-            <span style="font-size:0.75rem;font-weight:700;color:#B40020;margin-top:auto;padding-top:0.4rem;">${t.proto_open}</span>
+            <p style="font-size:0.76rem;color:var(--text-muted);line-height:1.5;margin:0;">${p.desc}</p>
+            <span style="font-size:0.75rem;font-weight:700;color:var(--crimson);margin-top:auto;padding-top:0.4rem;">${t.proto_open}</span>
           </div>
         </a>`;
     });
@@ -3140,11 +3140,11 @@
     html += `
       <div style="${cardStyle} opacity:0.4; pointer-events:none; cursor:default;">
         <div style="${thumbStyle}">
-          <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" stroke="#C6A669" stroke-width="1.5" stroke-dasharray="4 3"/><path d="M20 12v16M12 20h16" stroke="#C6A669" stroke-width="1.75" stroke-linecap="round"/></svg>
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" stroke="var(--gold)" stroke-width="1.5" stroke-dasharray="4 3"/><path d="M20 12v16M12 20h16" stroke="var(--gold)" stroke-width="1.75" stroke-linecap="round"/></svg>
         </div>
         <div style="padding:0.9rem;">
-          <p style="font-weight:700;font-size:0.85rem;color:#3B311F;">${t.proto_placeholder}</p>
-          <p style="font-size:0.76rem;color:#A18756;margin-top:0.2rem;">${t.proto_placeholder_sub}</p>
+          <p style="font-weight:700;font-size:0.85rem;color:var(--text-primary);">${t.proto_placeholder}</p>
+          <p style="font-size:0.76rem;color:var(--gold-dark);margin-top:0.2rem;">${t.proto_placeholder_sub}</p>
         </div>
       </div>
     `;
