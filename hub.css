@@ -427,10 +427,23 @@
 .resource-type-tool    { background: var(--bg-card-muted); color: var(--text-muted); }
 
 /* Simple link-list panel — used for categories that are just curated
-   link lists (title + URL) rather than description cards. */
+   link lists (title + URL) rather than description cards, grouped
+   into labelled sub-categories (e.g. "Stepper", "Breadcrumb"). */
 .knowledge-panel.link-list {
   flex-direction: column;
-  gap: 0;
+  gap: 1.25rem;
+}
+
+.link-list-group-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+
+.link-list-group-rows {
   background: var(--bg-card);
   border: 1.5px solid var(--border);
   border-radius: 0.65rem;
@@ -471,6 +484,9 @@
   font-size: 0.82rem;
   color: var(--text-muted);
   text-align: center;
+  background: var(--bg-card);
+  border: 1.5px solid var(--border);
+  border-radius: 0.65rem;
 }
 
 .resource-title {
