@@ -434,6 +434,15 @@
   gap: 1.25rem;
 }
 
+.link-list-group-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--gold);
+  margin-bottom: 0.4rem;
+}
+
 .link-list-group-illustration {
   background: var(--bg-card-muted);
   border: 1.5px solid var(--border);
@@ -442,15 +451,6 @@
   margin-bottom: 0.6rem;
   display: flex;
   align-items: center;
-}
-
-.link-list-group-label {
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--gold);
-  margin-bottom: 0.5rem;
 }
 
 .link-list-group-rows {

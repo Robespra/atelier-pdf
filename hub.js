@@ -2057,8 +2057,8 @@
           ${cat.linkList ? (
             cat.groups?.length ? cat.groups.map(g => `
               <div class="link-list-group">
-                ${groupIllustrations[g.label] ? `<div class="link-list-group-illustration">${groupIllustrations[g.label]}</div>` : ''}
                 <div class="link-list-group-label">${g.label}</div>
+                ${groupIllustrations[g.label] ? `<div class="link-list-group-illustration">${groupIllustrations[g.label]}</div>` : ''}
                 <div class="link-list-group-rows">
                   ${g.resources.map(r => `
                     <a href="${r.url}" target="_blank" rel="noopener" class="link-list-row">
