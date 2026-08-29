@@ -434,6 +434,16 @@
   gap: 1.25rem;
 }
 
+.link-list-group-illustration {
+  background: var(--bg-card-muted);
+  border: 1.5px solid var(--border);
+  border-radius: 0.65rem;
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 0.6rem;
+  display: flex;
+  align-items: center;
+}
+
 .link-list-group-label {
   font-size: 0.72rem;
   font-weight: 700;

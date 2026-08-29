@@ -2019,6 +2019,32 @@
       'ui-elements':  { fr: '🧩 Éléments UI',                             en: '🧩 UI Elements' },
     };
 
+    /* Small illustrative diagrams so a group's UI pattern is recognizable
+       at a glance, not just a text label — keyed by group label. */
+    const groupIllustrations = {
+      'Stepper': `<svg width="100%" height="56" viewBox="0 0 240 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="24" cy="28" r="10" fill="var(--gold)" />
+        <path d="M20 28l3 3 6-7" stroke="var(--bg-card)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <line x1="34" y1="28" x2="82" y2="28" stroke="var(--gold)" stroke-width="2"/>
+        <circle cx="92" cy="28" r="10" fill="var(--gold)" />
+        <circle cx="92" cy="28" r="4" fill="var(--bg-card)"/>
+        <line x1="102" y1="28" x2="150" y2="28" stroke="var(--border-strong)" stroke-width="2"/>
+        <circle cx="160" cy="28" r="10" fill="var(--bg-card-muted)" stroke="var(--border-strong)" stroke-width="1.5"/>
+        <text x="160" y="32" font-size="10" font-weight="700" fill="var(--text-muted)" text-anchor="middle">3</text>
+        <line x1="170" y1="28" x2="206" y2="28" stroke="var(--border-strong)" stroke-width="2"/>
+        <circle cx="216" cy="28" r="10" fill="var(--bg-card-muted)" stroke="var(--border-strong)" stroke-width="1.5"/>
+        <text x="216" y="32" font-size="10" font-weight="700" fill="var(--text-muted)" text-anchor="middle">4</text>
+      </svg>`,
+      'Breadcrumb & Checkout': `<svg width="100%" height="56" viewBox="0 0 240 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <text x="12" y="32" font-size="11" font-weight="600" fill="var(--text-muted)">Accueil</text>
+        <path d="M62 22l7 6-7 6" stroke="var(--border-strong)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <text x="78" y="32" font-size="11" font-weight="600" fill="var(--text-muted)">Panier</text>
+        <path d="M124 22l7 6-7 6" stroke="var(--border-strong)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <text x="140" y="32" font-size="11" font-weight="700" fill="var(--gold)">Paiement</text>
+        <path d="M204 22l7 6-7 6" stroke="var(--border-strong)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </svg>`,
+    };
+
     root.innerHTML = `
       <div class="knowledge-sub-tabs">
         ${data.categories.map((cat, i) => `
@@ -2031,6 +2057,7 @@
           ${cat.linkList ? (
             cat.groups?.length ? cat.groups.map(g => `
               <div class="link-list-group">
+                ${groupIllustrations[g.label] ? `<div class="link-list-group-illustration">${groupIllustrations[g.label]}</div>` : ''}
                 <div class="link-list-group-label">${g.label}</div>
                 <div class="link-list-group-rows">
                   ${g.resources.map(r => `
