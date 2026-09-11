@@ -1,6 +1,6 @@
 /* =============================================
-   ATELIER DESIGN — hub.css
-   Dark theme — warm near-black chrome.
+   ATELIER DESIGN: hub.css
+   Dark theme, warm near-black chrome.
    ============================================= */
 
 :root {
@@ -168,13 +168,9 @@
 .ds-card-big-badge {
   display: inline-block;
   width: fit-content;
-  font-size: 0.6rem;
+  font-size: 0.74rem;
   font-weight: 700;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  padding: 0.2rem 0.55rem;
-  border-radius: 999px;
-  border: 1px solid transparent;
+  color: var(--ds-accent, var(--red));
 }
 
 .ds-card-big-name {
@@ -209,7 +205,7 @@
   opacity: 0.88;
 }
 
-/* ---------- Design System cards (legacy — kept for safety) ---------- */
+/* ---------- Design System cards (legacy, kept for safety) ---------- */
 .ds-card-foundation {
   background: var(--bg-card);
   border: 1px solid var(--border);
@@ -229,15 +225,9 @@
 }
 
 .ds-card-foundation .ds-badge {
-  font-size: 0.6rem;
-  font-weight: 600;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
+  font-size: 0.72rem;
+  font-weight: 700;
   color: var(--red);
-  background: rgba(225,58,58,.06);
-  border: 1px solid var(--red-tint-bg);
-  border-radius: 999px;
-  padding: 0.18rem 0.55rem;
   width: fit-content;
 }
 
@@ -287,15 +277,9 @@
 }
 
 .ds-card-product .ds-badge {
-  font-size: 0.6rem;
-  font-weight: 600;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
+  font-size: 0.7rem;
+  font-weight: 700;
   color: var(--text-muted);
-  background: var(--bg-card-muted);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  padding: 0.18rem 0.55rem;
   width: fit-content;
 }
 
@@ -330,11 +314,9 @@
 }
 
 .component-preview-label {
-  font-size: 0.65rem;
+  font-size: 0.78rem;
   font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--text-muted);
+  color: var(--text-primary);
   padding: 0.55rem 1rem;
   border-bottom: 1px solid var(--border);
   background: var(--bg-page);
@@ -411,22 +393,18 @@
 
 .resource-type-badge {
   flex-shrink: 0;
-  padding: 0.2rem 0.55rem;
-  border-radius: 0.35rem;
-  font-size: 0.67rem;
+  font-size: 0.72rem;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
   margin-top: 2px;
 }
 
-.resource-type-book    { background: var(--bg-card-muted); color: var(--text-muted); }
-.resource-type-article { background: var(--green-tint-bg); color: var(--green); }
-.resource-type-site    { background: var(--bg-card-muted); color: var(--text-primary); }
-.resource-type-video   { background: var(--red-tint-bg); color: var(--red); }
-.resource-type-tool    { background: var(--bg-card-muted); color: var(--text-muted); }
+.resource-type-book    { color: var(--text-muted); }
+.resource-type-article { color: var(--green); }
+.resource-type-site    { color: var(--text-primary); }
+.resource-type-video   { color: var(--red); }
+.resource-type-tool    { color: var(--text-muted); }
 
-/* Simple link-list panel — used for categories that are just curated
+/* Simple link-list panel, used for categories that are just curated
    link lists (title + URL) rather than description cards, grouped
    into labelled sub-categories (e.g. "Stepper", "Breadcrumb"). */
 .knowledge-panel.link-list {
@@ -435,10 +413,9 @@
 }
 
 .link-list-group-label {
-  font-size: 0.72rem;
+  font-family: Georgia, serif;
+  font-size: 0.85rem;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
   color: var(--gold);
   margin-bottom: 0.4rem;
 }
@@ -1188,21 +1165,12 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  font-size: 0.6rem;
+  font-family: Georgia, serif;
+  font-size: 0.95rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--text-muted);
+  color: var(--text-primary);
   margin-bottom: 1.25rem;
   margin-top: 0.5rem;
-}
-.dops-section-label::before {
-  content: '';
-  display: block;
-  width: 1.5rem;
-  height: 2px;
-  background: var(--red);
-  flex-shrink: 0;
 }
 .dops-section-label::after {
   content: '';
@@ -1276,19 +1244,15 @@
 }
 
 .dops-status-badge {
-  font-size: 0.56rem;
+  font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  border-radius: 0;
-  padding: 0.18rem 0.5rem;
   white-space: nowrap;
   flex-shrink: 0;
 }
 
-.dops-status-now    { background: var(--green); color: var(--white); }
-.dops-status-soon   { background: var(--border); color: var(--text-primary); }
-.dops-status-future { background: transparent; color: var(--text-muted); border: 1px solid var(--border); }
+.dops-status-now    { color: var(--green); }
+.dops-status-soon   { color: var(--text-primary); }
+.dops-status-future { color: var(--text-muted); }
 
 .dops-phase-body {
   padding: 0 0.75rem 1rem 0;
@@ -1441,7 +1405,7 @@
   background: var(--bg-card);
 }
 
-/* ---------- Context files — legacy row (kept for fallback) ---------- */
+/* ---------- Context files: legacy row (kept for fallback) ---------- */
 .context-files-row {
   display: flex;
   align-items: center;
@@ -1449,7 +1413,7 @@
   gap: 0.4rem;
 }
 
-/* ---------- Context files — priority cards ---------- */
+/* ---------- Context files: priority cards ---------- */
 .ctx-priority-card {
   display: flex;
   align-items: center;
@@ -1469,10 +1433,8 @@
 }
 
 .ctx-priority-tag {
-  font-size: 0.6rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
   color: var(--red);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
@@ -1491,7 +1453,7 @@
   line-height: 1.65;
 }
 
-/* ---------- Context files — secondary grid ---------- */
+/* ---------- Context files: secondary grid ---------- */
 .ctx-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1516,7 +1478,7 @@
   line-height: 1.6;
 }
 
-/* ---------- Context files — download button ---------- */
+/* ---------- Context files: download button ---------- */
 .ctx-dl-btn {
   display: inline-flex;
   align-items: center;

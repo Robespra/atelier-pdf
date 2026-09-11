@@ -1,5 +1,5 @@
 /* =============================================
-   DESIGN EMPOWERMENT HUB — hub.js
+   DESIGN EMPOWERMENT HUB: hub.js
    Section navigation, lazy loading, checklists, i18n
    ============================================= */
 
@@ -21,13 +21,13 @@
       nav_careers:        'Carrières',
       /* Design Systems section */
       ds_title:           'Design Systems',
-      ds_subtitle:        'Accédez aux librairies Figma — fondation partagée et systèmes produit.',
+      ds_subtitle:        'Accédez aux librairies Figma : fondation partagée et systèmes produit.',
       ds_open_figma:      'Ouvrir dans Figma',
       ds_loading:         'Chargement…',
       ds_error:           'Impossible de charger les design systems.',
       /* Components section */
       comp_title:         'Kitchen Sink',
-      comp_subtitle:      'Tous les composants du système de design — consultez-les ici sans ouvrir Figma.',
+      comp_subtitle:      'Tous les composants du système de design, consultez-les ici sans ouvrir Figma.',
       comp_loading:       'Chargement des composants…',
       comp_not_found:     'Composant introuvable.',
       /* Knowledge section */
@@ -39,11 +39,11 @@
       /* Quiz section */
       quiz_title:         'Name That UI',
       quiz_subtitle:      'Testez votre culture design en identifiant des composants UI réels.',
-      quiz_cta_desc:      '10 questions, des composants tirés de vrais produits. Saurez-vous les nommer ?\nL\'IA exige de la clarté — gloire à ceux qui savent ce qu\'ils voient.',
+      quiz_cta_desc:      '10 questions, des composants tirés de vrais produits. Saurez-vous les nommer ?\nL\'IA exige de la clarté : gloire à ceux qui savent ce qu\'ils voient.',
       quiz_cta_btn:       'Commencer le quiz',
       quiz_stat_questions: 'questions',
       quiz_stat_categories: 'catégories',
-      quiz_stat_bonus:    'bonus labels',
+      quiz_stat_bonus:    'avec 🏷 bonus labels sur les questions les plus difficiles',
       /* Craft section */
       craft_title:        'Savoir-faire & Outils',
       craft_subtitle:     'Ressources, outils et exercices pour développer votre pratique du design d\'interface.',
@@ -59,7 +59,7 @@
       nav_designops:      'DesignOps',
       /* Prototypes section */
       proto_title:        'Prototypes',
-      proto_subtitle:     'Explorations interactives — améliorations de pages existantes et nouvelles pistes UX.',
+      proto_subtitle:     'Explorations interactives : améliorations de pages existantes et nouvelles pistes UX.',
       nav_prototypes:     'Prototypes',
       proto_tag_booking:  'Réservation',
       proto_tag_tools:    'Outil',
@@ -81,13 +81,13 @@
       nav_careers:        'Careers',
       /* Design Systems section */
       ds_title:           'Design Systems',
-      ds_subtitle:        'Access your Figma libraries — shared foundation and product-specific systems.',
+      ds_subtitle:        'Access your Figma libraries, shared foundation and product-specific systems.',
       ds_open_figma:      'Open in Figma',
       ds_loading:         'Loading…',
       ds_error:           'Could not load design systems.',
       /* Components section */
       comp_title:         'Kitchen Sink',
-      comp_subtitle:      'All design system components — browse them here without opening Figma.',
+      comp_subtitle:      'All design system components, browse them here without opening Figma.',
       comp_loading:       'Loading components…',
       comp_not_found:     'Component not found.',
       /* Knowledge section */
@@ -99,11 +99,11 @@
       /* Quiz section */
       quiz_title:         'Name That UI',
       quiz_subtitle:      'Test your design knowledge by identifying real UI components.',
-      quiz_cta_desc:      '10 questions, components from real products. Can you name them all?\nAI demands clarity — the light belongs to those who know what they see.',
+      quiz_cta_desc:      '10 questions, components from real products. Can you name them all?\nAI demands clarity: the light belongs to those who know what they see.',
       quiz_cta_btn:       'Start the quiz',
       quiz_stat_questions: 'questions',
       quiz_stat_categories: 'categories',
-      quiz_stat_bonus:    'bonus labels',
+      quiz_stat_bonus:    'with 🏷 bonus labels on the trickiest questions',
       /* Craft section */
       craft_title:        'Savoir-faire & Tools',
       craft_subtitle:     'Resources, tools and exercises to develop your UI design practice.',
@@ -119,7 +119,7 @@
       nav_designops:      'DesignOps',
       /* Prototypes section */
       proto_title:        'Prototypes',
-      proto_subtitle:     'Interactive explorations — enhancements of existing pages and new UX directions.',
+      proto_subtitle:     'Interactive explorations: enhancements of existing pages and new UX directions.',
       nav_prototypes:     'Prototypes',
       proto_tag_booking:  'Booking',
       proto_tag_tools:    'Tool',
@@ -132,7 +132,7 @@
     },
   };
 
-  /* Bilingual content blocks — keyed strings rendered directly into the DOM */
+  /* Bilingual content blocks, keyed strings rendered directly into the DOM */
   const CONTENT = {
     /* ── Prompting  ── */
     prompting: {
@@ -142,16 +142,16 @@
       },
       problems: {
         fr: [
-          { id: 'clutter', title: 'Bruit visuel inutile', body: 'Les prompts larges génèrent systématiquement trop d\'éléments — comme un GPS qui vous fait toujours prendre le chemin le plus long. La surcharge augmente la charge cognitive, noie le contenu important et complexifie le code. L\'IA sature l\'interface sans hiérarchie claire ni fil conducteur.' },
-          { id: 'repeat', title: 'Éléments répétés', body: 'L\'IA affiche souvent la même information plusieurs fois dans la même interface. En design réel, l\'espace écran est précieux — les équipes ne tolèrent pas ce type de redondance. La répétition sans intention ajoute du bruit et distrait des contenus clés.' },
-          { id: 'flow', title: 'Flux de contenu contre-intuitif', body: 'Les utilisateurs attendent une séquence logique — du général au spécifique, les éléments liés groupés ensemble. Les designs IA brisent souvent cette progression : un widget profil au milieu d\'un tableau de bord, une section certification après les cours. Sans hiérarchie claire, le layout est décousu.' },
-          { id: 'density', title: 'Conteneurs proéminents, faible densité', body: 'La hiérarchie visuelle guide vers l\'essentiel. Quand elle contredit la priorité du contenu, l\'utilisateur est désorienté. L\'IA place souvent l\'accent visuel sur le mauvais élément — un anneau de progression prenant tout l\'écran pour une information secondaire, ou de grands conteneurs pour une seule valeur numérique.' },
+          { id: 'clutter', title: 'Bruit visuel inutile', body: 'Les prompts larges génèrent systématiquement trop d\'éléments, comme un GPS qui vous fait toujours prendre le chemin le plus long. La surcharge augmente la charge cognitive, noie le contenu important et complexifie le code. L\'IA sature l\'interface sans hiérarchie claire ni fil conducteur.' },
+          { id: 'repeat', title: 'Éléments répétés', body: 'L\'IA affiche souvent la même information plusieurs fois dans la même interface. En design réel, l\'espace écran est précieux : les équipes ne tolèrent pas ce type de redondance. La répétition sans intention ajoute du bruit et distrait des contenus clés.' },
+          { id: 'flow', title: 'Flux de contenu contre-intuitif', body: 'Les utilisateurs attendent une séquence logique, du général au spécifique, les éléments liés groupés ensemble. Les designs IA brisent souvent cette progression : un widget profil au milieu d\'un tableau de bord, une section certification après les cours. Sans hiérarchie claire, le layout est décousu.' },
+          { id: 'density', title: 'Conteneurs proéminents, faible densité', body: 'La hiérarchie visuelle guide vers l\'essentiel. Quand elle contredit la priorité du contenu, l\'utilisateur est désorienté. L\'IA place souvent l\'accent visuel sur le mauvais élément : un anneau de progression prenant tout l\'écran pour une information secondaire, ou de grands conteneurs pour une seule valeur numérique.' },
         ],
         en: [
-          { id: 'clutter', title: 'Unnecessary visual clutter', body: 'Broad prompts consistently generate more elements than needed — like an inefficient GPS that always takes the longest route. The overload increases cognitive load, buries important content, and creates complex code. The AI saturates the interface with no clear hierarchy or path.' },
-          { id: 'repeat', title: 'Repeated design elements', body: 'AI often displays the same information multiple times in the same interface. In real design, screen real estate is precious — teams rarely tolerate this redundancy. Repetition without purpose adds noise and distracts from key content.' },
-          { id: 'flow', title: 'Counterintuitive content flow', body: 'Users expect a logical sequence — general to specific, related items grouped. AI-generated designs frequently break this progression: a profile widget mid-dashboard, a certification section after courses. Without clear hierarchy, the layout feels disjointed.' },
-          { id: 'density', title: 'Prominent containers, low density', body: 'Visual hierarchy guides users to the most important elements. When hierarchy contradicts content priority, users feel confused. AI often places visual emphasis on the wrong element — a large certification ring dominating secondary info, or big containers holding a single number.' },
+          { id: 'clutter', title: 'Unnecessary visual clutter', body: 'Broad prompts consistently generate more elements than needed, like an inefficient GPS that always takes the longest route. The overload increases cognitive load, buries important content, and creates complex code. The AI saturates the interface with no clear hierarchy or path.' },
+          { id: 'repeat', title: 'Repeated design elements', body: 'AI often displays the same information multiple times in the same interface. In real design, screen real estate is precious: teams rarely tolerate this redundancy. Repetition without purpose adds noise and distracts from key content.' },
+          { id: 'flow', title: 'Counterintuitive content flow', body: 'Users expect a logical sequence, general to specific, related items grouped. AI-generated designs frequently break this progression: a profile widget mid-dashboard, a certification section after courses. Without clear hierarchy, the layout feels disjointed.' },
+          { id: 'density', title: 'Prominent containers, low density', body: 'Visual hierarchy guides users to the most important elements. When hierarchy contradicts content priority, users feel confused. AI often places visual emphasis on the wrong element: a large certification ring dominating secondary info, or big containers holding a single number.' },
         ],
       },
       strategies: {
@@ -159,13 +159,13 @@
           {
             num: '01',
             title: 'Utilisez des mots-clés visuels précis',
-            body: 'La clarté et la spécificité comptent plus que la longueur. Référencez des styles design établis plutôt que des descriptions génériques comme "simple, clean, moderne". Nommer un style reconnu — skeuomorphisme, flat design, glassmorphisme, neobrutalism — aide le modèle à interpréter votre intention visuelle.',
+            body: 'La clarté et la spécificité comptent plus que la longueur. Référencez des styles design établis plutôt que des descriptions génériques comme "simple, clean, moderne". Nommer un style reconnu (skeuomorphisme, flat design, glassmorphisme, neobrutalism) aide le modèle à interpréter votre intention visuelle.',
             examples: [
               { type: 'bad',  text: '"Conçois une landing page de conférence tendance."' },
               { type: 'ok',   text: '"Landing page avec fort contraste, layouts en blocs et couleurs audacieuses."' },
               { type: 'good', text: '"Landing page de conférence en style néobrutalist."' },
             ],
-            note: 'Vous pouvez aussi référencer un design system connu par son nom. En revanche, évitez "design comme Apple" ou "dans le style Airbnb" — copier l\'identité visuelle d\'une marque n\'est pas viable, et ce qui fonctionne pour eux peut échouer dans votre contexte.',
+            note: 'Vous pouvez aussi référencer un design system connu par son nom. En revanche, évitez "design comme Apple" ou "dans le style Airbnb" : copier l\'identité visuelle d\'une marque n\'est pas viable, et ce qui fonctionne pour eux peut échouer dans votre contexte.',
           },
           {
             num: '02',
@@ -184,16 +184,16 @@
             body: 'Tous les outils de prototypage ne supportent pas l\'upload d\'images. Une alternative : utilisez un chatbot généraliste (ChatGPT, Claude) pour analyser le style visuel ou le layout d\'une page en langage naturel, puis convertissez cette description en prompt design. Cette approche peut aussi se combiner avec une image.',
             examples: [
               { type: 'good', text: 'Prompt vers ChatGPT : "Tu es un designer expérimenté. Analyse et décris le style visuel et le layout de cette interface en détail. Sois très spécifique techniquement. Utilise des mots-clés courts et descriptifs."' },
-              { type: 'note', text: 'A utilisé cette méthode pour reproduire le style de leur page Live Training sans l\'attacher en image — la description IA sert de contexte visuel supplémentaire.' },
+              { type: 'note', text: 'A utilisé cette méthode pour reproduire le style de leur page Live Training sans l\'attacher en image ; la description IA sert de contexte visuel supplémentaire.' },
             ],
             note: null,
           },
           {
             num: '04',
             title: 'Générez des données mock',
-            body: 'Prompter un outil de prototypage IA ressemble à créer une spec de handoff. Il faut définir les détails visuels et de layout, mais aussi le contenu. Une approche design centrée sur le contenu — travailler avec des données réalistes — guide mieux l\'IA. Quand les données réelles ne sont pas disponibles, générez-les d\'abord avec l\'IA.',
+            body: 'Prompter un outil de prototypage IA ressemble à créer une spec de handoff. Il faut définir les détails visuels et de layout, mais aussi le contenu. Une approche design centrée sur le contenu, travailler avec des données réalistes, guide mieux l\'IA. Quand les données réelles ne sont pas disponibles, générez-les d\'abord avec l\'IA.',
             examples: [
-              { type: 'good', text: 'Prompt ChatGPT : "Génère des données mock en JSON pour une page de profil d\'utilisateur — nom, certifications, cours complétés, statuts d\'examen." → collez ce JSON dans Figma Make.' },
+              { type: 'good', text: 'Prompt ChatGPT : "Génère des données mock en JSON pour une page de profil d\'utilisateur : nom, certifications, cours complétés, statuts d\'examen." → collez ce JSON dans Figma Make.' },
               { type: 'note', text: 'L\'information est mieux regroupée et affichée quand le contenu guide le design plutôt que l\'inverse.' },
             ],
             note: 'Collaborez avec les équipes dev et contenu pour obtenir les vraies données affichées dans l\'interface. Quand ce n\'est pas possible, l\'IA peut générer des mocks réalistes en JSON, Markdown ou CSV.',
@@ -201,10 +201,10 @@
           {
             num: '05',
             title: 'Attachez des snippets de code',
-            body: 'Plus le contexte est direct, moins l\'IA a besoin d\'interprétation — et plus la précision est élevée. Les snippets de code sont l\'une des formes de contexte les plus directes. Sources possibles : votre codebase (avec les devs), des design systems open source (Material, Carbon, Polaris), ou des plateformes comme 21st.dev.',
+            body: 'Plus le contexte est direct, moins l\'IA a besoin d\'interprétation, et plus la précision est élevée. Les snippets de code sont l\'une des formes de contexte les plus directes. Sources possibles : votre codebase (avec les devs), des design systems open source (Material, Carbon, Polaris), ou des plateformes comme 21st.dev.',
             examples: [
               { type: 'good', text: 'Tableau de cours généré en référençant le composant Table de Shopify Polaris + snippet de code correspondant.' },
-              { type: 'bad',  text: 'Attention : les snippets longs peuvent saturer le contexte du modèle. Et le code visible n\'est pas toujours libre de réutilisation — vérifiez les licences.' },
+              { type: 'bad',  text: 'Attention : les snippets longs peuvent saturer le contexte du modèle. Et le code visible n\'est pas toujours libre de réutilisation, vérifiez les licences.' },
             ],
             note: 'Cette méthode produit les résultats les plus précis dans les outils de prototypage IA, mais demande une compréhension basique de la structure du code et la capacité à évaluer la qualité du snippet avant de l\'utiliser.',
           },
@@ -213,22 +213,22 @@
           {
             num: '01',
             title: 'Use precise visual keywords',
-            body: 'Clarity and specificity matter more than length. Reference established design styles rather than generic descriptions like "simple, clean, modern". Naming a recognisable visual style — skeuomorphism, flat design, glassmorphism, neobrutalism — helps the model interpret your visual intent.',
+            body: 'Clarity and specificity matter more than length. Reference established design styles rather than generic descriptions like "simple, clean, modern". Naming a recognisable visual style (skeuomorphism, flat design, glassmorphism, neobrutalism) helps the model interpret your visual intent.',
             examples: [
               { type: 'bad',  text: '"Design a trendy conference landing page."' },
               { type: 'ok',   text: '"Design a conference landing page with high contrast, blocky layouts, and bold colours."' },
               { type: 'good', text: '"Design a conference landing page in a neobrutalist style."' },
             ],
-            note: 'You can also reference a famous design system by name. However, avoid "design like Apple" or "in Airbnb\'s style" — copying an existing brand\'s visual identity is not a sustainable strategy, and what works for them may fail in your context.',
+            note: 'You can also reference a famous design system by name. However, avoid "design like Apple" or "in Airbnb\'s style": copying an existing brand\'s visual identity is not a sustainable strategy, and what works for them may fail in your context.',
           },
           {
             num: '02',
             title: 'Attach lightweight visual references',
-            body: 'High-fidelity mockups are effective but time-consuming to create. Use lightweight references instead: moodboards, inspiration images, or screenshots of your design system. Figma Make generated a design visually close to a provided Pinterest board. Manage expectations though — pixel-perfect precision is unlikely.',
+            body: 'High-fidelity mockups are effective but time-consuming to create. Use lightweight references instead: moodboards, inspiration images, or screenshots of your design system. Figma Make generated a design visually close to a provided Pinterest board. Manage expectations though: pixel-perfect precision is unlikely.',
             examples: [
               { type: 'good', text: 'Screenshot of your Figma DS → maximum precision via variables and tokens' },
               { type: 'ok',   text: 'Screenshot of a reference page → reproduces visual style, not fine details' },
-              { type: 'note', text: 'A visually polished AI output aligned with your DS can still be a poor design if the prompt is vague. Evaluate for usability — not just visual polish.' },
+              { type: 'note', text: 'A visually polished AI output aligned with your DS can still be a poor design if the prompt is vague. Evaluate for usability, not just visual polish.' },
             ],
             note: 'For maximum precision, connect AI tools directly to your design source. Some tools can retrieve specs and design tokens directly from Figma. Developers can also use Figma MCP to pull frames, variables, components and layout data directly into their IDE.',
           },
@@ -238,16 +238,16 @@
             body: 'Not all prototyping tools support image uploads. An alternative: use a general-purpose chatbot (ChatGPT, Claude) to analyse the visual style or layout of a page in natural language, then convert that description into a design prompt. This text-based approach can also be combined with an image attachment.',
             examples: [
               { type: 'good', text: 'Prompt to ChatGPT: "You are an experienced designer. Analyse and describe the visual style and layout of this interface in detail. Be very technically specific. Use short and descriptive keywords and phrases."' },
-              { type: 'note', text: 'used this method to reproduce the style of their Live Training page without attaching it as an image — the AI description serves as supplemental visual context.' },
+              { type: 'note', text: 'used this method to reproduce the style of their Live Training page without attaching it as an image; the AI description serves as supplemental visual context.' },
             ],
             note: null,
           },
           {
             num: '04',
             title: 'Generate mock data',
-            body: 'Prompting an AI-prototyping tool is a lot like creating design specs for handoffs. You need to define visual and layout details, but also content. A content-focused design approach — working with realistic data — guides AI to generate better designs. When real data isn\'t available, generate it with AI first.',
+            body: 'Prompting an AI-prototyping tool is a lot like creating design specs for handoffs. You need to define visual and layout details, but also content. A content-focused design approach, working with realistic data, guides AI to generate better designs. When real data isn\'t available, generate it with AI first.',
             examples: [
-              { type: 'good', text: 'Prompt ChatGPT: "Generate mock data in JSON for an user profile page — name, certifications, completed courses, exam statuses." → paste that JSON into Figma Make.' },
+              { type: 'good', text: 'Prompt ChatGPT: "Generate mock data in JSON for an user profile page: name, certifications, completed courses, exam statuses." → paste that JSON into Figma Make.' },
               { type: 'note', text: 'Information is better grouped and displayed when content guides design, not the other way around.' },
             ],
             note: 'Collaborate with dev and content teams to get the real data displayed in the interface. When that\'s not possible, AI can generate realistic mocks in JSON, Markdown or CSV.',
@@ -255,37 +255,37 @@
           {
             num: '05',
             title: 'Attach code snippets',
-            body: 'The more direct the context, the less interpretation the AI needs — and the higher the accuracy. Code snippets are one of the most direct forms of context. Sources: your codebase (with devs), open-source design systems (Material, Carbon, Polaris), or platforms like 21st.dev.',
+            body: 'The more direct the context, the less interpretation the AI needs, and the higher the accuracy. Code snippets are one of the most direct forms of context. Sources: your codebase (with devs), open-source design systems (Material, Carbon, Polaris), or platforms like 21st.dev.',
             examples: [
               { type: 'good', text: 'Course listing table generated by referencing Shopify Polaris Table component + attaching the corresponding code snippets.' },
-              { type: 'bad',  text: 'Caution: long snippets can overload the model\'s context window. And visible code isn\'t always free to reuse — always check licensing.' },
+              { type: 'bad',  text: 'Caution: long snippets can overload the model\'s context window. And visible code isn\'t always free to reuse, always check licensing.' },
             ],
             note: 'This method yields the most precise results in AI-prototyping tools, but requires understanding basic code structure and assessing snippet quality before use.',
           },
         ],
       },
       closing: {
-        fr: 'Il n\'existe pas de raccourci pour résoudre des problèmes de design complexes. Ces stratégies améliorent la spécificité de vos prompts et la qualité des outputs, mais elles ne remplacent pas le travail de fond : analyser les besoins, peser les compromis, prendre des décisions de design éclairées. <strong>Les bonnes décisions de design ne s\'automatisent pas.</strong> L\'IA produit un premier jet — la profondeur, la cohérence et la pertinence du résultat restent entre les mains du designer.',
-        en: 'There is no shortcut to solving complex design problems. These strategies improve prompt specificity and output quality, but they can\'t replace the hard work of thinking through design requirements, weighing tradeoffs, and making informed decisions. <strong>Good design decisions can\'t be automated.</strong> AI gives you a first output — depth, coherence, and relevance are still the designer\'s responsibility.',
+        fr: 'Il n\'existe pas de raccourci pour résoudre des problèmes de design complexes. Ces stratégies améliorent la spécificité de vos prompts et la qualité des outputs, mais elles ne remplacent pas le travail de fond : analyser les besoins, peser les compromis, prendre des décisions de design éclairées. <strong>Les bonnes décisions de design ne s\'automatisent pas.</strong> L\'IA produit un premier jet : la profondeur, la cohérence et la pertinence du résultat restent entre les mains du designer.',
+        en: 'There is no shortcut to solving complex design problems. These strategies improve prompt specificity and output quality, but they can\'t replace the hard work of thinking through design requirements, weighing tradeoffs, and making informed decisions. <strong>Good design decisions can\'t be automated.</strong> AI gives you a first output: depth, coherence, and relevance are still the designer\'s responsibility.',
       },
       tips: {
         fr: [
           { title: 'Nommez le composant exactement', example: '❌ "une sorte de bouton qui glisse"\n✅ "un Toggle Switch avec état désactivé par défaut"', why: 'L\'IA reconnaît les patterns standards. Le terme exact réduit les allers-retours.' },
           { title: 'Décrivez le contexte métier', example: '❌ "fais-moi un formulaire de paiement"\n✅ "formulaire paiement pour public 50+, priorité confiance et lisibilité"', why: 'Le contexte contraint les choix dans la bonne direction.' },
-          { title: 'Spécifiez le design system', example: '❌ "fais-moi une notification"\n✅ "Notification Banner (erreur) — tokens Fondation : couleurs, radius, typo"', why: 'Évite les incohérences visuelles coûteuses en révision.' },
-          { title: 'Incluez les contraintes d\'accessibilité', example: '❌ "un champ date"\n✅ "Date Picker — contraste ≥ 4.5:1, navigable clavier, WCAG 2.2 AA"', why: 'L\'accessibilité en amont coûte 10× moins cher qu\'en aval.' },
-          { title: 'Demandez tous les états', example: '❌ "un bouton de soumission"\n✅ "Bouton submit — default, hover, loading (spinner), disabled + transitions CSS"', why: 'Les états manquants sont la cause #1 des bugs UX en production.' },
-          { title: 'Séparez structure et style', example: 'Prompt 1 : structure HTML sémantique — sans CSS\nPrompt 2 : appliquer le style Tailwind', why: 'Chaque prompt a une seule responsabilité.' },
+          { title: 'Spécifiez le design system', example: '❌ "fais-moi une notification"\n✅ "Notification Banner (erreur), tokens Fondation : couleurs, radius, typo"', why: 'Évite les incohérences visuelles coûteuses en révision.' },
+          { title: 'Incluez les contraintes d\'accessibilité', example: '❌ "un champ date"\n✅ "Date Picker, contraste ≥ 4.5:1, navigable clavier, WCAG 2.2 AA"', why: 'L\'accessibilité en amont coûte 10× moins cher qu\'en aval.' },
+          { title: 'Demandez tous les états', example: '❌ "un bouton de soumission"\n✅ "Bouton submit, default, hover, loading (spinner), disabled + transitions CSS"', why: 'Les états manquants sont la cause #1 des bugs UX en production.' },
+          { title: 'Séparez structure et style', example: 'Prompt 1 : structure HTML sémantique, sans CSS\nPrompt 2 : appliquer le style Tailwind', why: 'Chaque prompt a une seule responsabilité.' },
           { title: 'Utilisez le vocabulaire DS', example: '❌ "texte gris clair"\n✅ "color-base-content/60, 0.8rem, body-secondary de notre DS"', why: 'L\'IA s\'adapte à votre vocabulaire si vous l\'utilisez avec cohérence.' },
           { title: 'Itérez et critiquez votre prompt avec l\'IA', example: 'Demandez à l\'IA d\'identifier ce qui manque dans votre prompt, de le restructurer, ou de brainstormer des variantes.', why: 'L\'IA comme partenaire de réflexion, pas seulement comme outil de génération.' },
         ],
         en: [
           { title: 'Name the component precisely', example: '❌ "some kind of sliding button"\n✅ "a Toggle Switch with disabled state by default"', why: 'AI recognises standard patterns. The exact term cuts back-and-forth.' },
           { title: 'Describe the business context', example: '❌ "make me a payment form"\n✅ "payment form for users 50+, prioritise trust and readability"', why: 'Context steers design choices in the right direction.' },
-          { title: 'Specify the design system', example: '❌ "make me a notification"\n✅ "Notification Banner (error) — Foundation tokens: colours, radius, type"', why: 'Prevents visual inconsistencies that waste time in review.' },
-          { title: 'Include accessibility constraints', example: '❌ "a date field"\n✅ "Date Picker — contrast ≥ 4.5:1, keyboard nav, WCAG 2.2 AA"', why: 'Accessibility upfront costs 10× less than retrofitting.' },
-          { title: 'Ask for all states', example: '❌ "a submit button"\n✅ "Submit button — default, hover, loading (spinner), disabled + CSS transitions"', why: 'Missing states are the #1 cause of UX bugs in production.' },
-          { title: 'Separate structure from style', example: 'Prompt 1: semantic HTML — no CSS\nPrompt 2: apply Tailwind style', why: 'Each prompt has a single responsibility.' },
+          { title: 'Specify the design system', example: '❌ "make me a notification"\n✅ "Notification Banner (error), Foundation tokens: colours, radius, type"', why: 'Prevents visual inconsistencies that waste time in review.' },
+          { title: 'Include accessibility constraints', example: '❌ "a date field"\n✅ "Date Picker, contrast ≥ 4.5:1, keyboard nav, WCAG 2.2 AA"', why: 'Accessibility upfront costs 10× less than retrofitting.' },
+          { title: 'Ask for all states', example: '❌ "a submit button"\n✅ "Submit button, default, hover, loading (spinner), disabled + CSS transitions"', why: 'Missing states are the #1 cause of UX bugs in production.' },
+          { title: 'Separate structure from style', example: 'Prompt 1: semantic HTML, no CSS\nPrompt 2: apply Tailwind style', why: 'Each prompt has a single responsibility.' },
           { title: 'Use DS vocabulary', example: '❌ "small light grey text"\n✅ "color-base-content/60, 0.8rem, body-secondary from our DS"', why: 'AI adapts to your vocabulary if you use it consistently.' },
           { title: 'Iterate and critique your prompt with AI', example: 'Ask AI to identify what\'s missing in your prompt, restructure it, or brainstorm design variations.', why: 'AI as a thinking partner, not just a generation tool.' },
         ],
@@ -295,7 +295,7 @@
           title: { fr: 'Workflow de génération d\'illustrations app', en: 'App Illustration Generation Workflow' },
           body: {
             fr: `<p>Pipeline en trois outils pour générer et finaliser des illustrations pour l'app mobile (FR/ES).</p>
-<h4>Étape 1 — Midjourney (génération principale)</h4>
+<h4>Étape 1 : Midjourney (génération principale)</h4>
 <p>Générer l'illustration de base. Utiliser <code>--sref</code> pour la référence de style + composition, <code>--cref</code> pour l'extraction de palette couleur uniquement, <code>--cw</code> pour contrôler l'intensité couleur (0–100). Upscaler avant d'exporter (U1–U4).</p>
 <p><strong>Idéal pour :</strong></p>
 <ul>
@@ -303,15 +303,15 @@
   <li>Ambiance, atmosphère et direction créative</li>
   <li>Besoins d'illustration rapides sans attendre des renders 3D</li>
 </ul>
-<h4>Étape 2 — Gemini (édition ciblée & itération)</h4>
+<h4>Étape 2 : Gemini (édition ciblée & itération)</h4>
 <p>Importer l'output Midjourney upscalé dans Gemini pour des éditions par instruction : suppression d'objet, changements de couleur, ajustements de style, ajout d'éléments. Évite la régénération complète pour des modifications mineures.</p>
-<p><strong>Limites :</strong> fonctionne mieux sur des instructions claires et délimitées. Éviter les changements de composition importants — l'image peut dériver de l'esthétique Midjourney originale.</p>
-<h4>Étape 3 — removal.ai (suppression de fond)</h4>
+<p><strong>Limites :</strong> fonctionne mieux sur des instructions claires et délimitées. Éviter les changements de composition importants, l'image peut dériver de l'esthétique Midjourney originale.</p>
+<h4>Étape 3 : removal.ai (suppression de fond)</h4>
 <p>Utiliser removal.ai pour détourage. URL : <a href="https://removal.ai" target="_blank" rel="noopener">removal.ai</a></p>
 <h4>Chaîne complète</h4>
 <p><strong>Midjourney</strong> (générer + upscaler) → <strong>Gemini</strong> (éditions ciblées) → <strong>removal.ai</strong> (suppression fond) → <strong>Photoshop / Figma</strong> (intégration finale)</p>`,
             en: `<p>Three-tool pipeline for generating and finalising illustrations for the mobile app (FR/ES).</p>
-<h4>Step 1 — Midjourney (primary generation)</h4>
+<h4>Step 1: Midjourney (primary generation)</h4>
 <p>Generate the base illustration. Use <code>--sref</code> for style + composition reference, <code>--cref</code> for colour palette extraction only, <code>--cw</code> to control colour influence (0–100). Upscale before exporting (U1–U4).</p>
 <p><strong>Best for:</strong></p>
 <ul>
@@ -319,17 +319,17 @@
   <li>Mood, atmosphere and creative direction</li>
   <li>Quick illustration needs without waiting for 3D renders</li>
 </ul>
-<h4>Step 2 — Gemini (targeted editing & iteration)</h4>
+<h4>Step 2: Gemini (targeted editing & iteration)</h4>
 <p>Import the upscaled Midjourney output into Gemini for instruction-based edits: object removal, colour changes, style adjustments, element additions. Avoids full regeneration for minor changes.</p>
-<p><strong>Limits:</strong> works best on clear, contained instructions. Avoid heavy compositional changes — the image may drift from the original Midjourney aesthetic.</p>
-<h4>Step 3 — removal.ai (background removal)</h4>
+<p><strong>Limits:</strong> works best on clear, contained instructions. Avoid heavy compositional changes: the image may drift from the original Midjourney aesthetic.</p>
+<h4>Step 3: removal.ai (background removal)</h4>
 <p>Use removal.ai to strip backgrounds. URL: <a href="https://removal.ai" target="_blank" rel="noopener">removal.ai</a></p>
 <h4>Full chain</h4>
 <p><strong>Midjourney</strong> (generate + upscale) → <strong>Gemini</strong> (targeted edits) → <strong>removal.ai</strong> (bg removal) → <strong>Photoshop / Figma</strong> (final integration)</p>`,
           },
         },
         {
-          title: { fr: 'Figma MCP Console — installation & usages', en: 'Figma MCP Console — setup & use cases' },
+          title: { fr: 'Figma MCP Console : installation & usages', en: 'Figma MCP Console: setup & use cases' },
           body: {
             fr: `<p>Connecte Claude Desktop directement à Figma via WebSocket pour des opérations automatisées.</p>
 <h4>Prérequis</h4>
@@ -338,9 +338,9 @@
   <li>Figma Desktop installé</li>
   <li>Personal Access Token Figma (<code>figd_...</code>)</li>
 </ul>
-<h4>Étape 1 — Installation globale</h4>
+<h4>Étape 1 : Installation globale</h4>
 <pre><code>/usr/local/bin/npm install -g figma-console-mcp@latest</code></pre>
-<h4>Étape 2 — Config Claude Desktop</h4>
+<h4>Étape 2 : Config Claude Desktop</h4>
 <p>Fichier : <code>~/Library/Application Support/Claude/claude_desktop_config.json</code></p>
 <pre><code>"mcpServers": {
   "figma-console": {
@@ -349,12 +349,12 @@
     "env": { "FIGMA_ACCESS_TOKEN": "figd_VOTRE_TOKEN", "ENABLE_MCP_APPS": "true" }
   }
 }</code></pre>
-<p>⚠️ Utiliser <code>node</code> directement — <strong>pas npx</strong>.</p>
-<h4>Étape 3 — Plugin Desktop Bridge dans Figma</h4>
+<p>⚠️ Utiliser <code>node</code> directement, <strong>pas npx</strong>.</p>
+<h4>Étape 3 : Plugin Desktop Bridge dans Figma</h4>
 <p>Dans Figma : <strong>Plugins → Development → Import plugin from manifest</strong></p>
-<h4>Étape 4 — Redémarrer Claude Desktop</h4>
+<h4>Étape 4 : Redémarrer Claude Desktop</h4>
 <p><code>Cmd+Q</code> puis rouvrir.</p>
-<h4>Étape 5 — Lancer le plugin</h4>
+<h4>Étape 5 : Lancer le plugin</h4>
 <p>Ouvrir fichier Figma → lancer Desktop Bridge → connexion WebSocket auto.</p>
 <h4>Usages typiques</h4>
 <ul>
@@ -370,9 +370,9 @@
   <li>Figma Desktop installed</li>
   <li>Figma Personal Access Token (<code>figd_...</code>)</li>
 </ul>
-<h4>Step 1 — Install globally</h4>
+<h4>Step 1: Install globally</h4>
 <pre><code>/usr/local/bin/npm install -g figma-console-mcp@latest</code></pre>
-<h4>Step 2 — Claude Desktop config</h4>
+<h4>Step 2: Claude Desktop config</h4>
 <p>File: <code>~/Library/Application Support/Claude/claude_desktop_config.json</code></p>
 <pre><code>"mcpServers": {
   "figma-console": {
@@ -381,12 +381,12 @@
     "env": { "FIGMA_ACCESS_TOKEN": "figd_YOUR_TOKEN", "ENABLE_MCP_APPS": "true" }
   }
 }</code></pre>
-<p>⚠️ Use <code>node</code> directly — <strong>not npx</strong>.</p>
-<h4>Step 3 — Desktop Bridge plugin in Figma</h4>
+<p>⚠️ Use <code>node</code> directly, <strong>not npx</strong>.</p>
+<h4>Step 3: Desktop Bridge plugin in Figma</h4>
 <p>In Figma: <strong>Plugins → Development → Import plugin from manifest</strong></p>
-<h4>Step 4 — Restart Claude Desktop</h4>
+<h4>Step 4: Restart Claude Desktop</h4>
 <p><code>Cmd+Q</code> then reopen.</p>
-<h4>Step 5 — Run the plugin</h4>
+<h4>Step 5: Run the plugin</h4>
 <p>Open your Figma file → run Desktop Bridge → auto-connects via WebSocket.</p>
 <h4>Typical use cases</h4>
 <ul>
@@ -407,32 +407,32 @@
           icon: 'fit',
           summary: 'Suis-je fait pour ce poste ?',
           body: `
-            <p style="font-size:0.82rem;color:var(--text-muted);margin:0 0 1rem">Parmi les affirmations ci-dessous, sélectionnez celles que vous croyez <strong>vraies</strong> pour un bon designer UI/UX. Certaines sont des idées reçues — saurez-vous les repérer ?</p>
+            <p style="font-size:0.82rem;color:var(--text-muted);margin:0 0 1rem">Parmi les affirmations ci-dessous, sélectionnez celles que vous croyez <strong>vraies</strong> pour un bon designer UI/UX. Certaines sont des idées reçues : saurez-vous les repérer ?</p>
             <div class="quiz-stmts" id="quiz-fit-fr">
-              <button class="quiz-stmt" data-idx="0" onclick="quizToggle(this)">J'aime résoudre des problèmes ouverts — et je suis à l'aise sans connaître la réponse au départ.</button>
+              <button class="quiz-stmt" data-idx="0" onclick="quizToggle(this)">J'aime résoudre des problèmes ouverts, et je suis à l'aise sans connaître la réponse au départ.</button>
               <button class="quiz-stmt" data-idx="1" onclick="quizToggle(this)">Le design UX consiste principalement à rendre les interfaces belles et visuellement attrayantes.</button>
-              <button class="quiz-stmt" data-idx="2" onclick="quizToggle(this)">Je suis créatif·ve, mais la créativité est au service de l'utilisateur et des objectifs business — pas de mon ego.</button>
-              <button class="quiz-stmt" data-idx="3" onclick="quizToggle(this)">Un bon design est invisible — si les utilisateurs remarquent l'interface, c'est qu'elle a échoué.</button>
+              <button class="quiz-stmt" data-idx="2" onclick="quizToggle(this)">Je suis créatif·ve, mais la créativité est au service de l'utilisateur et des objectifs business, pas de mon ego.</button>
+              <button class="quiz-stmt" data-idx="3" onclick="quizToggle(this)">Un bon design est invisible : si les utilisateurs remarquent l'interface, c'est qu'elle a échoué.</button>
               <button class="quiz-stmt" data-idx="4" onclick="quizToggle(this)">Je suis à l'aise avec des données chiffrées : taux de conversion, taux d'abandon, métriques d'engagement.</button>
               <button class="quiz-stmt" data-idx="5" onclick="quizToggle(this)">Le designer UX est responsable de l'implémentation technique des interfaces qu'il conçoit.</button>
-              <button class="quiz-stmt" data-idx="6" onclick="quizToggle(this)">Je travaille bien en équipe transversale — marketing, tech, e-commerce, métiers.</button>
+              <button class="quiz-stmt" data-idx="6" onclick="quizToggle(this)">Je travaille bien en équipe transversale : marketing, tech, e-commerce, métiers.</button>
               <button class="quiz-stmt" data-idx="7" onclick="quizToggle(this)">Je comprends que le design d'un tunnel d'achat et le design d'une app mobile répondent à des logiques différentes.</button>
               <button class="quiz-stmt" data-idx="8" onclick="quizToggle(this)">Les décisions de design sont principalement fondées sur le goût personnel et l'intuition artistique du designer.</button>
-              <button class="quiz-stmt" data-idx="9" onclick="quizToggle(this)">J'adore observer comment les gens utilisent vraiment un produit — pas comment ils disent l'utiliser.</button>
+              <button class="quiz-stmt" data-idx="9" onclick="quizToggle(this)">J'adore observer comment les gens utilisent vraiment un produit, pas comment ils disent l'utiliser.</button>
               <button class="quiz-stmt" data-idx="10" onclick="quizToggle(this)">Je suis conscient·e que 70% de la persuasion en design passe par la qualité de la présentation.</button>
               <button class="quiz-stmt" data-idx="11" onclick="quizToggle(this)">Le travail du designer est terminé une fois que la maquette est validée par les parties prenantes.</button>
               <button class="quiz-stmt" data-idx="12" onclick="quizToggle(this)">Je suis bon·ne pour comprendre, organiser et expliquer des systèmes complexes.</button>
-              <button class="quiz-stmt" data-idx="13" onclick="quizToggle(this)">Je suis curieux·se sur comment les entreprises gagnent de l'argent — et comment le design y contribue.</button>
+              <button class="quiz-stmt" data-idx="13" onclick="quizToggle(this)">Je suis curieux·se sur comment les entreprises gagnent de l'argent, et comment le design y contribue.</button>
               <button class="quiz-stmt" data-idx="14" onclick="quizToggle(this)">J'ai l'œil pour les détails, mais je sais d'abord me concentrer sur la grande idée.</button>
               <button class="quiz-stmt" data-idx="15" onclick="quizToggle(this)">J'apprécie la beauté et l'esthétique, et je comprends qu'une chose peut être belle sans être efficace.</button>
-              <button class="quiz-stmt" data-idx="16" onclick="quizToggle(this)">Je justifie mes décisions de design avec des données ou des principes — pas seulement avec mon goût personnel.</button>
+              <button class="quiz-stmt" data-idx="16" onclick="quizToggle(this)">Je justifie mes décisions de design avec des données ou des principes, pas seulement avec mon goût personnel.</button>
               <button class="quiz-stmt" data-idx="17" onclick="quizToggle(this)">Suivre les tendances design actuelles est le meilleur moyen de produire un bon UX.</button>
-              <button class="quiz-stmt" data-idx="18" onclick="quizToggle(this)">Je reste résilient·e face aux retours — je les utilise comme information, pas comme une défaite.</button>
-              <button class="quiz-stmt" data-idx="19" onclick="quizToggle(this)">J'aime expliquer et transmettre — former des collègues ou des prestataires à des pratiques UX ne m'est pas étranger.</button>
+              <button class="quiz-stmt" data-idx="18" onclick="quizToggle(this)">Je reste résilient·e face aux retours : je les utilise comme information, pas comme une défaite.</button>
+              <button class="quiz-stmt" data-idx="19" onclick="quizToggle(this)">J'aime expliquer et transmettre : former des collègues ou des prestataires à des pratiques UX ne m'est pas étranger.</button>
               <button class="quiz-stmt" data-idx="20" onclick="quizToggle(this)">Je pense en systèmes : je ne conçois pas juste un écran, je pense à comment il s'intègre dans un design system cohérent.</button>
               <button class="quiz-stmt" data-idx="21" onclick="quizToggle(this)">Je suis à l'aise pour mener un audit UX en autonomie et formuler des recommandations priorisées.</button>
-              <button class="quiz-stmt" data-idx="22" onclick="quizToggle(this)">L'accessibilité n'est pas un "nice to have" pour moi — je la considère comme une exigence de base de tout bon design.</button>
-              <button class="quiz-stmt" data-idx="23" onclick="quizToggle(this)">Un grand designer UX travaille seul — trop de collaboration ralentit le processus créatif.</button>
+              <button class="quiz-stmt" data-idx="22" onclick="quizToggle(this)">L'accessibilité n'est pas un "nice to have" pour moi : je la considère comme une exigence de base de tout bon design.</button>
+              <button class="quiz-stmt" data-idx="23" onclick="quizToggle(this)">Un grand designer UX travaille seul : trop de collaboration ralentit le processus créatif.</button>
             </div>
             <div style="margin-top:1.25rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
               <button class="quiz-reveal-btn" onclick="quizReveal('quiz-fit-fr', 'quiz-legend-fr')">Voir les résultats</button>
@@ -444,44 +444,44 @@
           icon: 'role',
           summary: 'Qu\'est-ce que ce poste UI/UX ?',
           body: `
-            <p>Rattaché au Pôle Plateformes (Direction Marketing), vous êtes le garant de l'expérience utilisateur et de la qualité des interfaces sur <strong>toutes les plateformes digitales</strong> — pas seulement l'app mobile.</p>
+            <p>Rattaché au Pôle Plateformes (Direction Marketing), vous êtes le garant de l'expérience utilisateur et de la qualité des interfaces sur <strong>toutes les plateformes digitales</strong>, pas seulement l'app mobile.</p>
             <p><strong>Vous définissez le "quoi" et le "comment" côté expérience. La partie développement est assurée par le Product Owner côté DSI.</strong></p>
 
             <h3>1. Un rôle multi-surfaces</h3>
             <p>Le périmètre couvre des audiences et des logiques très différentes :</p>
             <ul>
-              <li><strong>BtoC visiteurs</strong> — site principal, application mobile, billetterie, parcours de planification de visite.</li>
-              <li><strong>BtoB & événementiel</strong> — site Congrès, Le Grand Tour, VEL, Panache, BEL. L'utilisateur est un professionnel — densité et efficacité priment sur l'émotion.</li>
-              <li><strong>E-commerce</strong> — tunnel d'achat de billets, réservation d'hébergement, click & collect. Chaque étape a un impact direct sur le chiffre d'affaires.</li>
-              <li><strong>RH & talents</strong> — portail talent, site RH. Autre audience, autres codes, même exigence de qualité.</li>
+              <li><strong>BtoC visiteurs</strong>: site principal, application mobile, billetterie, parcours de planification de visite.</li>
+              <li><strong>BtoB & événementiel</strong>: site Congrès, Le Grand Tour, VEL, Panache, BEL. L'utilisateur est un professionnel : densité et efficacité priment sur l'émotion.</li>
+              <li><strong>E-commerce</strong>: tunnel d'achat de billets, réservation d'hébergement, click & collect. Chaque étape a un impact direct sur le chiffre d'affaires.</li>
+              <li><strong>RH & talents</strong>: portail talent, site RH. Autre audience, autres codes, même exigence de qualité.</li>
             </ul>
 
             <h3>2. Garant du Design System et de l'accessibilité RGAA</h3>
             <p>Ce rôle est propriétaire du design system du groupe :</p>
             <ul>
               <li><strong>Créer, maintenir et faire évoluer</strong> les composants, guidelines et patterns en lien avec la plateforme de marque.</li>
-              <li><strong>Former les équipes internes et prestataires</strong> à l'utilisation du DS — la pédagogie est une compétence clé du poste.</li>
+              <li><strong>Former les équipes internes et prestataires</strong> à l'utilisation du DS : la pédagogie est une compétence clé du poste.</li>
               <li><strong>Garantir la conformité RGAA</strong> (référentiel français d'accessibilité) sur l'ensemble des plateformes.</li>
               <li><strong>Documenter</strong> les bonnes pratiques UX/UI et les processus de conception.</li>
             </ul>
 
             <h3>3. Un rôle orienté data et CRO</h3>
             <ul>
-              <li><strong>Heatmaps & session recordings</strong> (Clarity) — optimisation continue composant par composant.</li>
-              <li><strong>Collaboration CRO</strong> — alimenter le backlog d'A/B tests en hypothèses UX avec le Chef de projet CRO.</li>
-              <li><strong>Retours utilisateurs</strong> — enquêtes, avis, support — pour identifier les irritants et prioriser les améliorations.</li>
+              <li><strong>Heatmaps & session recordings</strong> (Clarity), optimisation continue composant par composant.</li>
+              <li><strong>Collaboration CRO</strong>: alimenter le backlog d'A/B tests en hypothèses UX avec le Chef de projet CRO.</li>
+              <li><strong>Retours utilisateurs</strong>: enquêtes, avis, support, pour identifier les irritants et prioriser les améliorations.</li>
             </ul>
 
             <h3>4. Référent transverse</h3>
             <p>Le designer travaille au croisement de plusieurs équipes :</p>
             <ul>
-              <li><strong>Product Owners / DSI</strong> — expression des besoins fonctionnels, handoff maquettes, recettage visuel</li>
-              <li><strong>Pôle Contenus & Influence</strong> — cohérence éditoriale et visuelle</li>
-              <li><strong>Infographiste & responsable plateforme de marque</strong> — charte graphique et créations visuelles</li>
-              <li><strong>Développeurs</strong> — lien entre bibliothèque de composants et design system</li>
+              <li><strong>Product Owners / DSI</strong>: expression des besoins fonctionnels, handoff maquettes, recettage visuel</li>
+              <li><strong>Pôle Contenus & Influence</strong>: cohérence éditoriale et visuelle</li>
+              <li><strong>Infographiste & responsable plateforme de marque</strong>: charte graphique et créations visuelles</li>
+              <li><strong>Développeurs</strong>: lien entre bibliothèque de composants et design system</li>
             </ul>
 
-            <div class="callout">Sur ce poste, "faire du design" inclut aussi maintenir un design system, former des équipes, piloter l'accessibilité RGAA et produire des hypothèses CRO — pas seulement dessiner des écrans.</div>
+            <div class="callout">Sur ce poste, "faire du design" inclut aussi maintenir un design system, former des équipes, piloter l'accessibilité RGAA et produire des hypothèses CRO, pas seulement dessiner des écrans.</div>
 
             <h3>Ce que le rôle n'est PAS</h3>
             <ul>
@@ -503,39 +503,39 @@
             <h3>Analytique & comportement utilisateur</h3>
             <p>Comprendre les données est aussi important que produire des maquettes :</p>
             <ul>
-              <li><strong>Microsoft Clarity</strong> — heatmaps, session recordings, rage clicks. Outil principal mentionné dans la fiche de poste.</li>
-              <li><strong>Hotjar</strong> — alternative à Clarity, même usage.</li>
-              <li><strong>Google Analytics</strong> — métriques de conversion, funnels, rétention.</li>
-              <li><strong>A/B testing (Kameleoon)</strong> — tester deux versions d'un écran ou composant. Collaboration avec le Chef de projet CRO.</li>
+              <li><strong>Microsoft Clarity</strong>: heatmaps, session recordings, rage clicks. Outil principal mentionné dans la fiche de poste.</li>
+              <li><strong>Hotjar</strong>: alternative à Clarity, même usage.</li>
+              <li><strong>Google Analytics</strong>: métriques de conversion, funnels, rétention.</li>
+              <li><strong>A/B testing (Kameleoon)</strong>: tester deux versions d'un écran ou composant. Collaboration avec le Chef de projet CRO.</li>
             </ul>
 
             <h3>Accessibilité RGAA</h3>
             <ul>
-              <li><strong>Assistant RGAA / Ara</strong> — outils pour auditer la conformité RGAA des pages web.</li>
-              <li><strong>Contrast checker (WebAIM)</strong> — vérification des ratios de contraste selon WCAG/RGAA.</li>
-              <li><strong>NVDA / VoiceOver</strong> — lecteurs d'écran pour tester la navigation au clavier et à l'aide d'assistance.</li>
+              <li><strong>Assistant RGAA / Ara</strong>: outils pour auditer la conformité RGAA des pages web.</li>
+              <li><strong>Contrast checker (WebAIM)</strong>: vérification des ratios de contraste selon WCAG/RGAA.</li>
+              <li><strong>NVDA / VoiceOver</strong>: lecteurs d'écran pour tester la navigation au clavier et à l'aide d'assistance.</li>
             </ul>
 
             <h3>CMS</h3>
             <ul>
-              <li><strong>Drupal</strong> — CMS utilisé en interne, connaissance appréciée dans la fiche de poste.</li>
+              <li><strong>Drupal</strong>: CMS utilisé en interne, connaissance appréciée dans la fiche de poste.</li>
             </ul>
 
             <h3>Outils IA à connaître</h3>
             <ul>
-              <li><strong>Cursor</strong> — éditeur de code IA, idéal pour le prototypage rapide</li>
-              <li><strong>Claude Code</strong> — CLI IA puissant, courbe d'apprentissage plus élevée</li>
-              <li><strong>Claude Design</strong> — génération d'interfaces directement depuis Claude, sans code</li>
-              <li><strong>Figma Make</strong> — générateur de code 0-to-1 intégré à Figma Pro</li>
-              <li><strong>Lovable</strong> — génération d'apps web complètes depuis un prompt, idéal pour valider une idée rapidement</li>
-              <li><strong>Bolt</strong> — prototypage IA full-stack, proche de Lovable avec un accès direct au code généré</li>
+              <li><strong>Cursor</strong>: éditeur de code IA, idéal pour le prototypage rapide</li>
+              <li><strong>Claude Code</strong>: CLI IA puissant, courbe d'apprentissage plus élevée</li>
+              <li><strong>Claude Design</strong>: génération d'interfaces directement depuis Claude, sans code</li>
+              <li><strong>Figma Make</strong>: générateur de code 0-to-1 intégré à Figma Pro</li>
+              <li><strong>Lovable</strong>: génération d'apps web complètes depuis un prompt, idéal pour valider une idée rapidement</li>
+              <li><strong>Bolt</strong>: prototypage IA full-stack, proche de Lovable avec un accès direct au code généré</li>
             </ul>
 
             <h3>Outils de collaboration</h3>
             <ul>
-              <li><strong>Notion</strong> — docs, wikis et gestion de projet</li>
-              <li><strong>FigJam</strong> — ateliers, user flows et diagrammes</li>
-              <li><strong>GitLab / Jira</strong> — suivi des tickets et sprints</li>
+              <li><strong>Notion</strong>: docs, wikis et gestion de projet</li>
+              <li><strong>FigJam</strong>: ateliers, user flows et diagrammes</li>
+              <li><strong>GitLab / Jira</strong>: suivi des tickets et sprints</li>
             </ul>
 
             <div class="callout">Figma est impératif selon la fiche de poste. Adobe XD et Sketch sont mentionnés comme connaissances supplémentaires.</div>`,
@@ -559,26 +559,26 @@
               <div class="checklist-item"><input type="checkbox" id="int-2"><label for="int-2">Je peux créer un prototype cliquable d'un tunnel d'achat dans Figma.</label></div>
               <div class="checklist-item"><input type="checkbox" id="int-3"><label for="int-3">Je comprends les différences de patterns entre mobile app, site web et e-commerce.</label></div>
               <div class="checklist-item"><input type="checkbox" id="int-4"><label for="int-4">Mes designs couvrent tous les états : défaut, chargement, vide, erreur.</label></div>
-              <div class="checklist-item"><input type="checkbox" id="int-5"><label for="int-5">Je comprends la différence entre pixels physiques et pixels CSS — et ce que le device pixel ratio (DPR) implique pour l'export d'assets (@2x, @3x, SVG).</label></div>
+              <div class="checklist-item"><input type="checkbox" id="int-5"><label for="int-5">Je comprends la différence entre pixels physiques et pixels CSS, et ce que le device pixel ratio (DPR) implique pour l'export d'assets (@2x, @3x, SVG).</label></div>
               <div class="checklist-item"><input type="checkbox" id="int-6"><label for="int-6">Je sais ce que sont les breakpoints et je conçois mes écrans pour au moins 3 tailles : mobile, tablette, desktop.</label></div>
-              <div class="checklist-item"><input type="checkbox" id="int-7"><label for="int-7">Je pense en "fluid layout" : je définis comment les composants s'étirent, se réorganisent ou disparaissent entre breakpoints — pas seulement ce qu'ils font à un breakpoint fixe.</label></div>
+              <div class="checklist-item"><input type="checkbox" id="int-7"><label for="int-7">Je pense en "fluid layout" : je définis comment les composants s'étirent, se réorganisent ou disparaissent entre breakpoints, pas seulement ce qu'ils font à un breakpoint fixe.</label></div>
             </div>
             <h3>Handoff & Collaboration dev</h3>
             <div class="careers-checklist">
               <div class="checklist-item"><input type="checkbox" id="hoff-1"><label for="hoff-1">Mes fichiers Figma sont nommés, organisés et lisibles par un développeur sans explication orale.</label></div>
-              <div class="checklist-item"><input type="checkbox" id="hoff-2"><label for="hoff-2">J'annote les comportements d'interaction : transitions, durées, easing, scroll behaviour — pas seulement les états visuels.</label></div>
+              <div class="checklist-item"><input type="checkbox" id="hoff-2"><label for="hoff-2">J'annote les comportements d'interaction : transitions, durées, easing, scroll behaviour, pas seulement les états visuels.</label></div>
               <div class="checklist-item"><input type="checkbox" id="hoff-3"><label for="hoff-3">Je sais rédiger une user story au format "En tant que [utilisateur], je veux [action] afin de [bénéfice]" avec des critères d'acceptance clairs.</label></div>
-              <div class="checklist-item"><input type="checkbox" id="hoff-4"><label for="hoff-4">Je peux lire du CSS de base — box model, flexbox, unités rem/px — pour parler le même langage que les développeurs.</label></div>
+              <div class="checklist-item"><input type="checkbox" id="hoff-4"><label for="hoff-4">Je peux lire du CSS de base (box model, flexbox, unités rem/px) pour parler le même langage que les développeurs.</label></div>
               <div class="checklist-item"><input type="checkbox" id="hoff-5"><label for="hoff-5">Je prépare un brief de livraison : ce qui change, ce qui est nouveau, les cas limites à ne pas manquer.</label></div>
-              <div class="checklist-item"><input type="checkbox" id="hoff-6"><label for="hoff-6">Je participe aux reviews techniques pour vérifier que l'implémentation correspond aux specs — et je sais comment négocier les écarts.</label></div>
+              <div class="checklist-item"><input type="checkbox" id="hoff-6"><label for="hoff-6">Je participe aux reviews techniques pour vérifier que l'implémentation correspond aux specs, et je sais comment négocier les écarts.</label></div>
             </div>
             <h3>Accessibilité</h3>
             <div class="careers-checklist">
               <div class="checklist-item"><input type="checkbox" id="a11y-1"><label for="a11y-1">Je vérifie le contraste de mes textes et composants (ratio ≥ 4.5:1 pour le texte courant, ≥ 3:1 pour les grands titres et les composants UI).</label></div>
               <div class="checklist-item"><input type="checkbox" id="a11y-2"><label for="a11y-2">Mes zones cliquables font au minimum 44×44 px sur mobile.</label></div>
-              <div class="checklist-item"><input type="checkbox" id="a11y-3"><label for="a11y-3">Je ne transmets jamais une information uniquement par la couleur — je l'accompagne d'un texte, d'une icône ou d'une forme.</label></div>
+              <div class="checklist-item"><input type="checkbox" id="a11y-3"><label for="a11y-3">Je ne transmets jamais une information uniquement par la couleur : je l'accompagne d'un texte, d'une icône ou d'une forme.</label></div>
               <div class="checklist-item"><input type="checkbox" id="a11y-4"><label for="a11y-4">Je fournis des labels et descriptions alt-text pour les images et icônes dans mes specs de handoff.</label></div>
-              <div class="checklist-item"><input type="checkbox" id="a11y-5"><label for="a11y-5">Je connais les niveaux WCAG A, AA et AAA — et je sais que le RGAA est le référentiel légal français qui s'applique directement à ce poste.</label></div>
+              <div class="checklist-item"><input type="checkbox" id="a11y-5"><label for="a11y-5">Je connais les niveaux WCAG A, AA et AAA, et je sais que le RGAA est le référentiel légal français qui s'applique directement à ce poste.</label></div>
               <div class="checklist-item"><input type="checkbox" id="a11y-6"><label for="a11y-6">Je peux mener un audit RGAA basique : identifier les critères non conformes, les documenter et formuler des recommandations correctrices.</label></div>
             </div>
             <h3>Marketing & Conversion</h3>
@@ -592,36 +592,36 @@
             <div class="careers-checklist">
               <div class="checklist-item"><input type="checkbox" id="proc-1"><label for="proc-1">Je suis à l'aise pour critiquer une interface et expliquer mon raisonnement avec des données ou des principes.</label></div>
               <div class="checklist-item"><input type="checkbox" id="proc-2"><label for="proc-2">Je sais écrire de bonnes questions et conduire un entretien utilisateur.</label></div>
-              <div class="checklist-item"><input type="checkbox" id="proc-3"><label for="proc-3">Je peux expliquer le contexte business derrière chaque projet — pas seulement les exigences UI.</label></div>
-              <div class="checklist-item"><input type="checkbox" id="proc-4"><label for="proc-4">J'ai livré quelque chose — même un projet personnel, freelance ou scolaire.</label></div>
+              <div class="checklist-item"><input type="checkbox" id="proc-3"><label for="proc-3">Je peux expliquer le contexte business derrière chaque projet, pas seulement les exigences UI.</label></div>
+              <div class="checklist-item"><input type="checkbox" id="proc-4"><label for="proc-4">J'ai livré quelque chose, même un projet personnel, freelance ou scolaire.</label></div>
               <div class="checklist-item"><input type="checkbox" id="proc-5"><label for="proc-5">Mon but actuel est de grandir, pas de défendre ce que je sais déjà faire.</label></div>
             </div>
             <h3>Prototypage IA & lecture de code</h3>
             <div class="careers-checklist">
               <div class="checklist-item"><input type="checkbox" id="ai-1"><label for="ai-1">J'ai utilisé un outil de génération IA (Figma Make, v0, Cursor, Bolt) pour produire un prototype ou une interface fonctionnelle.</label></div>
-              <div class="checklist-item"><input type="checkbox" id="ai-2"><label for="ai-2">Je sais lire l'arborescence de composants générée par l'IA — et repérer ce qui est trop générique ou incohérent avec le design system.</label></div>
-              <div class="checklist-item"><input type="checkbox" id="ai-3"><label for="ai-3">Je comprends les bases du styling généré : classes CSS, variables, structure flex/grid — pas pour coder, mais pour évaluer et corriger l'output.</label></div>
+              <div class="checklist-item"><input type="checkbox" id="ai-2"><label for="ai-2">Je sais lire l'arborescence de composants générée par l'IA, et repérer ce qui est trop générique ou incohérent avec le design system.</label></div>
+              <div class="checklist-item"><input type="checkbox" id="ai-3"><label for="ai-3">Je comprends les bases du styling généré : classes CSS, variables, structure flex/grid, pas pour coder, mais pour évaluer et corriger l'output.</label></div>
               <div class="checklist-item"><input type="checkbox" id="ai-4"><label for="ai-4">Je sais écrire un prompt de génération d'interface efficace : nommer les composants DS, décrire les états, préciser le contexte métier.</label></div>
-              <div class="checklist-item"><input type="checkbox" id="ai-5"><label for="ai-5">Je suis capable de faire la part entre ce que l'IA a bien généré et ce qui nécessite une correction humaine — et je ne valide pas aveuglément l'output.</label></div>
+              <div class="checklist-item"><input type="checkbox" id="ai-5"><label for="ai-5">Je suis capable de faire la part entre ce que l'IA a bien généré et ce qui nécessite une correction humaine, et je ne valide pas aveuglément l'output.</label></div>
             </div>`,
         },
         {
           icon: 'influence',
-          summary: 'Influence & persuasion — la compétence invisible',
+          summary: 'Influence & persuasion : la compétence invisible',
           body: `
-            <p>Votre succès en tant que designer dépend autant de vos relations que de votre talent créatif. Les personnes clés dont vous avez besoin comme alliés — décideurs, managers, parties prenantes — ne savent probablement rien du design. </p>
+            <p>Votre succès en tant que designer dépend autant de vos relations que de votre talent créatif. Les personnes clés dont vous avez besoin comme alliés (décideurs, managers, parties prenantes) ne savent probablement rien du design. </p>
             <div class="callout">Un design brillant qui n'est jamais livré ne change rien. La qualité de votre travail se mesure aussi à votre capacité à le faire exister dans le monde réel.</div>
             <h3>Pourquoi c'est aussi important que votre craft</h3>
             <ul>
               <li><strong>Vos idées n'ont de valeur que si elles sont construites.</strong> Les concepts les plus ambitieux meurent dans Figma si personne n'est convaincu de les réaliser.</li>
               <li><strong>Les décideurs raisonnent en business, pas en UX.</strong> Traduire vos décisions de design en arguments de valeur business est une compétence à part entière.</li>
-              <li><strong>La persuasion n'est pas de la manipulation.</strong> C'est savoir raconter le bon problème, à la bonne personne, avec les bons arguments — et écouter autant que parler.</li>
+              <li><strong>La persuasion n'est pas de la manipulation.</strong> C'est savoir raconter le bon problème, à la bonne personne, avec les bons arguments, et écouter autant que parler.</li>
             </ul>
             <h3>Comment développer cette compétence</h3>
             <ul>
-              <li>Présentez votre travail en commençant par le contexte business — pas par l'UI.</li>
+              <li>Présentez votre travail en commençant par le contexte business, pas par l'UI.</li>
               <li>Apprenez à formuler des hypothèses mesurables : "Si on améliore ce tunnel, on devrait réduire le taux d'abandon".</li>
-              <li>Observez comment les décisions se prennent dans votre organisation — et positionnez-vous au bon moment, pas après.</li>
+              <li>Observez comment les décisions se prennent dans votre organisation, et positionnez-vous au bon moment, pas après.</li>
               <li>Cultivez des relations en dehors des réunions formelles. La confiance se construit dans les couloirs.</li>
             </ul>`,
         },
@@ -631,7 +631,7 @@
           body: `
             <p>L'IA accélère clairement certaines parties du travail. Mais elle ne remplace pas le travail AUTOUR du design : comprendre les besoins des parties prenantes, maîtriser le contexte de marque, et présenter des décisions de design de façon convaincante.</p>
 
-            <h3>Ce que l'IA fait bien — et ce que vous devez toujours faire</h3>
+            <h3>Ce que l'IA fait bien, et ce que vous devez toujours faire</h3>
             <div class="ai-layer-table">
               <div class="ai-layer-header">
                 <div class="ai-layer-col ai-layer-col--layer">Couche</div>
@@ -668,9 +668,9 @@
             <h3>Ce que ça change concrètement</h3>
             <ul>
               <li><strong>Le temps gagné n'est pas du temps libre.</strong> Il doit aller vers la compréhension approfondie du contexte, la recherche utilisateur, et la qualité de présentation.</li>
-              <li><strong>Le goût devient plus critique, pas moins.</strong> Quand l'IA peut générer cent variantes, savoir laquelle choisir — et pourquoi — est la vraie compétence.</li>
+              <li><strong>Le goût devient plus critique, pas moins.</strong> Quand l'IA peut générer cent variantes, savoir laquelle choisir, et pourquoi, est la vraie compétence.</li>
               <li><strong>Présenter reste votre responsabilité.</strong> L'IA ne défend pas votre choix en réunion. Elle ne connaît pas les parties prenantes, leurs inquiétudes, ou l'historique du projet.</li>
-              <li><strong>Le handoff gagne en clarté.</strong> La documentation et les annotations ont toujours été la partie la plus chronophage du travail. L'IA peut générer les specs, résumer les comportements et structurer la doc de composants — c'est l'opportunité de livrer plus vite et plus clairement aux développeurs.</li>
+              <li><strong>Le handoff gagne en clarté.</strong> La documentation et les annotations ont toujours été la partie la plus chronophage du travail. L'IA peut générer les specs, résumer les comportements et structurer la doc de composants : c'est l'opportunité de livrer plus vite et plus clairement aux développeurs.</li>
             </ul>
             <div style="margin-top:1rem">
               <button class="careers-inline-link" onclick="showSection('prompting', true)">→ Voir la section Prompting Design</button>
@@ -678,42 +678,42 @@
         },
         {
           icon: 'critique',
-          summary: 'Entretiens — La critique d\'app',
+          summary: 'Entretiens : la critique d\'app',
           body: `
             <p>La critique d'app est un format d'entretien courant. Vous devez analyser une app choisie par vous ou l'interviewer.</p>
             <div class="callout">Le principe le plus important : focalisez-vous sur le <strong>pourquoi</strong>. Évitez les jugements subjectifs sans raison objective.</div>
             <h3>Ce que l'on évalue</h3>
             <ul>
-              <li><strong>Pensée produit</strong> — comprenez-vous la stratégie derrière l'app ?</li>
-              <li><strong>Attention aux détails</strong> — identifiez-vous les inconsistances visuelles ?</li>
-              <li><strong>Communication</strong> — exprimez-vous vos idées clairement et de façon constructive ?</li>
+              <li><strong>Pensée produit</strong>: comprenez-vous la stratégie derrière l'app ?</li>
+              <li><strong>Attention aux détails</strong>: identifiez-vous les inconsistances visuelles ?</li>
+              <li><strong>Communication</strong>: exprimez-vous vos idées clairement et de façon constructive ?</li>
             </ul>
             <h3>Framework en 3 étapes</h3>
             <ol style="padding-left:1.25rem;font-size:0.84rem;color:var(--text-muted);line-height:1.8;">
-              <li><strong>Contexte</strong> — quel problème l'app résout-elle ? Pour qui ?</li>
-              <li><strong>Choisissez un flux</strong> — parcourez-le en commentant les bons ET mauvais aspects</li>
-              <li><strong>Temps restant</strong> — second flux ou analyse du design system de l'app</li>
+              <li><strong>Contexte</strong>: quel problème l'app résout-elle ? Pour qui ?</li>
+              <li><strong>Choisissez un flux</strong>: parcourez-le en commentant les bons ET mauvais aspects</li>
+              <li><strong>Temps restant</strong>: second flux ou analyse du design system de l'app</li>
             </ol>`,
         },
         {
           icon: 'whiteboard',
-          summary: 'Entretiens — Le whiteboard challenge',
+          summary: 'Entretiens : le whiteboard challenge',
           body: `
             <p>On vous donne un problème et du temps pour le résoudre sur tableau blanc ou FigJam.</p>
             <div class="callout">L'interviewer ne cherche PAS des maquettes en haute fidélité. Il évalue votre processus de pensée.</div>
             <h3>Framework en 7 étapes</h3>
             <ol style="padding-left:1.25rem;font-size:0.84rem;color:var(--text-muted);line-height:1.9;">
-              <li><strong>Écrivez un plan</strong> — structurez votre approche avant de commencer</li>
-              <li><strong>Définissez l'objectif</strong> — à quoi ressemble le résultat attendu ?</li>
-              <li><strong>Gagnez du contexte</strong> — posez des questions sur le problème, le produit, les utilisateurs</li>
-              <li><strong>Définissez le problème</strong> — précisez ou choisissez un sous-problème si nécessaire</li>
-              <li><strong>Idéez (divergez)</strong> — brainstorm de solutions, user flows</li>
-              <li><strong>Concluez (convergez)</strong> — choisissez les meilleures idées, esquissez les wireframes</li>
-              <li><strong>Réfléchissez</strong> — comment évaluer la solution ? Quoi faire ensuite ?</li>
+              <li><strong>Écrivez un plan</strong>: structurez votre approche avant de commencer</li>
+              <li><strong>Définissez l'objectif</strong>: à quoi ressemble le résultat attendu ?</li>
+              <li><strong>Gagnez du contexte</strong>: posez des questions sur le problème, le produit, les utilisateurs</li>
+              <li><strong>Définissez le problème</strong>: précisez ou choisissez un sous-problème si nécessaire</li>
+              <li><strong>Idéez (divergez)</strong>: brainstorm de solutions, user flows</li>
+              <li><strong>Concluez (convergez)</strong>: choisissez les meilleures idées, esquissez les wireframes</li>
+              <li><strong>Réfléchissez</strong>: comment évaluer la solution ? Quoi faire ensuite ?</li>
             </ol>
             <p style="margin-top:0.5rem;"><strong>Pensez à voix haute tout au long de l'exercice.</strong></p>`,
         },
-        /* HIDDEN — à réactiver si besoin
+        /* HIDDEN, à réactiver si besoin
         {
           icon: 'company',
           summary: 'Quelle taille d\'entreprise me correspond ?',
@@ -757,7 +757,7 @@
             <h3>Product Manager</h3>
             <p>Responsable de la stratégie, roadmap et succès du produit. Si vous aimez la stratégie produit mais pas la narration visuelle.</p>
             <h3>Design Engineer</h3>
-            <p>Rôle hybride en pleine croissance — fortes compétences visuelles + engineering frontend. Conçoit ET construit des systèmes visuels.</p>
+            <p>Rôle hybride en pleine croissance, fortes compétences visuelles + engineering frontend. Conçoit ET construit des systèmes visuels.</p>
             <h3>Software Engineer</h3>
             <p>Construit le produit. Résolution de problèmes plus logique et systématique. Idéal si vous aimez construire des choses et les faire fonctionner.</p>`,
         },
@@ -768,32 +768,32 @@
           icon: 'fit',
           summary: 'Is this role right for me?',
           body: `
-            <p style="font-size:0.82rem;color:var(--text-muted);margin:0 0 1rem">From the statements below, select the ones you believe are <strong>true</strong> for a good UI/UX designer. Some are common misconceptions — can you spot them?</p>
+            <p style="font-size:0.82rem;color:var(--text-muted);margin:0 0 1rem">From the statements below, select the ones you believe are <strong>true</strong> for a good UI/UX designer. Some are common misconceptions: can you spot them?</p>
             <div class="quiz-stmts" id="quiz-fit-en">
-              <button class="quiz-stmt" data-idx="0" onclick="quizToggle(this)">I enjoy tackling open-ended problems — and I'm comfortable starting without knowing the answer.</button>
+              <button class="quiz-stmt" data-idx="0" onclick="quizToggle(this)">I enjoy tackling open-ended problems, and I'm comfortable starting without knowing the answer.</button>
               <button class="quiz-stmt" data-idx="1" onclick="quizToggle(this)">UX design is mainly about making interfaces beautiful and visually attractive.</button>
-              <button class="quiz-stmt" data-idx="2" onclick="quizToggle(this)">I'm creative, but creativity is in service of the user and business goals — not my ego.</button>
-              <button class="quiz-stmt" data-idx="3" onclick="quizToggle(this)">Good design is invisible — if users notice the interface, it has failed.</button>
+              <button class="quiz-stmt" data-idx="2" onclick="quizToggle(this)">I'm creative, but creativity is in service of the user and business goals, not my ego.</button>
+              <button class="quiz-stmt" data-idx="3" onclick="quizToggle(this)">Good design is invisible: if users notice the interface, it has failed.</button>
               <button class="quiz-stmt" data-idx="4" onclick="quizToggle(this)">I'm comfortable with numbers: conversion rates, drop-off rates, engagement metrics.</button>
               <button class="quiz-stmt" data-idx="5" onclick="quizToggle(this)">The UX designer is responsible for the technical implementation of the interfaces they design.</button>
-              <button class="quiz-stmt" data-idx="6" onclick="quizToggle(this)">I work well in cross-functional teams — marketing, tech, e-commerce, business units.</button>
+              <button class="quiz-stmt" data-idx="6" onclick="quizToggle(this)">I work well in cross-functional teams: marketing, tech, e-commerce, business units.</button>
               <button class="quiz-stmt" data-idx="7" onclick="quizToggle(this)">I understand that designing a purchase funnel and designing a mobile app follow different logics.</button>
               <button class="quiz-stmt" data-idx="8" onclick="quizToggle(this)">Design decisions are primarily based on the designer's personal taste and artistic intuition.</button>
-              <button class="quiz-stmt" data-idx="9" onclick="quizToggle(this)">I love observing how people actually use a product — not just how they say they use it.</button>
+              <button class="quiz-stmt" data-idx="9" onclick="quizToggle(this)">I love observing how people actually use a product, not just how they say they use it.</button>
               <button class="quiz-stmt" data-idx="10" onclick="quizToggle(this)">I'm aware that 70% of design persuasion is presentation quality.</button>
               <button class="quiz-stmt" data-idx="11" onclick="quizToggle(this)">A designer's job is done once the mockup is signed off by stakeholders.</button>
               <button class="quiz-stmt" data-idx="12" onclick="quizToggle(this)">I'm good at understanding, organising and explaining complex systems.</button>
-              <button class="quiz-stmt" data-idx="13" onclick="quizToggle(this)">I'm curious about how companies make money — and how design contributes to that.</button>
+              <button class="quiz-stmt" data-idx="13" onclick="quizToggle(this)">I'm curious about how companies make money, and how design contributes to that.</button>
               <button class="quiz-stmt" data-idx="14" onclick="quizToggle(this)">I have an eye for detail, but I know to focus on the big idea first.</button>
               <button class="quiz-stmt" data-idx="15" onclick="quizToggle(this)">I appreciate beauty and aesthetics, and I understand something can look good without being effective.</button>
-              <button class="quiz-stmt" data-idx="16" onclick="quizToggle(this)">I justify my design decisions with data or principles — not just personal taste.</button>
+              <button class="quiz-stmt" data-idx="16" onclick="quizToggle(this)">I justify my design decisions with data or principles, not just personal taste.</button>
               <button class="quiz-stmt" data-idx="17" onclick="quizToggle(this)">Following current design trends is the best way to produce good UX.</button>
-              <button class="quiz-stmt" data-idx="18" onclick="quizToggle(this)">I stay resilient when receiving feedback — I use it as information, not as a defeat.</button>
-              <button class="quiz-stmt" data-idx="19" onclick="quizToggle(this)">I enjoy teaching and sharing knowledge — training colleagues or agencies on UX practices feels natural to me.</button>
+              <button class="quiz-stmt" data-idx="18" onclick="quizToggle(this)">I stay resilient when receiving feedback: I use it as information, not as a defeat.</button>
+              <button class="quiz-stmt" data-idx="19" onclick="quizToggle(this)">I enjoy teaching and sharing knowledge: training colleagues or agencies on UX practices feels natural to me.</button>
               <button class="quiz-stmt" data-idx="20" onclick="quizToggle(this)">I think in systems: I don't just design a screen, I think about how it fits into a coherent design system.</button>
               <button class="quiz-stmt" data-idx="21" onclick="quizToggle(this)">I'm comfortable running a UX audit autonomously and producing prioritised recommendations.</button>
-              <button class="quiz-stmt" data-idx="22" onclick="quizToggle(this)">Accessibility isn't a "nice to have" for me — I treat it as a baseline requirement of any good design.</button>
-              <button class="quiz-stmt" data-idx="23" onclick="quizToggle(this)">A great UX designer works alone — too much collaboration slows down the creative process.</button>
+              <button class="quiz-stmt" data-idx="22" onclick="quizToggle(this)">Accessibility isn't a "nice to have" for me: I treat it as a baseline requirement of any good design.</button>
+              <button class="quiz-stmt" data-idx="23" onclick="quizToggle(this)">A great UX designer works alone: too much collaboration slows down the creative process.</button>
             </div>
             <div style="margin-top:1.25rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
               <button class="quiz-reveal-btn" onclick="quizReveal('quiz-fit-en', 'quiz-legend-en')">See results</button>
@@ -805,44 +805,44 @@
           icon: 'role',
           summary: 'What is the UI/UX role here?',
           body: `
-            <p>Reporting to the Platforms division (Marketing Department), you are the guardian of user experience and interface quality across <strong>all of the group's digital platforms</strong> — not just the mobile app.</p>
+            <p>Reporting to the Platforms division (Marketing Department), you are the guardian of user experience and interface quality across <strong>all of the group's digital platforms</strong>, not just the mobile app.</p>
             <p><strong>You define the "what" and the "how" on the experience side. Development and technical implementation is handled by the Product Owner on the IT side.</strong></p>
 
             <h3>1. A multi-surface role</h3>
             <p>The scope covers very different audiences and logics:</p>
             <ul>
-              <li><strong>BtoC visitors</strong> — main website, mobile app, ticketing, visit planning journeys.</li>
-              <li><strong>BtoB & events</strong> — Congrès site, Le Grand Tour, VEL, Panache, BEL. The user is a professional — density and efficiency matter more than emotion.</li>
-              <li><strong>E-commerce</strong> — ticket purchase funnel, accommodation booking, click & collect. Every step has a direct revenue impact.</li>
-              <li><strong>HR & talent</strong> — talent portal, HR site. Different audience, different codes, same quality standard.</li>
+              <li><strong>BtoC visitors</strong>: main website, mobile app, ticketing, visit planning journeys.</li>
+              <li><strong>BtoB & events</strong>: Congrès site, Le Grand Tour, VEL, Panache, BEL. The user is a professional: density and efficiency matter more than emotion.</li>
+              <li><strong>E-commerce</strong>: ticket purchase funnel, accommodation booking, click & collect. Every step has a direct revenue impact.</li>
+              <li><strong>HR & talent</strong>: talent portal, HR site. Different audience, different codes, same quality standard.</li>
             </ul>
 
             <h3>2. Design System owner and RGAA accessibility lead</h3>
             <p>This role owns the group's design system:</p>
             <ul>
               <li><strong>Create, maintain and evolve</strong> components, guidelines and patterns in line with the brand platform.</li>
-              <li><strong>Train internal teams and agencies</strong> — pedagogy and evangelisation are core competencies for this role.</li>
+              <li><strong>Train internal teams and agencies</strong>: pedagogy and evangelisation are core competencies for this role.</li>
               <li><strong>Guarantee RGAA compliance</strong> (French accessibility standard) across all platforms.</li>
               <li><strong>Document</strong> UX/UI best practices and design processes.</li>
             </ul>
 
             <h3>3. Data-driven and CRO-oriented</h3>
             <ul>
-              <li><strong>Heatmaps & session recordings</strong> (Clarity) — continuous optimisation component by component.</li>
-              <li><strong>CRO collaboration</strong> — feed the A/B test backlog with UX hypotheses alongside the CRO Project Manager.</li>
-              <li><strong>User feedback</strong> — surveys, reviews, support — to identify friction points and prioritise improvements.</li>
+              <li><strong>Heatmaps & session recordings</strong> (Clarity), continuous optimisation component by component.</li>
+              <li><strong>CRO collaboration</strong>: feed the A/B test backlog with UX hypotheses alongside the CRO Project Manager.</li>
+              <li><strong>User feedback</strong>: surveys, reviews, support, to identify friction points and prioritise improvements.</li>
             </ul>
 
             <h3>4. Cross-functional reference</h3>
             <p>The designer works at the intersection of several teams:</p>
             <ul>
-              <li><strong>Product Owners / IT</strong> — functional requirements, mockup handoff, visual QA</li>
-              <li><strong>Content & Influence team</strong> — editorial and visual consistency</li>
-              <li><strong>Graphic designer & brand platform manager</strong> — visual identity and creative assets</li>
-              <li><strong>Developers</strong> — bridging component library and design system</li>
+              <li><strong>Product Owners / IT</strong>: functional requirements, mockup handoff, visual QA</li>
+              <li><strong>Content & Influence team</strong>: editorial and visual consistency</li>
+              <li><strong>Graphic designer & brand platform manager</strong>: visual identity and creative assets</li>
+              <li><strong>Developers</strong>: bridging component library and design system</li>
             </ul>
 
-            <div class="callout">On this role, "doing design" also includes maintaining a design system, training teams, steering RGAA compliance and producing CRO hypotheses — not just designing screens.</div>
+            <div class="callout">On this role, "doing design" also includes maintaining a design system, training teams, steering RGAA compliance and producing CRO hypotheses, not just designing screens.</div>
 
             <h3>What this role is NOT</h3>
             <ul>
@@ -860,53 +860,53 @@
           summary: 'Essential tools',
           body: `
             <h3>Design: Figma (mandatory)</h3>
-            <p>Figma is the central tool for this role. It covers every stage: wireframes, mockups, prototypes, design system, handoff. Mastery of Figma — including variables, auto layout and components — is non-negotiable.</p>
+            <p>Figma is the central tool for this role. It covers every stage: wireframes, mockups, prototypes, design system, handoff. Mastery of Figma, including variables, auto layout and components, is non-negotiable.</p>
 
             <h3>Analytics & user behaviour</h3>
             <p>Understanding data is as important as producing mockups:</p>
             <ul>
-              <li><strong>Microsoft Clarity</strong> — heatmaps, session recordings, rage clicks. Primary tool mentioned in the job description.</li>
-              <li><strong>Hotjar</strong> — alternative to Clarity, same use cases.</li>
-              <li><strong>Google Analytics</strong> — conversion metrics, funnels, retention.</li>
-              <li><strong>A/B testing (Kameleoon)</strong> — test two versions of a screen or component. Collaboration with the CRO Project Manager.</li>
+              <li><strong>Microsoft Clarity</strong>: heatmaps, session recordings, rage clicks. Primary tool mentioned in the job description.</li>
+              <li><strong>Hotjar</strong>: alternative to Clarity, same use cases.</li>
+              <li><strong>Google Analytics</strong>: conversion metrics, funnels, retention.</li>
+              <li><strong>A/B testing (Kameleoon)</strong>: test two versions of a screen or component. Collaboration with the CRO Project Manager.</li>
             </ul>
 
-            <h3>Accessibility — RGAA</h3>
+            <h3>Accessibility: RGAA</h3>
             <ul>
-              <li><strong>Ara / RGAA Assistant</strong> — DINUM audit tool for checking RGAA compliance on web pages.</li>
-              <li><strong>Contrast checker (WebAIM)</strong> — verify colour contrast ratios against WCAG/RGAA.</li>
-              <li><strong>NVDA / VoiceOver</strong> — screen readers for testing keyboard and assistive technology navigation.</li>
+              <li><strong>Ara / RGAA Assistant</strong>: DINUM audit tool for checking RGAA compliance on web pages.</li>
+              <li><strong>Contrast checker (WebAIM)</strong>: verify colour contrast ratios against WCAG/RGAA.</li>
+              <li><strong>NVDA / VoiceOver</strong>: screen readers for testing keyboard and assistive technology navigation.</li>
             </ul>
 
             <h3>CMS</h3>
             <ul>
-              <li><strong>Drupal</strong> — CMS used internally, knowledge appreciated per the job description.</li>
+              <li><strong>Drupal</strong>: CMS used internally, knowledge appreciated per the job description.</li>
             </ul>
 
             <h3>AI tools to know</h3>
             <ul>
-              <li><strong>Cursor</strong> — AI-powered code editor, great for rapid prototyping</li>
-              <li><strong>Claude Code</strong> — powerful AI CLI, higher learning curve</li>
-              <li><strong>Claude Design</strong> — interface generation directly from Claude, no code required</li>
-              <li><strong>Figma Make</strong> — 0-to-1 code generator built into Figma Pro</li>
-              <li><strong>Lovable</strong> — full web app generation from a prompt, ideal for quickly validating an idea</li>
-              <li><strong>Bolt</strong> — full-stack AI prototyping, similar to Lovable with direct access to the generated code</li>
+              <li><strong>Cursor</strong>: AI-powered code editor, great for rapid prototyping</li>
+              <li><strong>Claude Code</strong>: powerful AI CLI, higher learning curve</li>
+              <li><strong>Claude Design</strong>: interface generation directly from Claude, no code required</li>
+              <li><strong>Figma Make</strong>: 0-to-1 code generator built into Figma Pro</li>
+              <li><strong>Lovable</strong>: full web app generation from a prompt, ideal for quickly validating an idea</li>
+              <li><strong>Bolt</strong>: full-stack AI prototyping, similar to Lovable with direct access to the generated code</li>
             </ul>
 
             <h3>Collaboration tools</h3>
             <ul>
-              <li><strong>Notion</strong> — docs, wikis and project management</li>
-              <li><strong>FigJam</strong> — workshops, user flows and diagrams</li>
-              <li><strong>GitLab / Jira</strong> — ticket and sprint tracking</li>
+              <li><strong>Notion</strong>: docs, wikis and project management</li>
+              <li><strong>FigJam</strong>: workshops, user flows and diagrams</li>
+              <li><strong>GitLab / Jira</strong>: ticket and sprint tracking</li>
             </ul>
 
-            <div class="callout">Figma is mandatory per the job description. Adobe XD and Sketch are listed as additional knowledge — but Figma takes precedence over everything.</div>`,
+            <div class="callout">Figma is mandatory per the job description. Adobe XD and Sketch are listed as additional knowledge, but Figma takes precedence over everything.</div>`,
         },
         {
           icon: 'checklist',
           summary: 'Readiness checklist',
           body: `
-            <h3>Craft — Visual skills</h3>
+            <h3>Craft: visual skills</h3>
             <div class="careers-checklist">
               <div class="checklist-item"><input type="checkbox" id="craft-1"><label for="craft-1">I can create a pixel-perfect copy of an app or site in Figma.</label></div>
               <div class="checklist-item"><input type="checkbox" id="craft-2"><label for="craft-2">I understand and use Figma's auto layout feature.</label></div>
@@ -921,26 +921,26 @@
               <div class="checklist-item"><input type="checkbox" id="int-2"><label for="int-2">I can create a click-through prototype of a purchase funnel in Figma.</label></div>
               <div class="checklist-item"><input type="checkbox" id="int-3"><label for="int-3">I understand the differences in patterns between mobile app, website and e-commerce.</label></div>
               <div class="checklist-item"><input type="checkbox" id="int-4"><label for="int-4">My designs cover all states: default, loading, empty, error.</label></div>
-              <div class="checklist-item"><input type="checkbox" id="int-5"><label for="int-5">I understand the difference between device pixels and CSS pixels — and what the device pixel ratio (DPR) means for asset export (@2x, @3x, SVG).</label></div>
+              <div class="checklist-item"><input type="checkbox" id="int-5"><label for="int-5">I understand the difference between device pixels and CSS pixels, and what the device pixel ratio (DPR) means for asset export (@2x, @3x, SVG).</label></div>
               <div class="checklist-item"><input type="checkbox" id="int-6"><label for="int-6">I know what the standard breakpoints are and design for at least 3 sizes: mobile, tablet, desktop.</label></div>
-              <div class="checklist-item"><input type="checkbox" id="int-7"><label for="int-7">I think in fluid layouts: I define how components stretch, reflow or disappear between breakpoints — not just what they look like at a fixed width.</label></div>
+              <div class="checklist-item"><input type="checkbox" id="int-7"><label for="int-7">I think in fluid layouts: I define how components stretch, reflow or disappear between breakpoints, not just what they look like at a fixed width.</label></div>
             </div>
             <h3>Handoff & Dev Collaboration</h3>
             <div class="careers-checklist">
               <div class="checklist-item"><input type="checkbox" id="hoff-1"><label for="hoff-1">My Figma files are named, organised and readable by a developer without verbal explanation.</label></div>
-              <div class="checklist-item"><input type="checkbox" id="hoff-2"><label for="hoff-2">I annotate interaction behaviour: transitions, durations, easing, scroll behaviour — not just visual states.</label></div>
+              <div class="checklist-item"><input type="checkbox" id="hoff-2"><label for="hoff-2">I annotate interaction behaviour: transitions, durations, easing, scroll behaviour, not just visual states.</label></div>
               <div class="checklist-item"><input type="checkbox" id="hoff-3"><label for="hoff-3">I can write a user story in the format "As a [user], I want [action] so that [benefit]" with clear acceptance criteria.</label></div>
-              <div class="checklist-item"><input type="checkbox" id="hoff-4"><label for="hoff-4">I can read basic CSS — box model, flexbox, rem/px units — to speak the same language as developers.</label></div>
+              <div class="checklist-item"><input type="checkbox" id="hoff-4"><label for="hoff-4">I can read basic CSS (box model, flexbox, rem/px units) to speak the same language as developers.</label></div>
               <div class="checklist-item"><input type="checkbox" id="hoff-5"><label for="hoff-5">I prepare a delivery brief: what changed, what's new, edge cases not to miss.</label></div>
-              <div class="checklist-item"><input type="checkbox" id="hoff-6"><label for="hoff-6">I attend dev reviews to check implementation matches specs — and I know how to negotiate deviations.</label></div>
+              <div class="checklist-item"><input type="checkbox" id="hoff-6"><label for="hoff-6">I attend dev reviews to check implementation matches specs, and I know how to negotiate deviations.</label></div>
             </div>
             <h3>Accessibility</h3>
             <div class="careers-checklist">
               <div class="checklist-item"><input type="checkbox" id="a11y-1"><label for="a11y-1">I check colour contrast on text and components (≥ 4.5:1 for body text, ≥ 3:1 for large headings and UI components).</label></div>
               <div class="checklist-item"><input type="checkbox" id="a11y-2"><label for="a11y-2">My tap targets are at least 44×44 px on mobile.</label></div>
-              <div class="checklist-item"><input type="checkbox" id="a11y-3"><label for="a11y-3">I never convey information through colour alone — I always pair it with text, an icon, or a shape.</label></div>
+              <div class="checklist-item"><input type="checkbox" id="a11y-3"><label for="a11y-3">I never convey information through colour alone: I always pair it with text, an icon, or a shape.</label></div>
               <div class="checklist-item"><input type="checkbox" id="a11y-4"><label for="a11y-4">I provide labels and alt-text descriptions for images and icons in my handoff specs.</label></div>
-              <div class="checklist-item"><input type="checkbox" id="a11y-5"><label for="a11y-5">I know WCAG levels A, AA and AAA — and that AA is the minimum legal standard in Europe.</label></div>
+              <div class="checklist-item"><input type="checkbox" id="a11y-5"><label for="a11y-5">I know WCAG levels A, AA and AAA, and that AA is the minimum legal standard in Europe.</label></div>
             </div>
             <h3>Marketing & Conversion</h3>
             <div class="careers-checklist">
@@ -953,36 +953,36 @@
             <div class="careers-checklist">
               <div class="checklist-item"><input type="checkbox" id="proc-1"><label for="proc-1">I'm comfortable doing an interface critique and explaining my reasoning with data or principles.</label></div>
               <div class="checklist-item"><input type="checkbox" id="proc-2"><label for="proc-2">I know how to write good questions and conduct a user interview.</label></div>
-              <div class="checklist-item"><input type="checkbox" id="proc-3"><label for="proc-3">I can explain the business context behind any project — not just the UI requirements.</label></div>
-              <div class="checklist-item"><input type="checkbox" id="proc-4"><label for="proc-4">I have shipped something — even a personal project, freelance work or school project.</label></div>
+              <div class="checklist-item"><input type="checkbox" id="proc-3"><label for="proc-3">I can explain the business context behind any project, not just the UI requirements.</label></div>
+              <div class="checklist-item"><input type="checkbox" id="proc-4"><label for="proc-4">I have shipped something, even a personal project, freelance work or school project.</label></div>
               <div class="checklist-item"><input type="checkbox" id="proc-5"><label for="proc-5">My goal right now is to grow, not to defend what I already know.</label></div>
             </div>
             <h3>AI prototyping & reading code output</h3>
             <div class="careers-checklist">
               <div class="checklist-item"><input type="checkbox" id="ai-1"><label for="ai-1">I have used an AI generation tool (Figma Make, v0, Cursor, Bolt) to produce a working prototype or interface.</label></div>
-              <div class="checklist-item"><input type="checkbox" id="ai-2"><label for="ai-2">I can read the component tree generated by AI — and spot what is too generic or inconsistent with the design system.</label></div>
-              <div class="checklist-item"><input type="checkbox" id="ai-3"><label for="ai-3">I understand the basics of generated styling: CSS classes, variables, flex/grid structure — not to code, but to evaluate and correct the output.</label></div>
+              <div class="checklist-item"><input type="checkbox" id="ai-2"><label for="ai-2">I can read the component tree generated by AI, and spot what is too generic or inconsistent with the design system.</label></div>
+              <div class="checklist-item"><input type="checkbox" id="ai-3"><label for="ai-3">I understand the basics of generated styling: CSS classes, variables, flex/grid structure, not to code, but to evaluate and correct the output.</label></div>
               <div class="checklist-item"><input type="checkbox" id="ai-4"><label for="ai-4">I can write an effective interface generation prompt: naming DS components, describing states, specifying business context.</label></div>
-              <div class="checklist-item"><input type="checkbox" id="ai-5"><label for="ai-5">I can distinguish what the AI got right from what needs human correction — I don't blindly approve the output.</label></div>
+              <div class="checklist-item"><input type="checkbox" id="ai-5"><label for="ai-5">I can distinguish what the AI got right from what needs human correction: I don't blindly approve the output.</label></div>
             </div>`,
         },
         {
           icon: 'influence',
-          summary: 'Influence & persuasion — the invisible skill',
+          summary: 'Influence & persuasion: the invisible skill',
           body: `
-            <p>Your success as a designer depends equally on your relationships as it does on your design talent. The key people you need as allies — decision-makers, managers, stakeholders — will likely know nothing about design. <strong>You will have to charm and teach them.</strong></p>
+            <p>Your success as a designer depends equally on your relationships as it does on your design talent. The key people you need as allies (decision-makers, managers, stakeholders) will likely know nothing about design. <strong>You will have to charm and teach them.</strong></p>
             <div class="callout">A brilliant design that never ships changes nothing. The value of your work is also measured by your ability to get it built and released into the real world.</div>
             <h3>Why this matters as much as your craft</h3>
             <ul>
               <li><strong>Your ideas only have value if they get built.</strong> The most ambitious concepts die in slide decks if no one is convinced to execute them.</li>
               <li><strong>Decision-makers think in business terms, not UX terms.</strong> Translating your design decisions into business value arguments is a skill in its own right.</li>
-              <li><strong>Persuasion is not manipulation.</strong> It's knowing how to frame the right problem for the right person with the right argument — and listening as much as you speak.</li>
+              <li><strong>Persuasion is not manipulation.</strong> It's knowing how to frame the right problem for the right person with the right argument, and listening as much as you speak.</li>
             </ul>
             <h3>How to develop this skill</h3>
             <ul>
-              <li>Lead presentations with business context — not with the UI.</li>
+              <li>Lead presentations with business context, not with the UI.</li>
               <li>Learn to frame measurable hypotheses: "If we improve this funnel, we should reduce drop-off by X%."</li>
-              <li>Observe how decisions get made in your organisation — and position yourself at the right moment, not after the fact.</li>
+              <li>Observe how decisions get made in your organisation, and position yourself at the right moment, not after the fact.</li>
               <li>Build relationships outside of formal meetings. Trust is built in the hallways.</li>
             </ul>`,
         },
@@ -994,7 +994,7 @@
 
             <div class="callout">The system can generate options. It cannot supply ownership.</div>
 
-            <h3>What AI does well — and what you still need to do</h3>
+            <h3>What AI does well, and what you still need to do</h3>
             <div class="ai-layer-table">
               <div class="ai-layer-header">
                 <div class="ai-layer-col ai-layer-col--layer">Layer</div>
@@ -1031,9 +1031,9 @@
             <h3>What this means in practice</h3>
             <ul>
               <li><strong>Time saved is not free time.</strong> It should go toward deeper context understanding, user research, and presentation quality.</li>
-              <li><strong>Taste becomes more critical, not less.</strong> When AI can generate a hundred variants, knowing which one to pick — and why — is the real skill.</li>
+              <li><strong>Taste becomes more critical, not less.</strong> When AI can generate a hundred variants, knowing which one to pick, and why, is the real skill.</li>
               <li><strong>Presenting is still your responsibility.</strong> AI doesn't defend your choice in a meeting. It doesn't know your stakeholders, their concerns, or the project history.</li>
-              <li><strong>Handoff gets clearer.</strong> Documentation and annotations have always been the most time-consuming part of the job. AI can generate specs, summarise behaviours and structure component docs — this is the opportunity to deliver faster and with more precision to developers.</li>
+              <li><strong>Handoff gets clearer.</strong> Documentation and annotations have always been the most time-consuming part of the job. AI can generate specs, summarise behaviours and structure component docs: this is the opportunity to deliver faster and with more precision to developers.</li>
             </ul>
             <div style="margin-top:1rem">
               <button class="careers-inline-link" onclick="showSection('prompting', true)">→ Go to the Prompting Design section</button>
@@ -1041,42 +1041,42 @@
         },
         {
           icon: 'critique',
-          summary: 'Interviews — The app critique',
+          summary: 'Interviews: the app critique',
           body: `
             <p>The app critique is a common interview format. You analyse an app chosen by you or the interviewer.</p>
             <div class="callout">The most important principle: focus on the <strong>why</strong>. Avoid subjective statements without an objective reason.</div>
             <h3>What interviewers assess</h3>
             <ul>
-              <li><strong>Product thinking</strong> — do you understand the strategy behind the app?</li>
-              <li><strong>Attention to detail</strong> — can you spot visual inconsistencies?</li>
-              <li><strong>Communication</strong> — do you express your ideas clearly and constructively?</li>
+              <li><strong>Product thinking</strong>: do you understand the strategy behind the app?</li>
+              <li><strong>Attention to detail</strong>: can you spot visual inconsistencies?</li>
+              <li><strong>Communication</strong>: do you express your ideas clearly and constructively?</li>
             </ul>
             <h3>3-step framework</h3>
             <ol style="padding-left:1.25rem;font-size:0.84rem;color:var(--text-muted);line-height:1.8;">
-              <li><strong>Context</strong> — what problem does the app solve? For whom?</li>
-              <li><strong>Choose a flow</strong> — walk through it commenting on both good and bad aspects</li>
-              <li><strong>Remaining time</strong> — a second flow or a design system analysis</li>
+              <li><strong>Context</strong>: what problem does the app solve? For whom?</li>
+              <li><strong>Choose a flow</strong>: walk through it commenting on both good and bad aspects</li>
+              <li><strong>Remaining time</strong>: a second flow or a design system analysis</li>
             </ol>`,
         },
         {
           icon: 'whiteboard',
-          summary: 'Interviews — The whiteboard challenge',
+          summary: 'Interviews: the whiteboard challenge',
           body: `
             <p>You're given a problem and time to solve it on a whiteboard or in FigJam.</p>
             <div class="callout">Interviewers are NOT looking for high-fidelity designs. They're evaluating your thinking process.</div>
             <h3>7-step framework</h3>
             <ol style="padding-left:1.25rem;font-size:0.84rem;color:var(--text-muted);line-height:1.9;">
-              <li><strong>Write a plan</strong> — outline your approach before starting</li>
-              <li><strong>Set a goal</strong> — what should the outcome look like?</li>
-              <li><strong>Gain context</strong> — ask questions about the problem, product, and users</li>
-              <li><strong>Define the problem</strong> — narrow it down if needed</li>
-              <li><strong>Ideate (diverge)</strong> — brainstorm solutions, user flows</li>
-              <li><strong>Design (converge)</strong> — pick the best ideas, sketch wireframes</li>
-              <li><strong>Reflect</strong> — how would you evaluate your solution? What next?</li>
+              <li><strong>Write a plan</strong>: outline your approach before starting</li>
+              <li><strong>Set a goal</strong>: what should the outcome look like?</li>
+              <li><strong>Gain context</strong>: ask questions about the problem, product, and users</li>
+              <li><strong>Define the problem</strong>: narrow it down if needed</li>
+              <li><strong>Ideate (diverge)</strong>: brainstorm solutions, user flows</li>
+              <li><strong>Design (converge)</strong>: pick the best ideas, sketch wireframes</li>
+              <li><strong>Reflect</strong>: how would you evaluate your solution? What next?</li>
             </ol>
             <p style="margin-top:0.5rem;"><strong>Think out loud throughout the exercise.</strong></p>`,
         },
-        /* HIDDEN — re-enable if needed
+        /* HIDDEN, re-enable if needed
         {
           icon: 'company',
           summary: 'What company size suits me?',
@@ -1120,7 +1120,7 @@
             <h3>Product Manager</h3>
             <p>Responsible for product strategy, roadmap and success. If you like product thinking but not visual storytelling.</p>
             <h3>Design Engineer</h3>
-            <p>A growing hybrid role — strong visual skills + frontend engineering. Designs AND builds visual systems.</p>
+            <p>A growing hybrid role, strong visual skills + frontend engineering. Designs AND builds visual systems.</p>
             <h3>Software Engineer</h3>
             <p>Builds the product. More logical and systematic problem solving. Ideal if you like building things and making them work.</p>`,
         },
@@ -1136,8 +1136,8 @@
     /* ── DesignOps    /* ── DesignOps roadmap ── */
     designops: {
       breakthrough: {
-        fr: 'Le Figma DS est la librairie de composants — et si vous choisissez d\'utiliser des outils IA, il devient aussi leur source de vérité. Connecté via MCP, un agent peut lire et écrire du contenu Figma natif — frames, composants, variables — directement depuis votre DS existant. Aucune librairie de code requise. C\'est une option parmi d\'autres dans votre workflow, pas une obligation.',
-        en: 'The Figma DS is the component library — and if you choose to use AI tools, it also becomes their source of truth. Connected via MCP, an agent can read and write native Figma content — frames, components, variables — directly from your existing DS. No code library needed. It\'s one option in your workflow, not a requirement.',
+        fr: 'Le Figma DS est la librairie de composants, et si vous choisissez d\'utiliser des outils IA, il devient aussi leur source de vérité. Connecté via MCP, un agent peut lire et écrire du contenu Figma natif (frames, composants, variables) directement depuis votre DS existant. Aucune librairie de code requise. C\'est une option parmi d\'autres dans votre workflow, pas une obligation.',
+        en: 'The Figma DS is the component library, and if you choose to use AI tools, it also becomes their source of truth. Connected via MCP, an agent can read and write native Figma content (frames, components, variables) directly from your existing DS. No code library needed. It\'s one option in your workflow, not a requirement.',
       },
       flywheel: {
         fr: 'La qualité des outputs IA est directement proportionnelle à la qualité du design system. Des noms de composants propres, des tokens cohérents, des variants bien documentés → des outputs proches du niveau production. Chaque amélioration du DS améliore ce que l\'IA génère. Le volant d\'inertie : meilleur DS → meilleur output IA → moins de rework → plus de temps pour améliorer le DS.',
@@ -1166,11 +1166,11 @@
             status: 'soon',
             statusLabel: 'Court terme',
             title: 'Flux PO → design',
-            summary: 'Le PO peut contribuer au design — pas seulement comme commanditaire. Il peut générer un premier jet pour illustrer une idée, le designer prend le relais pour le polir et l\'aligner sur le DS.',
+            summary: 'Le PO peut contribuer au design, pas seulement comme commanditaire. Il peut générer un premier jet pour illustrer une idée, le designer prend le relais pour le polir et l\'aligner sur le DS.',
             actions: [
               'Le PO décrit le besoin (brief structuré ou description informelle)',
-              'Voie A — Le PO génère un premier jet (Claude, v0, Figma Make) pour illustrer l\'idée, puis passe la main au designer',
-              'Voie B — Le designer produit directement dans Figma, avec ou sans outil de génération selon le scope',
+              'Voie A : le PO génère un premier jet (Claude, v0, Figma Make) pour illustrer l\'idée, puis passe la main au designer',
+              'Voie B : le designer produit directement dans Figma, avec ou sans outil de génération selon le scope',
               'Dans les deux cas : le designer affine, aligne sur le DS, valide les états et l\'accessibilité',
               'Le PO révise en Figma (accès viewer gratuit + commentaires)',
               'La spec finale part en ticket dev',
@@ -1181,7 +1181,7 @@
             number: '2',
             status: 'future',
             statusLabel: 'Phase 2',
-            title: 'Refonte site — architecture DS-first',
+            title: 'Refonte site : architecture DS-first',
             summary: 'Drupal headless + frontend par composants. Si le site est construit avec un framework par composants, on obtient un pipeline IA bidirectionnel : DS Figma → MCP → l\'IA génère des designs ET du code depuis la même source de vérité.',
             actions: [
               'Argumenter l\'architecture headless via le pipeline IA bidirectionnel',
@@ -1211,14 +1211,14 @@
             status: 'now',
             statusLabel: 'Now',
             title: 'DS structured for AI',
-            summary: 'Make the design system readable by AI agents — this is infrastructure, not housekeeping.',
+            summary: 'Make the design system readable by AI agents: this is infrastructure, not housekeeping.',
             actions: [
               'Create Figma Foundations library (tokens, variables, FR/ES modes)',
               'Audit component naming in App DS and Web DS for consistency and clarity',
               'Add descriptions to components (readable by MCP)',
               'Structure variants with clear property names',
               'Document the contextual UI state machine (connected/not connected, ticket types, timing)',
-              'Write a custom PdF MCP Skill file (markdown only — no code)',
+              'Write a custom PdF MCP Skill file (markdown only, no code)',
               'Test the MCP flow: connect Claude Code to Figma MCP, generate a variant, evaluate quality',
             ],
           },
@@ -1227,11 +1227,11 @@
             status: 'soon',
             statusLabel: 'Short term',
             title: 'PO → design workflow',
-            summary: 'The PO can contribute to design — not just as a requester. They can generate a first draft to illustrate an idea, then hand off to the designer who polishes it and aligns it to the DS.',
+            summary: 'The PO can contribute to design, not just as a requester. They can generate a first draft to illustrate an idea, then hand off to the designer who polishes it and aligns it to the DS.',
             actions: [
               'PO describes the need (structured brief or informal description)',
-              'Path A — PO generates a first draft (Claude, v0, Figma Make) to illustrate the idea, then hands off to the designer',
-              'Path B — Designer works directly in Figma, with or without a generation tool depending on scope',
+              'Path A: PO generates a first draft (Claude, v0, Figma Make) to illustrate the idea, then hands off to the designer',
+              'Path B: Designer works directly in Figma, with or without a generation tool depending on scope',
               'Either way: designer refines, aligns to DS, validates states and accessibility',
               'PO reviews in Figma (free viewer access + comments)',
               'Final spec goes to dev ticket',
@@ -1242,7 +1242,7 @@
             number: '2',
             status: 'future',
             statusLabel: 'Phase 2',
-            title: 'Website redesign — DS-first architecture',
+            title: 'Website redesign: DS-first architecture',
             summary: 'Headless Drupal + component-based frontend. If the site is built with a component-based framework, we get a bidirectional AI pipeline: Figma DS → MCP → AI generates both designs AND code from the same source of truth.',
             actions: [
               'Argue the headless architecture via the bidirectional AI pipeline',
@@ -1271,68 +1271,68 @@
         fr: [
           {
             id: '1',
-            title: 'Modèle 1 — Designer comme opérateur MCP',
+            title: 'Modèle 1: Designer comme opérateur MCP',
             status: 'now',
             statusLabel: 'Fonctionne maintenant',
-            body: 'Le PO décrit le besoin. Vous (Full seat) lancez l\'agent IA connecté à Figma MCP. L\'agent génère des frames conformes au DS. Le PO révise en viewer gratuit. Vous n\'êtes pas "le designer qui fait pour eux" — vous opérez l\'outil, l\'IA fait le travail de génération, le PO pilote l\'intention.',
+            body: 'Le PO décrit le besoin. Vous (Full seat) lancez l\'agent IA connecté à Figma MCP. L\'agent génère des frames conformes au DS. Le PO révise en viewer gratuit. Vous n\'êtes pas "le designer qui fait pour eux" : vous opérez l\'outil, l\'IA fait le travail de génération, le PO pilote l\'intention.',
             example: 'PO : "Variante de la bannière de réassurance checkout pour le site espagnol, sans frais cachés."\n→ Prompt Claude Code : "Crée une bannière réassurance avec le DS PdF à [URL], locale ES, tarification transparente. Base : composant BannerReassurance existant."\n→ L\'agent génère une frame Figma native avec vrais composants et tokens.',
           },
           {
             id: '2',
-            title: 'Modèle 2 — PO avec génération IA externe',
+            title: 'Modèle 2: PO avec génération IA externe',
             status: 'now',
             statusLabel: 'Fonctionne maintenant',
-            body: 'Sans accès Full, les POs utilisent des outils IA (Claude, v0, Bolt) avec accès MCP en lecture. L\'IA génère une maquette hors Figma (URL de preview hébergée) mais ancrée dans la connaissance réelle du DS — couleurs correctes, espacements, patterns de composants. Moins précis que le Modèle 1, mais plus d\'autonomie PO.',
+            body: 'Sans accès Full, les POs utilisent des outils IA (Claude, v0, Bolt) avec accès MCP en lecture. L\'IA génère une maquette hors Figma (URL de preview hébergée) mais ancrée dans la connaissance réelle du DS : couleurs correctes, espacements, patterns de composants. Moins précis que le Modèle 1, mais plus d\'autonomie PO.',
             example: null,
           },
           {
             id: '3',
-            title: 'Modèle 3 — Full seat partagé pour sessions de génération',
+            title: 'Modèle 3: Full seat partagé pour sessions de génération',
             status: 'soon',
             statusLabel: 'Possible maintenant',
-            body: 'Un Full seat dédié comme "siège de génération IA" — utilisé par les POs pour les sessions MCP, ou par vous en leur nom. Figma permet la réassignation de seats. Ce seat ne doit pas être toujours actif.',
+            body: 'Un Full seat dédié comme "siège de génération IA", utilisé par les POs pour les sessions MCP, ou par vous en leur nom. Figma permet la réassignation de seats. Ce seat ne doit pas être toujours actif.',
             example: null,
           },
           {
             id: '4',
-            title: 'Modèle 4 — PO avec Full seat direct',
+            title: 'Modèle 4: PO avec Full seat direct',
             status: 'future',
             statusLabel: 'Futur (budget)',
-            body: 'Si le pricing Figma évolue ou si les Connected Projects se concrétisent, les POs pourraient obtenir l\'accès Full seat pour des sessions MCP directes. État idéal — dépend du budget et de l\'évolution produit Figma.',
+            body: 'Si le pricing Figma évolue ou si les Connected Projects se concrétisent, les POs pourraient obtenir l\'accès Full seat pour des sessions MCP directes. État idéal : dépend du budget et de l\'évolution produit Figma.',
             example: null,
           },
         ],
         en: [
           {
             id: '1',
-            title: 'Model 1 — Designer as MCP operator',
+            title: 'Model 1: Designer as MCP operator',
             status: 'now',
             statusLabel: 'Works now',
-            body: 'PO describes the need. You (Full seat) run the AI agent connected to Figma MCP. Agent generates DS-compliant frames. PO reviews with free viewer access. You\'re not "designing for them" — you operate the tool, the AI does the generation work, the PO drives intent.',
+            body: 'PO describes the need. You (Full seat) run the AI agent connected to Figma MCP. Agent generates DS-compliant frames. PO reviews with free viewer access. You\'re not "designing for them": you operate the tool, the AI does the generation work, the PO drives intent.',
             example: 'PO: "A checkout reassurance banner variant for the Spanish site, emphasising no hidden fees."\n→ Prompt Claude Code: "Create a reassurance banner using PdF DS at [URL], Spanish locale, transparent pricing. Use existing BannerReassurance component as base."\n→ Agent generates a native Figma frame with real components and tokens.',
           },
           {
             id: '2',
-            title: 'Model 2 — PO with external AI generation',
+            title: 'Model 2: PO with external AI generation',
             status: 'now',
             statusLabel: 'Works now',
-            body: 'Without Full access, POs use AI tools (Claude, v0, Bolt) with MCP read access. The AI generates a mockup outside Figma (hosted preview URL) but grounded in real DS knowledge — correct colours, spacing, component patterns. Less precise than Model 1, but gives POs more autonomy.',
+            body: 'Without Full access, POs use AI tools (Claude, v0, Bolt) with MCP read access. The AI generates a mockup outside Figma (hosted preview URL) but grounded in real DS knowledge: correct colours, spacing, component patterns. Less precise than Model 1, but gives POs more autonomy.',
             example: null,
           },
           {
             id: '3',
-            title: 'Model 3 — Shared Full seat for generation sessions',
+            title: 'Model 3: Shared Full seat for generation sessions',
             status: 'soon',
             statusLabel: 'Possible now',
-            body: 'One dedicated Full seat as an "AI generation seat" — used by POs for MCP sessions, or by you on their behalf. Figma allows seat reassignment. This seat doesn\'t need to be always-active.',
+            body: 'One dedicated Full seat as an "AI generation seat", used by POs for MCP sessions, or by you on their behalf. Figma allows seat reassignment. This seat doesn\'t need to be always-active.',
             example: null,
           },
           {
             id: '4',
-            title: 'Model 4 — PO with direct Full seat access',
+            title: 'Model 4: PO with direct Full seat access',
             status: 'future',
             statusLabel: 'Future (budget)',
-            body: 'If Figma\'s pricing evolves or Connected Projects materialise, POs could get Full seat access for direct MCP sessions. Ideal state — depends on budget and Figma product evolution.',
+            body: 'If Figma\'s pricing evolves or Connected Projects materialise, POs could get Full seat access for direct MCP sessions. Ideal state: depends on budget and Figma product evolution.',
             example: null,
           },
         ],
@@ -1376,14 +1376,14 @@
       trantor: {
         scenarios: {
           fr: [
-            { id: 'A', title: 'Scénario A — Wrapper chat seul', verdict: 'Incompatible', verdictStatus: 'bad', color: 'var(--red)', bg: 'var(--red-tint-bg)', bd: 'var(--border)', body: 'Trantor = interface conversationnelle sur API.\nPas de support MCP natif, pas de tool calls en boucle.\nIncompatible avec le pipeline agentique tel quel.' },
-            { id: 'B', title: 'Scénario B — API brute accessible', verdict: '~ Partiel', verdictStatus: 'mid', color: 'var(--text-muted)', bg: 'var(--bg-card-muted)', bd: 'var(--border)', body: 'Trantor expose un endpoint compatible OpenAI/Anthropic.\nClaude Code ou agent custom l\'utilise comme backend.\nPipeline identique, modèle fourni par la DSI.' },
-            { id: 'C', title: 'Scénario C — Tool calls supportés', verdict: '✓ Idéal', verdictStatus: 'good', color: 'var(--green)', bg: 'var(--green-tint-bg)', bd: 'rgba(46,158,91,.35)', body: 'Trantor supporte le function calling natif.\nL\'agent peut interagir directement avec le Figma MCP.\nPipeline complet, zéro licence externe.' },
+            { id: 'A', title: 'Scénario A: Wrapper chat seul', verdict: 'Incompatible', verdictStatus: 'bad', color: 'var(--red)', bg: 'var(--red-tint-bg)', bd: 'var(--border)', body: 'Trantor = interface conversationnelle sur API.\nPas de support MCP natif, pas de tool calls en boucle.\nIncompatible avec le pipeline agentique tel quel.' },
+            { id: 'B', title: 'Scénario B: API brute accessible', verdict: '~ Partiel', verdictStatus: 'mid', color: 'var(--text-muted)', bg: 'var(--bg-card-muted)', bd: 'var(--border)', body: 'Trantor expose un endpoint compatible OpenAI/Anthropic.\nClaude Code ou agent custom l\'utilise comme backend.\nPipeline identique, modèle fourni par la DSI.' },
+            { id: 'C', title: 'Scénario C: Tool calls supportés', verdict: '✓ Idéal', verdictStatus: 'good', color: 'var(--green)', bg: 'var(--green-tint-bg)', bd: 'rgba(46,158,91,.35)', body: 'Trantor supporte le function calling natif.\nL\'agent peut interagir directement avec le Figma MCP.\nPipeline complet, zéro licence externe.' },
           ],
           en: [
-            { id: 'A', title: 'Scenario A — Chat wrapper only', verdict: 'Incompatible', verdictStatus: 'bad', color: 'var(--red)', bg: 'var(--red-tint-bg)', bd: 'var(--border)', body: 'Trantor = conversational interface on API.\nNo native MCP support, no looping tool calls.\nIncompatible with the agentic pipeline as-is.' },
-            { id: 'B', title: 'Scenario B — Raw API accessible', verdict: '~ Partial', verdictStatus: 'mid', color: 'var(--text-muted)', bg: 'var(--bg-card-muted)', bd: 'var(--border)', body: 'Trantor exposes an OpenAI/Anthropic-compatible endpoint.\nClaude Code or custom agent uses it as backend.\nSame pipeline, model provided by DSI.' },
-            { id: 'C', title: 'Scenario C — Tool calls supported', verdict: '✓ Ideal', verdictStatus: 'good', color: 'var(--green)', bg: 'var(--green-tint-bg)', bd: 'rgba(46,158,91,.35)', body: 'Trantor supports native function calling.\nAgent can interact directly with Figma MCP.\nFull pipeline, zero external licences.' },
+            { id: 'A', title: 'Scenario A: Chat wrapper only', verdict: 'Incompatible', verdictStatus: 'bad', color: 'var(--red)', bg: 'var(--red-tint-bg)', bd: 'var(--border)', body: 'Trantor = conversational interface on API.\nNo native MCP support, no looping tool calls.\nIncompatible with the agentic pipeline as-is.' },
+            { id: 'B', title: 'Scenario B: Raw API accessible', verdict: '~ Partial', verdictStatus: 'mid', color: 'var(--text-muted)', bg: 'var(--bg-card-muted)', bd: 'var(--border)', body: 'Trantor exposes an OpenAI/Anthropic-compatible endpoint.\nClaude Code or custom agent uses it as backend.\nSame pipeline, model provided by DSI.' },
+            { id: 'C', title: 'Scenario C: Tool calls supported', verdict: '✓ Ideal', verdictStatus: 'good', color: 'var(--green)', bg: 'var(--green-tint-bg)', bd: 'rgba(46,158,91,.35)', body: 'Trantor supports native function calling.\nAgent can interact directly with Figma MCP.\nFull pipeline, zero external licences.' },
           ],
         },
         questions: {
@@ -1391,19 +1391,19 @@
           en: ['What model runs behind Trantor?', 'Does it support function calling / tool use?', 'Does it expose an OpenAI or Anthropic-compatible API?'],
         },
         recommendation: {
-          fr: '★ Recommandation — Option A : Claude Code + API Trantor en backend\nL\'agent loge dans Claude Code sur ta machine · Trantor fournit le modèle · Phase 0 reste indépendante de la DSI\nSi Trantor est compatible, le switch est quasi transparent · Valide le workflow d\'abord, discute hébergement ensuite',
-          en: '★ Recommendation — Option A: Claude Code + Trantor API as backend\nAgent runs in Claude Code on your machine · Trantor provides the model · Phase 0 stays DSI-independent\nIf Trantor is compatible, the switch is near-transparent · Validate the workflow first, discuss hosting after',
+          fr: '★ Recommandation, Option A : Claude Code + API Trantor en backend\nL\'agent loge dans Claude Code sur ta machine · Trantor fournit le modèle · Phase 0 reste indépendante de la DSI\nSi Trantor est compatible, le switch est quasi transparent · Valide le workflow d\'abord, discute hébergement ensuite',
+          en: '★ Recommendation, Option A: Claude Code + Trantor API as backend\nAgent runs in Claude Code on your machine · Trantor provides the model · Phase 0 stays DSI-independent\nIf Trantor is compatible, the switch is near-transparent · Validate the workflow first, discuss hosting after',
         },
         hosting: {
           fr: [
-            { id: 'A', title: 'Option A — Claude Code', recommended: true, color: 'var(--green)', bg: 'var(--green-tint-bg)', bd: 'rgba(46,158,91,.35)', body: 'Agent loge dans Claude Code sur ta machine.\nTranstor configuré comme backend API.\nPhase 0 reste zéro DSI.', pros: ['Même pipeline qu\'uSpec', 'Modèle Trantor = économie licences', 'Indépendant DSI en Phase 0'], cons: ['Nécessite API Trantor compatible'] },
-            { id: 'B', title: 'Option B — Script custom local', recommended: false, color: 'var(--text-muted)', bg: 'var(--bg-card-muted)', bd: 'var(--border)', body: 'Un script Python/Node orchestre la boucle :\nintention PO → Skills → API Trantor → Figma MCP.', pros: ['Contrôle total', 'Pas de dépendance IDE'], cons: ['Plus de code à maintenir', 'Moins d\'outillage natif'] },
-            { id: 'C', title: 'Option C — Hébergé côté DSI', recommended: false, color: 'var(--text-muted)', bg: 'var(--bg-card-muted)', bd: 'var(--border)', body: 'L\'agent tourne sur un serveur DSI,\nconnecté à Trantor en interne.', pros: ['Propre techniquement', 'Intégré infrastructure DSI'], cons: ['Implique DSI dès le départ', 'Contredit logique Phase 0'] },
+            { id: 'A', title: 'Option A: Claude Code', recommended: true, color: 'var(--green)', bg: 'var(--green-tint-bg)', bd: 'rgba(46,158,91,.35)', body: 'Agent loge dans Claude Code sur ta machine.\nTranstor configuré comme backend API.\nPhase 0 reste zéro DSI.', pros: ['Même pipeline qu\'uSpec', 'Modèle Trantor = économie licences', 'Indépendant DSI en Phase 0'], cons: ['Nécessite API Trantor compatible'] },
+            { id: 'B', title: 'Option B: Script custom local', recommended: false, color: 'var(--text-muted)', bg: 'var(--bg-card-muted)', bd: 'var(--border)', body: 'Un script Python/Node orchestre la boucle :\nintention PO → Skills → API Trantor → Figma MCP.', pros: ['Contrôle total', 'Pas de dépendance IDE'], cons: ['Plus de code à maintenir', 'Moins d\'outillage natif'] },
+            { id: 'C', title: 'Option C: Hébergé côté DSI', recommended: false, color: 'var(--text-muted)', bg: 'var(--bg-card-muted)', bd: 'var(--border)', body: 'L\'agent tourne sur un serveur DSI,\nconnecté à Trantor en interne.', pros: ['Propre techniquement', 'Intégré infrastructure DSI'], cons: ['Implique DSI dès le départ', 'Contredit logique Phase 0'] },
           ],
           en: [
-            { id: 'A', title: 'Option A — Claude Code', recommended: true, color: 'var(--green)', bg: 'var(--green-tint-bg)', bd: 'rgba(46,158,91,.35)', body: 'Agent runs in Claude Code on your machine.\nTrantor configured as API backend.\nPhase 0 stays zero DSI.', pros: ['Same pipeline as uSpec', 'Trantor model = licence savings', 'DSI-independent in Phase 0'], cons: ['Requires compatible Trantor API'] },
-            { id: 'B', title: 'Option B — Custom local script', recommended: false, color: 'var(--text-muted)', bg: 'var(--bg-card-muted)', bd: 'var(--border)', body: 'A Python/Node script orchestrates the loop:\nPO intent → Skills → Trantor API → Figma MCP.', pros: ['Total control', 'No IDE dependency'], cons: ['More code to maintain', 'Less native tooling'] },
-            { id: 'C', title: 'Option C — DSI-hosted', recommended: false, color: 'var(--text-muted)', bg: 'var(--bg-card-muted)', bd: 'var(--border)', body: 'Agent runs on a DSI server,\nconnected to Trantor internally.', pros: ['Technically clean', 'Integrated into DSI infrastructure'], cons: ['Involves DSI from day one', 'Contradicts Phase 0 logic'] },
+            { id: 'A', title: 'Option A: Claude Code', recommended: true, color: 'var(--green)', bg: 'var(--green-tint-bg)', bd: 'rgba(46,158,91,.35)', body: 'Agent runs in Claude Code on your machine.\nTrantor configured as API backend.\nPhase 0 stays zero DSI.', pros: ['Same pipeline as uSpec', 'Trantor model = licence savings', 'DSI-independent in Phase 0'], cons: ['Requires compatible Trantor API'] },
+            { id: 'B', title: 'Option B: Custom local script', recommended: false, color: 'var(--text-muted)', bg: 'var(--bg-card-muted)', bd: 'var(--border)', body: 'A Python/Node script orchestrates the loop:\nPO intent → Skills → Trantor API → Figma MCP.', pros: ['Total control', 'No IDE dependency'], cons: ['More code to maintain', 'Less native tooling'] },
+            { id: 'C', title: 'Option C: DSI-hosted', recommended: false, color: 'var(--text-muted)', bg: 'var(--bg-card-muted)', bd: 'var(--border)', body: 'Agent runs on a DSI server,\nconnected to Trantor internally.', pros: ['Technically clean', 'Integrated into DSI infrastructure'], cons: ['Involves DSI from day one', 'Contradicts Phase 0 logic'] },
           ],
         },
       },
@@ -1417,7 +1417,7 @@
             bg: 'var(--bg-card-muted)',
             bd: 'var(--border)',
             trigger: 'Nouvelle fonctionnalité, brief flou, inconnu à clarifier',
-            who: 'Designer mène — PO en co-pilote',
+            who: 'Designer mène, PO en co-pilote',
             aiUse: 'none',
             aiLabel: 'Figma uniquement',
             steps: ['Brief PO → designer', 'Recherche & benchmark', 'Idéation dans Figma', 'Itérations avec le PO', 'Décision & spec'],
@@ -1436,8 +1436,8 @@
             aiLabel: 'Figma ou IA selon scope',
             steps: ['Brief PO → designer', 'Changement rapide ?'],
             fork: {
-              yes: { label: 'Oui — simple', path: ['Modifier dans Figma', 'Livrer la spec'], color: 'var(--green)' },
-              no:  { label: 'Non — multi-états / génération', path: ['Workflow IA (6 étapes) ↓'], color: 'var(--text-primary)' },
+              yes: { label: 'Oui, simple', path: ['Modifier dans Figma', 'Livrer la spec'], color: 'var(--green)' },
+              no:  { label: 'Non, multi-états / génération', path: ['Workflow IA (6 étapes) ↓'], color: 'var(--text-primary)' },
             },
             note: 'La décision de recourir à l\'IA dépend de la complexité : nombre d\'états à générer, scope du composant, temps disponible.',
           },
@@ -1449,7 +1449,7 @@
             bg: 'var(--bg-card-muted)',
             bd: 'var(--border)',
             trigger: 'Nouvelle surface, multiples états, scope générateur',
-            who: 'Designer opère l\'IA — PO pilote l\'intention',
+            who: 'Designer opère l\'IA, PO pilote l\'intention',
             aiUse: 'full',
             aiLabel: 'Workflow IA complet',
             steps: ['Brief PO → designer', 'Workflow IA en 6 étapes ↓', 'Affinage Figma', 'Validation PO', 'Livrer la spec'],
@@ -1465,7 +1465,7 @@
             bg: 'var(--bg-card-muted)',
             bd: 'var(--border)',
             trigger: 'New feature, unclear brief, unknown to clarify',
-            who: 'Designer leads — PO as co-pilot',
+            who: 'Designer leads, PO as co-pilot',
             aiUse: 'none',
             aiLabel: 'Figma only',
             steps: ['PO brief → designer', 'Research & benchmark', 'Ideation in Figma', 'Iterations with PO', 'Decision & spec'],
@@ -1484,8 +1484,8 @@
             aiLabel: 'Figma or AI depending on scope',
             steps: ['PO brief → designer', 'Quick change?'],
             fork: {
-              yes: { label: 'Yes — simple', path: ['Edit in Figma', 'Ship the spec'], color: 'var(--green)' },
-              no:  { label: 'No — multi-state / generation', path: ['AI workflow (6 steps) ↓'], color: 'var(--text-primary)' },
+              yes: { label: 'Yes, simple', path: ['Edit in Figma', 'Ship the spec'], color: 'var(--green)' },
+              no:  { label: 'No, multi-state / generation', path: ['AI workflow (6 steps) ↓'], color: 'var(--text-primary)' },
             },
             note: 'The decision to use AI depends on complexity: number of states to generate, component scope, time available.',
           },
@@ -1497,7 +1497,7 @@
             bg: 'var(--bg-card-muted)',
             bd: 'var(--border)',
             trigger: 'New surface, multiple states, generation-worthy scope',
-            who: 'Designer operates AI — PO drives intent',
+            who: 'Designer operates AI, PO drives intent',
             aiUse: 'full',
             aiLabel: 'Full AI workflow',
             steps: ['PO brief → designer', 'AI workflow (6 steps) ↓', 'Figma refinement', 'PO validation', 'Ship the spec'],
@@ -1513,7 +1513,7 @@
           { tool: 'Figma MCP (lecture)', phase: '0', phaseColor: 'var(--green)', who_fr: 'Designer, agents IA', who_en: 'Designer, AI agents', what_fr: 'Lit composants, variables, styles, layout', what_en: 'Read components, variables, styles, layout' },
           { tool: 'Figma MCP (écriture)', phase: '0–1', phaseColor: 'var(--green)', who_fr: 'Designer (Full seat)', who_en: 'Designer (Full seat)', what_fr: 'Génère des frames Figma natives depuis le DS', what_en: 'Generate native Figma frames from DS' },
           { tool: 'Claude Code + MCP', phase: '0–1', phaseColor: 'var(--green)', who_fr: 'Designer', who_en: 'Designer', what_fr: 'Génère des designs depuis les descriptions PO', what_en: 'Generate designs from PO descriptions' },
-          { tool: 'Trantor (API backend)', phase: '0–1', phaseColor: 'var(--green)', who_fr: 'Designer (si compatible)', who_en: 'Designer (if compatible)', what_fr: 'Modèle IA fourni par la DSI — remplace Claude si compat.', what_en: 'DSI-provided AI model — replaces Claude if compatible' },
+          { tool: 'Trantor (API backend)', phase: '0–1', phaseColor: 'var(--green)', who_fr: 'Designer (si compatible)', who_en: 'Designer (if compatible)', what_fr: 'Modèle IA fourni par la DSI, remplace Claude si compat.', what_en: 'DSI-provided AI model, replaces Claude if compatible' },
           { tool: 'Figma viewer + commentaires', phase: '1', phaseColor: 'var(--text-primary)', who_fr: 'POs (gratuit)', who_en: 'POs (free)', what_fr: 'Révision et annotation des designs générés', what_en: 'Review and annotate generated designs' },
           { tool: 'AI rough drafts (Claude / v0 / Bolt)', phase: '1', phaseColor: 'var(--text-primary)', who_fr: 'POs', who_en: 'POs', what_fr: 'Maquettes externes informées par le DS', what_en: 'External DS-informed mockups' },
           { tool: 'Figma Make / Google Stitch', phase: '1', phaseColor: 'var(--text-primary)', who_fr: 'PO & Designer', who_en: 'PO & Designer', what_fr: 'Génération UI depuis prompt, exports vers Figma', what_en: 'UI generation from prompt, export to Figma' },
@@ -1522,9 +1522,9 @@
           { tool: 'Storybook + MCP', phase: '2', phaseColor: 'var(--text-primary)', who_fr: 'Refonte site', who_en: 'Website redesign', what_fr: 'Catalogue composants web + génération de code IA', what_en: 'Web component catalogue + AI code generation' },
           { tool: 'Kameleoon SDK (web)', phase: '2', phaseColor: 'var(--text-primary)', who_fr: 'DSI + Marketing', who_en: 'DSI + Marketing', what_fr: 'A/B testing web (FR + ES) avec variantes DS', what_en: 'Web A/B testing (FR + ES) with DS-compliant variants' },
           { tool: 'Widgetbook', phase: '3', phaseColor: 'var(--red)', who_fr: 'Équipe app', who_en: 'App team', what_fr: 'Catalogue composants Flutter', what_en: 'Flutter component catalogue' },
-          { tool: 'ZeroHeight / Supernova', phase: '∞', phaseColor: 'var(--green)', who_fr: 'Designer', who_en: 'Designer', what_fr: 'Plateforme DSM — documentation + release notes', what_en: 'DSM platform — documentation + release notes' },
+          { tool: 'ZeroHeight / Supernova', phase: '∞', phaseColor: 'var(--green)', who_fr: 'Designer', who_en: 'Designer', what_fr: 'Plateforme DSM : documentation + release notes', what_en: 'DSM platform: documentation + release notes' },
           { tool: 'Axe / Stark', phase: '∞', phaseColor: 'var(--green)', who_fr: 'Designer + QA', who_en: 'Designer + QA', what_fr: 'Audit accessibilité automatisé', what_en: 'Automated accessibility auditing' },
-          { tool: 'Figma Analytics', phase: '∞', phaseColor: 'var(--green)', who_fr: 'Designer', who_en: 'Designer', what_fr: 'Usage composants en design — adoption DS', what_en: 'Component usage in design — DS adoption' },
+          { tool: 'Figma Analytics', phase: '∞', phaseColor: 'var(--green)', who_fr: 'Designer', who_en: 'Designer', what_fr: 'Usage composants en design, adoption DS', what_en: 'Component usage in design, DS adoption' },
           { tool: 'Tests IA + régression visuelle', phase: '∞', phaseColor: 'var(--green)', who_fr: 'Designer + devs', who_en: 'Designer + devs', what_fr: 'Revue conformité DS avant merge, snapshots visuels', what_en: 'DS compliance review before merge, visual snapshots' },
         ],
       },
@@ -1532,7 +1532,7 @@
         rituals: {
           fr: [
             { title: 'Revue DS mensuelle', desc: 'Présentation des nouveaux composants, tokens et breaking changes aux équipes design et dev. Format : 30 min, show & tell, live dans Figma.' },
-            { title: 'Design critique hebdomadaire', desc: 'Session ouverte de critique de design — tout le monde peut soumettre du travail. Cadrage sur le "pourquoi" des décisions, pas seulement l\'esthétique.' },
+            { title: 'Design critique hebdomadaire', desc: 'Session ouverte de critique de design, tout le monde peut soumettre du travail. Cadrage sur le "pourquoi" des décisions, pas seulement l\'esthétique.' },
             { title: 'Newsletter de mise à jour DS', desc: 'Communication régulière (bi-mensuelle ou mensuelle) résumant les ajouts, dépréciations, corrections. Format simple : quoi, pourquoi, comment migrer.' },
             { title: 'Notes de release', desc: 'Document structuré à chaque version du DS : nouveaux composants, variants ajoutés, composants dépréciés, changements de tokens, instructions de migration.' },
             { title: 'PO Sandbox mensuel', desc: 'Session ouverte aux POs pour explorer les composants, poser des questions et partager leurs besoins. Limite la créativité non-DS et renforce l\'adoption.' },
@@ -1540,7 +1540,7 @@
           ],
           en: [
             { title: 'Monthly DS review', desc: 'New components, tokens and breaking changes presented to design and dev teams. Format: 30 min, show & tell, live in Figma.' },
-            { title: 'Weekly design critique', desc: 'Open critique session — anyone can submit work. Focus on the "why" behind decisions, not just aesthetics.' },
+            { title: 'Weekly design critique', desc: 'Open critique session, anyone can submit work. Focus on the "why" behind decisions, not just aesthetics.' },
             { title: 'DS update newsletter', desc: 'Regular communication (bi-monthly or monthly) summarising additions, deprecations and fixes. Simple format: what, why, how to migrate.' },
             { title: 'Release notes', desc: 'Structured document per DS version: new components, added variants, deprecated components, token changes, migration instructions.' },
             { title: 'Monthly PO Sandbox', desc: 'Open session for POs to explore components, ask questions and share needs. Limits off-DS creativity and reinforces adoption.' },
@@ -1548,8 +1548,8 @@
           ],
         },
         artefacts: {
-          fr: ['Changelog versionné du DS (Notion ou ZeroHeight)', 'Figma — page "What\'s new" maintenue à jour', 'Bibliothèque de patterns documentée avec Quand/Composants/Variantes', 'Guide de migration pour les breaking changes', 'Figma component playground — catalogue visuel des états', 'Notes de release publiées à chaque merge sur la branche main du DS'],
-          en: ['Versioned DS changelog (Notion or ZeroHeight)', 'Figma "What\'s new" page kept current', 'Pattern library documented with When/Components/Variants', 'Migration guide for breaking changes', 'Figma component playground — visual state catalogue', 'Release notes published on every DS main branch merge'],
+          fr: ['Changelog versionné du DS (Notion ou ZeroHeight)', 'Figma, page "What\'s new" maintenue à jour', 'Bibliothèque de patterns documentée avec Quand/Composants/Variantes', 'Guide de migration pour les breaking changes', 'Figma component playground, catalogue visuel des états', 'Notes de release publiées à chaque merge sur la branche main du DS'],
+          en: ['Versioned DS changelog (Notion or ZeroHeight)', 'Figma "What\'s new" page kept current', 'Pattern library documented with When/Components/Variants', 'Migration guide for breaking changes', 'Figma component playground, visual state catalogue', 'Release notes published on every DS main branch merge'],
         },
       },
       metrics: {
@@ -1559,9 +1559,9 @@
               label: 'Adoption & usage',
               items: [
                 { name: 'Adoption', desc: 'Part des projets actifs qui utilisent le DS vs. des composants custom non-système.', tool: 'Figma Analytics, sondages équipe' },
-                { name: 'Usage composants — design', desc: 'Quels composants sont les plus utilisés dans les fichiers Figma. Quels sont rarement touchés.', tool: 'Figma Analytics (component usage)' },
-                { name: 'Usage composants — code', desc: 'Fréquence d\'import des composants DS dans le codebase. Divergences avec le design.', tool: 'GitHub/GitLab analytics, Storybook' },
-                { name: 'Consistance produit', desc: 'Mesure visuelle de la cohérence entre écrans — même tokens, même patterns.', tool: 'Revues manuelles, tests visuels automatisés' },
+                { name: 'Usage composants, design', desc: 'Quels composants sont les plus utilisés dans les fichiers Figma. Quels sont rarement touchés.', tool: 'Figma Analytics (component usage)' },
+                { name: 'Usage composants, code', desc: 'Fréquence d\'import des composants DS dans le codebase. Divergences avec le design.', tool: 'GitHub/GitLab analytics, Storybook' },
+                { name: 'Consistance produit', desc: 'Mesure visuelle de la cohérence entre écrans, même tokens, même patterns.', tool: 'Revues manuelles, tests visuels automatisés' },
               ],
             },
             {
@@ -1592,9 +1592,9 @@
               label: 'Adoption & usage',
               items: [
                 { name: 'Adoption', desc: 'Share of active projects using the DS vs. custom non-system components.', tool: 'Figma Analytics, team surveys' },
-                { name: 'Component usage — design', desc: 'Which components are most used in Figma files. Which are rarely touched.', tool: 'Figma Analytics (component usage)' },
-                { name: 'Component usage — code', desc: 'DS component import frequency in the codebase. Divergences from design.', tool: 'GitHub/GitLab analytics, Storybook' },
-                { name: 'Product consistency', desc: 'Visual measure of coherence across screens — same tokens, same patterns.', tool: 'Manual reviews, automated visual tests' },
+                { name: 'Component usage, design', desc: 'Which components are most used in Figma files. Which are rarely touched.', tool: 'Figma Analytics (component usage)' },
+                { name: 'Component usage, code', desc: 'DS component import frequency in the codebase. Divergences from design.', tool: 'GitHub/GitLab analytics, Storybook' },
+                { name: 'Product consistency', desc: 'Visual measure of coherence across screens, same tokens, same patterns.', tool: 'Manual reviews, automated visual tests' },
               ],
             },
             {
@@ -1632,15 +1632,15 @@
                 { name: 'Figma Variables → Design Tokens', desc: 'Pipeline automatisé depuis les variables Figma vers les fichiers de tokens (JSON/CSS). Toute mise à jour DS se propage automatiquement.' },
                 { name: 'NPM bundling & releases', desc: 'Build et publication automatique des packages composants à chaque merge validé sur main.' },
                 { name: 'Scaffolding de composants', desc: 'Génération automatique de la structure de fichiers d\'un nouveau composant (story, tests, types, doc) depuis un template CLI.' },
-                { name: 'Publication Storybook', desc: 'Déploiement automatique de Storybook à chaque push — composants toujours synchronisés avec le code.' },
-                { name: 'Tests & revue IA', desc: 'Agents IA qui vérifient la conformité DS des nouveaux composants avant merge — nommage, tokens, accessibilité.' },
+                { name: 'Publication Storybook', desc: 'Déploiement automatique de Storybook à chaque push, composants toujours synchronisés avec le code.' },
+                { name: 'Tests & revue IA', desc: 'Agents IA qui vérifient la conformité DS des nouveaux composants avant merge : nommage, tokens, accessibilité.' },
               ],
             },
             {
               title: 'Automatiser la documentation',
               icon: '📄',
               items: [
-                { name: 'Tests de régression visuelle', desc: 'Comparaison automatique des screenshots de composants à chaque PR — détecte les changements visuels non intentionnels.' },
+                { name: 'Tests de régression visuelle', desc: 'Comparaison automatique des screenshots de composants à chaque PR, détecte les changements visuels non intentionnels.' },
                 { name: 'Props & code autogénérés', desc: 'Documentation des props et définitions de types générée directement depuis le code source. Toujours à jour.' },
                 { name: 'Références icônes & tokens dynamiques', desc: 'Catalogues d\'icônes et de tokens générés automatiquement depuis les sources Figma et le code.' },
                 { name: 'Génération de stories Storybook via IA', desc: 'Agents IA qui génèrent les stories Storybook depuis les composants Figma ou le code existant.' },
@@ -1650,7 +1650,7 @@
               title: 'Automatiser la communication',
               icon: '📣',
               items: [
-                { name: 'Notes de release autogénérées', desc: 'Changelog généré automatiquement depuis les commits et PRs mergées — format structuré prêt à publier.' },
+                { name: 'Notes de release autogénérées', desc: 'Changelog généré automatiquement depuis les commits et PRs mergées, format structuré prêt à publier.' },
                 { name: 'Automation Teams / Slack', desc: 'Notifications automatiques dans les canaux équipe lors de chaque release DS, deprecation ou breaking change.' },
                 { name: 'Linting Figma', desc: 'Plugin Figma qui vérifie en temps réel la conformité des fichiers : composants détachés, valeurs hardcodées, noms incorrects. Alerte avant le handoff.' },
               ],
@@ -1664,15 +1664,15 @@
                 { name: 'Figma Variables → Design Tokens', desc: 'Automated pipeline from Figma variables to token files (JSON/CSS). Every DS update propagates automatically.' },
                 { name: 'NPM bundling & releases', desc: 'Automatic build and publish of component packages on every validated merge to main.' },
                 { name: 'Component scaffolding', desc: 'Auto-generate the file structure of a new component (story, tests, types, docs) from a CLI template.' },
-                { name: 'Storybook publishing', desc: 'Automatic Storybook deployment on every push — components always in sync with code.' },
-                { name: 'AI-powered testing & review', desc: 'AI agents that check DS compliance of new components before merge — naming, tokens, accessibility.' },
+                { name: 'Storybook publishing', desc: 'Automatic Storybook deployment on every push, components always in sync with code.' },
+                { name: 'AI-powered testing & review', desc: 'AI agents that check DS compliance of new components before merge: naming, tokens, accessibility.' },
               ],
             },
             {
               title: 'Automate documentation',
               icon: '📄',
               items: [
-                { name: 'Visual regression testing', desc: 'Automatic screenshot comparison of components on every PR — detects unintended visual changes.' },
+                { name: 'Visual regression testing', desc: 'Automatic screenshot comparison of components on every PR, detects unintended visual changes.' },
                 { name: 'Autogenerated props & code definitions', desc: 'Prop documentation and type definitions generated directly from source code. Always current.' },
                 { name: 'Dynamic icon & token references', desc: 'Icon and token catalogues auto-generated from Figma and code sources.' },
                 { name: 'Storybook story generation via AI', desc: 'AI agents that generate Storybook stories from Figma components or existing code.' },
@@ -1682,7 +1682,7 @@
               title: 'Automate communication',
               icon: '📣',
               items: [
-                { name: 'Autogenerated release notes', desc: 'Changelog auto-generated from commits and merged PRs — structured format ready to publish.' },
+                { name: 'Autogenerated release notes', desc: 'Changelog auto-generated from commits and merged PRs, structured format ready to publish.' },
                 { name: 'Teams / Slack automation', desc: 'Automatic notifications in team channels on every DS release, deprecation or breaking change.' },
                 { name: 'Figma linting', desc: 'Figma plugin that checks file compliance in real time: detached components, hardcoded values, incorrect names. Alerts before handoff.' },
               ],
@@ -1841,8 +1841,8 @@
         name: 'Design System Fondamentaux',
         name_fr: 'Design System Fondamentaux',
         url: 'https://www.figma.com/design/Ey7ObIDiHfM8za2KC5goRg/Design-System-Fondamentaux?node-id=6018-389&t=yf2v4lxqeFrCi1vo-1',
-        description_fr: 'Fondation partagée par toutes les équipes produit — tokens, typographie, couleurs, grilles, ombres et composants de base.',
-        description_en: 'Shared foundation across all product teams — tokens, typography, colours, grids, shadows and base components.',
+        description_fr: 'Fondation partagée par toutes les équipes produit : tokens, typographie, couleurs, grilles, ombres et composants de base.',
+        description_en: 'Shared foundation across all product teams: tokens, typography, colours, grids, shadows and base components.',
         badge_fr: 'Fondation',
         badge_en: 'Foundation',
         accent: 'var(--red)',
@@ -1852,8 +1852,8 @@
         name: 'Design System App',
         name_fr: 'Design System App',
         url: 'https://www.figma.com/design/LnstLU9VxLSk1vBd3koWzw/Design-System-App?node-id=4904-21085&t=5Zr4StR0ttIBD3ig-1',
-        description_fr: 'Composants et patterns pour l\'application mobile (iOS & Android) — construits sur la fondation.',
-        description_en: 'Components and patterns for the mobile app (iOS & Android) — built on the foundation.',
+        description_fr: 'Composants et patterns pour l\'application mobile (iOS & Android), construits sur la fondation.',
+        description_en: 'Components and patterns for the mobile app (iOS & Android), built on the foundation.',
         badge_fr: 'App mobile',
         badge_en: 'Mobile app',
         accent: 'var(--blue)',
@@ -1863,8 +1863,8 @@
         name: 'VEL / E-commerce Design System',
         name_fr: 'VEL / E-commerce Design System',
         url: 'https://www.figma.com/design/mtBoy1Ap5sgUt6lbB3duGx/Puy-du-Fou---Reviews-Parcours-de-commande?node-id=622-13283&t=5Esz2dOmEfPIJihy-1',
-        description_fr: 'Système de design pour le parcours e-commerce VEL — tunnel d\'achat, réservations et billetterie en ligne.',
-        description_en: 'Design system for the VEL e-commerce journey — purchase funnel, reservations and online ticketing.',
+        description_fr: 'Système de design pour le parcours e-commerce VEL : tunnel d\'achat, réservations et billetterie en ligne.',
+        description_en: 'Design system for the VEL e-commerce journey: purchase funnel, reservations and online ticketing.',
         badge_fr: 'E-commerce',
         badge_en: 'E-commerce',
         accent: 'var(--gold-dark)',
@@ -1907,7 +1907,7 @@
       </a>`;
     const aiChecklist = `
       <div style="margin-top:2rem;">
-        <div class="dops-section-label">${isFr ? 'Checklist — prêt pour l\'IA ?' : 'Checklist — AI readiness?'}</div>
+        <div class="dops-section-label">${isFr ? 'Checklist : prêt pour l\'IA ?' : 'Checklist: AI readiness?'}</div>
         <p style="font-size:0.75rem;color:var(--text-muted);line-height:1.7;margin-bottom:1rem;">${isFr ? 'Vérifiez que votre DS est structuré pour tirer parti des outils IA (Figma MCP, variables, génération automatisée).' : 'Verify your DS is structured to leverage AI tools (Figma MCP, variables, automated generation).'}</p>
         <div style="display:flex;flex-direction:column;gap:0.5rem;">
           ${[
@@ -2006,7 +2006,7 @@
     const root = document.getElementById('knowledge-root');
     if (!root) return;
 
-    /* Category labels differ by lang — map id → label */
+    /* Category labels differ by lang; map id to label */
     const labelMap = {
       psychology:     { fr: '🧠 Psychologie & Sciences comportementales', en: '🧠 Psychology & Behavioural Science' },
       communication:  { fr: '💬 Communication & Facilitation',            en: '💬 Communication & Facilitation' },
@@ -2020,7 +2020,7 @@
     };
 
     /* Small illustrative diagrams so a group's UI pattern is recognizable
-       at a glance, not just a text label — keyed by group label. */
+       at a glance, not just a text label; keyed by group label. */
     const groupIllustrations = {
       'Stepper': `<svg width="100%" height="56" viewBox="0 0 240 56" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="24" cy="28" r="10" fill="var(--gold)" />
@@ -2136,16 +2136,16 @@
     root.innerHTML = `
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;margin-top:0.5rem;">
         <a href="pdf-filter-builder.html" style="${cardStyle}"
-           onmouseover="this.style.boxShadow='0 6px 24px rgba(154,154,154,.2)';this.style.transform='translateY(-2px)'"
-           onmouseout="this.style.boxShadow='none';this.style.transform='none'">
+           onmouseover="this.style.boxShadow='0 2px 8px rgba(0,0,0,.15)'"
+           onmouseout="this.style.boxShadow='none'">
           <div style="${thumbStyle}">${thumb}</div>
           <div style="padding:0.9rem;display:flex;flex-direction:column;gap:0.4rem;flex:1;">
             <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:0.5rem;">
               <span style="font-weight:700;font-size:0.85rem;line-height:1.3;">${isFr ? 'Constructeur de filtres' : 'Filter builder'}</span>
-              <span style="font-size:0.65rem;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;padding:0.2rem 0.55rem;border-radius:999px;background:var(--gold-tint-bg);color:var(--gold);display:inline-block;flex-shrink:0;">${isFr ? 'Outil' : 'Tool'}</span>
+              <span style="font-size:0.75rem;font-weight:700;color:var(--gold);display:inline-block;flex-shrink:0;">${isFr ? 'Outil' : 'Tool'}</span>
             </div>
             <p style="font-size:0.76rem;color:var(--text-muted);line-height:1.5;margin:0;">${isFr
-              ? 'Choisissez vos critères — l\'outil déduit le contrôle UI et la logique AND/OR adaptés.'
+              ? 'Choisissez vos critères, l\'outil déduit le contrôle UI et la logique AND/OR adaptés.'
               : 'Define filter criteria and get the right UI control and AND/OR logic recommended automatically.'
             }</p>
             <span style="font-size:0.75rem;font-weight:700;color:var(--crimson);margin-top:auto;padding-top:0.4rem;">${t.proto_open}</span>
@@ -2156,7 +2156,7 @@
   }
 
   /* ══════════════════════════════════════════
-     PROMPTING — SVG ILLUSTRATIONS
+     PROMPTING: SVG ILLUSTRATIONS
      ══════════════════════════════════════════ */
 
   function svgKeywords(isFr) {
@@ -2371,7 +2371,7 @@
       <div style="border-left:3px solid var(--text-primary);padding:0.85rem 1rem;margin-bottom:2rem;font-size:0.8rem;color:var(--text-primary);line-height:1.7;">${p.closing[lang]}</div>
 
       <!-- Quick reference tips -->
-      <div class="dops-section-label">${isFr ? 'Référence rapide — tips de prompting' : 'Quick reference — prompting tips'}</div>
+      <div class="dops-section-label">${isFr ? 'Référence rapide : tips de prompting' : 'Quick reference: prompting tips'}</div>
       <div style="display:flex;flex-direction:column;gap:0;border-top:2px solid var(--text-primary);margin-bottom:2rem;">
         ${tips.map(t => `
           <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border-bottom:1px solid var(--border);padding:0.7rem 0;">
@@ -2395,16 +2395,16 @@
           {
             href: 'data/design-tokens-ai-context.md',
             label: isFr ? 'Tokens IA' : 'AI Tokens',
-            title: isFr ? 'Design tokens — contexte IA' : 'Design tokens — AI context',
+            title: isFr ? 'Design tokens : contexte IA' : 'Design tokens: AI context',
             desc: isFr
-              ? '154 variables Figma (couleurs, typographie, espacements, ombres) — light & dark. À inclure dans tout prompt de génération d\'interface pour notre DS.'
-              : '154 Figma variables (colours, typography, spacing, shadows) — light & dark. Include in any UI generation prompt targeting our DS.',
+              ? '154 variables Figma (couleurs, typographie, espacements, ombres), light & dark. À inclure dans tout prompt de génération d\'interface pour notre DS.'
+              : '154 Figma variables (colours, typography, spacing, shadows), light & dark. Include in any UI generation prompt targeting our DS.',
             tag: isFr ? 'Priorité 1' : 'Priority 1',
           },
           {
             href: 'data/design-tokens-dev-handoff.md',
             label: isFr ? 'Tokens Handoff' : 'Handoff Tokens',
-            title: isFr ? 'Tokens — handoff développeur' : 'Tokens — developer handoff',
+            title: isFr ? 'Tokens : handoff développeur' : 'Tokens: developer handoff',
             desc: isFr
               ? 'Référence complète des tokens pour l\'intégration frontend. Noms exacts des variables, valeurs et correspondances CSS/Swift à utiliser dans le code.'
               : 'Complete token reference for frontend integration. Exact variable names, values and CSS/Swift mappings to use in code.',
@@ -2416,7 +2416,7 @@
           {
             href: 'data/ios-design-guidelines.md',
             label: 'iOS Guidelines',
-            desc: isFr ? 'Règles HIG complètes — touch targets, nav, typo, accessibilité, composants SwiftUI.' : 'Full HIG rules — touch targets, nav, type, accessibility, SwiftUI components.',
+            desc: isFr ? 'Règles HIG complètes : touch targets, nav, typo, accessibilité, composants SwiftUI.' : 'Full HIG rules: touch targets, nav, type, accessibility, SwiftUI components.',
           },
           {
             href: 'data/design-system-patterns.md',
@@ -2456,7 +2456,7 @@
           {
             href: 'data/ui-ux-pro-max.md',
             label: 'UI/UX Pro Max',
-            desc: isFr ? '10 catégories de règles UI/UX priorisées — accessibilité, touch, perf, animation.' : '10 prioritised UI/UX rule categories — accessibility, touch, perf, animation.',
+            desc: isFr ? '10 catégories de règles UI/UX priorisées : accessibilité, touch, perf, animation.' : '10 prioritised UI/UX rule categories: accessibility, touch, perf, animation.',
           },
           {
             href: 'data/i18n-localization.md',
@@ -2570,20 +2570,20 @@
   })();
 
   const _quizExplainFr = {
-    1:  'La beauté est un moyen, pas une fin. L\'UX design vise l\'efficacité, la clarté et la satisfaction — une interface peut être sobre et convertir à merveille.',
-    3:  'Faux. Un bon design peut être remarqué positivement — une animation délicate, une micro-interaction satisfaisante. Ce qui passe "inaperçu", c\'est la friction, pas le design lui-même.',
+    1:  'La beauté est un moyen, pas une fin. L\'UX design vise l\'efficacité, la clarté et la satisfaction : une interface peut être sobre et convertir à merveille.',
+    3:  'Faux. Un bon design peut être remarqué positivement, une animation délicate, une micro-interaction satisfaisante. Ce qui passe "inaperçu", c\'est la friction, pas le design lui-même.',
     5:  'Le designer UX produit les spécifications et les maquettes. L\'implémentation technique est assurée par les développeurs et les PO/DSI.',
-    8:  'Les décisions de design sont fondées sur des données utilisateurs, des tests, des heuristiques et des principes UX — pas sur le goût personnel du designer.',
+    8:  'Les décisions de design sont fondées sur des données utilisateurs, des tests, des heuristiques et des principes UX, pas sur le goût personnel du designer.',
     11: 'La vraie valeur du designer se manifeste lors du suivi de l\'implémentation, des tests utilisateurs, et des itérations post-lancement. Le handoff n\'est pas une ligne d\'arrivée.',
     17: 'Suivre les tendances sans discernement produit des interfaces datées rapidement. Un bon UX s\'appuie sur des principes intemporels et les besoins spécifiques des utilisateurs.',
     23: 'Le designer UX est fondamentalement un rôle de collaboration. Travailler avec les développeurs, PM, marketing et utilisateurs est une compétence centrale, pas un obstacle.',
   };
 
   const _quizExplainEn = {
-    1:  'Beauty is a means, not an end. UX design targets effectiveness, clarity and satisfaction — an interface can be minimal and convert brilliantly.',
-    3:  'False. Good design can be positively noticed — a delightful animation, a satisfying micro-interaction. What goes "unnoticed" is friction, not the design itself.',
+    1:  'Beauty is a means, not an end. UX design targets effectiveness, clarity and satisfaction: an interface can be minimal and convert brilliantly.',
+    3:  'False. Good design can be positively noticed, a delightful animation, a satisfying micro-interaction. What goes "unnoticed" is friction, not the design itself.',
     5:  'The UX designer produces specs and mockups. Technical implementation is handled by developers and the product/IT team.',
-    8:  'Design decisions are grounded in user research, testing, heuristics and UX principles — not the designer\'s personal taste.',
+    8:  'Design decisions are grounded in user research, testing, heuristics and UX principles, not the designer\'s personal taste.',
     11: 'The designer\'s real value shows in implementation follow-up, user testing, and post-launch iterations. Handoff is not the finish line.',
     17: 'Following trends without judgement produces quickly dated interfaces. Good UX is built on timeless principles and the specific needs of the user.',
     23: 'UX design is fundamentally a collaborative role. Working with developers, PMs, marketing and users is a core skill, not an obstacle.',
@@ -2664,19 +2664,19 @@
     const statusClass = s => `dops-status-${s}`;
 
     const workflow = isFr ? [
-      { step: '1', title: 'Cadrer le besoin', who: 'both', whoLabel: 'PO & Designer', desc: 'Rassembler notes produit, retours stakeholders, briefs et toute donnée pertinente. Définir clairement le périmètre : composant, écran, flux. Décider si un outil de génération est utile ici — ce n\'est pas systématique.' },
+      { step: '1', title: 'Cadrer le besoin', who: 'both', whoLabel: 'PO & Designer', desc: 'Rassembler notes produit, retours stakeholders, briefs et toute donnée pertinente. Définir clairement le périmètre : composant, écran, flux. Décider si un outil de génération est utile ici : ce n\'est pas systématique.' },
       { step: '2', title: 'Choisir l\'approche', who: 'both', whoLabel: 'PO & Designer', desc: 'Figma directement pour les itérations simples et les décisions de design complexes. Un outil de génération (Figma Make, v0, Claude) pour explorer rapidement des pistes ou gérer un volume d\'états élevé.' },
       { step: '3', title: 'Produire les livrables', who: 'both', whoLabel: 'PO & Designer', desc: 'Création dans Figma, ou génération + curation si un outil est utilisé. Dans tous les cas : composants DS, tokens corrects, états couverts. L\'outil accélère, le designer valide.' },
-      { step: '4', title: 'Sélectionner & nettoyer', who: 'both', whoLabel: 'PO & Designer', desc: 'Extraire ce qui est bon, supprimer tout le reste. C\'est une curation, pas une approbation aveugle — l\'œil critique reste humain quelle que soit la méthode.' },
-      { step: '5', title: 'Affiner dans Figma', who: 'designer', whoLabel: 'Designer uniquement', desc: 'Alignement DS, tokens, accessibilité, cohérence des états. C\'est ici que le jugement de design s\'applique — cette étape ne peut pas être déléguée.' },
-      { step: '6', title: 'Livrer & itérer', who: 'shared', whoLabel: 'Designer livre · PO & Designer itèrent', desc: 'Le designer finalise et livre la spec. L\'itération suivante repart du cycle — PO et designer ensemble.' },
+      { step: '4', title: 'Sélectionner & nettoyer', who: 'both', whoLabel: 'PO & Designer', desc: 'Extraire ce qui est bon, supprimer tout le reste. C\'est une curation, pas une approbation aveugle : l\'œil critique reste humain quelle que soit la méthode.' },
+      { step: '5', title: 'Affiner dans Figma', who: 'designer', whoLabel: 'Designer uniquement', desc: 'Alignement DS, tokens, accessibilité, cohérence des états. C\'est ici que le jugement de design s\'applique : cette étape ne peut pas être déléguée.' },
+      { step: '6', title: 'Livrer & itérer', who: 'shared', whoLabel: 'Designer livre · PO & Designer itèrent', desc: 'Le designer finalise et livre la spec. L\'itération suivante repart du cycle, PO et designer ensemble.' },
     ] : [
-      { step: '1', title: 'Frame the need', who: 'both', whoLabel: 'PO & Designer', desc: 'Gather product notes, stakeholder feedback, briefs and relevant data. Define the scope clearly: component, screen, flow. Decide whether a generation tool is actually useful here — it\'s not always the right call.' },
+      { step: '1', title: 'Frame the need', who: 'both', whoLabel: 'PO & Designer', desc: 'Gather product notes, stakeholder feedback, briefs and relevant data. Define the scope clearly: component, screen, flow. Decide whether a generation tool is actually useful here: it\'s not always the right call.' },
       { step: '2', title: 'Choose the approach', who: 'both', whoLabel: 'PO & Designer', desc: 'Figma directly for simple iterations and complex design decisions. A generation tool (Figma Make, v0, Claude) to explore directions quickly or handle a large number of states.' },
       { step: '3', title: 'Produce the work', who: 'both', whoLabel: 'PO & Designer', desc: 'Design in Figma, or generate + curate if a tool is used. Either way: DS components, correct tokens, states covered. The tool accelerates, the designer validates.' },
-      { step: '4', title: 'Pick what\'s good, delete the rest', who: 'both', whoLabel: 'PO & Designer', desc: 'Extract what works, delete everything else. This is curation, not blind approval — the critical eye stays human regardless of the method used.' },
-      { step: '5', title: 'Refine in Figma', who: 'designer', whoLabel: 'Designer only', desc: 'DS alignment, tokens, accessibility, state coherence. This is where design judgement applies — this step cannot be delegated.' },
-      { step: '6', title: 'Ship & iterate', who: 'shared', whoLabel: 'Designer ships · PO & Designer iterate', desc: 'The designer finalises and ships the spec. The next iteration restarts the cycle — PO and designer together.' },
+      { step: '4', title: 'Pick what\'s good, delete the rest', who: 'both', whoLabel: 'PO & Designer', desc: 'Extract what works, delete everything else. This is curation, not blind approval: the critical eye stays human regardless of the method used.' },
+      { step: '5', title: 'Refine in Figma', who: 'designer', whoLabel: 'Designer only', desc: 'DS alignment, tokens, accessibility, state coherence. This is where design judgement applies: this step cannot be delegated.' },
+      { step: '6', title: 'Ship & iterate', who: 'shared', whoLabel: 'Designer ships · PO & Designer iterate', desc: 'The designer finalises and ships the spec. The next iteration restarts the cycle, PO and designer together.' },
     ];
 
     const whoColor  = w => w === 'designer' ? 'var(--blue)' : w === 'shared' ? 'var(--purple)' : 'var(--green)';
@@ -2742,8 +2742,8 @@
     </div>`;
 
     const bottleneck = isFr
-      ? 'Le vrai goulot d\'étranglement reste le <strong>jugement design</strong> — et ce sera longtemps le designer. "Est-ce que ça rend bien ?", "Faut-il une modale ?", "Ce layout ne convainc pas." L\'IA ne peut pas toujours vous donner une bonne réponse sur ces questions.'
-      : 'The real bottleneck remains <strong>design judgement</strong> — and that will be the designer for a long time. "Does this look good?", "Should we use a modal?", "This layout feels off." These are questions your AI can\'t always give you a good answer on.';
+      ? 'Le vrai goulot d\'étranglement reste le <strong>jugement design</strong>, et ce sera longtemps le designer. "Est-ce que ça rend bien ?", "Faut-il une modale ?", "Ce layout ne convainc pas." L\'IA ne peut pas toujours vous donner une bonne réponse sur ces questions.'
+      : 'The real bottleneck remains <strong>design judgement</strong>, and that will be the designer for a long time. "Does this look good?", "Should we use a modal?", "This layout feels off." These are questions your AI can\'t always give you a good answer on.';
 
     /* ── Project types ── */
     const ptypes = d.projectTypes[lang];
@@ -2751,7 +2751,7 @@
     const aiTag = ai => {
       const labels = { none: ['Figma', 'var(--text-muted)'], optional: [isFr ? 'Figma ou IA' : 'Figma or AI', 'var(--green)'], full: ['AI', 'var(--red)'] };
       const [txt, col] = labels[ai];
-      return `<span style="font-size:0.56rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:${col};background:transparent;border:1px solid ${col};padding:0.15rem 0.45rem;">${txt}</span>`;
+      return `<span style="font-size:0.68rem;font-weight:700;color:${col};">${txt}</span>`;
     };
 
     const stepLine = (txt, color) =>
@@ -2776,11 +2776,11 @@
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;">
         <div style="border-left:2px solid ${f.yes.color};padding-left:0.6rem;">
-          <div style="font-size:0.58rem;font-weight:700;color:${f.yes.color};text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.3rem;">${f.yes.label}</div>
+          <div style="font-size:0.68rem;font-weight:700;color:${f.yes.color};margin-bottom:0.3rem;">${f.yes.label}</div>
           ${f.yes.path.map(s => `<div style="font-size:0.67rem;color:var(--text-muted);line-height:1.5;">${s}</div>`).join('')}
         </div>
         <div style="border-left:2px solid ${f.no.color};padding-left:0.6rem;">
-          <div style="font-size:0.58rem;font-weight:700;color:${f.no.color};text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.3rem;">${f.no.label}</div>
+          <div style="font-size:0.68rem;font-weight:700;color:${f.no.color};margin-bottom:0.3rem;">${f.no.label}</div>
           ${f.no.path.map(s => `<div style="font-size:0.67rem;color:var(--text-muted);line-height:1.5;">${s}</div>`).join('')}
         </div>
       </div>`;
@@ -2795,7 +2795,7 @@
               ${aiTag(pt.aiUse)}
             </div>
             <div style="font-size:0.7rem;color:var(--text-muted);line-height:1.6;">${pt.trigger}</div>
-            <div style="font-size:0.67rem;color:var(--text-muted);line-height:1.5;"><span style="font-weight:600;color:var(--text-muted);">${isFr ? 'Qui — ' : 'Who — '}</span>${pt.who}</div>
+            <div style="font-size:0.67rem;color:var(--text-muted);line-height:1.5;"><span style="font-weight:600;color:var(--text-muted);">${isFr ? 'Qui : ' : 'Who: '}</span>${pt.who}</div>
             <div style="border-top:1px solid var(--border);padding-top:0.65rem;margin-top:auto;">
               ${renderPtypeSteps(pt)}
             </div>
@@ -2803,7 +2803,7 @@
           </div>`).join('')}
       </div>`;
 
-    /* ── Pipeline landscape — two vertical swim lanes, 4-stage flow ── */
+    /* ── Pipeline landscape: two vertical swim lanes, 4-stage flow ── */
 
     /* Reusable helpers */
     const hArrow = () =>
@@ -2813,7 +2813,7 @@
       </div>`;
 
     const tag = (txt, color) =>
-      `<span style="display:inline-block;font-size:0.52rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:${color};margin-bottom:0.35rem;">${txt}</span>`;
+      `<span style="display:inline-block;font-size:0.66rem;font-weight:700;color:${color};margin-bottom:0.35rem;">${txt}</span>`;
 
     const stageCard = (title, titleColor, bdColor, bgColor, body, footer = '') =>
       `<div style="border-left:2px solid ${bdColor};background:var(--bg-card);padding:0.85rem 1rem;flex:1;min-width:0;display:flex;flex-direction:column;gap:0.45rem;">
@@ -2825,16 +2825,16 @@
     const pill2 = (label, bg, color, sub = '') =>
       `<div style="border-left:2px solid ${color};padding:0.25rem 0 0.25rem 0.55rem;margin-bottom:0.3rem;">
         <div style="font-size:0.65rem;font-weight:600;color:var(--text-primary);line-height:1.3;">${label}</div>
-        ${sub ? `<div style="font-size:0.57rem;color:var(--text-muted);line-height:1.35;margin-top:0.05rem;">${sub}</div>` : ''}
+        ${sub ? `<div style="font-size:0.65rem;color:var(--text-muted);line-height:1.4;margin-top:0.05rem;">${sub}</div>` : ''}
       </div>`;
 
     const step = (n, txt, color = 'var(--text-muted)') =>
       `<div style="display:flex;gap:0.4rem;align-items:baseline;margin-bottom:0.3rem;">
-        <span style="font-size:0.58rem;font-weight:700;color:var(--text-muted);flex-shrink:0;min-width:0.8rem;">${n}.</span>
+        <span style="font-size:0.65rem;font-weight:700;color:var(--text-muted);flex-shrink:0;min-width:0.8rem;">${n}.</span>
         <span style="font-size:0.65rem;color:${color};line-height:1.5;">${txt}</span>
       </div>`;
 
-    /* ── Lane builder — 4 stages in a horizontal flex row ── */
+    /* ── Lane builder: 4 stages in a horizontal flex row ── */
     const lane = (laneAccent, laneBg, laneTitle, laneSubtitle, stages) =>
       `<div style="border:1px solid var(--border);background:var(--bg-card-muted);overflow:hidden;margin-bottom:1rem;">
         <!-- Lane header -->
@@ -2855,19 +2855,19 @@
     const l1s1body = isFr
       ? `${tag('Product Owner', 'var(--text-muted)')}
          ${step(1, 'Rassemble briefs, notes, transcriptions et données produit')}
-         ${step(2, 'Décrit le besoin — brief structuré ou description informelle')}
-         <div style="font-size:0.58rem;font-weight:700;color:var(--text-muted);letter-spacing:0.05em;text-transform:uppercase;margin:0.35rem 0 0.2rem;">Voie A — PO illustre l\'idée</div>
+         ${step(2, 'Décrit le besoin : brief structuré ou description informelle')}
+         <div style="font-size:0.68rem;font-weight:700;color:var(--text-muted);margin:0.35rem 0 0.2rem;">Voie A : PO illustre l\'idée</div>
          ${step('→', 'Génère un premier jet (Claude, v0, Figma Make) · passe la main au designer', 'var(--purple)')}
-         <div style="font-size:0.58rem;font-weight:700;color:var(--text-muted);letter-spacing:0.05em;text-transform:uppercase;margin:0.35rem 0 0.2rem;">Voie B — Designer produit directement</div>
+         <div style="font-size:0.68rem;font-weight:700;color:var(--text-muted);margin:0.35rem 0 0.2rem;">Voie B : Designer produit directement</div>
          ${step('→', 'Travaille dans Figma avec ou sans outil selon le scope', 'var(--blue)')}
          ${tag('UX/UI Designer', 'var(--green)')}
          <div style="font-size:0.63rem;color:var(--text-muted);line-height:1.45;">${'Affine · aligne DS · valide états & accessibilité · livre la spec'}</div>`
       : `${tag('Product Owner', 'var(--text-muted)')}
          ${step(1, 'Gathers briefs, notes, transcripts and product data')}
-         ${step(2, 'Describes the need — structured brief or informal description')}
-         <div style="font-size:0.58rem;font-weight:700;color:var(--text-muted);letter-spacing:0.05em;text-transform:uppercase;margin:0.35rem 0 0.2rem;">Path A — PO illustrates the idea</div>
+         ${step(2, 'Describes the need: structured brief or informal description')}
+         <div style="font-size:0.68rem;font-weight:700;color:var(--text-muted);margin:0.35rem 0 0.2rem;">Path A: PO illustrates the idea</div>
          ${step('→', 'Generates a first draft (Claude, v0, Figma Make) · hands off to designer', 'var(--purple)')}
-         <div style="font-size:0.58rem;font-weight:700;color:var(--text-muted);letter-spacing:0.05em;text-transform:uppercase;margin:0.35rem 0 0.2rem;">Path B — Designer works directly</div>
+         <div style="font-size:0.68rem;font-weight:700;color:var(--text-muted);margin:0.35rem 0 0.2rem;">Path B: Designer works directly</div>
          ${step('→', 'Works in Figma with or without a tool depending on scope', 'var(--blue)')}
          ${tag('UX/UI Designer', 'var(--green)')}
          <div style="font-size:0.63rem;color:var(--text-muted);line-height:1.45;">${'Refines · aligns DS · validates states & accessibility · ships spec'}</div>`;
@@ -2880,8 +2880,8 @@
        ${pill2('Copy & Tone', '', 'var(--gold)', isFr ? 'Formulations positives · tonalité · FR/ES' : 'Positive phrasing · tone · FR/ES')}`;
 
     const l1s3body =
-      `<div style="font-size:0.58rem;color:var(--text-muted);font-style:italic;margin-bottom:0.5rem;line-height:1.45;">${isFr ? 'Selon le scope — Figma direct ou outil de génération' : 'Depending on scope — Figma direct or generation tool'}</div>
-       ${pill2('Figma', '', 'var(--green)', isFr ? 'Conception directe — toujours disponible' : 'Direct design — always available')}
+      `<div style="font-size:0.66rem;color:var(--text-muted);font-style:italic;margin-bottom:0.5rem;line-height:1.45;">${isFr ? 'Selon le scope : Figma direct ou outil de génération' : 'Depending on scope: Figma direct or generation tool'}</div>
+       ${pill2('Figma', '', 'var(--green)', isFr ? 'Conception directe, toujours disponible' : 'Direct design, always available')}
        ${pill2('Figma MCP', '', 'var(--text-muted)', isFr ? 'Option : API write access via WebSocket' : 'Option: API write access via WebSocket')}
        ${pill2('Claude / v0 / Figma Make', '', 'var(--text-muted)', isFr ? 'Option : génération UI depuis prompt' : 'Option: UI generation from prompt')}`;
 
@@ -2892,7 +2892,7 @@
 
     const lane1 = lane(
       'var(--text-primary)', 'var(--bg-card-muted)',
-      isFr ? 'Collaboration — Nouvelle création' : 'Collaboration — New creation',
+      isFr ? 'Collaboration : Nouvelle création' : 'Collaboration: New creation',
       isFr ? 'PO cadre le besoin · Designer produit & affine · livrable Figma' : 'PO frames the need · Designer produces & refines · Figma deliverable',
       [
         { title: isFr ? 'Acteurs' : 'Actors', titleColor: 'var(--text-primary)', bd: 'var(--border)', bg: 'var(--bg-card)', body: l1s1body, arrowLabel: '→' },
@@ -2921,8 +2921,8 @@
        ${pill2('Code Connect', '', 'var(--green)', isFr ? 'Mapping Figma ↔ implémentations' : 'Figma ↔ code implementation mapping')}`;
 
     const l2s3body =
-      `<div style="font-size:0.58rem;color:var(--text-muted);font-style:italic;margin-bottom:0.5rem;line-height:1.45;">${isFr ? 'Figma suffit souvent — outils optionnels si gain de temps' : 'Figma is often enough — tools optional if they save time'}</div>
-       ${pill2('Figma', '', 'var(--green)', isFr ? 'Modification directe — cas le plus fréquent' : 'Direct edit — most common case')}
+      `<div style="font-size:0.66rem;color:var(--text-muted);font-style:italic;margin-bottom:0.5rem;line-height:1.45;">${isFr ? 'Figma suffit souvent, outils optionnels si gain de temps' : 'Figma is often enough, tools optional if they save time'}</div>
+       ${pill2('Figma', '', 'var(--green)', isFr ? 'Modification directe, cas le plus fréquent' : 'Direct edit, most common case')}
        ${pill2('Figma MCP', '', 'var(--text-muted)', isFr ? 'Option : plugin bridge · API write access' : 'Option: plugin bridge · API write access')}
        ${pill2('Trantor / Claude', '', 'var(--text-muted)', isFr ? 'Option : infrastructure locale' : 'Option: local infrastructure')}`;
 
@@ -2932,7 +2932,7 @@
 
     const lane2 = lane(
       'var(--text-primary)', 'var(--bg-card-muted)',
-      isFr ? 'Code-focused — Itération UI existante' : 'Code-focused — Existing UI iteration',
+      isFr ? 'Code-focused : Itération UI existante' : 'Code-focused: Existing UI iteration',
       isFr ? 'Modification ciblée · outils au choix · livrable code' : 'Targeted change · tools of choice · code deliverable',
       [
         { title: isFr ? 'Acteurs' : 'Actors', titleColor: 'var(--text-primary)', bd: 'var(--border)', bg: 'var(--bg-card)', body: l2s1body, arrowLabel: '→' },
@@ -2956,34 +2956,34 @@
 
     root.innerHTML = `
       <!-- Pipeline landscape -->
-      <div class="dops-section-label">${isFr ? 'Workflow & infrastructure — Acteurs · Outils · Livrables' : 'Workflow & infrastructure — Actors · Tools · Deliverables'}</div>
+      <div class="dops-section-label">${isFr ? 'Workflow & infrastructure : Acteurs · Outils · Livrables' : 'Workflow & infrastructure: Actors · Tools · Deliverables'}</div>
       ${landscape}
 
       <!-- Project types -->
-      <div class="dops-section-label">${isFr ? 'Processus design — 3 types de projets' : 'Design process — 3 project types'}</div>
+      <div class="dops-section-label">${isFr ? 'Processus design : 3 types de projets' : 'Design process: 3 project types'}</div>
       ${ptypesBlock}
 
-      <!-- Slide 2 — workflow + bottleneck -->
-      <div class="dops-section-label">${isFr ? 'Workflow — qui fait quoi (étapes détaillées)' : 'Workflow — who does what (detailed steps)'}</div>
+      <!-- Slide 2: workflow + bottleneck -->
+      <div class="dops-section-label">${isFr ? 'Workflow : qui fait quoi (étapes détaillées)' : 'Workflow: who does what (detailed steps)'}</div>
       ${wfSvg}
       ${wfDesc}
       <div class="dops-flywheel" style="margin-bottom:1.5rem;">${bottleneck}</div>
 
-      <!-- Slide 2 cont. — MCP infrastructure -->
-      <div class="dops-section-label">${isFr ? 'Figma MCP — une option d\'infrastructure' : 'Figma MCP — one infrastructure option'}</div>
+      <!-- Slide 2 cont.: MCP infrastructure -->
+      <div class="dops-section-label">${isFr ? 'Figma MCP : une option d\'infrastructure' : 'Figma MCP: one infrastructure option'}</div>
       <div class="dops-breakthrough" style="margin-bottom:1rem;">
         <div class="dops-breakthrough-icon">⚡</div>
         <p>${d.breakthrough[lang]}</p>
       </div>
 
       <!-- Context files for AI -->
-      <div class="dops-section-label">${isFr ? 'Contexte design system pour l\'IA — fichiers .md' : 'Design system context for AI — .md files'}</div>
+      <div class="dops-section-label">${isFr ? 'Contexte design system pour l\'IA : fichiers .md' : 'Design system context for AI: .md files'}</div>
       ${(() => {
         const dlIcon = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>`;
 
         const pFiles = [
-          { href: 'data/design-tokens-ai-context.md',   tag: isFr ? 'Priorité 1' : 'Priority 1', label: isFr ? 'Tokens IA' : 'AI Tokens',        desc: isFr ? '154 variables Figma (couleurs, typo, espacements, ombres) — light & dark. À inclure dans tout prompt de génération d\'interface.' : '154 Figma variables (colours, type, spacing, shadows) — light & dark. Include in any UI generation prompt.' },
-          { href: 'data/design-tokens-dev-handoff.md',  tag: isFr ? 'Priorité 2' : 'Priority 2', label: isFr ? 'Tokens Handoff' : 'Handoff Tokens', desc: isFr ? 'Référence complète tokens pour l\'intégration frontend — noms exacts, valeurs, correspondances CSS/Swift.' : 'Complete token reference for frontend integration — exact names, values, CSS/Swift mappings.' },
+          { href: 'data/design-tokens-ai-context.md',   tag: isFr ? 'Priorité 1' : 'Priority 1', label: isFr ? 'Tokens IA' : 'AI Tokens',        desc: isFr ? '154 variables Figma (couleurs, typo, espacements, ombres), light & dark. À inclure dans tout prompt de génération d\'interface.' : '154 Figma variables (colours, type, spacing, shadows), light & dark. Include in any UI generation prompt.' },
+          { href: 'data/design-tokens-dev-handoff.md',  tag: isFr ? 'Priorité 2' : 'Priority 2', label: isFr ? 'Tokens Handoff' : 'Handoff Tokens', desc: isFr ? 'Référence complète tokens pour l\'intégration frontend : noms exacts, valeurs, correspondances CSS/Swift.' : 'Complete token reference for frontend integration: exact names, values, CSS/Swift mappings.' },
         ];
 
         const oFiles = [
@@ -3011,7 +3011,7 @@
           <div style="display:flex;flex-direction:column;gap:0.5rem;margin-bottom:0.75rem;">
             ${pFiles.map(f => `
               <div style="display:flex;align-items:center;gap:0.75rem;background:var(--bg-card);border:1.5px solid var(--gold);border-radius:0.5rem;padding:0.6rem 0.85rem;">
-                <span style="font-size:0.55rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold);background:var(--bg-card);border:1px solid var(--gold);border-radius:999px;padding:0.1rem 0.45rem;white-space:nowrap;">${f.tag}</span>
+                <span style="font-size:0.68rem;font-weight:700;color:var(--gold);white-space:nowrap;">${f.tag}</span>
                 <div style="flex:1;min-width:0;">
                   <div style="font-size:0.7rem;font-weight:700;color:var(--text-primary);margin-bottom:0.1rem;">${f.label}</div>
                   <div style="font-size:0.62rem;color:var(--text-muted);line-height:1.4;">${f.desc}</div>
@@ -3026,8 +3026,8 @@
           </div>`;
       })()}
 
-      <!-- Slide 2 cont. — Phases 0 & 1 -->
-      <div class="dops-section-label">${isFr ? 'Phases 0 & 1 — DS AI-ready + génération PO' : 'Phases 0 & 1 — AI-ready DS + PO generation'}</div>
+      <!-- Slide 2 cont.: Phases 0 & 1 -->
+      <div class="dops-section-label">${isFr ? 'Phases 0 & 1 : DS AI-ready + génération PO' : 'Phases 0 & 1: AI-ready DS + PO generation'}</div>
       <div class="dops-phases" style="margin-bottom:1rem;">
         ${phases.slice(0,2).map(p => `
           <div class="dops-phase">
@@ -3043,8 +3043,8 @@
           </div>`).join('')}
       </div>
 
-      <!-- Slide 3 — Phases 2 & 3 -->
-      <div class="dops-section-label">${isFr ? 'Phases 2 & 3 — Refonte site + Flutter' : 'Phases 2 & 3 — Website redesign + Flutter'}</div>
+      <!-- Slide 3: Phases 2 & 3 -->
+      <div class="dops-section-label">${isFr ? 'Phases 2 & 3 : Refonte site + Flutter' : 'Phases 2 & 3: Website redesign + Flutter'}</div>
       <div class="dops-phases" style="margin-bottom:1.5rem;">
         ${phases.slice(2).map(p => `
           <div class="dops-phase">
@@ -3060,10 +3060,10 @@
           </div>`).join('')}
       </div>
 
-      <!-- Slide 4 — Horizon 2027: Governance + Metrics + Automation + Flywheel -->
-      <div class="dops-section-label">${isFr ? 'Horizon 2027 — Gouvernance, métriques & automatisation' : 'Horizon 2027 — Governance, metrics & automation'}</div>
+      <!-- Slide 4: Horizon 2027: Governance + Metrics + Automation + Flywheel -->
+      <div class="dops-section-label">${isFr ? 'Horizon 2027 : gouvernance, métriques & automatisation' : 'Horizon 2027: governance, metrics & automation'}</div>
 
-      <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:var(--green);margin-bottom:0.5rem;">${isFr?'Rituels':'Rituals'}</div>
+      <div style="font-family:Georgia,serif;font-size:0.85rem;font-weight:700;color:var(--green);margin-bottom:0.5rem;">${isFr?'Rituels':'Rituals'}</div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin-bottom:0.75rem;">
         ${d.governance.rituals[lang].map(r => `
           <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:0.6rem;padding:0.65rem 0.85rem;">
@@ -3071,11 +3071,11 @@
             <div style="font-size:0.7rem;color:var(--text-muted);line-height:1.5;">${r.desc}</div>
           </div>`).join('')}
       </div>
-      <div style="display:flex;flex-wrap:wrap;gap:0.3rem;margin-bottom:1rem;">
-        ${d.governance.artefacts[lang].map(a => `<span style="font-size:0.65rem;color:var(--text-muted);background:var(--bg-card-muted);border:1px solid var(--border);border-radius:999px;padding:0.18rem 0.6rem;">→ ${a}</span>`).join('')}
+      <div style="display:flex;flex-direction:column;gap:0.3rem;margin-bottom:1rem;">
+        ${d.governance.artefacts[lang].map(a => `<div style="font-size:0.72rem;color:var(--text-muted);line-height:1.6;">→ ${a}</div>`).join('')}
       </div>
 
-      <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:var(--green);margin-bottom:0.5rem;">${isFr?'Métriques':'Metrics'}</div>
+      <div style="font-family:Georgia,serif;font-size:0.85rem;font-weight:700;color:var(--green);margin-bottom:0.5rem;">${isFr?'Métriques':'Metrics'}</div>
       <table class="dops-tooling-table" style="margin-bottom:1rem;">
         <thead><tr>
           <th>${isFr?'Métrique':'Metric'}</th>
@@ -3112,8 +3112,8 @@
         tagColor: 'var(--green)',
         title: isFr ? 'Réservation restaurants' : 'Restaurant booking',
         desc: isFr
-          ? 'Refonte de la page restaurant de la VEL — sélection de menu, horaires et résumé de commande en temps réel.'
-          : 'Redesign of the restaurant page — menu selection, time slots and real-time order summary.',
+          ? 'Refonte de la page restaurant de la VEL : sélection de menu, horaires et résumé de commande en temps réel.'
+          : 'Redesign of the restaurant page: menu selection, time slots and real-time order summary.',
         thumb: `<svg width="120" height="72" viewBox="0 0 120 72" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect x="6" y="6" width="48" height="60" rx="6" fill="var(--bg-card)" stroke="var(--gold)" stroke-width="1.5"/>
           <rect x="60" y="6" width="54" height="60" rx="6" fill="var(--bg-card)" stroke="var(--gold)" stroke-width="1.5"/>
@@ -3151,13 +3151,8 @@
       min-height:108px;
     `;
     const tagStyle = (color) => `
-      font-size:0.65rem;
+      font-size:0.72rem;
       font-weight:700;
-      letter-spacing:0.07em;
-      text-transform:uppercase;
-      padding:0.2rem 0.55rem;
-      border-radius:999px;
-      background:var(--green-tint-bg);
       color:${color};
       display:inline-block;
       flex-shrink:0;
@@ -3167,7 +3162,7 @@
 
     PROTOTYPES.forEach(p => {
       html += `
-        <a href="${p.href}" style="${cardStyle}" onmouseover="this.style.boxShadow='0 6px 24px rgba(154,154,154,.2)';this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='none';this.style.transform='none'">
+        <a href="${p.href}" style="${cardStyle}" onmouseover="this.style.boxShadow='0 2px 8px rgba(0,0,0,.15)'" onmouseout="this.style.boxShadow='none'">
           <div style="${thumbStyle}">${p.thumb}</div>
           <div style="padding:0.9rem;display:flex;flex-direction:column;gap:0.4rem;flex:1;">
             <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:0.5rem;">
@@ -3202,7 +3197,7 @@
      ══════════════════════════════════════════ */
   function restoreChecklists() {
     document.querySelectorAll('.checklist-item input[type="checkbox"]').forEach(cb => {
-      /* Handoff checklist IDs start with "handoff-" — use dedicated prefix */
+      /* Handoff checklist IDs start with "handoff-" (use dedicated prefix) */
       const storagePrefix = cb.id.startsWith('handoff-') ? 'hub_handoff_' : CHECKLIST_KEY_PREFIX;
       const key = storagePrefix + cb.id;
       cb.checked = localStorage.getItem(key) === '1';
