@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Les Ateliers du Puy du Fou</title>
+<link rel="icon" type="image/x-icon" href="../assets/components/favicon.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<style>
+  :root {
+    --brand-red: #B40020;
+    --primary-contrast: #FFFFFF;
+    --laiton: #A18756;
+    --background: #FBF7F0;
+    --background-cards: #FFFFFF;
+    --background-nav-stronger: #F1EFEF;
+    --text: #3B311F;
+    --grey: #616161;
+    --gradient-top: #C1BDBD00;
+    --gradient-bottom: #DCDCDCE5;
+    --radius-full: 9999px;
+    --radius-md: 12px;
+    --spacing-xxs: 4px;
+    --spacing-s: 8px;
+    --spacing-sm: 12px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    --spacing-xxl: 40px;
+    --spacing-xxxl: 48px;
+    --page-margin: 20px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { overflow-x: hidden; }
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--background);
+    color: var(--text);
+    line-height: 1.5;
+  }
+  a { color: inherit; }
+  .font-serif { font-family: Georgia, serif; }
+
+  .dev-back {
+    position: fixed; top: 10px; right: 16px; z-index: 100;
+    font-size: 11px; font-weight: 700; letter-spacing: .04em;
+    background: #211C12; color: #FBF7F0;
+    border-radius: var(--radius-full); padding: 4px 12px;
+    text-decoration: none; opacity: .7; transition: opacity 150ms;
+  }
+  .dev-back:hover { opacity: 1; text-decoration: none; }
+
+  /* ── Header ── */
+  header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: var(--spacing-md) var(--page-margin);
+    border-bottom: 1px solid var(--background-nav-stronger);
+  }
+  .logo { font-family: Georgia, serif; font-weight: 700; font-size: 20px; color: var(--brand-red); text-decoration: none; }
+  .book-btn {
+    display: inline-flex; align-items: center; gap: var(--spacing-s);
+    background: var(--brand-red); color: var(--primary-contrast);
+    font-weight: 700; font-size: 14px;
+    padding: 12px 20px; border-radius: var(--radius-full);
+    border: none; cursor: pointer; text-decoration: none;
+  }
+
+  /* ── Breadcrumb + back ── */
+  .subheader {
+    display: flex; align-items: center; justify-content: space-between;
+    max-width: 1120px; margin: 0 auto;
+    padding: var(--spacing-md) var(--page-margin) 0;
+    font-size: 13px; color: var(--grey);
+  }
+  .breadcrumb a { color: var(--grey); text-decoration: none; }
+  .breadcrumb a:hover { text-decoration: underline; }
+  .breadcrumb .sep { margin: 0 var(--spacing-xxs); }
+  .breadcrumb .current { color: var(--text); }
+  .back-link {
+    display: inline-flex; align-items: center; gap: var(--spacing-xxs);
+    color: var(--text); text-decoration: none; font-weight: 700;
+  }
+
+  /* ── Intro ── */
+  .intro {
+    max-width: 1120px; margin: 0 auto;
+    padding: var(--spacing-lg) var(--page-margin) var(--spacing-xl);
+  }
+  .intro-title {
+    font-family: Georgia, serif; font-weight: 700;
+    font-size: 36px; line-height: 40px;
+    margin-bottom: var(--spacing-sm);
+  }
+  .intro-body {
+    font-size: 18px; line-height: 24px;
+    color: var(--grey);
+    max-width: 62ch;
+  }
+
+  /* ── Type filter: genuinely interactive selectable controls, pill treatment earned ── */
+  .filters {
+    max-width: 1120px; margin: 0 auto;
+    padding: 0 var(--page-margin) var(--spacing-lg);
+    display: flex; flex-wrap: wrap; gap: var(--spacing-s);
+  }
+  .filter-chip {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px; font-weight: 700;
+    color: var(--text);
+    background: var(--background-cards);
+    border: 1.5px solid var(--background-nav-stronger);
+    border-radius: var(--radius-full);
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: border-color 150ms ease, background 150ms ease, color 150ms ease;
+  }
+  .filter-chip:hover { border-color: var(--laiton); }
+  .filter-chip.active {
+    background: var(--text);
+    border-color: var(--text);
+    color: var(--background);
+  }
+  .grid-empty {
+    display: none;
+    max-width: 1120px; margin: 0 auto;
+    padding: var(--spacing-xxl) var(--page-margin);
+    text-align: center;
+  }
+  .grid-empty.visible { display: block; }
+  .grid-empty p { color: var(--grey); font-size: 15px; }
+
+  /* ── Workshop grid: six genuine peers, equal weight ── */
+  .grid {
+    max-width: 1120px; margin: 0 auto;
+    padding: 0 var(--page-margin) var(--spacing-xxxl);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+  .workshop {
+    display: flex; flex-direction: column;
+    background: var(--background-cards);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+  }
+  .workshop.hidden { display: none; }
+  .workshop-media {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    background-size: cover; background-position: center;
+  }
+  .workshop-media.placeholder {
+    background: var(--background-nav-stronger);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .workshop-media.placeholder .placeholder-mark {
+    font-family: Georgia, serif; font-weight: 700; font-size: 14px;
+    color: var(--laiton);
+  }
+  .workshop-body {
+    padding: var(--spacing-md) var(--spacing-lg) var(--spacing-lg);
+    display: flex; flex-direction: column; gap: var(--spacing-sm);
+    flex: 1;
+  }
+  .workshop-name {
+    font-family: Georgia, serif; font-weight: 700; font-size: 20px; line-height: 26px;
+  }
+
+  /* Practical facts as one running line, not three centered rows or badges */
+  .workshop-meta {
+    font-size: 13px; color: var(--grey);
+  }
+  .workshop-meta b { color: var(--text); font-weight: 700; }
+  .workshop-meta .dot { margin: 0 var(--spacing-xxs); color: var(--laiton); }
+
+  .workshop-desc {
+    font-size: 14px; line-height: 20px;
+    color: var(--text);
+  }
+  .workshop-condition {
+    font-size: 13px; line-height: 18px;
+    font-style: italic;
+    color: var(--grey);
+  }
+  .workshop-cta {
+    margin-top: auto;
+    padding-top: var(--spacing-xs);
+    display: inline-flex; align-items: center; gap: var(--spacing-xxs);
+    color: var(--brand-red); font-weight: 700; font-size: 14px;
+  }
+  .workshop-cta svg { flex-shrink: 0; }
+
+  /* ── Practical note ── */
+  .note {
+    max-width: 1120px; margin: 0 auto;
+    padding: 0 var(--page-margin) var(--spacing-xxxl);
+  }
+  .note p {
+    border-top: 1px solid var(--background-nav-stronger);
+    padding-top: var(--spacing-lg);
+    font-size: 14px; line-height: 20px;
+    color: var(--grey);
+    max-width: 62ch;
+  }
+  .note strong { color: var(--text); }
+
+  @media (min-width: 640px) {
+    .grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (min-width: 960px) {
+    .grid { grid-template-columns: 1fr 1fr 1fr; }
+    .intro-title { font-size: 48px; line-height: 52px; }
+  }
+</style>
+</head>
+<body>
+
+<a href="../index.html#prototypes" class="dev-back">← Hub</a>
+
+<header>
+  <a href="#" class="logo">Puy du Fou</a>
+  <a href="#" class="book-btn">Réserver</a>
+</header>
+
+<div class="subheader">
+  <nav class="breadcrumb" aria-label="Fil d'Ariane">
+    <a href="#">Puy du Fou</a><span class="sep">›</span><span class="current">Les ateliers du Puy du Fou</span>
+  </nav>
+  <a href="#" class="back-link">← Retour</a>
+</div>
+
+<section class="intro">
+  <h1 class="intro-title font-serif">Les Ateliers du Puy du Fou</h1>
+  <p class="intro-body">Prolongez votre voyage dans le temps avec l'un de nos Ateliers Découverte, en immersion avec nos experts.</p>
+</section>
+
+<div class="filters" role="group" aria-label="Filtrer par type d'atelier">
+  <button class="filter-chip active" data-filter="all">Tous les ateliers</button>
+  <button class="filter-chip" data-filter="animaux">Animaux</button>
+  <button class="filter-chip" data-filter="savoir-faire">Savoir-faire</button>
+  <button class="filter-chip" data-filter="combat">Sport & combat</button>
+</div>
+
+<div class="grid">
+
+  <a href="ateliers-escrime.html" class="workshop" data-type="combat">
+    <div class="workshop-media" style="background-image: url('https://puydufou.com/france/files/s3fs-public/styles/intro_carousel_detail_carousel_img_main_mobile/public/2021-06/escrime_de_spectacles.jpg.webp?VersionId=5zhdkSnxQeHzPLmBPLe6p8s5UgIO.ofr&itok=BfXiKDlP');"></div>
+    <div class="workshop-body">
+      <h2 class="workshop-name font-serif">Escrime de spectacle</h2>
+      <p class="workshop-meta"><b>23€</b>/pers<span class="dot">·</span>1 heure<span class="dot">·</span>19h30</p>
+      <p class="workshop-desc">En garde, notre maître d'armes vous donne rendez-vous pour une initiation accessible à tous afin de découvrir les bases de l'escrime de spectacle et du maniement des armes.</p>
+      <p class="workshop-condition">Tenue adaptée nécessaire. À partir de 10 ans.</p>
+      <span class="workshop-cta">Plus d'infos <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </div>
+  </a>
+
+  <a href="ateliers-fauconnerie.html" class="workshop" data-type="animaux">
+    <div class="workshop-media" style="background-image: url('https://puydufou.com/france/files/s3fs-public/styles/intro_carousel_detail_carousel_img_main_mobile/public/2023-11/le-voyage-au-coeur-de-la-fauconnerie.jpg.webp?VersionId=LHDFiq745wQMY0TK2k05qt.Sqgy.sad7&itok=B5tDtfzZ');"></div>
+    <div class="workshop-body">
+      <h2 class="workshop-name font-serif">Le Voyage au Cœur de la Fauconnerie</h2>
+      <p class="workshop-meta"><b>34€</b>/pers<span class="dot">·</span>1h30<span class="dot">·</span>16h30 ou 18h00</p>
+      <p class="workshop-desc">Derrière les ruines du vieux château, l'Académie de Fauconnerie vit au rythme de nos 800 oiseaux. Partez à la découverte des missions passionnantes de son équipe et laissez-vous guider par le savoir-faire des professionnels qui œuvrent au quotidien pour le respect du bien-être animal et la préservation de la biodiversité.</p>
+      <span class="workshop-cta">Plus d'infos <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </div>
+  </a>
+
+  <a href="ateliers-fil-en-aiguille.html" class="workshop" data-type="savoir-faire">
+    <div class="workshop-media" style="background-image: url('https://puydufou.com/france/files/s3fs-public/styles/intro_carousel_detail_carousel_img_main_mobile/public/2023-11/de-fil-en-aiguille.jpg.webp?VersionId=xY7O21LK2hyMP.jPKmfpZsRmLiK2vnq0&itok=7AmojjOX');"></div>
+    <div class="workshop-body">
+      <h2 class="workshop-name font-serif">De Fil en Aiguille</h2>
+      <p class="workshop-meta"><b>23€</b>/pers<span class="dot">·</span>1 heure<span class="dot">·</span>17h45</p>
+      <p class="workshop-desc">Avec plus de 50 000 costumes, notre atelier est l'un des plus grands d'Europe. Nos costumières vous enseigneront toutes les étapes nécessaires à la confection de nos costumes, du dessin à son entrée sur scène.</p>
+      <span class="workshop-cta">Plus d'infos <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </div>
+  </a>
+
+  <a href="ateliers-animaux.html" class="workshop" data-type="animaux">
+    <div class="workshop-media" style="background-image: url('https://puydufou.com/france/files/s3fs-public/styles/intro_carousel_detail_carousel_img_main_mobile/public/2023-06/banniere-laska.png.webp?VersionId=9sMYMmrISZCMlcBx6vxOcK70jt4yiZm1&itok=oCtcEWUm');"></div>
+    <div class="workshop-body">
+      <h2 class="workshop-name font-serif">En Coulisses avec les Animaux</h2>
+      <p class="workshop-meta"><b>23€</b>/pers<span class="dot">·</span>1 heure<span class="dot">·</span>17h30 ou 18h00</p>
+      <p class="workshop-desc">Immersion en coulisses en compagnie des animaux stars du Puy du Fou. Cochons de Bayeux, Baudets du Poitou, Chèvres des fossés. Partagez le quotidien de nos soigneurs passionnés et découvrez les enjeux de conservation d'espèces rares.</p>
+      <span class="workshop-cta">Plus d'infos <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </div>
+  </a>
+
+  <a href="ateliers-reveil-guerrier.html" class="workshop" data-type="combat">
+    <div class="workshop-media" style="background-image: url('https://puydufou.com/france/files/s3fs-public/styles/intro_carousel_detail_carousel_img_main_mobile/public/2023-11/le-reveil-du-guerrier.jpg.webp?VersionId=c3PHvbZXqZHQg1dCqV_F72nmPDxlxn8Q&itok=CPhPxHo5');"></div>
+    <div class="workshop-body">
+      <h2 class="workshop-name font-serif">Le Réveil du Guerrier</h2>
+      <p class="workshop-meta">Détails à venir</p>
+      <span class="workshop-cta">Plus d'infos <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </div>
+  </a>
+
+  <a href="ateliers-chevaux.html" class="workshop" data-type="animaux">
+    <div class="workshop-media" style="background-image: url('https://puydufou.com/france/files/s3fs-public/styles/intro_carousel_detail_carousel_img_main_mobile/public/2023-11/les-chevaux-de-lexploit_0.jpg.webp?VersionId=8I537jub6XJYb6VTXBayqlQGkLGJQ9Ie&itok=SkcFlIs2');"></div>
+    <div class="workshop-body">
+      <h2 class="workshop-name font-serif">Les Chevaux de l'Exploit</h2>
+      <p class="workshop-meta"><b>23€</b>/pers<span class="dot">·</span>45 min<span class="dot">·</span>17h00 & 18h00</p>
+      <p class="workshop-desc">Entrez dans les plus grandes écuries de spectacle d'Europe à la rencontre des 230 chevaux du Puy du Fou. Dressés à toutes les disciplines, vous saurez tout du suivi physique et nutritionnel mis en œuvre pour le bien-être de ces véritables athlètes.</p>
+      <span class="workshop-cta">Plus d'infos <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </div>
+  </a>
+
+</div>
+
+<div class="grid-empty" id="grid-empty">
+  <p>Aucun atelier ne correspond à ce filtre pour le moment.</p>
+</div>
+
+<div class="note">
+  <p><strong>Bon à savoir.</strong> Les places sont limitées, pensez à réserver jusqu'à 72 h avant votre visite. La programmation suit notre calendrier d'ouverture. Les ateliers se déroulent en français et accueillent jusqu'à 20 personnes ; les mineurs doivent être accompagnés d'un adulte. Photos et vidéos ne sont pas autorisées pendant la séance. Une situation de handicap à prendre en compte ? Contactez-nous, nous trouverons ensemble la meilleure façon de vous accueillir.</p>
+</div>
+
+<script>
+  const filterChips = document.querySelectorAll('.filter-chip');
+  const workshopCards = document.querySelectorAll('.workshop');
+  const emptyState = document.getElementById('grid-empty');
+
+  filterChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      filterChips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+
+      const filter = chip.dataset.filter;
+      let visibleCount = 0;
+      workshopCards.forEach(card => {
+        const matches = filter === 'all' || card.dataset.type === filter;
+        card.classList.toggle('hidden', !matches);
+        if (matches) visibleCount++;
+      });
+      emptyState.classList.toggle('visible', visibleCount === 0);
+    });
+  });
+</script>
+
+</body>
+</html>

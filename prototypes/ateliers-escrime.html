@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Escrime de spectacle · Les Ateliers du Puy du Fou</title>
+<link rel="icon" type="image/x-icon" href="../assets/components/favicon.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<style>
+  :root {
+    --brand-red: #B40020;
+    --primary-contrast: #FFFFFF;
+    --laiton: #A18756;
+    --background: #FBF7F0;
+    --background-cards: #FFFFFF;
+    --background-nav-stronger: #F1EFEF;
+    --text: #3B311F;
+    --grey: #616161;
+    --gradient-top: #C1BDBD00;
+    --gradient-bottom: #DCDCDCE5;
+    --radius-full: 9999px;
+    --radius-md: 12px;
+    --spacing-xxs: 4px;
+    --spacing-s: 8px;
+    --spacing-sm: 12px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    --spacing-xxl: 40px;
+    --spacing-xxxl: 48px;
+    --page-margin: 20px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { overflow-x: hidden; }
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--background);
+    color: var(--text);
+    line-height: 1.5;
+    padding-bottom: 84px; /* room for sticky booking bar */
+  }
+  a { color: inherit; }
+  .font-serif { font-family: Georgia, serif; }
+
+  .dev-back {
+    position: fixed; top: 10px; right: 16px; z-index: 100;
+    font-size: 11px; font-weight: 700; letter-spacing: .04em;
+    background: #211C12; color: #FBF7F0;
+    border-radius: var(--radius-full); padding: 4px 12px;
+    text-decoration: none; opacity: .7; transition: opacity 150ms;
+  }
+  .dev-back:hover { opacity: 1; text-decoration: none; }
+
+  /* ── Header ── */
+  header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: var(--spacing-md) var(--page-margin);
+    border-bottom: 1px solid var(--background-nav-stronger);
+  }
+  .logo { font-family: Georgia, serif; font-weight: 700; font-size: 20px; color: var(--brand-red); text-decoration: none; }
+  .book-btn, .cta-btn {
+    display: inline-flex; align-items: center; gap: var(--spacing-s);
+    background: var(--brand-red); color: var(--primary-contrast);
+    font-weight: 700; font-size: 14px;
+    padding: 12px 20px; border-radius: var(--radius-full);
+    border: none; cursor: pointer; text-decoration: none;
+  }
+
+  /* ── Breadcrumb + back ── */
+  .subheader {
+    display: flex; align-items: center; justify-content: space-between;
+    max-width: 760px; margin: 0 auto;
+    padding: var(--spacing-md) var(--page-margin) 0;
+    font-size: 13px; color: var(--grey);
+  }
+  .breadcrumb a { color: var(--grey); text-decoration: none; }
+  .breadcrumb a:hover { text-decoration: underline; }
+  .breadcrumb .sep { margin: 0 var(--spacing-xxs); }
+  .breadcrumb .current { color: var(--text); }
+  .back-link {
+    display: inline-flex; align-items: center; gap: var(--spacing-xxs);
+    color: var(--text); text-decoration: none; font-weight: 700;
+  }
+
+  /* ── Hero ── */
+  .hero {
+    max-width: 760px; margin: var(--spacing-md) auto 0;
+    padding: 0 var(--page-margin);
+  }
+  .hero-media {
+    aspect-ratio: 16 / 9;
+    background-size: cover; background-position: center;
+    border-radius: var(--radius-md);
+  }
+
+  /* ── Body ── */
+  main { max-width: 760px; margin: 0 auto; padding: var(--spacing-xl) var(--page-margin) 0; }
+
+  .title {
+    font-family: Georgia, serif; font-weight: 700;
+    font-size: 32px; line-height: 36px;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  /* Facts as one running line of plain text, no pills, no caps */
+  .facts {
+    display: flex; flex-wrap: wrap; gap: var(--spacing-md);
+    font-size: 15px; color: var(--text);
+    padding-bottom: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+    border-bottom: 1px solid var(--background-nav-stronger);
+  }
+  .facts .fact { display: flex; align-items: center; gap: var(--spacing-xxs); }
+  .facts .fact b { font-weight: 700; }
+  .facts svg { color: var(--laiton); flex-shrink: 0; }
+
+  .body-copy p {
+    font-size: 16px; line-height: 26px;
+    margin-bottom: var(--spacing-md);
+    max-width: 62ch;
+  }
+
+  .section-heading {
+    font-family: Georgia, serif; font-weight: 700; font-size: 22px; line-height: 28px;
+    margin: var(--spacing-xl) 0 var(--spacing-md);
+  }
+
+  .includes-list { display: flex; flex-direction: column; gap: var(--spacing-sm); max-width: 62ch; }
+  .includes-list li {
+    display: flex; align-items: flex-start; gap: var(--spacing-sm);
+    list-style: none;
+    font-size: 15px; line-height: 22px;
+  }
+  .includes-list svg { color: var(--brand-red); flex-shrink: 0; margin-top: 2px; }
+
+  .condition-note {
+    margin-top: var(--spacing-lg);
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--background-nav-stronger);
+    font-size: 14px; line-height: 20px;
+    color: var(--grey);
+  }
+  .condition-note strong { color: var(--text); }
+
+  /* ── FAQ ── */
+  .faq { margin: var(--spacing-xl) 0 var(--spacing-xxxl); }
+  .faq-item { border-bottom: 1px solid var(--background-nav-stronger); }
+  .faq-item summary {
+    display: flex; align-items: center; justify-content: space-between; gap: var(--spacing-md);
+    padding: var(--spacing-md) 0;
+    font-family: Georgia, serif; font-weight: 700; font-size: 16px;
+    cursor: pointer;
+    list-style: none;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary svg { flex-shrink: 0; transition: transform 180ms ease; color: var(--laiton); }
+  .faq-item[open] summary svg { transform: rotate(45deg); }
+  .faq-item p {
+    font-size: 14px; line-height: 22px; color: var(--grey);
+    padding-bottom: var(--spacing-md);
+    max-width: 62ch;
+  }
+
+  /* ── Sticky booking bar ── */
+  .sticky-bar {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 50;
+    display: flex; align-items: center; justify-content: space-between; gap: var(--spacing-md);
+    background: var(--background-cards);
+    border-top: 1px solid var(--background-nav-stronger);
+    padding: var(--spacing-sm) var(--page-margin);
+  }
+  .sticky-bar-price { font-size: 15px; }
+  .sticky-bar-price b { font-family: Georgia, serif; font-size: 20px; }
+
+  @media (min-width: 640px) {
+    .title { font-size: 40px; line-height: 44px; }
+  }
+</style>
+</head>
+<body>
+
+<a href="../index.html#prototypes" class="dev-back">← Hub</a>
+
+<header>
+  <a href="#" class="logo">Puy du Fou</a>
+  <a href="#" class="book-btn">Réserver</a>
+</header>
+
+<div class="subheader">
+  <nav class="breadcrumb" aria-label="Fil d'Ariane">
+    <a href="#">Puy du Fou</a><span class="sep">›</span><a href="ateliers.html">Les ateliers du Puy du Fou</a><span class="sep">›</span><span class="current">Escrime de spectacle</span>
+  </nav>
+  <a href="ateliers.html" class="back-link">← Retour</a>
+</div>
+
+<div class="hero">
+  <div class="hero-media" style="background-image: url('https://puydufou.com/france/files/s3fs-public/styles/intro_carousel_detail_carousel_img_main_mobile/public/2021-06/escrime_de_spectacles.jpg.webp?VersionId=5zhdkSnxQeHzPLmBPLe6p8s5UgIO.ofr&itok=BfXiKDlP');"></div>
+</div>
+
+<main>
+  <h1 class="title font-serif">Escrime de spectacle</h1>
+
+  <div class="facts">
+    <span class="fact"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> <b>1 heure</b></span>
+    <span class="fact"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg> <b>23€</b> par personne</span>
+    <span class="fact"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg> À partir de 10 ans</span>
+    <span class="fact"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> Séance à 19h30</span>
+  </div>
+
+  <div class="body-copy">
+    <p>En garde. Notre maître d'armes vous donne rendez-vous pour une initiation accessible à tous, dès 10 ans, afin de découvrir les bases de l'escrime de spectacle et du maniement des armes.</p>
+    <p>Loin de la compétition sportive, l'escrime de spectacle est un art chorégraphié, pensé pour raconter une histoire au public autant que pour toucher l'adversaire. Vous apprendrez les postures, les parades et les enchaînements qui donnent vie aux duels de nos spectacles, encadrés par les artistes qui les interprètent chaque jour sur scène.</p>
+  </div>
+
+  <h2 class="section-heading font-serif">L'atelier comprend</h2>
+  <ul class="includes-list">
+    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Une initiation encadrée par un maître d'armes de la troupe</li>
+    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Le prêt d'une arme de scène pour la durée de l'atelier</li>
+    <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Un petit enchaînement chorégraphié à présenter en fin de séance</li>
+  </ul>
+
+  <p class="condition-note"><strong>À prévoir.</strong> Tenue adaptée nécessaire : vêtements souples et chaussures fermées. Atelier accessible à partir de 10 ans, places limitées.</p>
+
+  <h2 class="section-heading font-serif">Questions fréquentes</h2>
+  <div class="faq">
+    <details class="faq-item" open>
+      <summary>Où se déroule l'atelier ? <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+      <p>Le rendez-vous est donné directement sur place, dans la zone de l'atelier signalée sur le programme du jour. L'accès est inclus dans votre billet d'entrée.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Faut-il réserver à l'avance ? <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+      <p>Oui. Les places sont limitées, réservez jusqu'à 72 h avant votre visite pour être sûr d'avoir la vôtre.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Y a-t-il un risque de blessure ? <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+      <p>Les armes utilisées sont des armes de scène, sans tranchant, et l'ensemble de la séance est encadré par un professionnel formé aux techniques de sécurité de l'escrime de spectacle.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Puis-je annuler ma réservation ? <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+      <p>Oui, votre place peut être libérée à tout moment depuis le programme du jour afin de laisser l'opportunité à un autre visiteur.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Combien de personnes par séance ? <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+      <p>Chaque séance accueille jusqu'à 20 personnes et se déroule en français. Les mineurs doivent être accompagnés d'un adulte.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Puis-je prendre des photos ? <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+      <p>Pour que chacun puisse profiter pleinement du moment, photos et vidéos ne sont pas autorisées pendant l'atelier.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Je suis en situation de handicap, puis-je participer ? <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary>
+      <p>Contactez-nous avant votre venue : nous trouverons ensemble la meilleure façon de vous accueillir.</p>
+    </details>
+  </div>
+</main>
+
+<div class="sticky-bar">
+  <span class="sticky-bar-price font-serif">À partir de <b>23€</b></span>
+  <a href="#" class="cta-btn">Réserver l'atelier</a>
+</div>
+
+</body>
+</html>

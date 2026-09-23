@@ -3128,6 +3128,24 @@
           <rect x="30" y="62" width="60" height="6" rx="3" fill="var(--bg-card-sunken)"/>
         </svg>`,
       },
+      {
+        id: 'ateliers',
+        href: 'prototypes/ateliers.html',
+        tag: t.proto_tag_wip,
+        tagColor: 'var(--gold)',
+        title: isFr ? 'Les Ateliers du Puy du Fou' : 'Puy du Fou Workshops',
+        desc: isFr
+          ? 'Refonte de la page ateliers : carrousel générique remplacé par une grille de six ateliers à poids égal, testée sur design.md.'
+          : 'Redesign of the workshops page: generic carousel replaced with an equal-weight six-item grid, tested against design.md.',
+        thumb: `<svg width="120" height="72" viewBox="0 0 120 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="6" y="10" width="33" height="24" rx="4" fill="var(--bg-card)" stroke="var(--gold)" stroke-width="1.5"/>
+          <rect x="43.5" y="10" width="33" height="24" rx="4" fill="var(--bg-card)" stroke="var(--gold)" stroke-width="1.5"/>
+          <rect x="81" y="10" width="33" height="24" rx="4" fill="var(--bg-card)" stroke="var(--gold)" stroke-width="1.5"/>
+          <rect x="6" y="38" width="33" height="24" rx="4" fill="var(--bg-card)" stroke="var(--border)" stroke-width="1.5"/>
+          <rect x="43.5" y="38" width="33" height="24" rx="4" fill="var(--bg-card)" stroke="var(--border)" stroke-width="1.5"/>
+          <rect x="81" y="38" width="33" height="24" rx="4" fill="var(--bg-card)" stroke="var(--border)" stroke-width="1.5"/>
+        </svg>`,
+      },
     ];
 
     const cardStyle = `
