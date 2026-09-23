@@ -2393,12 +2393,12 @@
 
         const priority = [
           {
-            href: 'data/design-tokens-ai-context.md',
-            label: isFr ? 'Tokens IA' : 'AI Tokens',
-            title: isFr ? 'Design tokens : contexte IA' : 'Design tokens: AI context',
+            href: 'data/design.md',
+            label: isFr ? 'Design : contexte IA' : 'Design: AI context',
+            title: isFr ? 'Design : contexte IA' : 'Design: AI context',
             desc: isFr
-              ? '154 variables Figma (couleurs, typographie, espacements, ombres), light & dark. À inclure dans tout prompt de génération d\'interface pour notre DS.'
-              : '154 Figma variables (colours, typography, spacing, shadows), light & dark. Include in any UI generation prompt targeting our DS.',
+              ? '154 variables Figma (couleurs, typographie, espacements, ombres), light & dark, plus les règles anti-générique IA et la méthode de composition. À inclure dans tout prompt de génération d\'interface pour notre DS.'
+              : '154 Figma variables (colours, typography, spacing, shadows), light & dark, plus the anti-generic-AI rules and composition method. Include in any UI generation prompt targeting our DS.',
             tag: isFr ? 'Priorité 1' : 'Priority 1',
           },
           {
@@ -2982,7 +2982,7 @@
         const dlIcon = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>`;
 
         const pFiles = [
-          { href: 'data/design-tokens-ai-context.md',   tag: isFr ? 'Priorité 1' : 'Priority 1', label: isFr ? 'Tokens IA' : 'AI Tokens',        desc: isFr ? '154 variables Figma (couleurs, typo, espacements, ombres), light & dark. À inclure dans tout prompt de génération d\'interface.' : '154 Figma variables (colours, type, spacing, shadows), light & dark. Include in any UI generation prompt.' },
+          { href: 'data/design.md',                     tag: isFr ? 'Priorité 1' : 'Priority 1', label: isFr ? 'Design IA' : 'AI Design',          desc: isFr ? 'Tokens Figma, règles anti-générique IA et méthode de composition. À inclure dans tout prompt de génération d\'interface.' : 'Figma tokens, anti-generic-AI rules, and composition method. Include in any UI generation prompt.' },
           { href: 'data/design-tokens-dev-handoff.md',  tag: isFr ? 'Priorité 2' : 'Priority 2', label: isFr ? 'Tokens Handoff' : 'Handoff Tokens', desc: isFr ? 'Référence complète tokens pour l\'intégration frontend : noms exacts, valeurs, correspondances CSS/Swift.' : 'Complete token reference for frontend integration: exact names, values, CSS/Swift mappings.' },
         ];
 
