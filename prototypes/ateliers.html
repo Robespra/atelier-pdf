@@ -57,7 +57,7 @@
     border-bottom: 1px solid var(--background-nav-stronger);
   }
   .logo { font-family: Georgia, serif; font-weight: 700; font-size: 20px; color: var(--brand-red); text-decoration: none; }
-  .book-btn {
+  .book-btn, .cta-btn {
     display: inline-flex; align-items: center; gap: var(--spacing-s);
     background: var(--brand-red); color: var(--primary-contrast);
     font-weight: 700; font-size: 14px;
@@ -144,6 +144,12 @@
     overflow: hidden;
     text-decoration: none;
     color: inherit;
+    border: none;
+    padding: 0;
+    font-family: inherit;
+    text-align: left;
+    cursor: pointer;
+    width: 100%;
   }
   .workshop.hidden { display: none; }
   .workshop-media {
@@ -213,6 +219,129 @@
     .grid { grid-template-columns: 1fr 1fr 1fr; }
     .intro-title { font-size: 48px; line-height: 52px; }
   }
+
+  /* ── Detail modal ── */
+  .modal-backdrop {
+    position: fixed; inset: 0; z-index: 200;
+    background: rgba(59,49,31,.55);
+    display: none;
+    align-items: center; justify-content: center;
+    padding: var(--spacing-xl) var(--page-margin);
+  }
+  .modal-backdrop.open { display: flex; }
+  body.modal-open { overflow: hidden; }
+
+  .modal-panel {
+    position: relative;
+    width: 100%; max-width: 760px;
+    max-height: 100%;
+    background: var(--background);
+    border-radius: var(--radius-md);
+    display: flex; flex-direction: column;
+    overflow: hidden;
+  }
+  .modal-scroll {
+    overflow-y: auto;
+    flex: 1 1 auto;
+    min-height: 0;
+  }
+  .modal-close {
+    position: absolute; top: var(--spacing-md); right: var(--spacing-md); z-index: 2;
+    width: 36px; height: 36px;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--background-cards);
+    border: none; border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(59,49,31,.18);
+  }
+
+  .modal-hero {
+    padding: var(--spacing-md) var(--spacing-md) 0;
+  }
+  .modal-hero-media {
+    aspect-ratio: 16 / 9;
+    background-size: cover; background-position: center;
+    border-radius: var(--radius-md);
+  }
+
+  .modal-body { padding: var(--spacing-xl) var(--spacing-lg) 0; }
+
+  .modal-title {
+    font-family: Georgia, serif; font-weight: 700;
+    font-size: 28px; line-height: 32px;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .modal-facts {
+    display: flex; flex-wrap: wrap; gap: var(--spacing-md);
+    font-size: 15px; color: var(--text);
+    padding-bottom: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+    border-bottom: 1px solid var(--background-nav-stronger);
+  }
+  .modal-facts .fact { display: flex; align-items: center; gap: var(--spacing-xxs); }
+  .modal-facts .fact b { font-weight: 700; }
+  .modal-facts svg { color: var(--laiton); flex-shrink: 0; }
+
+  .modal-copy p {
+    font-size: 16px; line-height: 26px;
+    margin-bottom: var(--spacing-md);
+    max-width: 62ch;
+  }
+
+  .modal-section-heading {
+    font-family: Georgia, serif; font-weight: 700; font-size: 20px; line-height: 26px;
+    margin: var(--spacing-xl) 0 var(--spacing-md);
+  }
+
+  .modal-includes { display: flex; flex-direction: column; gap: var(--spacing-sm); max-width: 62ch; }
+  .modal-includes li {
+    display: flex; align-items: flex-start; gap: var(--spacing-sm);
+    list-style: none;
+    font-size: 15px; line-height: 22px;
+  }
+  .modal-includes svg { color: var(--brand-red); flex-shrink: 0; margin-top: 2px; }
+
+  .modal-condition {
+    margin-top: var(--spacing-lg);
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--background-nav-stronger);
+    font-size: 14px; line-height: 20px;
+    color: var(--grey);
+  }
+  .modal-condition strong { color: var(--text); }
+
+  .modal-faq { margin: var(--spacing-xl) 0 var(--spacing-lg); }
+  .modal-faq-item { border-bottom: 1px solid var(--background-nav-stronger); }
+  .modal-faq-item summary {
+    display: flex; align-items: center; justify-content: space-between; gap: var(--spacing-md);
+    padding: var(--spacing-md) 0;
+    font-family: Georgia, serif; font-weight: 700; font-size: 16px;
+    cursor: pointer;
+    list-style: none;
+  }
+  .modal-faq-item summary::-webkit-details-marker { display: none; }
+  .modal-faq-item summary svg { flex-shrink: 0; transition: transform 180ms ease; color: var(--laiton); }
+  .modal-faq-item[open] summary svg { transform: rotate(45deg); }
+  .modal-faq-item p {
+    font-size: 14px; line-height: 22px; color: var(--grey);
+    padding-bottom: var(--spacing-md);
+    max-width: 62ch;
+  }
+
+  .modal-sticky-bar {
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: space-between; gap: var(--spacing-md);
+    background: var(--background-cards);
+    border-top: 1px solid var(--background-nav-stronger);
+    padding: var(--spacing-sm) var(--spacing-lg);
+  }
+  .modal-sticky-price { font-size: 15px; }
+  .modal-sticky-price b { font-family: Georgia, serif; font-size: 20px; }
+
+  @media (min-width: 640px) {
+    .modal-title { font-size: 32px; line-height: 36px; }
+  }
 </style>
 </head>
 <body>
@@ -245,7 +374,7 @@
 
 <div class="grid">
 
-  <a href="ateliers-escrime.html" class="workshop" data-type="combat">
+  <button class="workshop" data-type="combat" data-id="escrime">
     <div class="workshop-media" style="background-image: url('https://puydufou.com/france/files/s3fs-public/styles/intro_carousel_detail_carousel_img_main_mobile/public/2021-06/escrime_de_spectacles.jpg.webp?VersionId=5zhdkSnxQeHzPLmBPLe6p8s5UgIO.ofr&itok=BfXiKDlP');"></div>
     <div class="workshop-body">
       <h2 class="workshop-name font-serif">Escrime de spectacle</h2>
@@ -254,9 +383,9 @@
       <p class="workshop-condition">Tenue adaptée nécessaire. À partir de 10 ans.</p>
       <span class="workshop-cta">Plus d'infos <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
     </div>
-  </a>
+  </button>
 
-  <a href="ateliers-fauconnerie.html" class="workshop" data-type="animaux">
+  <button class="workshop" data-type="animaux" data-id="fauconnerie">
     <div class="workshop-media" style="background-image: url('https://puydufou.com/france/files/s3fs-public/styles/intro_carousel_detail_carousel_img_main_mobile/public/2023-11/le-voyage-au-coeur-de-la-fauconnerie.jpg.webp?VersionId=LHDFiq745wQMY0TK2k05qt.Sqgy.sad7&itok=B5tDtfzZ');"></div>
     <div class="workshop-body">
       <h2 class="workshop-name font-serif">Le Voyage au Cœur de la Fauconnerie</h2>
@@ -264,9 +393,9 @@
       <p class="workshop-desc">Derrière les ruines du vieux château, l'Académie de Fauconnerie vit au rythme de nos 800 oiseaux. Partez à la découverte des missions passionnantes de son équipe et laissez-vous guider par le savoir-faire des professionnels qui œuvrent au quotidien pour le respect du bien-être animal et la préservation de la biodiversité.</p>
       <span class="workshop-cta">Plus d'infos <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
     </div>
-  </a>
+  </button>
 
-  <a href="ateliers-fil-en-aiguille.html" class="workshop" data-type="savoir-faire">
+  <button class="workshop" data-type="savoir-faire" data-id="fil-en-aiguille">
     <div class="workshop-media" style="background-image: url('https://puydufou.com/france/files/s3fs-public/styles/intro_carousel_detail_carousel_img_main_mobile/public/2023-11/de-fil-en-aiguille.jpg.webp?VersionId=xY7O21LK2hyMP.jPKmfpZsRmLiK2vnq0&itok=7AmojjOX');"></div>
     <div class="workshop-body">
       <h2 class="workshop-name font-serif">De Fil en Aiguille</h2>
@@ -274,9 +403,9 @@
       <p class="workshop-desc">Avec plus de 50 000 costumes, notre atelier est l'un des plus grands d'Europe. Nos costumières vous enseigneront toutes les étapes nécessaires à la confection de nos costumes, du dessin à son entrée sur scène.</p>
       <span class="workshop-cta">Plus d'infos <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
     </div>
-  </a>
+  </button>
 
-  <a href="ateliers-animaux.html" class="workshop" data-type="animaux">
+  <button class="workshop" data-type="animaux" data-id="animaux">
     <div class="workshop-media" style="background-image: url('https://puydufou.com/france/files/s3fs-public/styles/intro_carousel_detail_carousel_img_main_mobile/public/2023-06/banniere-laska.png.webp?VersionId=9sMYMmrISZCMlcBx6vxOcK70jt4yiZm1&itok=oCtcEWUm');"></div>
     <div class="workshop-body">
       <h2 class="workshop-name font-serif">En Coulisses avec les Animaux</h2>
@@ -284,18 +413,18 @@
       <p class="workshop-desc">Immersion en coulisses en compagnie des animaux stars du Puy du Fou. Cochons de Bayeux, Baudets du Poitou, Chèvres des fossés. Partagez le quotidien de nos soigneurs passionnés et découvrez les enjeux de conservation d'espèces rares.</p>
       <span class="workshop-cta">Plus d'infos <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
     </div>
-  </a>
+  </button>
 
-  <a href="ateliers-reveil-guerrier.html" class="workshop" data-type="combat">
+  <button class="workshop" data-type="combat" data-id="reveil-guerrier">
     <div class="workshop-media" style="background-image: url('https://puydufou.com/france/files/s3fs-public/styles/intro_carousel_detail_carousel_img_main_mobile/public/2023-11/le-reveil-du-guerrier.jpg.webp?VersionId=c3PHvbZXqZHQg1dCqV_F72nmPDxlxn8Q&itok=CPhPxHo5');"></div>
     <div class="workshop-body">
       <h2 class="workshop-name font-serif">Le Réveil du Guerrier</h2>
       <p class="workshop-meta">Détails à venir</p>
       <span class="workshop-cta">Plus d'infos <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
     </div>
-  </a>
+  </button>
 
-  <a href="ateliers-chevaux.html" class="workshop" data-type="animaux">
+  <button class="workshop" data-type="animaux" data-id="chevaux">
     <div class="workshop-media" style="background-image: url('https://puydufou.com/france/files/s3fs-public/styles/intro_carousel_detail_carousel_img_main_mobile/public/2023-11/les-chevaux-de-lexploit_0.jpg.webp?VersionId=8I537jub6XJYb6VTXBayqlQGkLGJQ9Ie&itok=SkcFlIs2');"></div>
     <div class="workshop-body">
       <h2 class="workshop-name font-serif">Les Chevaux de l'Exploit</h2>
@@ -303,7 +432,7 @@
       <p class="workshop-desc">Entrez dans les plus grandes écuries de spectacle d'Europe à la rencontre des 230 chevaux du Puy du Fou. Dressés à toutes les disciplines, vous saurez tout du suivi physique et nutritionnel mis en œuvre pour le bien-être de ces véritables athlètes.</p>
       <span class="workshop-cta">Plus d'infos <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
     </div>
-  </a>
+  </button>
 
 </div>
 
@@ -313,6 +442,32 @@
 
 <div class="note">
   <p><strong>Bon à savoir.</strong> Les places sont limitées, pensez à réserver jusqu'à 72 h avant votre visite. La programmation suit notre calendrier d'ouverture. Les ateliers se déroulent en français et accueillent jusqu'à 20 personnes ; les mineurs doivent être accompagnés d'un adulte. Photos et vidéos ne sont pas autorisées pendant la séance. Une situation de handicap à prendre en compte ? Contactez-nous, nous trouverons ensemble la meilleure façon de vous accueillir.</p>
+</div>
+
+<div class="modal-backdrop" id="modal-backdrop">
+  <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <button class="modal-close" id="modal-close" aria-label="Fermer">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="modal-scroll">
+      <div class="modal-hero">
+        <div class="modal-hero-media" id="modal-hero-media"></div>
+      </div>
+      <div class="modal-body">
+        <h2 class="modal-title font-serif" id="modal-title"></h2>
+        <div class="modal-facts" id="modal-facts"></div>
+        <div class="modal-copy" id="modal-copy"></div>
+        <div id="modal-includes-wrap"></div>
+        <p class="modal-condition" id="modal-condition"></p>
+        <h3 class="modal-section-heading font-serif">Questions fréquentes</h3>
+        <div class="modal-faq" id="modal-faq"></div>
+      </div>
+    </div>
+    <div class="modal-sticky-bar">
+      <span class="modal-sticky-price font-serif" id="modal-price"></span>
+      <a href="#" class="cta-btn">Réserver l'atelier</a>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -335,6 +490,202 @@
       emptyState.classList.toggle('visible', visibleCount === 0);
     });
   });
+
+  // ── Detail modal ──────────────────────────────────────
+  const iconClock = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>`;
+  const iconPrice = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg>`;
+  const iconAge   = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>`;
+  const iconTime  = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>`;
+  const iconCheck = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`;
+  const iconPlus  = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>`;
+
+  const faqReservation = { q: "Faut-il réserver à l'avance ?", a: "Oui. Les places sont limitées, réservez jusqu'à 72 h avant votre visite pour être sûr d'avoir la vôtre." };
+  const faqCancel = { q: 'Puis-je annuler ma réservation ?', a: "Oui, votre place peut être libérée à tout moment depuis le programme du jour afin de laisser l'opportunité à un autre visiteur." };
+  const faqGroup = { q: 'Combien de personnes par séance ?', a: "Chaque séance accueille jusqu'à 20 personnes et se déroule en français. Les mineurs doivent être accompagnés d'un adulte." };
+  const faqPhotos = { q: 'Puis-je prendre des photos ?', a: "Pour que chacun puisse profiter pleinement du moment, photos et vidéos ne sont pas autorisées pendant l'atelier." };
+  const faqAccess = { q: 'Je suis en situation de handicap, puis-je participer ?', a: 'Contactez-nous avant votre venue : nous trouverons ensemble la meilleure façon de vous accueillir.' };
+  const faqWhere = (name) => ({ q: "Où se déroule l'atelier ?", a: "Le rendez-vous est donné directement sur place, dans la zone de l'atelier signalée sur le programme du jour. L'accès est inclus dans votre billet d'entrée." });
+
+  const workshops = {
+    escrime: {
+      title: 'Escrime de spectacle',
+      image: "https://puydufou.com/france/files/s3fs-public/styles/intro_carousel_detail_carousel_img_main_mobile/public/2021-06/escrime_de_spectacles.jpg.webp?VersionId=5zhdkSnxQeHzPLmBPLe6p8s5UgIO.ofr&itok=BfXiKDlP",
+      facts: [`${iconClock} <b>1 heure</b>`, `${iconPrice} <b>23€</b> par personne`, `${iconAge} À partir de 10 ans`, `${iconTime} Séance à 19h30`],
+      price: '23€',
+      copy: [
+        "En garde. Notre maître d'armes vous donne rendez-vous pour une initiation accessible à tous, dès 10 ans, afin de découvrir les bases de l'escrime de spectacle et du maniement des armes.",
+        "Loin de la compétition sportive, l'escrime de spectacle est un art chorégraphié, pensé pour raconter une histoire au public autant que pour toucher l'adversaire. Vous apprendrez les postures, les parades et les enchaînements qui donnent vie aux duels de nos spectacles, encadrés par les artistes qui les interprètent chaque jour sur scène.",
+      ],
+      includes: [
+        "Une initiation encadrée par un maître d'armes de la troupe",
+        "Le prêt d'une arme de scène pour la durée de l'atelier",
+        "Un petit enchaînement chorégraphié à présenter en fin de séance",
+      ],
+      condition: "<strong>À prévoir.</strong> Tenue adaptée nécessaire : vêtements souples et chaussures fermées. Atelier accessible à partir de 10 ans, places limitées.",
+      faq: [
+        faqWhere(), faqReservation,
+        { q: 'Y a-t-il un risque de blessure ?', a: "Les armes utilisées sont des armes de scène, sans tranchant, et l'ensemble de la séance est encadré par un professionnel formé aux techniques de sécurité de l'escrime de spectacle." },
+        faqCancel, faqGroup, faqPhotos, faqAccess,
+      ],
+    },
+    fauconnerie: {
+      title: 'Le Voyage au Cœur de la Fauconnerie',
+      image: "https://puydufou.com/france/files/s3fs-public/styles/intro_carousel_detail_carousel_img_main_mobile/public/2023-11/le-voyage-au-coeur-de-la-fauconnerie.jpg.webp?VersionId=LHDFiq745wQMY0TK2k05qt.Sqgy.sad7&itok=B5tDtfzZ",
+      facts: [`${iconClock} <b>1h30</b>`, `${iconPrice} <b>34€</b> par personne`, `${iconTime} Séance à 16h30 ou 18h00`],
+      price: '34€',
+      copy: [
+        "Derrière les ruines du vieux château, l'Académie de Fauconnerie vit au rythme de nos 800 oiseaux. Partez à la découverte des missions passionnantes de son équipe et laissez-vous guider par le savoir-faire des professionnels qui œuvrent au quotidien pour le respect du bien-être animal et la préservation de la biodiversité.",
+        "Une immersion dans un univers où chaque geste compte, entre soin, dressage et transmission, pour comprendre ce qui fait des rapaces du Puy du Fou des partenaires de spectacle uniques en Europe.",
+      ],
+      includes: [
+        "Une visite guidée de l'Académie de Fauconnerie",
+        "La rencontre avec les fauconniers et leurs oiseaux",
+        "Les coulisses du soin quotidien et de la préparation aux spectacles",
+      ],
+      condition: '<strong>À prévoir.</strong> Ouvert à tous, en famille. Places limitées.',
+      faq: [
+        faqWhere(), faqReservation,
+        { q: 'Peut-on toucher les oiseaux ?', a: "Le contact avec les rapaces se fait uniquement à l'initiative des fauconniers, dans le respect du bien-être de chaque animal." },
+        faqCancel, faqGroup, faqPhotos, faqAccess,
+      ],
+    },
+    'fil-en-aiguille': {
+      title: 'De Fil en Aiguille',
+      image: "https://puydufou.com/france/files/s3fs-public/styles/intro_carousel_detail_carousel_img_main_mobile/public/2023-11/de-fil-en-aiguille.jpg.webp?VersionId=xY7O21LK2hyMP.jPKmfpZsRmLiK2vnq0&itok=7AmojjOX",
+      facts: [`${iconClock} <b>1 heure</b>`, `${iconPrice} <b>23€</b> par personne`, `${iconTime} Séance à 17h45`],
+      price: '23€',
+      copy: [
+        "Avec plus de 50 000 costumes, notre atelier est l'un des plus grands d'Europe. Nos costumières vous enseigneront toutes les étapes nécessaires à la confection de nos costumes, du dessin à son entrée sur scène.",
+        "Vous découvrirez aussi tous les métiers qui rendent leur création possible, du patronage à la broderie, et l'exigence de détail qui fait vivre chaque personnage sous les projecteurs.",
+      ],
+      includes: [
+        "Une visite de l'atelier costumes du Puy du Fou",
+        "La rencontre avec nos costumières",
+        "La découverte des étapes de confection, du dessin à la scène",
+      ],
+      condition: '<strong>À prévoir.</strong> Ouvert à tous, en famille. Places limitées.',
+      faq: [faqWhere(), faqReservation, faqCancel, faqGroup, faqPhotos, faqAccess],
+    },
+    animaux: {
+      title: 'En Coulisses avec les Animaux',
+      image: "https://puydufou.com/france/files/s3fs-public/styles/intro_carousel_detail_carousel_img_main_mobile/public/2023-06/banniere-laska.png.webp?VersionId=9sMYMmrISZCMlcBx6vxOcK70jt4yiZm1&itok=oCtcEWUm",
+      facts: [`${iconClock} <b>1 heure</b>`, `${iconPrice} <b>23€</b> par personne`, `${iconTime} Séance à 17h30 ou 18h00`],
+      price: '23€',
+      copy: [
+        "Immersion en coulisses en compagnie des animaux stars du Puy du Fou. Cochons de Bayeux, Baudets du Poitou, Chèvres des fossés : partagez le quotidien de nos soigneurs passionnés et découvrez les enjeux de conservation d'espèces rares aux mille et une facettes.",
+        "Une occasion rare de comprendre le travail discret mené chaque jour pour préserver ces races anciennes, entre soin animalier et transmission d'un savoir-faire de longue tradition.",
+      ],
+      includes: [
+        'Une visite guidée des coulisses animalières',
+        'La rencontre avec nos soigneurs et leurs animaux',
+        'La découverte des enjeux de conservation des races rares',
+      ],
+      condition: '<strong>À prévoir.</strong> Ouvert à tous, en famille. Places limitées.',
+      faq: [
+        faqWhere(), faqReservation,
+        { q: 'Peut-on toucher les animaux ?', a: "Le contact avec les animaux se fait uniquement à l'initiative des soigneurs, dans le respect du bien-être de chacun." },
+        faqCancel, faqGroup, faqPhotos, faqAccess,
+      ],
+    },
+    'reveil-guerrier': {
+      title: 'Le Réveil du Guerrier',
+      image: "https://puydufou.com/france/files/s3fs-public/styles/intro_carousel_detail_carousel_img_main_mobile/public/2023-11/le-reveil-du-guerrier.jpg.webp?VersionId=c3PHvbZXqZHQg1dCqV_F72nmPDxlxn8Q&itok=CPhPxHo5",
+      facts: ['Détails à venir'],
+      price: 'Tarif à venir',
+      copy: ["Les informations complètes de cet atelier (tarif, durée, description) seront ajoutées prochainement. Rapprochez-vous d'un membre de l'équipe sur place pour en savoir plus."],
+      includes: [],
+      condition: '',
+      faq: [faqWhere(), faqReservation, faqCancel, faqGroup, faqPhotos, faqAccess],
+    },
+    chevaux: {
+      title: "Les Chevaux de l'Exploit",
+      image: "https://puydufou.com/france/files/s3fs-public/styles/intro_carousel_detail_carousel_img_main_mobile/public/2023-11/les-chevaux-de-lexploit_0.jpg.webp?VersionId=8I537jub6XJYb6VTXBayqlQGkLGJQ9Ie&itok=SkcFlIs2",
+      facts: [`${iconClock} <b>45 min</b>`, `${iconPrice} <b>23€</b> par personne`, `${iconTime} Séances à 17h00 et 18h00`],
+      price: '23€',
+      copy: [
+        "Entrez dans les plus grandes écuries de spectacle d'Europe à la rencontre des 230 chevaux du Puy du Fou. Dressés à toutes les disciplines, ils sont suivis avec un soin constant par une équipe dédiée à leur bien-être physique et nutritionnel.",
+        "Vous saurez tout du travail quotidien mené auprès de ces véritables athlètes, entre entraînement, soin et préparation aux spectacles qu'ils animent chaque jour.",
+      ],
+      includes: [
+        'Une visite guidée des écuries de spectacle',
+        'La rencontre avec nos cavaliers et leurs chevaux',
+        'La découverte du suivi physique et nutritionnel des chevaux',
+      ],
+      condition: '<strong>À prévoir.</strong> Ouvert à tous, en famille. Places limitées.',
+      faq: [
+        faqWhere(), faqReservation,
+        { q: 'Peut-on approcher les chevaux ?', a: "Le contact avec les chevaux se fait uniquement à l'initiative de nos cavaliers, dans le respect du bien-être de chaque animal." },
+        faqCancel, faqGroup, faqPhotos, faqAccess,
+      ],
+    },
+  };
+
+  const modalBackdrop = document.getElementById('modal-backdrop');
+  const modalHeroMedia = document.getElementById('modal-hero-media');
+  const modalTitle = document.getElementById('modal-title');
+  const modalFacts = document.getElementById('modal-facts');
+  const modalCopy = document.getElementById('modal-copy');
+  const modalIncludesWrap = document.getElementById('modal-includes-wrap');
+  const modalCondition = document.getElementById('modal-condition');
+  const modalFaq = document.getElementById('modal-faq');
+  const modalPrice = document.getElementById('modal-price');
+  const modalScroll = document.querySelector('.modal-scroll');
+
+  function openModal(id) {
+    const w = workshops[id];
+    if (!w) return;
+
+    modalHeroMedia.style.backgroundImage = `url('${w.image}')`;
+    modalTitle.textContent = w.title;
+    modalFacts.innerHTML = w.facts.map(f => `<span class="fact">${f}</span>`).join('');
+    modalCopy.innerHTML = w.copy.map(p => `<p>${p}</p>`).join('');
+
+    if (w.includes.length) {
+      modalIncludesWrap.innerHTML = `
+        <h3 class="modal-section-heading font-serif">L'atelier comprend</h3>
+        <ul class="modal-includes">${w.includes.map(i => `<li>${iconCheck} ${i}</li>`).join('')}</ul>`;
+    } else {
+      modalIncludesWrap.innerHTML = '';
+    }
+
+    modalCondition.innerHTML = w.condition;
+    modalCondition.style.display = w.condition ? '' : 'none';
+
+    modalFaq.innerHTML = w.faq.map((item, i) => `
+      <details class="modal-faq-item"${i === 0 ? ' open' : ''}>
+        <summary>${item.q} ${iconPlus}</summary>
+        <p>${item.a}</p>
+      </details>`).join('');
+
+    modalPrice.innerHTML = w.price.includes('€') ? `À partir de <b>${w.price}</b>` : w.price;
+
+    modalBackdrop.classList.add('open');
+    document.body.classList.add('modal-open');
+    modalScroll.scrollTop = 0;
+    history.replaceState(null, '', `#${id}`);
+  }
+
+  function closeModal() {
+    modalBackdrop.classList.remove('open');
+    document.body.classList.remove('modal-open');
+    history.replaceState(null, '', window.location.pathname);
+  }
+
+  workshopCards.forEach(card => {
+    card.addEventListener('click', () => openModal(card.dataset.id));
+  });
+
+  document.getElementById('modal-close').addEventListener('click', closeModal);
+  modalBackdrop.addEventListener('click', e => {
+    if (e.target === modalBackdrop) closeModal();
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && modalBackdrop.classList.contains('open')) closeModal();
+  });
+
+  // Deep-link support: open directly if the URL already has a hash on load
+  const initialId = window.location.hash.replace('#', '');
+  if (initialId && workshops[initialId]) openModal(initialId);
 </script>
 
 </body>
