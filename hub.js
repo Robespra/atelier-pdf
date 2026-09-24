@@ -1899,8 +1899,8 @@
     if (!first) return;
     const linkSvg = w => `<svg width="${w}" height="${w}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>`;
     const card = (sys, large) => `
-      <a href="${sys.url}" target="_blank" rel="noopener" class="${large ? 'ds-card-foundation' : 'ds-card-product'}" style="border-top: 3px solid ${sys.accent || 'var(--red)'};">
-        <span class="ds-badge">${isFr ? sys.badge_fr : sys.badge_en}</span>
+      <a href="${sys.url}" target="_blank" rel="noopener" class="${large ? 'ds-card-foundation' : 'ds-card-product'}">
+        <span class="ds-badge" style="color: ${sys.accent || 'var(--red)'};">${isFr ? sys.badge_fr : sys.badge_en}</span>
         <div class="ds-name">${isFr ? sys.name_fr : sys.name}</div>
         <div class="ds-desc">${isFr ? sys.description_fr : sys.description_en}</div>
         <div class="ds-link">${linkSvg(large ? 14 : 12)} ${t('ds_open_figma')}</div>
