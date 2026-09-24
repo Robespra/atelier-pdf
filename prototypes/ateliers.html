@@ -226,15 +226,14 @@
     background: rgba(59,49,31,.55);
     display: none;
     align-items: center; justify-content: center;
-    padding: var(--spacing-xl) var(--page-margin);
   }
   .modal-backdrop.open { display: flex; }
   body.modal-open { overflow: hidden; }
 
   .modal-panel {
     position: relative;
-    width: 100%; max-width: 760px;
-    max-height: 100%;
+    width: min(760px, calc(100vw - 2 * var(--page-margin)));
+    height: min(720px, calc(100dvh - 2 * var(--spacing-xl)));
     background: var(--background);
     border-radius: var(--radius-md);
     display: flex; flex-direction: column;
@@ -242,6 +241,7 @@
   }
   .modal-scroll {
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     flex: 1 1 auto;
     min-height: 0;
   }
