@@ -85,6 +85,11 @@
   .intro {
     max-width: 1120px; margin: 0 auto;
     padding: var(--spacing-lg) var(--page-margin) var(--spacing-xl);
+    display: flex; align-items: flex-start; gap: var(--spacing-m);
+  }
+  .intro-illustration {
+    width: 120px; height: auto; flex-shrink: 0;
+    margin-top: var(--spacing-xxs);
   }
   .intro-title {
     font-family: Georgia, serif; font-weight: 700;
@@ -361,8 +366,11 @@
 </div>
 
 <section class="intro">
-  <h1 class="intro-title font-serif">Les Ateliers du Puy du Fou</h1>
-  <p class="intro-body">Prolongez votre voyage dans le temps avec l'un de nos Ateliers Découverte, en immersion avec nos experts.</p>
+  <img src="../assets/images/ateliersIllustr.png" alt="" class="intro-illustration">
+  <div>
+    <h1 class="intro-title font-serif">Les Ateliers du Puy du Fou</h1>
+    <p class="intro-body">Prolongez votre voyage dans le temps avec l'un de nos Ateliers Découverte, en immersion avec nos experts.</p>
+  </div>
 </section>
 
 <div class="filters" role="group" aria-label="Filtrer par type d'atelier">

@@ -1,7 +1,7 @@
 ---
 version: alpha
 name: Puy du Fou
-description: Brand design guide for Puy du Fou digital products (apps, web, kiosks). Baroque, theatrical and warm. Color, type and spacing tokens mirror the Figma library "Design System App" (modes Light and Dark); every color has a "-dark" twin.
+description: Brand design guide for Puy du Fou digital products (apps, web). Baroque, theatrical and warm. Color, type and spacing tokens mirror the Figma library "Design System" (modes Light and Dark); every color has a "-dark" twin.
 colors:
   primary: "#B40020"
   primary-dark: "#CB1617"
@@ -239,7 +239,7 @@ Read this before designing any Puy du Fou screen, in any product. The YAML above
 
 ## Overview
 
-Baroque, theatrical, warm. Deep red and aged brass on parchment by day; a stage in the dark by night. Photography and illustration carry the spectacle; the interface around them stays quiet, opaque and solid, like a printed programme handed out at the entrance. No glassmorphism, blur or translucent panels.
+Baroque, cinematographical, theatrical, warm. Deep red and aged brass on parchment by day; a stage in the dark by night. Photography and illustration carry the spectacle; the interface around them stays quiet, opaque and solid, like a printed programme handed out at the entrance. No glassmorphism, blur or translucent panels.
 
 ## Encounter
 

@@ -137,21 +137,21 @@
     /* ── Prompting  ── */
     prompting: {
       intro: {
-        fr: 'Les outils de prototypage IA ont introduit un nouveau paradigme : plutôt que de manipuler des éléments directement dans Figma, les designers peuvent prompter l\'IA pour générer des designs. La qualité du résultat dépend largement de la spécificité du prompt. Cette section synthétise les problèmes fréquents des prompts vagues et propose 5 stratégies pour obtenir de meilleurs résultats.',
-        en: 'AI-prototyping tools have introduced a new paradigm: rather than crafting interfaces by directly manipulating elements in Figma, designers can prompt AI to generate designs. Output quality is largely dependent on prompt specificity. This section synthesises common issues with vague prompts and offers 5 strategies to get better results.',
+        fr: 'Cette section synthétise les problèmes fréquents des prompts vagues et propose 5 stratégies pour obtenir de meilleurs résultats.',
+        en: 'This section synthesises common issues with vague prompts and offers 5 strategies to get better results.',
       },
       problems: {
         fr: [
-          { id: 'clutter', title: 'Bruit visuel inutile', body: 'Les prompts larges génèrent systématiquement trop d\'éléments, comme un GPS qui vous fait toujours prendre le chemin le plus long. La surcharge augmente la charge cognitive, noie le contenu important et complexifie le code. L\'IA sature l\'interface sans hiérarchie claire ni fil conducteur.' },
-          { id: 'repeat', title: 'Éléments répétés', body: 'L\'IA affiche souvent la même information plusieurs fois dans la même interface. En design réel, l\'espace écran est précieux : les équipes ne tolèrent pas ce type de redondance. La répétition sans intention ajoute du bruit et distrait des contenus clés.' },
-          { id: 'flow', title: 'Flux de contenu contre-intuitif', body: 'Les utilisateurs attendent une séquence logique, du général au spécifique, les éléments liés groupés ensemble. Les designs IA brisent souvent cette progression : un widget profil au milieu d\'un tableau de bord, une section certification après les cours. Sans hiérarchie claire, le layout est décousu.' },
-          { id: 'density', title: 'Conteneurs proéminents, faible densité', body: 'La hiérarchie visuelle guide vers l\'essentiel. Quand elle contredit la priorité du contenu, l\'utilisateur est désorienté. L\'IA place souvent l\'accent visuel sur le mauvais élément : un anneau de progression prenant tout l\'écran pour une information secondaire, ou de grands conteneurs pour une seule valeur numérique.' },
+          { id: 'clutter', title: 'Bruit visuel inutile', body: 'Les prompts larges génèrent systématiquement trop d\'éléments. L\'IA sature l\'interface sans hiérarchie claire ni fil conducteur.' },
+          { id: 'repeat', title: 'Éléments répétés', body: 'L\'IA affiche souvent la même information plusieurs fois dans la même interface.' },
+          { id: 'flow', title: 'Flux de contenu contre-intuitif', body: 'Les utilisateurs attendent une séquence logique, du général au spécifique, les éléments liés groupés ensemble.' },
+          { id: 'density', title: 'Conteneurs proéminents, faible densité', body: 'L\'IA place souvent l\'accent visuel sur le mauvais élément : un anneau de progression prenant tout l\'écran pour une information secondaire, ou de grands conteneurs pour une seule valeur numérique.' },
         ],
         en: [
-          { id: 'clutter', title: 'Unnecessary visual clutter', body: 'Broad prompts consistently generate more elements than needed, like an inefficient GPS that always takes the longest route. The overload increases cognitive load, buries important content, and creates complex code. The AI saturates the interface with no clear hierarchy or path.' },
-          { id: 'repeat', title: 'Repeated design elements', body: 'AI often displays the same information multiple times in the same interface. In real design, screen real estate is precious: teams rarely tolerate this redundancy. Repetition without purpose adds noise and distracts from key content.' },
-          { id: 'flow', title: 'Counterintuitive content flow', body: 'Users expect a logical sequence, general to specific, related items grouped. AI-generated designs frequently break this progression: a profile widget mid-dashboard, a certification section after courses. Without clear hierarchy, the layout feels disjointed.' },
-          { id: 'density', title: 'Prominent containers, low density', body: 'Visual hierarchy guides users to the most important elements. When hierarchy contradicts content priority, users feel confused. AI often places visual emphasis on the wrong element: a large certification ring dominating secondary info, or big containers holding a single number.' },
+          { id: 'clutter', title: 'Unnecessary visual clutter', body: 'Broad prompts consistently generate more elements than needed.' },
+          { id: 'repeat', title: 'Repeated design elements', body: 'AI often displays the same information multiple times in the same interface. ' },
+          { id: 'flow', title: 'Counterintuitive content flow', body: 'Users expect a logical sequence, general to specific, related items grouped.' },
+          { id: 'density', title: 'Prominent containers, low density', body: 'Visual hierarchy guides users to the most important elements.' },
         ],
       },
       strategies: {
@@ -1531,25 +1531,19 @@
       governance: {
         rituals: {
           fr: [
-            { title: 'Revue DS mensuelle', desc: 'Présentation des nouveaux composants, tokens et breaking changes aux équipes design et dev. Format : 30 min, show & tell, live dans Figma.' },
-            { title: 'Design critique hebdomadaire', desc: 'Session ouverte de critique de design, tout le monde peut soumettre du travail. Cadrage sur le "pourquoi" des décisions, pas seulement l\'esthétique.' },
             { title: 'Newsletter de mise à jour DS', desc: 'Communication régulière (bi-mensuelle ou mensuelle) résumant les ajouts, dépréciations, corrections. Format simple : quoi, pourquoi, comment migrer.' },
             { title: 'Notes de release', desc: 'Document structuré à chaque version du DS : nouveaux composants, variants ajoutés, composants dépréciés, changements de tokens, instructions de migration.' },
-            { title: 'PO Sandbox mensuel', desc: 'Session ouverte aux POs pour explorer les composants, poser des questions et partager leurs besoins. Limite la créativité non-DS et renforce l\'adoption.' },
-            { title: 'Check-in mi-sprint', desc: 'Session courte avec le lead dev pour valider l\'implémentation en cours et détecter les dérives par rapport aux specs Figma avant la fin du sprint.' },
+            { title: 'Check-in QA mi-sprint', desc: 'Session courte pour valider l\'implémentation en cours et détecter les dérives par rapport aux specs Figma avant la fin du sprint.' },
           ],
           en: [
-            { title: 'Monthly DS review', desc: 'New components, tokens and breaking changes presented to design and dev teams. Format: 30 min, show & tell, live in Figma.' },
-            { title: 'Weekly design critique', desc: 'Open critique session, anyone can submit work. Focus on the "why" behind decisions, not just aesthetics.' },
             { title: 'DS update newsletter', desc: 'Regular communication (bi-monthly or monthly) summarising additions, deprecations and fixes. Simple format: what, why, how to migrate.' },
             { title: 'Release notes', desc: 'Structured document per DS version: new components, added variants, deprecated components, token changes, migration instructions.' },
-            { title: 'Monthly PO Sandbox', desc: 'Open session for POs to explore components, ask questions and share needs. Limits off-DS creativity and reinforces adoption.' },
-            { title: 'Mid-sprint check-in', desc: 'Short session with the lead dev to validate in-progress implementation and catch drift from Figma specs before end of sprint.' },
+            { title: 'Mid-sprint QA check-in', desc: 'Short session to validate in-progress implementation and catch drift from Figma specs before end of sprint.' },
           ],
         },
         artefacts: {
-          fr: ['Changelog versionné du DS (Notion ou ZeroHeight)', 'Figma, page "What\'s new" maintenue à jour', 'Bibliothèque de patterns documentée avec Quand/Composants/Variantes', 'Guide de migration pour les breaking changes', 'Figma component playground, catalogue visuel des états', 'Notes de release publiées à chaque merge sur la branche main du DS'],
-          en: ['Versioned DS changelog (Notion or ZeroHeight)', 'Figma "What\'s new" page kept current', 'Pattern library documented with When/Components/Variants', 'Migration guide for breaking changes', 'Figma component playground, visual state catalogue', 'Release notes published on every DS main branch merge'],
+          fr: ['Notes de release publiées à chaque merge sur la branche main du DS'],
+          en: ['Release notes published on every DS main branch merge'],
         },
       },
       metrics: {
@@ -2873,11 +2867,8 @@
          <div style="font-size:0.63rem;color:var(--text-muted);line-height:1.45;">${'Refines · aligns DS · validates states & accessibility · ships spec'}</div>`;
 
     const l1s2body =
-      `${pill2('Brand & Aesthetic', '', 'var(--red)', isFr ? 'Palette · type · règles visuelles' : 'Palette · type · visual rules')}
-       ${pill2('Design Tokens', '', 'var(--green)', isFr ? 'Variables Figma ↔ AppColors Dart · FR/ES' : 'Figma variables ↔ AppColors Dart · FR/ES')}
-       ${pill2('Components & Patterns', '', 'var(--green)', isFr ? 'Inventaire DS · variantes · règles d\'usage' : 'DS inventory · variants · usage rules')}
-       ${pill2('Platform Rules', '', 'var(--gold)', isFr ? 'Flutter · safe area · localisation' : 'Flutter · safe area · localisation')}
-       ${pill2('Copy & Tone', '', 'var(--gold)', isFr ? 'Formulations positives · tonalité · FR/ES' : 'Positive phrasing · tone · FR/ES')}`;
+      `${pill2('design.md', '', 'var(--red)', isFr ? 'Palette · type · règles visuelles' : 'Palette · type · visual rules')}
+       ${pill2('design.css', '', 'var(--green)', isFr ? 'Variables Figma ↔ AppColors Dart · FR/ES' : 'Figma variables ↔ AppColors Dart · FR/ES')}`;
 
     const l1s3body =
       `<div style="font-size:0.66rem;color:var(--text-muted);font-style:italic;margin-bottom:0.5rem;line-height:1.45;">${isFr ? 'Selon le scope : Figma direct ou outil de génération' : 'Depending on scope: Figma direct or generation tool'}</div>
@@ -2896,7 +2887,7 @@
       isFr ? 'PO cadre le besoin · Designer produit & affine · livrable Figma' : 'PO frames the need · Designer produces & refines · Figma deliverable',
       [
         { title: isFr ? 'Acteurs' : 'Actors', titleColor: 'var(--text-primary)', bd: 'var(--border)', bg: 'var(--bg-card)', body: l1s1body, arrowLabel: '→' },
-        { title: isFr ? 'Couche connaissance (.md)' : 'Knowledge layer (.md)', titleColor: 'var(--green)', bd: 'var(--green)', bg: 'var(--bg-card)', body: l1s2body, arrowLabel: '→' },
+        { title: isFr ? 'Couche connaissance' : 'Knowledge layer', titleColor: 'var(--green)', bd: 'var(--green)', bg: 'var(--bg-card)', body: l1s2body, arrowLabel: '→' },
         { title: isFr ? 'Outils & infrastructure' : 'Tools & infrastructure', titleColor: 'var(--text-muted)', bd: 'var(--gold)', bg: 'var(--bg-card)', body: l1s3body, arrowLabel: '→' },
         { title: 'Outputs', titleColor: 'var(--red)', bd: 'var(--red)', bg: 'var(--bg-card)', body: l1s4body },
       ]
@@ -2917,7 +2908,8 @@
 
     const l2s2body =
       `${pill2(isFr ? 'Bibliothèque composants (code)' : 'Component library (code)', '', 'var(--text-muted)', 'Storybook · StoryUI')}
-       ${pill2('Skills PdF Markdown', '', 'var(--green)', isFr ? 'Conventions · règles DS · patterns' : 'Conventions · DS rules · patterns')}
+       ${pill2('design.md', '', 'var(--green)', isFr ? 'Conventions · règles DS · patterns' : 'Conventions · DS rules · patterns')}
+       ${pill2('design.css', '', 'var(--green)')}
        ${pill2('Code Connect', '', 'var(--green)', isFr ? 'Mapping Figma ↔ implémentations' : 'Figma ↔ code implementation mapping')}`;
 
     const l2s3body =
@@ -2928,7 +2920,7 @@
 
     const l2s4body =
       `${pill2(isFr ? 'Livrable handoff' : 'Handoff deliverable', '', 'var(--red)', isFr ? 'Figma · specs · annotations · update Storybook ?' : 'Figma · specs · annotations · update Storybook?')}
-       ${pill2(isFr ? 'Code production' : 'Production code', '', 'var(--text-primary)', 'Flutter · Drupal · DSI')}`;
+       ${pill2(isFr ? 'Code production' : 'Production code')}`;
 
     const lane2 = lane(
       'var(--text-primary)', 'var(--bg-card-muted)',
@@ -2936,7 +2928,7 @@
       isFr ? 'Modification ciblée · outils au choix · livrable code' : 'Targeted change · tools of choice · code deliverable',
       [
         { title: isFr ? 'Acteurs' : 'Actors', titleColor: 'var(--text-primary)', bd: 'var(--border)', bg: 'var(--bg-card)', body: l2s1body, arrowLabel: '→' },
-        { title: isFr ? 'Couche connaissance (.md)' : 'Knowledge layer (.md)', titleColor: 'var(--green)', bd: 'var(--green)', bg: 'var(--bg-card)', body: l2s2body, arrowLabel: '→' },
+        { title: isFr ? 'Couche connaissance' : 'Knowledge layer', titleColor: 'var(--green)', bd: 'var(--green)', bg: 'var(--bg-card)', body: l2s2body, arrowLabel: '→' },
         { title: isFr ? 'Outils & infrastructure' : 'Tools & infrastructure', titleColor: 'var(--text-muted)', bd: 'var(--gold)', bg: 'var(--bg-card)', body: l2s3body, arrowLabel: '→' },
         { title: 'Outputs', titleColor: 'var(--red)', bd: 'var(--red)', bg: 'var(--bg-card)', body: l2s4body },
       ]
