@@ -109,6 +109,7 @@
     display: flex; flex-wrap: wrap; gap: var(--spacing-s);
   }
   .filter-chip {
+    display: inline-flex; align-items: center; gap: var(--spacing-xxs);
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14px; font-weight: 700;
     color: var(--text);
@@ -119,6 +120,7 @@
     cursor: pointer;
     transition: border-color 150ms ease, background 150ms ease, color 150ms ease;
   }
+  .filter-chip svg { flex-shrink: 0; }
   .filter-chip:hover { border-color: var(--laiton); }
   .filter-chip.active {
     background: var(--text);
@@ -178,31 +180,22 @@
 
   .workshop-icon-badge {
     position: relative;
-    width: 72px; height: 72px;
-    margin: -36px auto 0;
+    width: 48px; height: 48px;
+    margin: -24px auto 0;
     z-index: 1;
   }
-  .workshop-icon-badge::before,
-  .workshop-icon-badge::after,
-  .workshop-icon-badge .diamond-3 {
+  .workshop-icon-badge::before {
     content: '';
     position: absolute;
-    width: 30px; height: 30px;
-    border: 1.5px solid var(--brand-red);
-    transform: translate(-50%, -50%) rotate(45deg);
+    inset: 0;
+    border: 1.5px solid var(--background-nav-stronger);
+    border-radius: 6px;
     background: var(--background-cards);
+    transform: rotate(45deg);
   }
-  /* Two diamonds up top, one centered below: echoes the logo's crest cluster */
-  .workshop-icon-badge::before { left: 26px; top: 24px; }
-  .workshop-icon-badge::after  { left: 46px; top: 24px; }
-  .workshop-icon-badge .diamond-3 { left: 36px; top: 42px; }
   .workshop-icon-badge .icon-disc {
     position: absolute; left: 50%; top: 50%;
     transform: translate(-50%, -50%);
-    width: 34px; height: 34px;
-    border-radius: 50%;
-    background: var(--background-cards);
-    border: 1px solid var(--background-nav-stronger);
     display: flex; align-items: center; justify-content: center;
     z-index: 1;
   }
@@ -413,16 +406,16 @@
 
 <div class="filters" role="group" aria-label="Filtrer par type d'atelier">
   <button class="filter-chip active" data-filter="all">Tous les ateliers</button>
-  <button class="filter-chip" data-filter="animaux">Animaux</button>
-  <button class="filter-chip" data-filter="savoir-faire">Savoir-faire</button>
-  <button class="filter-chip" data-filter="combat">Sport & combat</button>
+  <button class="filter-chip" data-filter="animaux"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 13.5c-1.1 -2 -1.441 -2.5 -2.7 -2.5c-1.259 0 -1.736 .755 -2.836 2.747c-.942 1.703 -2.846 1.845 -3.321 3.291c-.097 .265 -.145 .677 -.143 .962c0 1.176 .787 2 1.8 2c1.259 0 3 -1 4.5 -1s3.241 1 4.5 1c1.013 0 1.8 -.823 1.8 -2c0 -.285 -.049 -.697 -.146 -.962c-.475 -1.451 -2.512 -1.835 -3.454 -3.538" /><path d="M20.188 8.082a1.039 1.039 0 0 0 -.406 -.082h-.015c-.735 .012 -1.56 .75 -1.993 1.866c-.519 1.335 -.28 2.7 .538 3.052c.129 .055 .267 .082 .406 .082c.739 0 1.575 -.742 2.011 -1.866c.516 -1.335 .273 -2.7 -.54 -3.052l-.001 0" /><path d="M9.474 9c.055 0 .109 0 .163 -.011c.944 -.128 1.533 -1.346 1.32 -2.722c-.203 -1.297 -1.047 -2.267 -1.932 -2.267c-.055 0 -.109 0 -.163 .011c-.944 .128 -1.533 1.346 -1.32 2.722c.204 1.293 1.048 2.267 1.933 2.267" /><path d="M16.456 6.733c.214 -1.376 -.375 -2.594 -1.32 -2.722a1.164 1.164 0 0 0 -.162 -.011c-.885 0 -1.728 .97 -1.93 2.267c-.214 1.376 .375 2.594 1.32 2.722c.054 .007 .108 .011 .162 .011c.885 0 1.73 -.974 1.93 -2.267" /><path d="M5.69 12.918c.816 -.352 1.054 -1.719 .536 -3.052c-.436 -1.124 -1.271 -1.866 -2.009 -1.866c-.14 0 -.277 .027 -.407 .082c-.816 .352 -1.054 1.719 -.536 3.052c.436 1.124 1.271 1.866 2.009 1.866c.14 0 .277 -.027 .407 -.082" /></svg> Animaux</button>
+  <button class="filter-chip" data-filter="savoir-faire"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21c-.667 -.667 3.262 -6.236 11.785 -16.709a3.5 3.5 0 1 1 5.078 4.791c-10.575 8.612 -16.196 12.585 -16.863 11.918" /><path d="M17.5 6.5l-1 1" /><path d="M17 7c-2.333 -2.667 -3.5 -4 -5 -4s-2 1 -2 2c0 4 8.161 8.406 6 11c-1.056 1.268 -3.363 1.285 -5.75 .808" /><path d="M5.739 15.425c-1.393 -.565 -3.739 -1.925 -3.739 -3.425" /><path d="M19.5 9.5l1.5 1.5" /></svg> Savoir-faire</button>
+  <button class="filter-chip" data-filter="combat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4v5l-9 7l-4 4l-3 -3l4 -4l7 -9l5 0" /><path d="M6.5 11.5l6 6" /></svg> Sport & combat</button>
 </div>
 
 <div class="grid">
 
   <button class="workshop" data-type="combat" data-id="escrime">
     <div class="workshop-media" style="background-image: url('https://puydufou.com/france/files/s3fs-public/styles/intro_carousel_detail_carousel_img_main_mobile/public/2021-06/escrime_de_spectacles.jpg.webp?VersionId=5zhdkSnxQeHzPLmBPLe6p8s5UgIO.ofr&itok=BfXiKDlP');"></div>
-    <div class="workshop-icon-badge" aria-hidden="true"><div class="diamond-3"></div><div class="icon-disc"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4v5l-9 7l-4 4l-3 -3l4 -4l7 -9l5 0" /><path d="M6.5 11.5l6 6" /></svg></div></div>
+    <div class="workshop-icon-badge" aria-hidden="true"><div class="icon-disc"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4v5l-9 7l-4 4l-3 -3l4 -4l7 -9l5 0" /><path d="M6.5 11.5l6 6" /></svg></div></div>
     <div class="workshop-body">
       <h2 class="workshop-name font-serif">Escrime de spectacle</h2>
       <p class="workshop-meta"><b>23€</b>/pers<span class="dot">·</span>1 heure<span class="dot">·</span>19h30</p>
@@ -434,7 +427,7 @@
 
   <button class="workshop" data-type="animaux" data-id="fauconnerie">
     <div class="workshop-media" style="background-image: url('https://puydufou.com/france/files/s3fs-public/styles/intro_carousel_detail_carousel_img_main_mobile/public/2023-11/le-voyage-au-coeur-de-la-fauconnerie.jpg.webp?VersionId=LHDFiq745wQMY0TK2k05qt.Sqgy.sad7&itok=B5tDtfzZ');"></div>
-    <div class="workshop-icon-badge" aria-hidden="true"><div class="diamond-3"></div><div class="icon-disc"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 13.5c-1.1 -2 -1.441 -2.5 -2.7 -2.5c-1.259 0 -1.736 .755 -2.836 2.747c-.942 1.703 -2.846 1.845 -3.321 3.291c-.097 .265 -.145 .677 -.143 .962c0 1.176 .787 2 1.8 2c1.259 0 3 -1 4.5 -1s3.241 1 4.5 1c1.013 0 1.8 -.823 1.8 -2c0 -.285 -.049 -.697 -.146 -.962c-.475 -1.451 -2.512 -1.835 -3.454 -3.538" /><path d="M20.188 8.082a1.039 1.039 0 0 0 -.406 -.082h-.015c-.735 .012 -1.56 .75 -1.993 1.866c-.519 1.335 -.28 2.7 .538 3.052c.129 .055 .267 .082 .406 .082c.739 0 1.575 -.742 2.011 -1.866c.516 -1.335 .273 -2.7 -.54 -3.052l-.001 0" /><path d="M9.474 9c.055 0 .109 0 .163 -.011c.944 -.128 1.533 -1.346 1.32 -2.722c-.203 -1.297 -1.047 -2.267 -1.932 -2.267c-.055 0 -.109 0 -.163 .011c-.944 .128 -1.533 1.346 -1.32 2.722c.204 1.293 1.048 2.267 1.933 2.267" /><path d="M16.456 6.733c.214 -1.376 -.375 -2.594 -1.32 -2.722a1.164 1.164 0 0 0 -.162 -.011c-.885 0 -1.728 .97 -1.93 2.267c-.214 1.376 .375 2.594 1.32 2.722c.054 .007 .108 .011 .162 .011c.885 0 1.73 -.974 1.93 -2.267" /><path d="M5.69 12.918c.816 -.352 1.054 -1.719 .536 -3.052c-.436 -1.124 -1.271 -1.866 -2.009 -1.866c-.14 0 -.277 .027 -.407 .082c-.816 .352 -1.054 1.719 -.536 3.052c.436 1.124 1.271 1.866 2.009 1.866c.14 0 .277 -.027 .407 -.082" /></svg></div></div>
+    <div class="workshop-icon-badge" aria-hidden="true"><div class="icon-disc"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 13.5c-1.1 -2 -1.441 -2.5 -2.7 -2.5c-1.259 0 -1.736 .755 -2.836 2.747c-.942 1.703 -2.846 1.845 -3.321 3.291c-.097 .265 -.145 .677 -.143 .962c0 1.176 .787 2 1.8 2c1.259 0 3 -1 4.5 -1s3.241 1 4.5 1c1.013 0 1.8 -.823 1.8 -2c0 -.285 -.049 -.697 -.146 -.962c-.475 -1.451 -2.512 -1.835 -3.454 -3.538" /><path d="M20.188 8.082a1.039 1.039 0 0 0 -.406 -.082h-.015c-.735 .012 -1.56 .75 -1.993 1.866c-.519 1.335 -.28 2.7 .538 3.052c.129 .055 .267 .082 .406 .082c.739 0 1.575 -.742 2.011 -1.866c.516 -1.335 .273 -2.7 -.54 -3.052l-.001 0" /><path d="M9.474 9c.055 0 .109 0 .163 -.011c.944 -.128 1.533 -1.346 1.32 -2.722c-.203 -1.297 -1.047 -2.267 -1.932 -2.267c-.055 0 -.109 0 -.163 .011c-.944 .128 -1.533 1.346 -1.32 2.722c.204 1.293 1.048 2.267 1.933 2.267" /><path d="M16.456 6.733c.214 -1.376 -.375 -2.594 -1.32 -2.722a1.164 1.164 0 0 0 -.162 -.011c-.885 0 -1.728 .97 -1.93 2.267c-.214 1.376 .375 2.594 1.32 2.722c.054 .007 .108 .011 .162 .011c.885 0 1.73 -.974 1.93 -2.267" /><path d="M5.69 12.918c.816 -.352 1.054 -1.719 .536 -3.052c-.436 -1.124 -1.271 -1.866 -2.009 -1.866c-.14 0 -.277 .027 -.407 .082c-.816 .352 -1.054 1.719 -.536 3.052c.436 1.124 1.271 1.866 2.009 1.866c.14 0 .277 -.027 .407 -.082" /></svg></div></div>
     <div class="workshop-body">
       <h2 class="workshop-name font-serif">Le Voyage au Cœur de la Fauconnerie</h2>
       <p class="workshop-meta"><b>34€</b>/pers<span class="dot">·</span>1h30<span class="dot">·</span>16h30 ou 18h00</p>
@@ -445,7 +438,7 @@
 
   <button class="workshop" data-type="savoir-faire" data-id="fil-en-aiguille">
     <div class="workshop-media" style="background-image: url('https://puydufou.com/france/files/s3fs-public/styles/intro_carousel_detail_carousel_img_main_mobile/public/2023-11/de-fil-en-aiguille.jpg.webp?VersionId=xY7O21LK2hyMP.jPKmfpZsRmLiK2vnq0&itok=7AmojjOX');"></div>
-    <div class="workshop-icon-badge" aria-hidden="true"><div class="diamond-3"></div><div class="icon-disc"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21c-.667 -.667 3.262 -6.236 11.785 -16.709a3.5 3.5 0 1 1 5.078 4.791c-10.575 8.612 -16.196 12.585 -16.863 11.918" /><path d="M17.5 6.5l-1 1" /><path d="M17 7c-2.333 -2.667 -3.5 -4 -5 -4s-2 1 -2 2c0 4 8.161 8.406 6 11c-1.056 1.268 -3.363 1.285 -5.75 .808" /><path d="M5.739 15.425c-1.393 -.565 -3.739 -1.925 -3.739 -3.425" /><path d="M19.5 9.5l1.5 1.5" /></svg></div></div>
+    <div class="workshop-icon-badge" aria-hidden="true"><div class="icon-disc"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21c-.667 -.667 3.262 -6.236 11.785 -16.709a3.5 3.5 0 1 1 5.078 4.791c-10.575 8.612 -16.196 12.585 -16.863 11.918" /><path d="M17.5 6.5l-1 1" /><path d="M17 7c-2.333 -2.667 -3.5 -4 -5 -4s-2 1 -2 2c0 4 8.161 8.406 6 11c-1.056 1.268 -3.363 1.285 -5.75 .808" /><path d="M5.739 15.425c-1.393 -.565 -3.739 -1.925 -3.739 -3.425" /><path d="M19.5 9.5l1.5 1.5" /></svg></div></div>
     <div class="workshop-body">
       <h2 class="workshop-name font-serif">De Fil en Aiguille</h2>
       <p class="workshop-meta"><b>23€</b>/pers<span class="dot">·</span>1 heure<span class="dot">·</span>17h45</p>
@@ -456,7 +449,7 @@
 
   <button class="workshop" data-type="animaux" data-id="animaux">
     <div class="workshop-media" style="background-image: url('https://puydufou.com/france/files/s3fs-public/styles/intro_carousel_detail_carousel_img_main_mobile/public/2023-06/banniere-laska.png.webp?VersionId=9sMYMmrISZCMlcBx6vxOcK70jt4yiZm1&itok=oCtcEWUm');"></div>
-    <div class="workshop-icon-badge" aria-hidden="true"><div class="diamond-3"></div><div class="icon-disc"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 13.5c-1.1 -2 -1.441 -2.5 -2.7 -2.5c-1.259 0 -1.736 .755 -2.836 2.747c-.942 1.703 -2.846 1.845 -3.321 3.291c-.097 .265 -.145 .677 -.143 .962c0 1.176 .787 2 1.8 2c1.259 0 3 -1 4.5 -1s3.241 1 4.5 1c1.013 0 1.8 -.823 1.8 -2c0 -.285 -.049 -.697 -.146 -.962c-.475 -1.451 -2.512 -1.835 -3.454 -3.538" /><path d="M20.188 8.082a1.039 1.039 0 0 0 -.406 -.082h-.015c-.735 .012 -1.56 .75 -1.993 1.866c-.519 1.335 -.28 2.7 .538 3.052c.129 .055 .267 .082 .406 .082c.739 0 1.575 -.742 2.011 -1.866c.516 -1.335 .273 -2.7 -.54 -3.052l-.001 0" /><path d="M9.474 9c.055 0 .109 0 .163 -.011c.944 -.128 1.533 -1.346 1.32 -2.722c-.203 -1.297 -1.047 -2.267 -1.932 -2.267c-.055 0 -.109 0 -.163 .011c-.944 .128 -1.533 1.346 -1.32 2.722c.204 1.293 1.048 2.267 1.933 2.267" /><path d="M16.456 6.733c.214 -1.376 -.375 -2.594 -1.32 -2.722a1.164 1.164 0 0 0 -.162 -.011c-.885 0 -1.728 .97 -1.93 2.267c-.214 1.376 .375 2.594 1.32 2.722c.054 .007 .108 .011 .162 .011c.885 0 1.73 -.974 1.93 -2.267" /><path d="M5.69 12.918c.816 -.352 1.054 -1.719 .536 -3.052c-.436 -1.124 -1.271 -1.866 -2.009 -1.866c-.14 0 -.277 .027 -.407 .082c-.816 .352 -1.054 1.719 -.536 3.052c.436 1.124 1.271 1.866 2.009 1.866c.14 0 .277 -.027 .407 -.082" /></svg></div></div>
+    <div class="workshop-icon-badge" aria-hidden="true"><div class="icon-disc"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 13.5c-1.1 -2 -1.441 -2.5 -2.7 -2.5c-1.259 0 -1.736 .755 -2.836 2.747c-.942 1.703 -2.846 1.845 -3.321 3.291c-.097 .265 -.145 .677 -.143 .962c0 1.176 .787 2 1.8 2c1.259 0 3 -1 4.5 -1s3.241 1 4.5 1c1.013 0 1.8 -.823 1.8 -2c0 -.285 -.049 -.697 -.146 -.962c-.475 -1.451 -2.512 -1.835 -3.454 -3.538" /><path d="M20.188 8.082a1.039 1.039 0 0 0 -.406 -.082h-.015c-.735 .012 -1.56 .75 -1.993 1.866c-.519 1.335 -.28 2.7 .538 3.052c.129 .055 .267 .082 .406 .082c.739 0 1.575 -.742 2.011 -1.866c.516 -1.335 .273 -2.7 -.54 -3.052l-.001 0" /><path d="M9.474 9c.055 0 .109 0 .163 -.011c.944 -.128 1.533 -1.346 1.32 -2.722c-.203 -1.297 -1.047 -2.267 -1.932 -2.267c-.055 0 -.109 0 -.163 .011c-.944 .128 -1.533 1.346 -1.32 2.722c.204 1.293 1.048 2.267 1.933 2.267" /><path d="M16.456 6.733c.214 -1.376 -.375 -2.594 -1.32 -2.722a1.164 1.164 0 0 0 -.162 -.011c-.885 0 -1.728 .97 -1.93 2.267c-.214 1.376 .375 2.594 1.32 2.722c.054 .007 .108 .011 .162 .011c.885 0 1.73 -.974 1.93 -2.267" /><path d="M5.69 12.918c.816 -.352 1.054 -1.719 .536 -3.052c-.436 -1.124 -1.271 -1.866 -2.009 -1.866c-.14 0 -.277 .027 -.407 .082c-.816 .352 -1.054 1.719 -.536 3.052c.436 1.124 1.271 1.866 2.009 1.866c.14 0 .277 -.027 .407 -.082" /></svg></div></div>
     <div class="workshop-body">
       <h2 class="workshop-name font-serif">En Coulisses avec les Animaux</h2>
       <p class="workshop-meta"><b>23€</b>/pers<span class="dot">·</span>1 heure<span class="dot">·</span>17h30 ou 18h00</p>
@@ -467,7 +460,7 @@
 
   <button class="workshop" data-type="combat" data-id="reveil-guerrier">
     <div class="workshop-media" style="background-image: url('https://puydufou.com/france/files/s3fs-public/styles/intro_carousel_detail_carousel_img_main_mobile/public/2023-11/le-reveil-du-guerrier.jpg.webp?VersionId=c3PHvbZXqZHQg1dCqV_F72nmPDxlxn8Q&itok=CPhPxHo5');"></div>
-    <div class="workshop-icon-badge" aria-hidden="true"><div class="diamond-3"></div><div class="icon-disc"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4v5l-9 7l-4 4l-3 -3l4 -4l7 -9l5 0" /><path d="M6.5 11.5l6 6" /></svg></div></div>
+    <div class="workshop-icon-badge" aria-hidden="true"><div class="icon-disc"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4v5l-9 7l-4 4l-3 -3l4 -4l7 -9l5 0" /><path d="M6.5 11.5l6 6" /></svg></div></div>
     <div class="workshop-body">
       <h2 class="workshop-name font-serif">Le Réveil du Guerrier</h2>
       <p class="workshop-meta">Détails à venir</p>
@@ -477,7 +470,7 @@
 
   <button class="workshop" data-type="animaux" data-id="chevaux">
     <div class="workshop-media" style="background-image: url('https://puydufou.com/france/files/s3fs-public/styles/intro_carousel_detail_carousel_img_main_mobile/public/2023-11/les-chevaux-de-lexploit_0.jpg.webp?VersionId=8I537jub6XJYb6VTXBayqlQGkLGJQ9Ie&itok=SkcFlIs2');"></div>
-    <div class="workshop-icon-badge" aria-hidden="true"><div class="diamond-3"></div><div class="icon-disc"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 13.5c-1.1 -2 -1.441 -2.5 -2.7 -2.5c-1.259 0 -1.736 .755 -2.836 2.747c-.942 1.703 -2.846 1.845 -3.321 3.291c-.097 .265 -.145 .677 -.143 .962c0 1.176 .787 2 1.8 2c1.259 0 3 -1 4.5 -1s3.241 1 4.5 1c1.013 0 1.8 -.823 1.8 -2c0 -.285 -.049 -.697 -.146 -.962c-.475 -1.451 -2.512 -1.835 -3.454 -3.538" /><path d="M20.188 8.082a1.039 1.039 0 0 0 -.406 -.082h-.015c-.735 .012 -1.56 .75 -1.993 1.866c-.519 1.335 -.28 2.7 .538 3.052c.129 .055 .267 .082 .406 .082c.739 0 1.575 -.742 2.011 -1.866c.516 -1.335 .273 -2.7 -.54 -3.052l-.001 0" /><path d="M9.474 9c.055 0 .109 0 .163 -.011c.944 -.128 1.533 -1.346 1.32 -2.722c-.203 -1.297 -1.047 -2.267 -1.932 -2.267c-.055 0 -.109 0 -.163 .011c-.944 .128 -1.533 1.346 -1.32 2.722c.204 1.293 1.048 2.267 1.933 2.267" /><path d="M16.456 6.733c.214 -1.376 -.375 -2.594 -1.32 -2.722a1.164 1.164 0 0 0 -.162 -.011c-.885 0 -1.728 .97 -1.93 2.267c-.214 1.376 .375 2.594 1.32 2.722c.054 .007 .108 .011 .162 .011c.885 0 1.73 -.974 1.93 -2.267" /><path d="M5.69 12.918c.816 -.352 1.054 -1.719 .536 -3.052c-.436 -1.124 -1.271 -1.866 -2.009 -1.866c-.14 0 -.277 .027 -.407 .082c-.816 .352 -1.054 1.719 -.536 3.052c.436 1.124 1.271 1.866 2.009 1.866c.14 0 .277 -.027 .407 -.082" /></svg></div></div>
+    <div class="workshop-icon-badge" aria-hidden="true"><div class="icon-disc"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 13.5c-1.1 -2 -1.441 -2.5 -2.7 -2.5c-1.259 0 -1.736 .755 -2.836 2.747c-.942 1.703 -2.846 1.845 -3.321 3.291c-.097 .265 -.145 .677 -.143 .962c0 1.176 .787 2 1.8 2c1.259 0 3 -1 4.5 -1s3.241 1 4.5 1c1.013 0 1.8 -.823 1.8 -2c0 -.285 -.049 -.697 -.146 -.962c-.475 -1.451 -2.512 -1.835 -3.454 -3.538" /><path d="M20.188 8.082a1.039 1.039 0 0 0 -.406 -.082h-.015c-.735 .012 -1.56 .75 -1.993 1.866c-.519 1.335 -.28 2.7 .538 3.052c.129 .055 .267 .082 .406 .082c.739 0 1.575 -.742 2.011 -1.866c.516 -1.335 .273 -2.7 -.54 -3.052l-.001 0" /><path d="M9.474 9c.055 0 .109 0 .163 -.011c.944 -.128 1.533 -1.346 1.32 -2.722c-.203 -1.297 -1.047 -2.267 -1.932 -2.267c-.055 0 -.109 0 -.163 .011c-.944 .128 -1.533 1.346 -1.32 2.722c.204 1.293 1.048 2.267 1.933 2.267" /><path d="M16.456 6.733c.214 -1.376 -.375 -2.594 -1.32 -2.722a1.164 1.164 0 0 0 -.162 -.011c-.885 0 -1.728 .97 -1.93 2.267c-.214 1.376 .375 2.594 1.32 2.722c.054 .007 .108 .011 .162 .011c.885 0 1.73 -.974 1.93 -2.267" /><path d="M5.69 12.918c.816 -.352 1.054 -1.719 .536 -3.052c-.436 -1.124 -1.271 -1.866 -2.009 -1.866c-.14 0 -.277 .027 -.407 .082c-.816 .352 -1.054 1.719 -.536 3.052c.436 1.124 1.271 1.866 2.009 1.866c.14 0 .277 -.027 .407 -.082" /></svg></div></div>
     <div class="workshop-body">
       <h2 class="workshop-name font-serif">Les Chevaux de l'Exploit</h2>
       <p class="workshop-meta"><b>23€</b>/pers<span class="dot">·</span>45 min<span class="dot">·</span>17h00 & 18h00</p>
