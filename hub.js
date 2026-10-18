@@ -1840,6 +1840,7 @@
         badge_fr: 'Fondation',
         badge_en: 'Foundation',
         accent: 'var(--red)',
+        image: 'assets/images/design-system-fondamentaux-1.png',
       },
       {
         id: 'app',
@@ -1851,6 +1852,7 @@
         badge_fr: 'App mobile',
         badge_en: 'Mobile app',
         accent: 'var(--blue)',
+        image: 'assets/images/design-system-app.png',
       },
       {
         id: 'vel',
@@ -1862,6 +1864,7 @@
         badge_fr: 'E-commerce',
         badge_en: 'E-commerce',
         accent: 'var(--gold-dark)',
+        image: 'assets/images/design-system-ecommerce.png',
       },
     ],
   };
@@ -1894,10 +1897,13 @@
     const linkSvg = w => `<svg width="${w}" height="${w}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>`;
     const card = (sys, large) => `
       <a href="${sys.url}" target="_blank" rel="noopener" class="${large ? 'ds-card-foundation' : 'ds-card-product'}">
-        <span class="ds-badge" style="color: ${sys.accent || 'var(--red)'};">${isFr ? sys.badge_fr : sys.badge_en}</span>
-        <div class="ds-name">${isFr ? sys.name_fr : sys.name}</div>
-        <div class="ds-desc">${isFr ? sys.description_fr : sys.description_en}</div>
-        <div class="ds-link">${linkSvg(large ? 14 : 12)} ${t('ds_open_figma')}</div>
+        ${sys.image ? `<img src="${sys.image}" alt="" class="ds-card-illustration" />` : ''}
+        <div class="ds-card-body">
+          <span class="ds-badge" style="color: ${sys.accent || 'var(--red)'};">${isFr ? sys.badge_fr : sys.badge_en}</span>
+          <div class="ds-name">${isFr ? sys.name_fr : sys.name}</div>
+          <div class="ds-desc">${isFr ? sys.description_fr : sys.description_en}</div>
+          <div class="ds-link">${linkSvg(large ? 14 : 12)} ${t('ds_open_figma')}</div>
+        </div>
       </a>`;
     const aiChecklist = `
       <div style="margin-top:2rem;">
@@ -2113,19 +2119,7 @@
       min-height:108px;
     `;
 
-    const thumb = `<svg width="120" height="72" viewBox="0 0 120 72" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="6" y="8" width="108" height="56" rx="6" fill="var(--bg-card-muted)" stroke="var(--gold2)" stroke-width="1.5"/>
-      <rect x="16" y="18" width="36" height="6" rx="3" fill="var(--crimson)" fill-opacity="0.15"/>
-      <rect x="16" y="28" width="26" height="5" rx="2.5" fill="var(--gold2)" fill-opacity="0.5"/>
-      <rect x="16" y="37" width="32" height="5" rx="2.5" fill="var(--green)" fill-opacity="0.25"/>
-      <rect x="16" y="46" width="22" height="5" rx="2.5" fill="var(--blue)" fill-opacity="0.25"/>
-      <rect x="68" y="10" width="38" height="52" rx="18" fill="var(--bg-card-sunken)" fill-opacity="0.06" stroke="var(--gold2)" stroke-width="1"/>
-      <circle cx="87" cy="28" r="10" fill="var(--bg-card-muted)" stroke="var(--gold2)" stroke-width="1"/>
-      <rect x="80" y="42" width="14" height="3" rx="1.5" fill="var(--gold2)" fill-opacity="0.6"/>
-      <rect x="80" y="49" width="14" height="3" rx="1.5" fill="var(--gold2)" fill-opacity="0.3"/>
-      <rect x="80" y="56" width="10" height="3" rx="1.5" fill="var(--gold2)" fill-opacity="0.2"/>
-      <rect x="72" y="20" width="30" height="5" rx="2.5" fill="var(--crimson)"/>
-    </svg>`;
+    const thumb = `<img src="assets/images/savoir-faire-et-outils-constructeur-de-filtre.png" alt="" width="96" style="height:auto;" />`;
 
     root.innerHTML = `
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;margin-top:0.5rem;">
@@ -3106,19 +3100,7 @@
         desc: isFr
           ? 'Refonte de la page restaurant de la VEL : sélection de menu, horaires et résumé de commande en temps réel.'
           : 'Redesign of the restaurant page: menu selection, time slots and real-time order summary.',
-        thumb: `<svg width="120" height="72" viewBox="0 0 120 72" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="6" y="6" width="48" height="60" rx="6" fill="var(--bg-card)" stroke="var(--gold)" stroke-width="1.5"/>
-          <rect x="60" y="6" width="54" height="60" rx="6" fill="var(--bg-card)" stroke="var(--gold)" stroke-width="1.5"/>
-          <rect x="14" y="16" width="32" height="16" rx="3" fill="var(--border)"/>
-          <rect x="14" y="38" width="18" height="4" rx="2" fill="var(--gold)"/>
-          <rect x="14" y="46" width="26" height="3" rx="1.5" fill="var(--border)"/>
-          <rect x="14" y="52" width="20" height="3" rx="1.5" fill="var(--border)"/>
-          <rect x="68" y="16" width="38" height="16" rx="3" fill="var(--crimson)" fill-opacity="0.12"/>
-          <rect x="68" y="38" width="18" height="4" rx="2" fill="var(--crimson)"/>
-          <rect x="68" y="46" width="30" height="3" rx="1.5" fill="var(--border)"/>
-          <rect x="68" y="52" width="22" height="3" rx="1.5" fill="var(--border)"/>
-          <rect x="30" y="62" width="60" height="6" rx="3" fill="var(--bg-card-sunken)"/>
-        </svg>`,
+        thumbImage: 'assets/images/thumb-restaurants.png',
       },
       {
         id: 'ateliers',
@@ -3129,14 +3111,7 @@
         desc: isFr
           ? 'Refonte de la page ateliers : carrousel générique remplacé par une grille de six ateliers à poids égal, testée sur design.md.'
           : 'Redesign of the workshops page: generic carousel replaced with an equal-weight six-item grid, tested against design.md.',
-        thumb: `<svg width="120" height="72" viewBox="0 0 120 72" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="6" y="10" width="33" height="24" rx="4" fill="var(--bg-card)" stroke="var(--gold)" stroke-width="1.5"/>
-          <rect x="43.5" y="10" width="33" height="24" rx="4" fill="var(--bg-card)" stroke="var(--gold)" stroke-width="1.5"/>
-          <rect x="81" y="10" width="33" height="24" rx="4" fill="var(--bg-card)" stroke="var(--gold)" stroke-width="1.5"/>
-          <rect x="6" y="38" width="33" height="24" rx="4" fill="var(--bg-card)" stroke="var(--border)" stroke-width="1.5"/>
-          <rect x="43.5" y="38" width="33" height="24" rx="4" fill="var(--bg-card)" stroke="var(--border)" stroke-width="1.5"/>
-          <rect x="81" y="38" width="33" height="24" rx="4" fill="var(--bg-card)" stroke="var(--border)" stroke-width="1.5"/>
-        </svg>`,
+        thumbImage: 'assets/images/thumb-ateliers.png',
       },
     ];
 
@@ -3160,6 +3135,13 @@
       padding:1.25rem 0 1rem;
       min-height:108px;
     `;
+    const thumbImageStyle = `
+      display:block;
+      width:100%;
+      height:140px;
+      object-fit:cover;
+      object-position:top;
+    `;
     const tagStyle = (color) => `
       font-size:0.72rem;
       font-weight:700;
@@ -3171,9 +3153,12 @@
     let html = `<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;margin-top:0.5rem;">`;
 
     PROTOTYPES.forEach(p => {
+      const thumbMarkup = p.thumbImage
+        ? `<img src="${p.thumbImage}" alt="" style="${thumbImageStyle}" />`
+        : `<div style="${thumbStyle}">${p.thumb}</div>`;
       html += `
         <a href="${p.href}" style="${cardStyle}" onmouseover="this.style.boxShadow='0 2px 8px rgba(0,0,0,.15)'" onmouseout="this.style.boxShadow='none'">
-          <div style="${thumbStyle}">${p.thumb}</div>
+          ${thumbMarkup}
           <div style="padding:0.9rem;display:flex;flex-direction:column;gap:0.4rem;flex:1;">
             <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:0.5rem;">
               <span style="font-weight:700;font-size:0.85rem;line-height:1.3;">${p.title}</span>

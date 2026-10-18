@@ -9,7 +9,8 @@
       "description_en": "Shared foundation across all product teams: tokens, typography, colours, grids, shadows and base components.",
       "badge_fr": "Fondation",
       "badge_en": "Foundation",
-      "accent": "#CB1617"
+      "accent": "#CB1617",
+      "image": "assets/images/design-system-fondamentaux-1.png"
     },
     {
       "id": "app",
@@ -20,7 +21,8 @@
       "description_en": "Components and patterns for the mobile app (iOS & Android), built on the foundation.",
       "badge_fr": "App mobile",
       "badge_en": "Mobile app",
-      "accent": "#09406D"
+      "accent": "#09406D",
+      "image": "assets/images/design-system-app.png"
     },
     {
       "id": "vel",
@@ -31,7 +33,8 @@
       "description_en": "Design system for the VEL e-commerce journey: purchase funnel, reservations and online ticketing.",
       "badge_fr": "E-commerce",
       "badge_en": "E-commerce",
-      "accent": "#A18756"
+      "accent": "#A18756",
+      "image": "assets/images/design-system-ecommerce.png"
     }
   ]
 }

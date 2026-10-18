@@ -85,11 +85,10 @@
   .intro {
     max-width: 1120px; margin: 0 auto;
     padding: var(--spacing-lg) var(--page-margin) var(--spacing-xl);
-    display: flex; align-items: flex-start; gap: var(--spacing-m);
+    display: flex; align-items: center; gap: var(--spacing-m);
   }
   .intro-illustration {
     width: 120px; height: auto; flex-shrink: 0;
-    margin-top: var(--spacing-xxs);
   }
   .intro-title {
     font-family: Georgia, serif; font-weight: 700;
@@ -120,8 +119,10 @@
     cursor: pointer;
     transition: border-color 150ms ease, background 150ms ease, color 150ms ease;
   }
-  .filter-chip svg { flex-shrink: 0; }
+  .filter-chip svg { flex-shrink: 0; transition: transform 220ms cubic-bezier(.34,1.56,.64,1); }
   .filter-chip:hover { border-color: var(--laiton); }
+  .filter-chip:hover svg { transform: scale(1.18) rotate(-8deg); }
+  .filter-chip.active svg { transform: none; }
   .filter-chip.active {
     background: var(--text);
     border-color: var(--text);
@@ -192,6 +193,10 @@
     border-radius: 6px;
     background: var(--background-cards);
     transform: rotate(45deg);
+    transition: border-color 220ms ease;
+  }
+  .workshop:hover .workshop-icon-badge::before {
+    border-color: var(--laiton);
   }
   .workshop-icon-badge .icon-disc {
     position: absolute; left: 50%; top: 50%;
@@ -199,7 +204,13 @@
     display: flex; align-items: center; justify-content: center;
     z-index: 1;
   }
-  .workshop-icon-badge svg { color: var(--text); }
+  .workshop-icon-badge svg {
+    color: var(--text);
+    transition: transform 220ms cubic-bezier(.34,1.56,.64,1);
+  }
+  .workshop:hover .workshop-icon-badge svg {
+    transform: scale(1.15);
+  }
 
   .workshop-body {
     padding: var(--spacing-md) var(--spacing-lg) var(--spacing-lg);
