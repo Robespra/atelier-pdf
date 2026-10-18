@@ -2521,18 +2521,18 @@
   // ── Shared park-plan map, reused by the standalone map modal and the
   //    "Où se trouve" tab inside the info modal ──
   const MAP_PIN_POSITIONS = {
-    "L'Orangerie": [150, 140],
-    "L'Echansonnerie": [235, 90],
-    "La Mijoterie du Roy Henry": [255, 55],
-    "L'Auberge par Alexandre Couillon": [95, 42],
-    "Le Bistrot": [80, 150],
-    "Le Rendez-Vous des Ventres Faims": [190, 150],
-    "Le Chaudron": [200, 175],
-    "La Table des Ambassadeurs": [291, 175],
-    "El Rincón de Tapas": [220, 95],
+    "L'Orangerie": [218, 68],
+    "L'Echansonnerie": [192, 86],
+    "La Mijoterie du Roy Henry": [206, 94],
+    "L'Auberge par Alexandre Couillon": [168, 50],
+    "Le Bistrot": [178, 148],
+    "Le Rendez-Vous des Ventres Faims": [252, 148],
+    "Le Chaudron": [192, 132],
+    "La Table des Ambassadeurs": [56, 72],
+    "El Rincón de Tapas": [222, 98],
   };
-  // Restaurants located outside the park (in a partner hotel) — pin drawn
-  // past the park boundary on the map to make the detour visually honest.
+  // Restaurants located in La Cité Nocturne — a separate gated zone west of
+  // the lake, outside the main park, where the partner hotels sit.
   const MAP_OFF_PARK = new Set(["La Table des Ambassadeurs"]);
   function renderMapSVG(activeRestaurantName) {
     const pin = (name, x, y) => {
@@ -2549,24 +2549,43 @@
       .join('');
     return `<svg class="map-plan" viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg">
         <rect x="0" y="0" width="320" height="220" fill="#F3EDE0" />
-        <path d="M20 190 C 40 60, 120 20, 160 20 C 220 20, 300 60, 300 130 C 300 180, 240 200, 180 200 C 100 205, 40 205, 20 190 Z" fill="#EAE2D0" stroke="#CAA367" stroke-width="1.5" />
-        <circle cx="160" cy="110" r="34" fill="#E4DAC2" stroke="#CAA367" stroke-width="1.25" />
-        <text x="160" y="107" text-anchor="middle" font-family="Georgia, serif" font-size="9" font-weight="700" fill="#A18756">GRAND</text>
-        <text x="160" y="118" text-anchor="middle" font-family="Georgia, serif" font-size="9" font-weight="700" fill="#A18756">CARROUSEL</text>
-        <ellipse cx="80" cy="60" rx="34" ry="22" fill="#E4DAC2" stroke="#CAA367" stroke-width="1.25" />
-        <text x="80" y="58" text-anchor="middle" font-family="Georgia, serif" font-size="8" font-weight="700" fill="#A18756">CHASSELOUP</text>
-        <text x="80" y="68" text-anchor="middle" font-family="Georgia, serif" font-size="7" fill="#A18756">Village XVIIIe</text>
-        <ellipse cx="240" cy="70" rx="38" ry="24" fill="#E4DAC2" stroke="#CAA367" stroke-width="1.25" />
-        <text x="240" y="66" text-anchor="middle" font-family="Georgia, serif" font-size="8" font-weight="700" fill="#A18756">VILLAGE</text>
-        <text x="240" y="76" text-anchor="middle" font-family="Georgia, serif" font-size="8" font-weight="700" fill="#A18756">RENAISSANCE</text>
-        <ellipse cx="80" cy="165" rx="36" ry="20" fill="#E4DAC2" stroke="#CAA367" stroke-width="1.25" />
-        <text x="80" y="168" text-anchor="middle" font-family="Georgia, serif" font-size="8" font-weight="700" fill="#A18756">BOURG BÉRARD</text>
-        <rect x="266" y="160" width="50" height="30" rx="4" fill="#EFE7F5" stroke="#B7A6D6" stroke-width="1.25" stroke-dasharray="2 2" />
-        <text x="291" y="173" text-anchor="middle" font-family="Georgia, serif" font-size="7" font-weight="700" fill="#7A6699">HÔTEL</text>
-        <text x="291" y="181" text-anchor="middle" font-family="Georgia, serif" font-size="6" fill="#7A6699">hors parc</text>
-        <path d="M28 175 L292 130" stroke="#CAA367" stroke-width="1" stroke-dasharray="2 3" opacity=".6" />
-        <path d="M80 82 L140 100" stroke="#CAA367" stroke-width="1" stroke-dasharray="2 3" opacity=".6" />
-        <path d="M240 94 L180 105" stroke="#CAA367" stroke-width="1" stroke-dasharray="2 3" opacity=".6" />
+        <!-- La Cité Nocturne: separate gated zone west of the lake, hotels + their restaurants -->
+        <path d="M14 48 C 13 36, 22 26, 36 22 C 55 17, 78 18, 92 28 C 100 34, 98 44, 90 48 C 96 54, 98 64, 90 70 C 98 76, 98 88, 88 94 C 94 100, 92 112, 80 116 C 66 121, 48 120, 34 112 C 20 104, 13 90, 12 76 C 11 66, 12 56, 14 48 Z" fill="#E9E2EF" stroke="#B7A6D6" stroke-width="1.5" stroke-dasharray="3 2" />
+        <text x="52" y="34" text-anchor="middle" font-family="Georgia, serif" font-size="6.5" font-weight="700" fill="#7A6699">LA CITÉ NOCTURNE</text>
+        <text x="52" y="43" text-anchor="middle" font-family="Georgia, serif" font-size="5.5" fill="#7A6699">Hôtels du Puy du Fou</text>
+        <!-- Lake between La Cité Nocturne and the main park, with La Cinéscénie / Les Noces de Feu on its east shore -->
+        <path d="M100 55 C 98 80, 102 108, 112 130 C 120 146, 134 150, 140 138 C 146 126, 136 112, 132 96 C 128 80, 132 64, 124 52 C 116 42, 102 44, 100 55 Z" fill="#CFE0DC" stroke="#9DBDB6" stroke-width="1.25" />
+        <text x="118" y="98" text-anchor="middle" font-family="Georgia, serif" font-size="6" font-weight="700" fill="#5F7D77">LAC</text>
+        <!-- Main park: east of the lake -->
+        <path d="M150 115 C 148 85, 165 58, 196 44 C 222 32, 252 30, 275 42 C 294 52, 304 72, 303 98 C 302 122, 290 148, 266 166 C 240 185, 206 194, 176 186 C 155 180, 148 160, 148 140 C 148 131, 149 123, 150 115 Z" fill="#EAE2D0" stroke="#CAA367" stroke-width="1.5" />
+        <!-- Grand Carrousel: upper-center-east, the park's main arena -->
+        <circle cx="228" cy="60" r="24" fill="#E4DAC2" stroke="#CAA367" stroke-width="1.25" />
+        <text x="228" y="57" text-anchor="middle" font-family="Georgia, serif" font-size="7.5" font-weight="700" fill="#A18756">GRAND</text>
+        <text x="228" y="66" text-anchor="middle" font-family="Georgia, serif" font-size="7.5" font-weight="700" fill="#A18756">CARROUSEL</text>
+        <!-- Chasseloup: village, upper area, west of the Carrousel -->
+        <ellipse cx="172" cy="56" rx="26" ry="18" fill="#E4DAC2" stroke="#CAA367" stroke-width="1.25" />
+        <text x="172" y="54" text-anchor="middle" font-family="Georgia, serif" font-size="7.5" font-weight="700" fill="#A18756">CHASSELOUP</text>
+        <text x="172" y="63" text-anchor="middle" font-family="Georgia, serif" font-size="6" fill="#A18756">Village</text>
+        <!-- Village Renaissance: center, just south of the Carrousel -->
+        <ellipse cx="205" cy="93" rx="30" ry="20" fill="#E4DAC2" stroke="#CAA367" stroke-width="1.25" />
+        <text x="205" y="90" text-anchor="middle" font-family="Georgia, serif" font-size="7.5" font-weight="700" fill="#A18756">VILLAGE</text>
+        <text x="205" y="99" text-anchor="middle" font-family="Georgia, serif" font-size="7.5" font-weight="700" fill="#A18756">RENAISSANCE</text>
+        <!-- Bourg Bérard: village, lower-center -->
+        <ellipse cx="178" cy="158" rx="30" ry="18" fill="#E4DAC2" stroke="#CAA367" stroke-width="1.25" />
+        <text x="178" y="161" text-anchor="middle" font-family="Georgia, serif" font-size="7.5" font-weight="700" fill="#A18756">BOURG BÉRARD</text>
+        <text x="178" y="169" text-anchor="middle" font-family="Georgia, serif" font-size="6" fill="#A18756">Village</text>
+        <!-- La Forêt: lower-east, wooded zone -->
+        <ellipse cx="262" cy="152" rx="28" ry="21" fill="#DEE6D4" stroke="#A3B38F" stroke-width="1.25" />
+        <text x="262" y="156" text-anchor="middle" font-family="Georgia, serif" font-size="7.5" font-weight="700" fill="#718158">LA FORÊT</text>
+        <!-- La Cinéscénie / Les Noces de Feu: night-show stadiums on the lake's east shore -->
+        <rect x="112" y="120" width="36" height="18" rx="2" fill="#2A3B52" opacity=".85" />
+        <text x="130" y="130" text-anchor="middle" font-family="Georgia, serif" font-size="5" font-weight="700" fill="#F3EDE0">SPECTACLES</text>
+        <text x="130" y="135" text-anchor="middle" font-family="Georgia, serif" font-size="5" fill="#F3EDE0">NOCTURNES</text>
+        <path d="M90 60 L100 60" stroke="#B7A6D6" stroke-width="1" stroke-dasharray="2 3" opacity=".6" />
+        <path d="M172 74 L205 86" stroke="#CAA367" stroke-width="1" stroke-dasharray="2 3" opacity=".6" />
+        <path d="M228 84 L210 93" stroke="#CAA367" stroke-width="1" stroke-dasharray="2 3" opacity=".6" />
+        <path d="M195 113 L178 140" stroke="#CAA367" stroke-width="1" stroke-dasharray="2 3" opacity=".6" />
+        <path d="M228 136 L240 134" stroke="#CAA367" stroke-width="1" stroke-dasharray="2 3" opacity=".6" />
         ${pins}
       </svg>`;
   }
