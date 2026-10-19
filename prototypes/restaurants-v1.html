@@ -596,8 +596,13 @@
     }
     .bottom-total { display: flex; align-items: center; gap: 10px; cursor: pointer; }
     .total-amount { font-family: Georgia, serif; font-size: 22px; font-weight: 700; }
-    .chevron-up { transition: transform 200ms; }
+    /* Chevron only makes sense on mobile, where it opens the recap drawer —
+       desktop already shows the recap in the sidebar, so the arrow is hidden there. */
+    .chevron-up { display: none; transition: transform 200ms; }
     .chevron-up.open { transform: rotate(180deg); }
+    @media (max-width: 768px) {
+      .chevron-up { display: block; }
+    }
     .bottom-actions { display: flex; gap: 10px; align-items: center; }
     .cta-btn {
       display: inline-flex; align-items: center; gap: 6px;
