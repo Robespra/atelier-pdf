@@ -226,11 +226,11 @@
     /* Subtle per-meal tint so the eye can tell lunch/dinner sections apart while scrolling */
     .meal-block .meal-body-inner { background: var(--bg-cards); }
 
-    /* Collapsed summary chip */
+    /* Collapsed summary chip — green once a restaurant is booked, matching the card's selected badge */
     .meal-summary-chip {
       display: none; align-items: center; gap: 6px;
-      background: #F7F1E6; color: var(--gold-dark);
-      border: 1px solid rgba(161,135,86,.3);
+      background: #E5F5ED; color: var(--green);
+      border: 1px solid rgba(0,154,88,.3);
       border-radius: 999px; padding: 4px 10px;
       font-size: 12px; font-weight: 700; white-space: nowrap;
     }
@@ -433,9 +433,18 @@
     }
     .slot-chips { display: flex; flex-wrap: wrap; gap: 6px; }
     /* Many time slots (5+) — a dropdown replaces the chip row so every option
-       stays reachable with a click, not just via horizontal scroll/swipe. */
+       stays reachable with a click, not just via horizontal scroll/swipe.
+       The dropdown carries its own "Sélectionnez un horaire" title, so the
+       standalone label above it is redundant and hidden in this mode. */
     .slot-chips.many { display: none; }
+    .slot-section:has(.slot-chips.many) > .slot-label-text { display: none; }
     .slot-dropdown { position: relative; display: inline-block; }
+    .slot-dropdown-panel-title {
+      font-size: 11px; font-weight: 700; color: var(--text);
+      padding: 6px 10px 8px;
+      display: flex; align-items: center; gap: 5px;
+    }
+    .slot-dropdown-panel-title svg { flex-shrink: 0; color: var(--gold-dark); }
     .slot-dropdown-trigger {
       display: inline-flex; align-items: center; gap: 8px;
       font-size: 12px; font-weight: 700;
@@ -498,7 +507,12 @@
     .resto-card.meal-locked:hover { box-shadow: none; }
 
     /* Guest counts — menu breakdown only, no per-person prices (the total below already shows price) */
-    .guests-row { display: flex; gap: 10px; }
+    .guests-row { display: flex; align-items: center; gap: 6px; }
+    .guest-col + .guest-col { position: relative; padding-left: 14px; }
+    .guest-col + .guest-col::before {
+      content: '+'; position: absolute; left: 0; top: 0;
+      font-size: 11px; font-weight: 700; color: var(--grey);
+    }
     .guest-col { display: flex; flex-direction: column; gap: 1px; }
     .guest-label { font-size: 11px; color: var(--grey); }
     .guest-price { display: none; }
@@ -589,6 +603,29 @@
     }
     @keyframes spin { to { transform: rotate(360deg); } }
 
+    /* ── Toast: brief, auto-dismissing confirmation after a booking action ── */
+    .toast-wrap {
+      position: fixed; left: 50%; bottom: 84px; z-index: 80;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      pointer-events: none;
+    }
+    .toast {
+      display: flex; align-items: center; gap: 8px;
+      background: var(--text); color: #fff;
+      padding: 10px 16px; border-radius: 999px;
+      font-size: 13px; font-weight: 600;
+      box-shadow: 0 6px 20px rgba(0,0,0,.22);
+      opacity: 0; transform: translateY(8px);
+      transition: opacity 220ms ease, transform 220ms ease;
+    }
+    .toast.visible { opacity: 1; transform: translateY(0); }
+    .toast svg { flex-shrink: 0; color: var(--green); }
+    @media (max-width: 768px) {
+      .toast-wrap { bottom: 128px; left: 16px; right: 16px; transform: none; }
+      .toast { width: 100%; justify-content: center; }
+    }
+
     /* ── Bottom bar ── */
     .bottom-bar {
       position: fixed; bottom: 0; left: 0; right: 0; z-index: 50;
@@ -633,6 +670,7 @@
       width: 100%; max-width: 520px;
       max-height: 80dvh;
       overflow-y: auto;
+      overscroll-behavior: contain;
       transform: translateY(20px);
       transition: transform 260ms cubic-bezier(.32,1,.4,1);
       display: flex; flex-direction: column;
@@ -1577,9 +1615,9 @@
                     <div class="slot-chips">
                       <button class="slot-chip" data-slot="11:30">11:30</button>
                       <button class="slot-chip" data-slot="11:45">11:45</button>
-                      <button class="slot-chip" data-slot="12:00">12:00</button>
+                      <button class="slot-chip unavailable" data-slot="12:00">12:00</button>
                       <button class="slot-chip" data-slot="12:15">12:15</button>
-                      <button class="slot-chip" data-slot="12:30">12:30</button>
+                      <button class="slot-chip unavailable" data-slot="12:30">12:30</button>
                       <button class="slot-chip" data-slot="12:45">12:45</button>
                       <button class="slot-chip" data-slot="13:00">13:00</button>
                       <button class="slot-chip" data-slot="13:15">13:15</button>
@@ -1689,6 +1727,9 @@
     </div>
   </div>
 </div>
+
+<!-- ── Toast ── -->
+<div class="toast-wrap" id="toast-wrap" aria-live="polite"></div>
 
 <!-- ── Bottom bar ── -->
 <div class="bottom-bar">
@@ -1833,9 +1874,15 @@
     const trigger = document.createElement('button');
     trigger.type = 'button';
     trigger.className = 'slot-dropdown-trigger';
-    trigger.innerHTML = `<span class="slot-dropdown-label">Choisir un horaire</span><svg class="chevron" width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+    trigger.innerHTML = `<span class="slot-dropdown-label">Sélectionnez un horaire</span><svg class="chevron" width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
     const panel = document.createElement('div');
     panel.className = 'slot-dropdown-panel';
+    // Title moved here from the card's standalone label, since that label is
+    // hidden once a card switches into dropdown mode.
+    const panelTitle = document.createElement('div');
+    panelTitle.className = 'slot-dropdown-panel-title';
+    panelTitle.innerHTML = `<svg width="11" height="11" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.25" stroke="currentColor" stroke-width="1.4"/><path d="M8 4.75v3.5l2.5 1.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Sélectionnez un horaire`;
+    panel.appendChild(panelTitle);
     // Placeholder left behind in the card's DOM position so the panel can be
     // returned there on close (it lives on <body> only while open).
     const homeAnchor = document.createComment('slot-dropdown-panel-home');
@@ -1871,7 +1918,7 @@
     // Keep the trigger label + active option in sync with whichever chip is active
     const syncLabel = () => {
       const activeChip = chipEls.find(c => c.classList.contains('active'));
-      trigger.querySelector('.slot-dropdown-label').textContent = activeChip ? activeChip.dataset.slot : 'Choisir un horaire';
+      trigger.querySelector('.slot-dropdown-label').textContent = activeChip ? activeChip.dataset.slot : 'Sélectionnez un horaire';
       trigger.classList.toggle('active', !!activeChip);
       panel.querySelectorAll('.slot-dropdown-option').forEach((opt, i) => {
         opt.classList.toggle('active', chipEls[i] === activeChip);
@@ -1972,6 +2019,8 @@
         renderConfirmedBanner(card);
         const modifyBtn = card.querySelector('.modify-link');
         if (modifyBtn) modifyBtn.textContent = 'Modifier ma sélection';
+
+        showToast(`${card.dataset.name} réservé`);
 
         // Bring the booked restaurant to the front so it's easy to find again
         // after scrolling/browsing the rest of the list (esp. on mobile).
@@ -2185,6 +2234,21 @@
       </span>
       <button class="confirmed-banner-cancel">Annuler</button>`;
     modifyBtn.parentNode.insertBefore(banner, modifyBtn);
+  }
+
+  // ── Toast: brief confirmation that auto-dismisses, doesn't require interaction ──
+  function showToast(message) {
+    const wrap = document.getElementById('toast-wrap');
+    if (!wrap) return;
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.innerHTML = `<svg width="15" height="15" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4"/><path d="M5 8.2l2 2 4-4.4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>${message}</span>`;
+    wrap.appendChild(toast);
+    requestAnimationFrame(() => toast.classList.add('visible'));
+    setTimeout(() => {
+      toast.classList.remove('visible');
+      setTimeout(() => toast.remove(), 220);
+    }, 3200);
   }
 
   // ── Bring a booked card to the front of its list/grid so it's easy to
@@ -2541,6 +2605,31 @@
   let modalOriginalQuantities = {};
   let activeModalCard = null;
 
+  // ── Shared modal scroll-lock ──────────────────────────
+  // `overflow:hidden` alone doesn't stop scroll chaining: once a nested
+  // scrollable modal hits its own top/bottom, touch/trackpad momentum can
+  // still bubble the scroll to the page behind it, silently moving the
+  // page's scroll position while the modal is open. Fixing the body in
+  // place (and restoring the exact scrollY on close) prevents that and
+  // guarantees the page comes back exactly where it was.
+  let lockedScrollY = 0;
+  function lockBodyScroll() {
+    lockedScrollY = window.scrollY;
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${lockedScrollY}px`;
+    document.body.style.left = '0';
+    document.body.style.right = '0';
+    document.body.style.overflow = 'hidden';
+  }
+  function unlockBodyScroll() {
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.left = '';
+    document.body.style.right = '';
+    document.body.style.overflow = '';
+    window.scrollTo(0, lockedScrollY);
+  }
+
   function openModal(card) {
     const name = card.dataset.name;
     const info = RESTAURANTS[name] || { desc: '', menus: [] };
@@ -2558,12 +2647,12 @@
 
     renderModal(name, info);
     document.getElementById('modal').classList.add('open');
-    document.body.style.overflow = 'hidden';
+    lockBodyScroll();
   }
 
   function closeModal() {
     document.getElementById('modal').classList.remove('open');
-    document.body.style.overflow = '';
+    unlockBodyScroll();
     activeModalCard = null;
     hideModalSlotsStep();
   }
@@ -3007,11 +3096,11 @@
       cb.checked = state.tags.has(cb.value);
     });
     document.getElementById('filter-modal').classList.add('open');
-    document.body.style.overflow = 'hidden';
+    lockBodyScroll();
   }
   function closeFilterModal() {
     document.getElementById('filter-modal').classList.remove('open');
-    document.body.style.overflow = '';
+    unlockBodyScroll();
     activeFilterMeal = null;
   }
 
@@ -3177,11 +3266,11 @@
     const title = document.getElementById('map-modal-title');
     if (title) title.textContent = restaurantName ? `Où se trouve « ${restaurantName} » ?` : 'Où se trouve ce restaurant ?';
     document.getElementById('map-modal').classList.add('open');
-    document.body.style.overflow = 'hidden';
+    lockBodyScroll();
   }
   function closeMapModal() {
     document.getElementById('map-modal').classList.remove('open');
-    document.body.style.overflow = '';
+    unlockBodyScroll();
   }
   document.querySelectorAll('.card-location').forEach(badge => {
     badge.setAttribute('role', 'button');
