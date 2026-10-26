@@ -3002,8 +3002,11 @@
 
       updateSummary();
 
-      const hasSlot = !!activeModalCard.querySelector('.slot-chip.active');
-      if (!hasSlot) {
+      // Only ask for a time slot when the restaurant isn't booked yet.
+      // If it's already selected, the slot was chosen earlier — changing
+      // the guest count here shouldn't force picking it again.
+      const alreadyBooked = activeModalCard.classList.contains('selected');
+      if (!alreadyBooked) {
         showModalSlotsStep(activeModalCard);
       } else {
         closeModal();
@@ -3069,10 +3072,8 @@
     if (totalEl) totalEl.textContent = `${total.toFixed(2).replace('.',',')}€`;
     const wasEl = document.querySelector('.modal-price-was s');
     if (wasEl) wasEl.textContent = `${was.toFixed(2).replace('.',',')}€`;
-    // Update CTA label based on whether quantities changed
-    const hasChanges = Object.keys(modalQuantities).some(k => modalQuantities[k] !== (modalOriginalQuantities[k] ?? 0));
-    const ctaBtn = document.getElementById('modal-update-btn');
-    if (ctaBtn) ctaBtn.firstChild.textContent = hasChanges ? 'Mettre à jour' : 'Continuer';
+    // CTA always reads "Continuer" — changing guest counts just updates the
+    // price shown above, no need to relabel the button as an "update" action.
   }
 
   // ── Filter modal — one shared dialog, scoped per meal via data-meal ──
