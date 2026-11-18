@@ -110,7 +110,7 @@
 
     .version-grid {
       display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
-      width: 100%; max-width: 720px;
+      width: 100%; max-width: 760px;
     }
     @media (max-width: 640px) {
       .version-grid { grid-template-columns: 1fr; }
@@ -138,6 +138,12 @@
       background: var(--bg); border: 1px solid var(--border);
       font-family: Georgia, serif; font-weight: 700; font-size: 14px; color: var(--red);
       flex-shrink: 0;
+    }
+    /* Wider pill for the longer "V1a-B" / "V1a-C" labels, same style otherwise */
+    .version-badge.wide {
+      width: auto; min-width: 34px; height: 34px;
+      border-radius: 999px; padding: 0 10px;
+      font-size: 12px; white-space: nowrap;
     }
     .version-tag {
       font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
@@ -208,7 +214,7 @@
 
   <div class="hub-heading">
     <h1 class="hub-title">Restauration VEL</h1>
-    <p class="hub-desc">Deux variantes du parcours de réservation restaurant sont disponibles pour comparaison.</p>
+    <p class="hub-desc">Quatre variantes du parcours de réservation restaurant sont disponibles pour comparaison.</p>
   </div>
 
   <div class="version-grid">
@@ -238,6 +244,40 @@
       </a>
       <a href="restaurants-v1a.html" class="version-cta">
         Ouvrir la V1a
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 8h8M9 5l3 3-3 3" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+
+    <div class="version-card">
+      <div class="version-card-top">
+        <div class="version-badge wide">V1a-B</div>
+        <span class="version-tag new">A/B/C test</span>
+      </div>
+      <div class="version-name">Version 1a-B</div>
+      <p class="version-desc">Cartes informatives (horaires en texte simple) menant à une page restaurant dédiée pour choisir l'horaire et ajouter au panier.</p>
+      <a href="../assets/downloads/restaurants-v1aB.zip" download class="version-download">
+        <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M8 2v8M4.5 7.5L8 11l3.5-3.5M3 13.5h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Télécharger le code (.zip)
+      </a>
+      <a href="restaurants-v1aB.html" class="version-cta">
+        Ouvrir la V1a-B
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 8h8M9 5l3 3-3 3" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+
+    <div class="version-card">
+      <div class="version-card-top">
+        <div class="version-badge wide">V1a-C</div>
+        <span class="version-tag new">A/B/C test</span>
+      </div>
+      <div class="version-name">Version 1a-C</div>
+      <p class="version-desc">V1a ajustée : clic sur un horaire = ajout direct au panier, sans grisage des autres cartes, modale de menus sans onglets.</p>
+      <a href="../assets/downloads/restaurants-v1aC.zip" download class="version-download">
+        <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M8 2v8M4.5 7.5L8 11l3.5-3.5M3 13.5h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Télécharger le code (.zip)
+      </a>
+      <a href="restaurants-v1aC.html" class="version-cta">
+        Ouvrir la V1a-C
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 8h8M9 5l3 3-3 3" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
     </div>
