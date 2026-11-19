@@ -434,9 +434,11 @@
     /* Many time slots (5+) — a dropdown replaces the chip row so every option
        stays reachable with a click, not just via horizontal scroll/swipe.
        The dropdown carries its own "Sélectionnez un horaire" title, so the
-       standalone label above it is redundant and hidden in this mode. */
+       standalone label above it is redundant — kept in the layout (same
+       height reserved) but invisible, so every card's time-slot block
+       stays the same height whether it's chips or a dropdown. */
     .slot-chips.many { display: none; }
-    .slot-section:has(.slot-chips.many) > .slot-label-text { display: none; }
+    .slot-section:has(.slot-chips.many) > .slot-label-text { visibility: hidden; }
     .slot-dropdown { position: relative; display: inline-block; }
     .slot-dropdown-panel-title {
       font-size: 11px; font-weight: 700; color: var(--text);
@@ -531,7 +533,7 @@
     .price-discount .was s { text-decoration: line-through; }
     .resto-card.selected .price-discount { display: none; }
 
-    /* Voir menus et carte button */
+    /* Voir menu et détail button */
     .modify-link {
       display: flex; align-items: center; justify-content: center; gap: 6px;
       width: 100%; padding: 8px 12px; margin-top: 2px;
@@ -900,13 +902,6 @@
       transition: background 140ms;
     }
     .modal-cta:hover { background: #333; }
-    .modal-cancel {
-      font-size: 13px; font-weight: 700; color: var(--grey);
-      background: none; border: none; cursor: pointer; font-family: inherit;
-      text-decoration: underline; padding: 0;
-    }
-    .modal-cancel:hover { color: var(--text); text-decoration: none; }
-
     /* ── Modal "choose your slot" step (shown after Continuer) ── */
     .modal-slots-step { display: none; }
     .modal-slots-step.active { display: block; }
@@ -1315,7 +1310,7 @@
                     <div class="guest-col"><span class="guest-label">1 menu enfant</span><span class="guest-price">+14,00€/pers</span></div>
                   </div>
                   <div class="price-discount"></div>
-                  <button class="modify-link">Voir menus et carte</button>
+                  <button class="modify-link">Voir menu et détail</button>
                 </div>
               </div>
 
@@ -1342,7 +1337,7 @@
                     <div class="guest-col"><span class="guest-label">1 menu enfant</span><span class="guest-price">+9,00€/pers</span></div>
                   </div>
                   <div class="price-discount"></div>
-                  <button class="modify-link">Voir menus et carte</button>
+                  <button class="modify-link">Voir menu et détail</button>
                 </div>
               </div>
 
@@ -1369,7 +1364,7 @@
                     <div class="guest-col"><span class="guest-label">1 menu enfant</span><span class="guest-price">+12,00€/pers</span></div>
                   </div>
                   <div class="price-discount"></div>
-                  <button class="modify-link">Voir menus et carte</button>
+                  <button class="modify-link">Voir menu et détail</button>
                 </div>
               </div>
               <div class="resto-card" data-meal="day1-lunch" data-name="Le Bistrot" data-adults="36" data-child="13" data-orig-adults="43" data-orig-child="16" data-page="2" data-tags="dans-parc table reservation sur-place traditionnelle">
@@ -1394,7 +1389,7 @@
                     <div class="guest-col"><span class="guest-label">1 menu enfant</span><span class="guest-price">+13,00€/pers</span></div>
                   </div>
                   <div class="price-discount"></div>
-                  <button class="modify-link">Voir menus et carte</button>
+                  <button class="modify-link">Voir menu et détail</button>
                 </div>
               </div>
 
@@ -1419,7 +1414,7 @@
                     <div class="guest-col"><span class="guest-label">1 menu enfant</span><span class="guest-price">+14,00€/pers</span></div>
                   </div>
                   <div class="price-discount"></div>
-                  <button class="modify-link">Voir menus et carte</button>
+                  <button class="modify-link">Voir menu et détail</button>
                 </div>
               </div>
 
@@ -1444,7 +1439,7 @@
                     <div class="guest-col"><span class="guest-label">1 menu enfant</span><span class="guest-price">+12,00€/pers</span></div>
                   </div>
                   <div class="price-discount"></div>
-                  <button class="modify-link">Voir menus et carte</button>
+                  <button class="modify-link">Voir menu et détail</button>
                 </div>
               </div>
 
@@ -1508,7 +1503,7 @@
                     <div class="guest-col"><span class="guest-label">1 menu enfant</span><span class="guest-price">+14,00€/pers</span></div>
                   </div>
                   <div class="price-discount"></div>
-                  <button class="modify-link">Voir menus et carte</button>
+                  <button class="modify-link">Voir menu et détail</button>
                 </div>
               </div>
 
@@ -1535,7 +1530,7 @@
                     <div class="guest-col"><span class="guest-label">1 menu enfant</span><span class="guest-price">+18,00€/pers</span></div>
                   </div>
                   <div class="price-discount"></div>
-                  <button class="modify-link">Voir menus et carte</button>
+                  <button class="modify-link">Voir menu et détail</button>
                 </div>
               </div>
 
@@ -1562,7 +1557,7 @@
                     <div class="guest-col"><span class="guest-label">1 menu enfant</span><span class="guest-price">+12,00€/pers</span></div>
                   </div>
                   <div class="price-discount"></div>
-                  <button class="modify-link">Voir menus et carte</button>
+                  <button class="modify-link">Voir menu et détail</button>
                 </div>
               </div>
               <div class="resto-card" data-meal="day1-dinner" data-name="Le Bistrot" data-adults="36" data-child="13" data-orig-adults="43" data-orig-child="16" data-page="2" data-tags="dans-parc table reservation sur-place traditionnelle">
@@ -1587,7 +1582,7 @@
                     <div class="guest-col"><span class="guest-label">1 menu enfant</span><span class="guest-price">+13,00€/pers</span></div>
                   </div>
                   <div class="price-discount"></div>
-                  <button class="modify-link">Voir menus et carte</button>
+                  <button class="modify-link">Voir menu et détail</button>
                 </div>
               </div>
 
@@ -1611,7 +1606,7 @@
                     <div class="guest-col"><span class="guest-label">1 menu enfant</span><span class="guest-price">+14,00€/pers</span></div>
                   </div>
                   <div class="price-discount"></div>
-                  <button class="modify-link">Voir menus et carte</button>
+                  <button class="modify-link">Voir menu et détail</button>
                 </div>
               </div>
 
@@ -1688,7 +1683,7 @@
                     <div class="guest-col"><span class="guest-label">1 menu enfant</span><span class="guest-price">+14,00€/pers</span></div>
                   </div>
                   <div class="price-discount"></div>
-                  <button class="modify-link">Voir menus et carte</button>
+                  <button class="modify-link">Voir menu et détail</button>
                 </div>
               </div>
 
@@ -1714,7 +1709,7 @@
                     <div class="guest-col"><span class="guest-label">1 menu enfant</span><span class="guest-price">+12,00€/pers</span></div>
                   </div>
                   <div class="price-discount"></div>
-                  <button class="modify-link">Voir menus et carte</button>
+                  <button class="modify-link">Voir menu et détail</button>
                 </div>
               </div>
 
@@ -1739,7 +1734,7 @@
                     <div class="guest-col"><span class="guest-label">1 menu enfant</span><span class="guest-price">+16,00€/pers</span></div>
                   </div>
                   <div class="price-discount"></div>
-                  <button class="modify-link">Voir menus et carte</button>
+                  <button class="modify-link">Voir menu et détail</button>
                 </div>
               </div>
               <div class="resto-card" data-meal="day2-lunch" data-name="Le Rendez-Vous des Ventres Faims" data-adults="16" data-child="9" data-orig-adults="19" data-orig-child="11" data-page="2" data-tags="dans-parc click-collect emporter sur-place burgers vegetarien">
@@ -1764,7 +1759,7 @@
                     <div class="guest-col"><span class="guest-label">1 menu enfant</span><span class="guest-price">+9,00€/pers</span></div>
                   </div>
                   <div class="price-discount"></div>
-                  <button class="modify-link">Voir menus et carte</button>
+                  <button class="modify-link">Voir menu et détail</button>
                 </div>
               </div>
 
@@ -2033,7 +2028,7 @@
         c.querySelector('.selected-badge')?.remove();
         c.querySelector('.confirmed-banner')?.remove();
         const siblingModifyBtn = c.querySelector('.modify-link');
-        if (siblingModifyBtn) siblingModifyBtn.textContent = 'Voir menus et carte';
+        if (siblingModifyBtn) siblingModifyBtn.textContent = 'Voir menu et détail';
         // Clear any active slot chip on siblings so they don't show stale state
         c.querySelectorAll('.slot-chip').forEach(sc => sc.classList.remove('active'));
         restoreCardPosition(c);
@@ -2114,7 +2109,7 @@
       if (e.target.closest('.slot-chip') || e.target.closest('.info-btn')) return;
       if (e.target.closest('.card-name') || e.target.closest('.card-img-wrap')) return;
 
-      // Voir menus et carte → open modal
+      // Voir menu et détail → open modal
       if (e.target.closest('.modify-link')) {
         e.stopPropagation();
         openModal(card);
@@ -2129,7 +2124,7 @@
         card.querySelector('.confirmed-banner')?.remove();
         card.querySelectorAll('.slot-chip').forEach(c => c.classList.remove('active'));
         const cancelModifyBtn = card.querySelector('.modify-link');
-        if (cancelModifyBtn) cancelModifyBtn.textContent = 'Voir menus et carte';
+        if (cancelModifyBtn) cancelModifyBtn.textContent = 'Voir menu et détail';
         // Cancelling does NOT restore the card's original position — it stays
         // in 1st position until a refresh or a filter is applied (spec #755).
         // Reset accordion trigger chip + cancel pending collapse listener
@@ -2761,7 +2756,7 @@
   };
 
   // ── "i" info button — C only entry point into the menus modal, alongside
-  //    "Voir menus et carte", the photo and the restaurant name. ──
+  //    "Voir menu et détail", the photo and the restaurant name. ──
   document.querySelectorAll('.resto-card').forEach(card => {
     const wrap = card.querySelector('.card-img-wrap');
     if (!wrap || wrap.querySelector('.info-btn')) return;
@@ -2914,7 +2909,6 @@
             <span class="modal-price-amount" id="modal-total">${total.toFixed(2).replace('.',',')}€</span>
             <span class="modal-price-was">au lieu de <s>${was.toFixed(2).replace('.',',')}€</s> sur place</span>
           </div>
-          <button class="modal-cancel" id="modal-cancel-btn">Annuler</button>
           <button class="modal-cta" id="modal-update-btn">
             Continuer
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 8h8M9 5l3 3-3 3" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -2980,7 +2974,6 @@
       });
     }
 
-    document.getElementById('modal-cancel-btn').addEventListener('click', closeModal);
     document.getElementById('modal-update-btn').addEventListener('click', () => {
       if (!activeModalCard) { closeModal(); return; }
 
